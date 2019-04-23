@@ -6,7 +6,47 @@
     <description>Recent content in Susan Potter on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 23 Apr 2019 09:17:38 -0500</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About</title>
+      <link>https://susanpotter.net/about/</link>
+      <pubDate>Tue, 23 Apr 2019 09:17:38 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/about/</guid>
+      <description>&lt;p&gt;I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.&lt;/p&gt;
+
+&lt;p&gt;Feel free to ask me:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;how I might be able to help your Engineering organization live up to their highest potential;&lt;/li&gt;
+&lt;li&gt;how I could streamline your delivery workflow and also improve quality;&lt;/li&gt;
+&lt;li&gt;how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;&lt;/li&gt;
+&lt;li&gt;how I would improve productivity by optimizing for &lt;a href=&#34;https://en.wikipedia.org/wiki/Flow_(psychology)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Flow&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;how you could use algebraic properties to test-infect our distributed systems;&lt;/li&gt;
+&lt;li&gt;how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;&lt;/li&gt;
+&lt;li&gt;how I have led teams building type-safe software that reduced long-term maintenance costs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Current general purpose languages:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Haskell&lt;/li&gt;
+&lt;li&gt;Ruby&lt;/li&gt;
+&lt;li&gt;Bash&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Current configuration langauges:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dhall&lt;/li&gt;
+&lt;li&gt;Nix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.g. NixOS), and declarative infrastructure.&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

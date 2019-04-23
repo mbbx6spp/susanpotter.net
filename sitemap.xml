@@ -3,6 +3,20 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://susanpotter.net/about/</loc>
+      
+      <lastmod>2019-04-23T09:17:38-05:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://susanpotter.net/categories/</loc>
       
       
@@ -16,6 +30,8 @@
   
     <url>
       <loc>https://susanpotter.net/</loc>
+      
+      <lastmod>2019-04-23T09:17:38-05:00</lastmod>
       
       
       <changefreq>monthly</changefreq>
