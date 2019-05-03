@@ -23,7 +23,7 @@
 &lt;li&gt;how I might be able to help your Engineering organization live up to their highest potential;&lt;/li&gt;
 &lt;li&gt;how I could streamline your delivery workflow and also improve quality;&lt;/li&gt;
 &lt;li&gt;how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;&lt;/li&gt;
-&lt;li&gt;how I would improve productivity by optimizing for &lt;a href=&#34;https://en.wikipedia.org/wiki/Flow_(psychology)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Flow&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;how I would improve productivity by optimizing for &lt;a href=&#34;https://en.wikipedia.org/wiki/Flow_(psychology)&#34; title=&#34;Flow&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Flow&lt;/a&gt;;&lt;/li&gt;
 &lt;li&gt;how you could use algebraic properties to test-infect our distributed systems;&lt;/li&gt;
 &lt;li&gt;how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;&lt;/li&gt;
 &lt;li&gt;how I have led teams building type-safe software that reduced long-term maintenance costs&lt;/li&gt;
@@ -45,6 +45,302 @@
 &lt;/ul&gt;
 
 &lt;p&gt;Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.g. NixOS), and declarative infrastructure.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Practical Recursion Schemes</title>
+      <link>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</link>
+      <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</guid>
+      <description>&lt;h2 id=&#34;recursive-data-types&#34;&gt;Recursive data types&lt;/h2&gt;
+
+&lt;p&gt;Recursive data structures pop up all over in software from general-purpose structures
+like lists and binary trees to more application-specific structures like this AST from
+a simple business rules engine:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;  data BusinessRule input output
+    = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output)
+    | Return (input -&amp;gt; output)
+    | Stop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;functor&#34;&gt;&lt;code&gt;Functor&lt;/code&gt;&lt;/h2&gt;
+
+&lt;h2 id=&#34;foldable&#34;&gt;&lt;code&gt;Foldable&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;Foldable&lt;/code&gt; class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.&lt;/p&gt;
+
+&lt;p&gt;Intuitively this is an assortment of =List=-like fold methods on other structures&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;class Foldable t where
+  foldMap :: Monoid m =&amp;gt; (a -&amp;gt; m) -&amp;gt; t a -&amp;gt; m
+  fold    :: Monoid m =&amp;gt; t m -&amp;gt; m
+  foldr   :: (a -&amp;gt; b -&amp;gt; b) -&amp;gt; b -&amp;gt; t a -&amp;gt; b
+  foldl   :: (a -&amp;gt; b -&amp;gt; a) -&amp;gt; a -&amp;gt; t b -&amp;gt; a
+  foldr1  :: (a -&amp;gt; a -&amp;gt; a) -&amp;gt; t a -&amp;gt; a
+  foldl1  :: (a -&amp;gt; a -&amp;gt; a) -&amp;gt; t a -&amp;gt; a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Example of defining a &lt;code&gt;Foldable&lt;/code&gt; instance manually:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data Tree a
+  = Empty
+  | Leaf a
+  | Node (Tree a) (Tree a)
+
+instance Foldable Tree where
+  foldMap f Empty = mempty
+  foldMap f (Leaf x) = f x
+  foldMap f (Node l r) = foldMap f l &amp;lt;&amp;gt; foldMap f r
+
+count :: Foldable t =&amp;gt; t a -&amp;gt; Int
+count = getSum . foldMap (const $ Sum 1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Foldable&lt;/code&gt; is derivable using the &lt;code&gt;DeriveFoldable&lt;/code&gt; language pragma like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data Tree a
+  = Empty
+  | Leaf a
+  | Node (Tree a) (Tree a)
+  deriving (Foldable)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;traversable&#34;&gt;Traversable&lt;/h2&gt;
+
+&lt;p&gt;Traversable gives you the ability to traverse a structure from left-to-right, performing
+an effectful action on each element and preserving the shape.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Intuitively it is &lt;code&gt;fmap&lt;/code&gt; with effects&lt;/li&gt;
+&lt;li&gt;Derivable using &lt;code&gt;DeriveTraversable&lt;/code&gt; language pragma&lt;/li&gt;
+&lt;li&gt;See &#39;Applicative Progamming with Effects&#39;, by McBride and Paterson&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;class (Functor t, Foldable t) =&amp;gt; Traversable t where
+  traverse  :: Applicative f =&amp;gt; (a -&amp;gt; f b) -&amp;gt; t a -&amp;gt; f (t b)
+  sequenceA :: Applicative f =&amp;gt; t (f a) -&amp;gt; f (t a)
+  mapM      :: Monad m =&amp;gt; (a -&amp;gt; m b) -&amp;gt;  t a -&amp;gt;  m (t a)
+  sequence  :: Monad m =&amp;gt; t (m a) -&amp;gt; m (t a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Example for this for &lt;code&gt;Tree&lt;/code&gt; type defining the instance manually is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;instance Traversable Tree where
+  traverse f Empty = pure Empty
+  traverse f (Leaf x) = Leaf &amp;lt;$&amp;gt; f x
+  traverse f (Node l r) = Node &amp;lt;$&amp;gt; traverse f l &amp;lt;*&amp;gt; traverse f r
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mapM&lt;/code&gt; and &lt;code&gt;sequence&lt;/code&gt; generalize Prelude functions of the same name&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequence&lt;/code&gt; can also be thought of as a generalized matrix transpose&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sequence :: Monad m =&amp;gt; t (m a) -&amp;gt; m (t a)
+sequence = mapM id
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fixed-points-of-functors&#34;&gt;Fixed Points of Functors&lt;/h2&gt;
+
+&lt;p&gt;An idea from category theory which gives:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;data-type generic functions&lt;/li&gt;
+&lt;li&gt;compositional data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fixed points are represented by the type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;newtype Fix f = Fix { unFix :: f (Fix f) }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A functor &lt;code&gt;f&lt;/code&gt; is a data-type of kind &lt;code&gt;* -&amp;gt; *&lt;/code&gt; together with an &lt;code&gt;fmap&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;Fix f = f (f (f (f ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;useful-functions&#34;&gt;Useful functions&lt;/h2&gt;
+
+&lt;h3 id=&#34;fan-out-aka-fork&#34;&gt;fan-out aka &lt;em&gt;fork&lt;/em&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;(&amp;amp;&amp;amp;&amp;amp;)
+  :: (b -&amp;gt; c)
+  -&amp;gt; (b -&amp;gt; d)
+  -&amp;gt; b
+  -&amp;gt; (c, d)
+(f &amp;amp;&amp;amp;&amp;amp; g) = \x -&amp;gt; (f x, g x)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;fan-in&#34;&gt;fan-in&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;(|||)
+  :: (b -&amp;gt; d)
+  -&amp;gt; (c -&amp;gt; d)
+  -&amp;gt; Either b c
+  -&amp;gt; d
+(f ||| g) = either
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;function-product&#34;&gt;function product&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;(***)
+  :: (a -&amp;gt; c)
+  -&amp;gt; (b -&amp;gt; d)
+  -&amp;gt; (a, b)
+  -&amp;gt; (c, d)
+(f *** g) = \(x, y) -&amp;gt; (f x, g y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;generalized-unzip-for-functions&#34;&gt;generalized unzip for functions&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;funzip
+  :: Functor f
+  =&amp;gt; f (a, b)
+  -&amp;gt; (f a, f b)
+funzip = fmap fst &amp;amp;&amp;amp;&amp;amp; fmap snd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-type-generic-programming&#34;&gt;Data-type generic programming&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allows us to parameterise functions on the structure, or shape, of a data-type&lt;/li&gt;
+&lt;li&gt;useful for large complex data-types, where boilerplate traversal code often dominates,&lt;/li&gt;
+  especially when updating a small subset of constructors
+&lt;li&gt;for recursion schemes, we can capture the pattern as a standalone combinator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+Limitations:
+&lt;li&gt;The set of data-types that can be represented by means of &lt;code&gt;Fix&lt;/code&gt; is limited to regular data-types.&lt;/li&gt;
+&lt;li&gt;Nested data-types and mutually recursive data-types require higher-order approaches.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to work with lists using a data-type generic &lt;code&gt;cata&lt;/code&gt; combinator, we need a new &#34;unfixed&#34; type representation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data ListF a r = C a r | N
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ListF a r&lt;/code&gt; is not an ordinary functor, but we can define a polymorphic functor instance for &lt;code&gt;ListF a&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;instance Functor (ListF a) where
+  fmap f N = N
+  fmap f (C x xs) = C x (f xs)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We might also want a pattern functor for natural numbers!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data NatF r = Succ r | Zero deriving Functor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;catamorphism&#34;&gt;Catamorphism&lt;/h2&gt;
+
+&lt;p&gt;We would like to write &lt;code&gt;foldr&lt;/code&gt; once for all data-types.
+Category theory shows us how to define it data-type generically for a functor fixed-point.&lt;/p&gt;
+
+&lt;h3 id=&#34;that-catamorphism-fusion-law&#34;&gt;That catamorphism-fusion law&lt;/h3&gt;
+
+&lt;p&gt;The &lt;em&gt;catamorphism-fusion&lt;/em&gt; law is arguably the most important law, and can be used to transform
+the composition of a function with a catamorphism into a single catamorphism, eliminating
+intermediate data structures.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;h . f = g . fmap h =&amp;gt; h . cata f = cata g
+  where f :: f a -&amp;gt; a
+        g :: f b -&amp;gt; b
+        h :: a -&amp;gt; b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;composing-algebras&#34;&gt;Composing Algebras&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Decoding lens operators</title>
+      <link>https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/</link>
+      <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/</guid>
+      <description>&lt;h2 id=&#34;notation-conventions&#34;&gt;Notation conventions&lt;/h2&gt;
+
+&lt;p&gt;The following table provides a quick overview of conventions used in symbolic 
+operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Symbol&lt;/th&gt;
+&lt;th&gt;Concept&lt;/th&gt;
+&lt;th&gt;Denotes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;^&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;getter&lt;/td&gt;
+&lt;td&gt;gets value from structure&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;setter&lt;/td&gt;
+&lt;td&gt;sets values in structure&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;over&lt;/td&gt;
+&lt;td&gt;apply transformation over selected substructure&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;state&lt;/td&gt;
+&lt;td&gt;threads state through&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;before change&lt;/td&gt;
+&lt;td&gt;returns value before specified change&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;after change&lt;/td&gt;
+&lt;td&gt;returns value after specified change&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;?&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Maybe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;optionality&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;!&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;force&lt;/td&gt;
+&lt;td&gt;force value&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h2&gt;
+
+&lt;h3 id=&#34;data-types&#34;&gt;Data Types&lt;/h3&gt;
+
+&lt;p&gt;Let&#39;s start understanding how to &lt;em&gt;use&lt;/em&gt; the &lt;code&gt;lens&lt;/code&gt; library by defining some data types of an application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;practical-nested-getting&#34;&gt;Practical Nested Getting&lt;/h3&gt;
+
+&lt;h3 id=&#34;practical-nested-setting&#34;&gt;Practical Nested Setting&lt;/h3&gt;
 </description>
     </item>
     

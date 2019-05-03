@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  <link rel="prev" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Practical Recursion Schemes | Susan Potter
+       
+  </title>
+  <meta name="title" content="Practical Recursion Schemes | Susan Potter">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Practical Recursion Schemes"/>
+<meta name="twitter:description" content="An outline of practical use and applications of recursion schemes through examples"/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Practical Recursion Schemes",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://susanpotter.net/cover.png",
+    "width": 800,
+    "height": 600
+  },
+  "genre": "software",
+  
+  "wordcount": 868,
+  "url": "https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/",
+  "datePublished": "2018-10-22T18:45:40-05:00",
+  "dateModified": "2018-10-22T18:45:40-05:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Susan Potter",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://susanpotter.net/logo.png",
+      "width": 127,
+      "height": 40
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Susan Potter"
+  },
+  "description": "An outline of practical use and applications of recursion schemes through examples"
+}
+</script>
+</head>
+
+  
+             
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://susanpotter.net/">Susan Potter</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/software/" title="">Software</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://susanpotter.net/">Susan Potter</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/software/" title="">Software</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">Practical Recursion Schemes</h1>
+        <div class="post-meta">
+            Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2018-10-22 >22 October 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://susanpotter.net/categories/software/"> software </a>
+                        <a href="https://susanpotter.net/categories/functional-programming/"> functional programming </a>
+                        <a href="https://susanpotter.net/categories/haskell/"> haskell </a>
+                        
+                </span>
+                <i class="iconfont icon-timer"></i>
+                5 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="recursive-data-types">Recursive data types</h2>
+
+<p>Recursive data structures pop up all over in software from general-purpose structures
+like lists and binary trees to more application-specific structures like this AST from
+a simple business rules engine:</p>
+
+<pre><code class="language-haskell">  data BusinessRule input output
+    = IfThenElse (input -&gt; Bool) (BusinessRule input output) (BusinessRule input output)
+    | Return (input -&gt; output)
+    | Stop
+</code></pre>
+
+<h2 id="functor"><code>Functor</code></h2>
+
+<h2 id="foldable"><code>Foldable</code></h2>
+
+<p>The <code>Foldable</code> class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</p>
+
+<p>Intuitively this is an assortment of =List=-like fold methods on other structures</p>
+
+<pre><code class="language-haskell">class Foldable t where
+  foldMap :: Monoid m =&gt; (a -&gt; m) -&gt; t a -&gt; m
+  fold    :: Monoid m =&gt; t m -&gt; m
+  foldr   :: (a -&gt; b -&gt; b) -&gt; b -&gt; t a -&gt; b
+  foldl   :: (a -&gt; b -&gt; a) -&gt; a -&gt; t b -&gt; a
+  foldr1  :: (a -&gt; a -&gt; a) -&gt; t a -&gt; a
+  foldl1  :: (a -&gt; a -&gt; a) -&gt; t a -&gt; a
+</code></pre>
+
+<p>Example of defining a <code>Foldable</code> instance manually:</p>
+
+<pre><code class="language-haskell">data Tree a
+  = Empty
+  | Leaf a
+  | Node (Tree a) (Tree a)
+
+instance Foldable Tree where
+  foldMap f Empty = mempty
+  foldMap f (Leaf x) = f x
+  foldMap f (Node l r) = foldMap f l &lt;&gt; foldMap f r
+
+count :: Foldable t =&gt; t a -&gt; Int
+count = getSum . foldMap (const $ Sum 1)
+</code></pre>
+
+<p><code>Foldable</code> is derivable using the <code>DeriveFoldable</code> language pragma like so:</p>
+
+<pre><code class="language-haskell">data Tree a
+  = Empty
+  | Leaf a
+  | Node (Tree a) (Tree a)
+  deriving (Foldable)
+</code></pre>
+
+<h2 id="traversable">Traversable</h2>
+
+<p>Traversable gives you the ability to traverse a structure from left-to-right, performing
+an effectful action on each element and preserving the shape.</p>
+
+<ul>
+<li>Intuitively it is <code>fmap</code> with effects</li>
+<li>Derivable using <code>DeriveTraversable</code> language pragma</li>
+<li>See 'Applicative Progamming with Effects', by McBride and Paterson</li>
+</ul>
+
+<pre><code class="language-haskell">class (Functor t, Foldable t) =&gt; Traversable t where
+  traverse  :: Applicative f =&gt; (a -&gt; f b) -&gt; t a -&gt; f (t b)
+  sequenceA :: Applicative f =&gt; t (f a) -&gt; f (t a)
+  mapM      :: Monad m =&gt; (a -&gt; m b) -&gt;  t a -&gt;  m (t a)
+  sequence  :: Monad m =&gt; t (m a) -&gt; m (t a)
+</code></pre>
+
+<p>Example for this for <code>Tree</code> type defining the instance manually is:</p>
+
+<pre><code class="language-haskell">instance Traversable Tree where
+  traverse f Empty = pure Empty
+  traverse f (Leaf x) = Leaf &lt;$&gt; f x
+  traverse f (Node l r) = Node &lt;$&gt; traverse f l &lt;*&gt; traverse f r
+</code></pre>
+
+<p>Notes:</p>
+
+<ul>
+<li><code>mapM</code> and <code>sequence</code> generalize Prelude functions of the same name</li>
+<li><code>sequence</code> can also be thought of as a generalized matrix transpose</li>
+</ul>
+
+<pre><code class="language-haskell">sequence :: Monad m =&gt; t (m a) -&gt; m (t a)
+sequence = mapM id
+</code></pre>
+
+<h2 id="fixed-points-of-functors">Fixed Points of Functors</h2>
+
+<p>An idea from category theory which gives:</p>
+
+<ul>
+<li>data-type generic functions</li>
+<li>compositional data</li>
+</ul>
+
+<p>Fixed points are represented by the type:</p>
+
+<pre><code class="language-haskell">newtype Fix f = Fix { unFix :: f (Fix f) }
+</code></pre>
+
+<p>A functor <code>f</code> is a data-type of kind <code>* -&gt; *</code> together with an <code>fmap</code> function.</p>
+
+<pre><code class="language-haskell">Fix f = f (f (f (f ...
+</code></pre>
+
+<h2 id="useful-functions">Useful functions</h2>
+
+<h3 id="fan-out-aka-fork">fan-out aka <em>fork</em></h3>
+
+<pre><code class="language-haskell">(&amp;&amp;&amp;)
+  :: (b -&gt; c)
+  -&gt; (b -&gt; d)
+  -&gt; b
+  -&gt; (c, d)
+(f &amp;&amp;&amp; g) = \x -&gt; (f x, g x)
+</code></pre>
+
+<h3 id="fan-in">fan-in</h3>
+
+<pre><code class="language-haskell">(|||)
+  :: (b -&gt; d)
+  -&gt; (c -&gt; d)
+  -&gt; Either b c
+  -&gt; d
+(f ||| g) = either
+</code></pre>
+
+<h3 id="function-product">function product</h3>
+
+<pre><code class="language-haskell">(***)
+  :: (a -&gt; c)
+  -&gt; (b -&gt; d)
+  -&gt; (a, b)
+  -&gt; (c, d)
+(f *** g) = \(x, y) -&gt; (f x, g y)
+</code></pre>
+
+<h3 id="generalized-unzip-for-functions">generalized unzip for functions</h3>
+
+<pre><code class="language-haskell">funzip
+  :: Functor f
+  =&gt; f (a, b)
+  -&gt; (f a, f b)
+funzip = fmap fst &amp;&amp;&amp; fmap snd
+</code></pre>
+
+<h2 id="data-type-generic-programming">Data-type generic programming</h2>
+
+<ul>
+<li>allows us to parameterise functions on the structure, or shape, of a data-type</li>
+<li>useful for large complex data-types, where boilerplate traversal code often dominates,</li>
+  especially when updating a small subset of constructors
+<li>for recursion schemes, we can capture the pattern as a standalone combinator</li>
+</ul>
+
+<ul>
+Limitations:
+<li>The set of data-types that can be represented by means of <code>Fix</code> is limited to regular data-types.</li>
+<li>Nested data-types and mutually recursive data-types require higher-order approaches.</li>
+</ul>
+
+<p>In order to work with lists using a data-type generic <code>cata</code> combinator, we need a new "unfixed" type representation.</p>
+
+<pre><code class="language-haskell">data ListF a r = C a r | N
+</code></pre>
+
+<p><code>ListF a r</code> is not an ordinary functor, but we can define a polymorphic functor instance for <code>ListF a</code></p>
+
+<pre><code class="language-haskell">instance Functor (ListF a) where
+  fmap f N = N
+  fmap f (C x xs) = C x (f xs)
+</code></pre>
+
+<p>We might also want a pattern functor for natural numbers!</p>
+
+<pre><code class="language-haskell">data NatF r = Succ r | Zero deriving Functor
+</code></pre>
+
+<h2 id="catamorphism">Catamorphism</h2>
+
+<p>We would like to write <code>foldr</code> once for all data-types.
+Category theory shows us how to define it data-type generically for a functor fixed-point.</p>
+
+<h3 id="that-catamorphism-fusion-law">That catamorphism-fusion law</h3>
+
+<p>The <em>catamorphism-fusion</em> law is arguably the most important law, and can be used to transform
+the composition of a function with a catamorphism into a single catamorphism, eliminating
+intermediate data structures.</p>
+
+<pre><code class="language-haskell">h . f = g . fmap h =&gt; h . cata f = cata g
+  where f :: f a -&gt; a
+        g :: f b -&gt; b
+        h :: a -&gt; b
+</code></pre>
+
+<h3 id="composing-algebras">Composing Algebras</h3>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Susan Potter </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>868</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://susanpotter.net/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" class="prev" rel="prev" title="Decoding lens operators"><i class="iconfont icon-dajiantou"></i>&nbsp;Decoding lens operators</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+          
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2006 - 2019</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://susanpotter.net/">Susan Potter</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+     </div>
+  </body>
+</html>
