@@ -669,6 +669,115 @@ res0: Int = 555555584
     </item>
     
     <item>
+      <title>Custom Security Handler Nitrogen</title>
+      <link>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</link>
+      <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</guid>
+      <description>&lt;p&gt;An example of a custom security handler implementation for Nitrogen 2.x.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;customer_security_handler.erl&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;%%%   HEADER
+%%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt;
+%%% @date 2011-02-16T17:08
+%%% @license BSD
+%%% @doc Example of a security_handler behavior implementation module.
+%%% It assumes a callback module is passed in that exports:
+%%% login_path/0 and authorized/2.
+%%% @end
+-module(custom_security_handler).
+
+-include_lib(&amp;quot;nitrogen_core/include/wf.hrl&amp;quot;).
+
+-behaviour(security_handler).
+
+% security_handler behavior exports
+-export([init/2, finish/2]).
+
+%%%.
+%%%   CALLBACKS
+
+%% @hidden
+%% @todo Add authentication code. Currently only authorization.
+init(CallbackModule, State) -&amp;gt;
+  PageModule = wf:page_module(),
+  User = wf:user(),
+  case CallbackModule:authorized(User, PageModule) of
+      true -&amp;gt; {CallbackModule, State};
+      _ -&amp;gt; redirect_to_login_page(CallbackModule)
+  end.
+
+%% @hidden
+finish(CallbackModule, State) -&amp;gt;
+  {CallbackModule, State}.
+
+%%%.
+%%%   PRIVATE FUNCTIONS
+%% @private
+redirect_to_login_page(CallbackModule) -&amp;gt;
+  wf:redirect_to_login(CallbackModule:login_path()).
+
+%%%.
+%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%&#39;,%%%. foldmethod=marker:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;custom_security_handler_callback.erl&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;%%%   HEADER
+%%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt;
+%%% @date 2011-02-16T17:08
+%%% @license BSD
+%%% @doc Example of a security_handler callback module.
+%%% @end
+-module(custom_security_handler_callback).
+
+-include_lib(&amp;quot;nitrogen_core/include/wf.hrl&amp;quot;).
+
+% security_handler callback exports
+-export([authorized/2, login_url/0]).
+
+%%%.
+%%%   CALLBACKS
+
+%% @hidden
+authorized(_User, home_page) -&amp;gt; true;
+authorized(User, admin_page) -&amp;gt; admin_authorization(User);
+authorized(User, _) -&amp;gt; user_authorization(User).
+
+%% @hidden
+login_path() -&amp;gt;
+  &amp;quot;/login&amp;quot;.
+
+%%%.
+%%%   PRIVATE FUNCTIONS
+%% @private
+admin_authorization(User) -&amp;gt;
+  case User of
+    &amp;quot;admin&amp;quot; -&amp;gt; true;
+    _ -&amp;gt; false
+  end.
+
+user_authorization(User) -&amp;gt;
+  case User of
+    undefined -&amp;gt; false;
+    _ -&amp;gt; true
+  end.
+%%%.
+%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%&#39;,%%%. foldmethod=marker:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In your application&#39;s supervisor code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;%% in your supervisor loop function where you call
+%% nitrogen:run/0, you will need to add the following
+%% code above your nitrogen:run/0 call
+nitrogen:handler(custom_security_handler, custom_security_handler_callback),
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>My .gitconfig &amp; .tigrc files</title>
       <link>https://susanpotter.net/blogs/software/2007/11/gitconfig/</link>
       <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
