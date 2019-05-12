@@ -374,7 +374,7 @@ operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s backward compatible too.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ irb
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ irb
 irb(main):001:0&amp;gt; RUBY_VERSION
 =&amp;gt; &amp;quot;2.3.1&amp;quot;
 irb(main):002:0&amp;gt; (2**100).class
@@ -417,7 +417,7 @@ irb(main):007:0&amp;gt; quit
 
 &lt;h2 id=&#34;array-min-array-max-optimization-in-ruby-v2-4-0&#34;&gt;Array#min/Array#max optimization in Ruby v2.4.0+&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;# content of ruby_array_benchmarks.rb
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# content of ruby_array_benchmarks.rb
 require &#39;benchmark&#39;
 
 LARGE_ARRAY = (1..100_000_000).to_a.freeze
@@ -437,7 +437,7 @@ end
 
 &lt;p&gt;Now let&amp;rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
 
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.3.3
@@ -456,9 +456,11 @@ Array#min on large array                                                        
 Array#max on large array                                                                               0.180000   0.000000   0.180000 (  0.186183)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.
-Thre are other changes, which I haven&amp;rsquo;t had time to check out yet.
-Note: the 2.3.3 build i used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.&lt;/p&gt;
+&lt;p&gt;Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.&lt;/p&gt;
+
+&lt;p&gt;There are other changes, which I haven&amp;rsquo;t had time to check out yet.&lt;/p&gt;
+
+&lt;p&gt;Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.&lt;/p&gt;
 </description>
     </item>
     

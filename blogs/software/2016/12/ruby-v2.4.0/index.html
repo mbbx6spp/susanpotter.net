@@ -165,7 +165,7 @@ $ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.3.1&quot; irb(main):002:0&g
 
 <p>It&rsquo;s backward compatible too.</p>
 
-<pre><code>$ irb
+<pre><code class="language-shell">$ irb
 irb(main):001:0&gt; RUBY_VERSION
 =&gt; &quot;2.3.1&quot;
 irb(main):002:0&gt; (2**100).class
@@ -208,7 +208,7 @@ irb(main):007:0&gt; quit
 
 <h2 id="array-min-array-max-optimization-in-ruby-v2-4-0">Array#min/Array#max optimization in Ruby v2.4.0+</h2>
 
-<pre><code># content of ruby_array_benchmarks.rb
+<pre><code class="language-ruby"># content of ruby_array_benchmarks.rb
 require 'benchmark'
 
 LARGE_ARRAY = (1..100_000_000).to_a.freeze
@@ -228,7 +228,7 @@ end
 
 <p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p>
 
-<pre><code>$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+<pre><code class="language-shell">$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
 
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.3.3
@@ -247,9 +247,11 @@ Array#min on large array                                                        
 Array#max on large array                                                                               0.180000   0.000000   0.180000 (  0.186183)
 </code></pre>
 
-<p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.
-Thre are other changes, which I haven&rsquo;t had time to check out yet.
-Note: the 2.3.3 build i used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
+<p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p>
+
+<p>There are other changes, which I haven&rsquo;t had time to check out yet.</p>
+
+<p>Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
 
     </div>
 
