@@ -668,5 +668,123 @@ res0: Int = 555555584
 </description>
     </item>
     
+    <item>
+      <title>My .gitconfig &amp; .tigrc files</title>
+      <link>https://susanpotter.net/blogs/software/2007/11/gitconfig/</link>
+      <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2007/11/gitconfig/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[user]
+  name = Susan Potter # make sure you change this
+  email = me@susanpotter.net # make sure you change this
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[diff]
+  rename = copy
+  color = auto
+[apply]
+  whitespace = strip
+[pager]
+  color = true
+[status]
+  color = auto
+[branch]
+  autosetuprebase = always
+[alias]
+  co = &amp;quot;checkout&amp;quot;
+  ci = &amp;quot;commit&amp;quot;
+  ciall = &amp;quot;commit -a -v&amp;quot;
+  unmerge = &amp;quot;reset --hard ORIG_HEAD&amp;quot;
+  lsbr = &amp;quot;branch -a&amp;quot; # list all branches, even remote ones
+  mkbr = &amp;quot;branch&amp;quot; # create branch if you specify a branch name after it, e.g. git mkbr upgrading_rails
+  # remove branch named after it, e.g. git rmbr upgrading_rails
+  rmbr = &amp;quot;branch -d&amp;quot;
+  # rename branch from one name to another
+  mvbr = &amp;quot;branch -m&amp;quot;
+  # 
+  track = &amp;quot;branch --track&amp;quot;
+  log = &amp;quot;log -p&amp;quot;
+  lol = &amp;quot;log --graph --decorate --pretty=oneline --abbrev-commit&amp;quot;
+  lola = &amp;quot;log --graph --decorate --pretty=oneline --abbrev-commit --all&amp;quot;
+  # list remote repositories
+  lsrem = &amp;quot;remote&amp;quot;
+  # list all tags, to keep commands consistent, e.g. git lstag
+  lstag = &amp;quot;tag -l&amp;quot;
+  # list unmerged branches
+  lsunmerged = &amp;quot;branch --no-merged&amp;quot;
+  # create a new tag based on specified commit
+  mktag = &amp;quot;tag -a&amp;quot;
+  # remove existing tag by name
+  rmtag = &amp;quot;tag -d&amp;quot;
+  # rename tag from one name to another
+  mvtag = &amp;quot;tag -m&amp;quot;
+  # create new remote repository for project
+  mkrem = &amp;quot;remote add&amp;quot;
+  # initialize all submodules
+  modinit = &amp;quot;submodule init&amp;quot;
+  # update all submodules
+  modup = &amp;quot;submodule update&amp;quot;
+  # show status of all submodules
+  modst = &amp;quot;submodule status&amp;quot;
+  # add new submodule, i.e. git modadd module-name url
+  modadd = &amp;quot;submodule add&amp;quot;
+  # push local committed changes to rubyforge and origin (usually GitHub)
+  osspush = !git push rubyforge master &amp;amp;&amp;amp; git push origin master
+  # pull changes from rubyforge and origin (usually GitHub)
+  osspull = !git pull rubyforge master &amp;amp;&amp;amp; git pull origin master
+  # sync (pull then push) from rubyforge and origin (usually GitHub)
+  osssync = !git osspull &amp;amp;&amp;amp; git osspush
+  # show last 15 log entries
+  recentlog = &amp;quot;log -n 15&amp;quot;
+  # search alias
+  search = &amp;quot;log --pretty=short -S&amp;quot;
+  # short log
+  shlog = &amp;quot;log --oneline --decorate&amp;quot;
+  # snap RPEO
+  snap = &amp;quot;clone --depth 1&amp;quot;
+  # show status, keep same as svn command I used most frequently
+  st = &amp;quot;status --porcelain&amp;quot;
+  # another alias for status that some scripts might use
+  stat = &amp;quot;status --porcelain&amp;quot;
+  # fetch and rebase from svn repository
+  spull = !git svn fetch &amp;amp;&amp;amp; git svn rebase
+  # push keeping each local commit as atomic.
+  spush = !git svn dcommit
+  # tracking push
+  tpush = &amp;quot;push -u&amp;quot;
+  # pull &amp;amp; update submodules at once - assumed you are on tracking local branch
+  up = !git pull &amp;amp;&amp;amp; git submodule update
+  # word diff
+  wdiff = &amp;quot;diff --word-diff&amp;quot;
+  # prints out the branches a commit is on
+  whbr = &amp;quot;branch -a --contains&amp;quot;
+  # prints commits from a branch are already present upstream
+  whci = &amp;quot;cherry -v&amp;quot;
+  # prints out the tags a commit is a part of
+  whtag = &amp;quot;name-rev --name-only&amp;quot;
+[rerere]
+  enabled = 1
+[merge]
+  tool = gvimdiff
+[url &amp;quot;https://github.com/&amp;quot;]
+  insteadOf = &amp;quot;gh:&amp;quot;
+[url &amp;quot;git@github.com:&amp;quot;]
+  insteadOf = &amp;quot;git@gh:&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;set show-author = abbreviated
+set show-date = relative
+set show-rev-graph = yes
+set show-refs = yes
+set show-line-numbers = yes
+set line-number-interval = 5
+set tab-size = 2
+set commit-encoding = &amp;quot;UTF-8&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

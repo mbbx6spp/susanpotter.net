@@ -83,5 +83,14 @@ scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp
  Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively. OTP Release - A fully deployable distribution to run on an &#34;</description>
     </item>
     
+    <item>
+      <title>My .gitconfig &amp; .tigrc files</title>
+      <link>https://susanpotter.net/blogs/software/2007/11/gitconfig/</link>
+      <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2007/11/gitconfig/</guid>
+      <description>[user] name = Susan Potter # make sure you change this email = me@susanpotter.net # make sure you change this [color] diff = auto status = auto branch = auto [diff] rename = copy color = auto [apply] whitespace = strip [pager] color = true [status] color = auto [branch] autosetuprebase = always [alias] co = &amp;quot;checkout&amp;quot; ci = &amp;quot;commit&amp;quot; ciall = &amp;quot;commit -a -v&amp;quot; unmerge = &amp;quot;reset --hard ORIG_HEAD&amp;quot; lsbr = &amp;quot;branch -a&amp;quot; # list all branches, even remote ones mkbr = &amp;quot;branch&amp;quot; # create branch if you specify a branch name after it, e.</description>
+    </item>
+    
   </channel>
 </rss>

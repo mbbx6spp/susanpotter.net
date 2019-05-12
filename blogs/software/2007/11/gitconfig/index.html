@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  
+  
+  
+  
+  
+  
+  <link rel="next" href="https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/" />
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2007/11/gitconfig/" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           My .gitconfig &amp; .tigrc files | Susan Potter
+       
+  </title>
+  <meta name="title" content="My .gitconfig &amp; .tigrc files | Susan Potter">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="My .gitconfig &amp; .tigrc files"/>
+<meta name="twitter:description" content="[user] name = Susan Potter # make sure you change this email = me@susanpotter.net # make sure you change this [color] diff = auto status = auto branch = auto [diff] rename = copy color = auto [apply] whitespace = strip [pager] color = true [status] color = auto [branch] autosetuprebase = always [alias] co = &quot;checkout&quot; ci = &quot;commit&quot; ciall = &quot;commit -a -v&quot; unmerge = &quot;reset --hard ORIG_HEAD&quot; lsbr = &quot;branch -a&quot; # list all branches, even remote ones mkbr = &quot;branch&quot; # create branch if you specify a branch name after it, e."/>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My .gitconfig &amp; .tigrc files",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://susanpotter.net/blogs/software/2007/11/gitconfig/"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://susanpotter.net/cover.png",
+    "width": 800,
+    "height": 600
+  },
+  "genre": "software",
+  
+  "wordcount": 548,
+  "url": "https://susanpotter.net/blogs/software/2007/11/gitconfig/",
+  "datePublished": "2007-11-08T00:00:00+00:00",
+  "dateModified": "2007-11-08T00:00:00+00:00",
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Susan Potter",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://susanpotter.net/logo.png",
+      "width": 127,
+      "height": 40
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Susan Potter"
+  },
+  "description": ""
+}
+</script>
+</head>
+
+  
+             
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://susanpotter.net/">Susan Potter</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/software/" title="">Software</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://susanpotter.net/">Susan Potter</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/software/" title="">Software</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp">
+    <header class="post-header">
+        <h1 class="post-title">My .gitconfig &amp; .tigrc files</h1>
+        <div class="post-meta">
+            Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
+                <span class="post-time">
+                    on <time datetime=2007-11-08 >8 November 2007</time>
+                </span>
+                in
+                
+                <i class="iconfont icon-timer"></i>
+                3 min
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <pre><code class="language-ini">[user]
+  name = Susan Potter # make sure you change this
+  email = me@susanpotter.net # make sure you change this
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[diff]
+  rename = copy
+  color = auto
+[apply]
+  whitespace = strip
+[pager]
+  color = true
+[status]
+  color = auto
+[branch]
+  autosetuprebase = always
+[alias]
+  co = &quot;checkout&quot;
+  ci = &quot;commit&quot;
+  ciall = &quot;commit -a -v&quot;
+  unmerge = &quot;reset --hard ORIG_HEAD&quot;
+  lsbr = &quot;branch -a&quot; # list all branches, even remote ones
+  mkbr = &quot;branch&quot; # create branch if you specify a branch name after it, e.g. git mkbr upgrading_rails
+  # remove branch named after it, e.g. git rmbr upgrading_rails
+  rmbr = &quot;branch -d&quot;
+  # rename branch from one name to another
+  mvbr = &quot;branch -m&quot;
+  # 
+  track = &quot;branch --track&quot;
+  log = &quot;log -p&quot;
+  lol = &quot;log --graph --decorate --pretty=oneline --abbrev-commit&quot;
+  lola = &quot;log --graph --decorate --pretty=oneline --abbrev-commit --all&quot;
+  # list remote repositories
+  lsrem = &quot;remote&quot;
+  # list all tags, to keep commands consistent, e.g. git lstag
+  lstag = &quot;tag -l&quot;
+  # list unmerged branches
+  lsunmerged = &quot;branch --no-merged&quot;
+  # create a new tag based on specified commit
+  mktag = &quot;tag -a&quot;
+  # remove existing tag by name
+  rmtag = &quot;tag -d&quot;
+  # rename tag from one name to another
+  mvtag = &quot;tag -m&quot;
+  # create new remote repository for project
+  mkrem = &quot;remote add&quot;
+  # initialize all submodules
+  modinit = &quot;submodule init&quot;
+  # update all submodules
+  modup = &quot;submodule update&quot;
+  # show status of all submodules
+  modst = &quot;submodule status&quot;
+  # add new submodule, i.e. git modadd module-name url
+  modadd = &quot;submodule add&quot;
+  # push local committed changes to rubyforge and origin (usually GitHub)
+  osspush = !git push rubyforge master &amp;&amp; git push origin master
+  # pull changes from rubyforge and origin (usually GitHub)
+  osspull = !git pull rubyforge master &amp;&amp; git pull origin master
+  # sync (pull then push) from rubyforge and origin (usually GitHub)
+  osssync = !git osspull &amp;&amp; git osspush
+  # show last 15 log entries
+  recentlog = &quot;log -n 15&quot;
+  # search alias
+  search = &quot;log --pretty=short -S&quot;
+  # short log
+  shlog = &quot;log --oneline --decorate&quot;
+  # snap RPEO
+  snap = &quot;clone --depth 1&quot;
+  # show status, keep same as svn command I used most frequently
+  st = &quot;status --porcelain&quot;
+  # another alias for status that some scripts might use
+  stat = &quot;status --porcelain&quot;
+  # fetch and rebase from svn repository
+  spull = !git svn fetch &amp;&amp; git svn rebase
+  # push keeping each local commit as atomic.
+  spush = !git svn dcommit
+  # tracking push
+  tpush = &quot;push -u&quot;
+  # pull &amp; update submodules at once - assumed you are on tracking local branch
+  up = !git pull &amp;&amp; git submodule update
+  # word diff
+  wdiff = &quot;diff --word-diff&quot;
+  # prints out the branches a commit is on
+  whbr = &quot;branch -a --contains&quot;
+  # prints commits from a branch are already present upstream
+  whci = &quot;cherry -v&quot;
+  # prints out the tags a commit is a part of
+  whtag = &quot;name-rev --name-only&quot;
+[rerere]
+  enabled = 1
+[merge]
+  tool = gvimdiff
+[url &quot;https://github.com/&quot;]
+  insteadOf = &quot;gh:&quot;
+[url &quot;git@github.com:&quot;]
+  insteadOf = &quot;git@gh:&quot;
+</code></pre>
+
+<pre><code class="language-text">set show-author = abbreviated
+set show-date = relative
+set show-rev-graph = yes
+set show-refs = yes
+set show-line-numbers = yes
+set line-number-interval = 5
+set tab-size = 2
+set commit-encoding = &quot;UTF-8&quot;
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Susan Potter </span>
+                </p>
+            
+           
+            <p class="copyright-item">
+                    <span>Words:</span>
+                   <span>548</span>
+            </p>
+            
+            <p class="copyright-item">
+                
+
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">Back</a></span> · 
+                <span><a href="https://susanpotter.net/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/" class="next" rel="next" title="Erlang OTP Glossary">Erlang OTP Glossary&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+          
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2006 - 2019</span>
+        
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://susanpotter.net/">Susan Potter</a> | </span>
+         
+
+		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+     </div>
+  </body>
+</html>
