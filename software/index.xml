@@ -84,6 +84,16 @@ scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp
     </item>
     
     <item>
+      <title>Erlang Meck API notes</title>
+      <link>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</link>
+      <pubDate>Wed, 23 Mar 2011 01:11:30 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</guid>
+      <description>Notes on using Meck API (a mocking library in Erlang) which are not well documented.
+% Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity).</description>
+    </item>
+    
+    <item>
       <title>Custom Security Handler Nitrogen</title>
       <link>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</link>
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>

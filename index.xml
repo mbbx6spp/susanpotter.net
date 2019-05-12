@@ -669,6 +669,42 @@ res0: Int = 555555584
     </item>
     
     <item>
+      <title>Erlang Meck API notes</title>
+      <link>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</link>
+      <pubDate>Wed, 23 Mar 2011 01:11:30 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</guid>
+      <description>&lt;p&gt;Notes on using Meck API (a mocking library in Erlang) which are not well documented.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;% Will create a fully mocked version of existing_module until caller crashes
+meck:new(ExistingModule). 
+
+% Will create a fully mocked version of existing_module even after caller crashes
+meck:new(ExistingModule, [nolink]).
+
+% Will allow you to overload existing module, keeping old functions around
+meck:new(ExistingModule, [passthrough]).
+
+% Unload mocks and revert to real module implementation
+meck:unload(ExistingModule).
+
+% Remove functions from the mock module
+meck:delete(WhateverMockedModule, SomeFun, Arity).
+
+% Get list of all function calls made to the module (in order).
+History = meck:history(MockedModule).
+% History will look _similar_ to an Erlang trace but with {{M, F, A}, Return} format
+% e.g. where MockedModule = my_mod
+% [
+%  {{my_mod, print, []}, ok},
+%  {{my_mod, sum, [1,2,3]}, 6},
+%  {{my_mod, copy_file, [&amp;quot;non_existing_file&amp;quot;, &amp;quot;other_file_name&amp;quot;]}, error, enoent, Stack}
+% ]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Custom Security Handler Nitrogen</title>
       <link>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</link>
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>

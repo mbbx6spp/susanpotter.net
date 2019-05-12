@@ -10,9 +10,9 @@
   
   
   
-  <link rel="prev" href="https://susanpotter.net/blogs/software/2007/11/gitconfig/" />
-  <link rel="next" href="https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/" />
-  <link rel="canonical" href="https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/" />
+  <link rel="prev" href="https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/" />
+  <link rel="next" href="https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/" />
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           Custom Security Handler Nitrogen | Susan Potter
+           Erlang Meck API notes | Susan Potter
        
   </title>
-  <meta name="title" content="Custom Security Handler Nitrogen | Susan Potter">
+  <meta name="title" content="Erlang Meck API notes | Susan Potter">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,19 +35,18 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Custom Security Handler Nitrogen"/>
-<meta name="twitter:description" content="An example of a custom security handler implementation for Nitrogen 2.x.
-customer_security_handler.erl
-%%% HEADER %%% @author Susan Potter &lt;me@susanpotter.net&gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&quot;nitrogen_core/include/wf.hrl&quot;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS %% @hidden %% @todo Add authentication code. Currently only authorization."/>
+<meta name="twitter:title" content="Erlang Meck API notes"/>
+<meta name="twitter:description" content="Notes on using Meck API (a mocking library in Erlang) which are not well documented.
+% Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity)."/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "Custom Security Handler Nitrogen",
+  "headline": "Erlang Meck API notes",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/"
+    "@id": "https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/"
   },
   "image": {
     "@type": "ImageObject",
@@ -57,10 +56,10 @@ customer_security_handler.erl
   },
   "genre": "software",
   
-  "wordcount": 241,
-  "url": "https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/",
-  "datePublished": "2011-02-16T01:04:41-05:00",
-  "dateModified": "2011-02-16T01:04:41-05:00",
+  "wordcount": 137,
+  "url": "https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/",
+  "datePublished": "2011-03-23T01:11:30-05:00",
+  "dateModified": "2011-03-23T01:11:30-05:00",
   
   "publisher": {
     "@type": "Organization",
@@ -132,16 +131,16 @@ customer_security_handler.erl
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">Custom Security Handler Nitrogen</h1>
+        <h1 class="post-title">Erlang Meck API notes</h1>
         <div class="post-meta">
             Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2011-02-16 >16 February 2011</time>
+                    on <time datetime=2011-03-23 >23 March 2011</time>
                 </span>
                 in
                 
                 <i class="iconfont icon-timer"></i>
-                2 min
+                1 min
         </div>
     </header>
     <div class="post-content">
@@ -160,105 +159,32 @@ customer_security_handler.erl
           
           
 
-          <p>An example of a custom security handler implementation for Nitrogen 2.x.</p>
+          <p>Notes on using Meck API (a mocking library in Erlang) which are not well documented.</p>
 
-<p><code>customer_security_handler.erl</code></p>
+<pre><code class="language-erl">% Will create a fully mocked version of existing_module until caller crashes
+meck:new(ExistingModule). 
 
-<pre><code class="language-erl">%%%   HEADER
-%%% @author Susan Potter &lt;me@susanpotter.net&gt;
-%%% @date 2011-02-16T17:08
-%%% @license BSD
-%%% @doc Example of a security_handler behavior implementation module.
-%%% It assumes a callback module is passed in that exports:
-%%% login_path/0 and authorized/2.
-%%% @end
--module(custom_security_handler).
+% Will create a fully mocked version of existing_module even after caller crashes
+meck:new(ExistingModule, [nolink]).
 
--include_lib(&quot;nitrogen_core/include/wf.hrl&quot;).
+% Will allow you to overload existing module, keeping old functions around
+meck:new(ExistingModule, [passthrough]).
 
--behaviour(security_handler).
+% Unload mocks and revert to real module implementation
+meck:unload(ExistingModule).
 
-% security_handler behavior exports
--export([init/2, finish/2]).
+% Remove functions from the mock module
+meck:delete(WhateverMockedModule, SomeFun, Arity).
 
-%%%.
-%%%   CALLBACKS
-
-%% @hidden
-%% @todo Add authentication code. Currently only authorization.
-init(CallbackModule, State) -&gt;
-  PageModule = wf:page_module(),
-  User = wf:user(),
-  case CallbackModule:authorized(User, PageModule) of
-      true -&gt; {CallbackModule, State};
-      _ -&gt; redirect_to_login_page(CallbackModule)
-  end.
-
-%% @hidden
-finish(CallbackModule, State) -&gt;
-  {CallbackModule, State}.
-
-%%%.
-%%%   PRIVATE FUNCTIONS
-%% @private
-redirect_to_login_page(CallbackModule) -&gt;
-  wf:redirect_to_login(CallbackModule:login_path()).
-
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%',%%%. foldmethod=marker:
-</code></pre>
-
-<p><code>custom_security_handler_callback.erl</code></p>
-
-<pre><code class="language-erl">%%%   HEADER
-%%% @author Susan Potter &lt;me@susanpotter.net&gt;
-%%% @date 2011-02-16T17:08
-%%% @license BSD
-%%% @doc Example of a security_handler callback module.
-%%% @end
--module(custom_security_handler_callback).
-
--include_lib(&quot;nitrogen_core/include/wf.hrl&quot;).
-
-% security_handler callback exports
--export([authorized/2, login_url/0]).
-
-%%%.
-%%%   CALLBACKS
-
-%% @hidden
-authorized(_User, home_page) -&gt; true;
-authorized(User, admin_page) -&gt; admin_authorization(User);
-authorized(User, _) -&gt; user_authorization(User).
-
-%% @hidden
-login_path() -&gt;
-  &quot;/login&quot;.
-
-%%%.
-%%%   PRIVATE FUNCTIONS
-%% @private
-admin_authorization(User) -&gt;
-  case User of
-    &quot;admin&quot; -&gt; true;
-    _ -&gt; false
-  end.
-
-user_authorization(User) -&gt;
-  case User of
-    undefined -&gt; false;
-    _ -&gt; true
-  end.
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%',%%%. foldmethod=marker:
-</code></pre>
-
-<p>In your application's supervisor code:</p>
-
-<pre><code class="language-erl">%% in your supervisor loop function where you call
-%% nitrogen:run/0, you will need to add the following
-%% code above your nitrogen:run/0 call
-nitrogen:handler(custom_security_handler, custom_security_handler_callback),
+% Get list of all function calls made to the module (in order).
+History = meck:history(MockedModule).
+% History will look _similar_ to an Erlang trace but with {{M, F, A}, Return} format
+% e.g. where MockedModule = my_mod
+% [
+%  {{my_mod, print, []}, ok},
+%  {{my_mod, sum, [1,2,3]}, 6},
+%  {{my_mod, copy_file, [&quot;non_existing_file&quot;, &quot;other_file_name&quot;]}, error, enoent, Stack}
+% ]
 </code></pre>
 
     </div>
@@ -273,7 +199,7 @@ nitrogen:handler(custom_security_handler, custom_security_handler_callback),
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>241</span>
+                   <span>137</span>
             </p>
             
             <p class="copyright-item">
@@ -293,10 +219,10 @@ nitrogen:handler(custom_security_handler, custom_security_handler_callback),
 
     <div class="post-nav">
         
-        <a href="https://susanpotter.net/blogs/software/2007/11/gitconfig/" class="prev" rel="prev" title="My .gitconfig &amp; .tigrc files"><i class="iconfont icon-dajiantou"></i>&nbsp;My .gitconfig &amp; .tigrc files</a>
+        <a href="https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/" class="prev" rel="prev" title="Custom Security Handler Nitrogen"><i class="iconfont icon-dajiantou"></i>&nbsp;Custom Security Handler Nitrogen</a>
          
         
-        <a href="https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/" class="next" rel="next" title="Erlang Meck API notes">Erlang Meck API notes&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        <a href="https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/" class="next" rel="next" title="Erlang OTP Glossary">Erlang OTP Glossary&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 
