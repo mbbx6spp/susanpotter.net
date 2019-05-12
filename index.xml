@@ -363,6 +363,106 @@ operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Ruby 2.4 changes overview</title>
+      <link>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</link>
+      <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</guid>
+      <description>
+
+&lt;h2 id=&#34;unified-fixnum-and-bignum-into-integer&#34;&gt;Unified &lt;code&gt;Fixnum&lt;/code&gt; and &lt;code&gt;Bignum&lt;/code&gt; into &lt;code&gt;Integer&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s backward compatible too.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ irb
+irb(main):001:0&amp;gt; RUBY_VERSION
+=&amp;gt; &amp;quot;2.3.1&amp;quot;
+irb(main):002:0&amp;gt; (2**100).class
+=&amp;gt; Bignum
+irb(main):003:0&amp;gt; 2.class
+=&amp;gt; Fixnum
+irb(main):004:0&amp;gt; Fixnum
+=&amp;gt; Fixnum
+irb(main):005:0&amp;gt; Bignum
+=&amp;gt; Bignum
+irb(main):006:0&amp;gt; Bogonum
+NameError: uninitialized constant Bogonum
+        from (irb):6
+        from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;
+irb(main):007:0&amp;gt; quit
+
+$ nix-env -f . -iA ruby_2_4_0
+replacing old ‘ruby-2.3.1-p0’
+installing ‘ruby-2.4.0’
+
+$ irb
+irb(main):001:0&amp;gt; RUBY_VERSION
+=&amp;gt; &amp;quot;2.4.0&amp;quot;
+irb(main):002:0&amp;gt; (2**100).class
+=&amp;gt; Integer
+irb(main):003:0&amp;gt; 2.class
+=&amp;gt; Integer
+irb(main):004:0&amp;gt; Fixnum
+(irb):4: warning: constant ::Fixnum is deprecated
+=&amp;gt; Integer
+irb(main):005:0&amp;gt; Bignum
+(irb):5: warning: constant ::Bignum is deprecated
+=&amp;gt; Integer
+irb(main):006:0&amp;gt; Bogonum
+NameError: uninitialized constant Bogonum
+        from (irb):6
+        from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;
+irb(main):007:0&amp;gt; quit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;array-min-array-max-optimization-in-ruby-v2-4-0&#34;&gt;Array#min/Array#max optimization in Ruby v2.4.0+&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;# content of ruby_array_benchmarks.rb
+require &#39;benchmark&#39;
+
+LARGE_ARRAY = (1..100_000_000).to_a.freeze
+
+puts &amp;quot;Ruby v#{RUBY_VERSION}&amp;quot;
+
+Benchmark.bm(100) do |b|
+  b.report(&#39;Array#min on large array&#39;) do
+    LARGE_ARRAY.min
+  end
+
+  b.report(&#39;Array#max on large array&#39;) do
+    LARGE_ARRAY.max
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now let&amp;rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+
+$ ruby ruby_array_benchmarks.rb
+Ruby v2.3.3
+                                                                                                           user     system      total        real
+Array#min on large array                                                                               4.670000   0.000000   4.670000 (  4.673932)
+Array#max on large array                                                                               4.650000   0.000000   4.650000 (  4.644266)
+
+$ nix-env -f . -iA ruby_2_4_0
+replacing old ‘ruby-2.3.3’
+installing ‘ruby-2.4.0’
+
+$ ruby ruby_array_benchmarks.rb
+Ruby v2.4.0
+                                                                                                           user     system      total        real
+Array#min on large array                                                                               0.170000   0.000000   0.170000 (  0.169169)
+Array#max on large array                                                                               0.180000   0.000000   0.180000 (  0.186183)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.
+Thre are other changes, which I haven&amp;rsquo;t had time to check out yet.
+Note: the 2.3.3 build i used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Nix in your home directory</title>
       <link>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</link>
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>

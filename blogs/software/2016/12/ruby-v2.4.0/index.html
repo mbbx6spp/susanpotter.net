@@ -10,9 +10,9 @@
   
   
   
-  <link rel="prev" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
-  <link rel="next" href="https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/" />
-  <link rel="canonical" href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" />
+  <link rel="prev" href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" />
+  <link rel="next" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           Nix in your home directory | Susan Potter
+           Ruby 2.4 changes overview | Susan Potter
        
   </title>
-  <meta name="title" content="Nix in your home directory | Susan Potter">
+  <meta name="title" content="Ruby 2.4 changes overview | Susan Potter">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,20 +35,18 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Nix in your home directory"/>
-<meta name="twitter:description" content="Prerequisites  wget is installed tar is installed  Purpose If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
-Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.
-Good luck.
-homedir_install.sh function install_nix() { local -r bindir=&quot;${HOME}/opt/bin&quot; local -r proot_url=&quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&quot; local -r nixdir=&quot;${HOME}/mnt/nix&quot; local -r nixver=&quot;1."/>
+<meta name="twitter:title" content="Ruby 2.4 changes overview"/>
+<meta name="twitter:description" content="Unified Fixnum and Bignum into Integer It&rsquo;s backward compatible too.
+$ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.3.1&quot; irb(main):002:0&gt; (2**100).class =&gt; Bignum irb(main):003:0&gt; 2.class =&gt; Fixnum irb(main):004:0&gt; Fixnum =&gt; Fixnum irb(main):005:0&gt; Bignum =&gt; Bignum irb(main):006:0&gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;&#39; irb(main):007:0&gt; quit $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’ $ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.4.0&quot; irb(main):002:0&gt; (2**100).class =&gt; Integer irb(main):003:0&gt; 2.class =&gt; Integer irb(main):004:0&gt; Fixnum (irb):4: warning: constant ::Fixnum is deprecated =&gt; Integer irb(main):005:0&gt; Bignum (irb):5: warning: constant ::Bignum is deprecated =&gt; Integer irb(main):006:0&gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/."/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "Nix in your home directory",
+  "headline": "Ruby 2.4 changes overview",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/"
+    "@id": "https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/"
   },
   "image": {
     "@type": "ImageObject",
@@ -58,10 +56,10 @@ homedir_install.sh function install_nix() { local -r bindir=&quot;${HOME}/opt/bi
   },
   "genre": "software",
   
-  "wordcount": 161,
-  "url": "https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/",
-  "datePublished": "2016-08-30T00:00:00+00:00",
-  "dateModified": "2016-08-30T00:00:00+00:00",
+  "wordcount": 278,
+  "url": "https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/",
+  "datePublished": "2016-12-25T00:00:00+00:00",
+  "dateModified": "2016-12-25T00:00:00+00:00",
   
   "publisher": {
     "@type": "Organization",
@@ -133,16 +131,16 @@ homedir_install.sh function install_nix() { local -r bindir=&quot;${HOME}/opt/bi
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">Nix in your home directory</h1>
+        <h1 class="post-title">Ruby 2.4 changes overview</h1>
         <div class="post-meta">
             Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2016-08-30 >30 August 2016</time>
+                    on <time datetime=2016-12-25 >25 December 2016</time>
                 </span>
                 in
                 
                 <i class="iconfont icon-timer"></i>
-                1 min
+                2 min
         </div>
     </header>
     <div class="post-content">
@@ -161,58 +159,97 @@ homedir_install.sh function install_nix() { local -r bindir=&quot;${HOME}/opt/bi
           
           
 
-          <h2 id="prerequisites">Prerequisites</h2>
+          
 
-<ul>
-<li><code>wget</code> is installed</li>
-<li><code>tar</code> is installed</li>
-</ul>
+<h2 id="unified-fixnum-and-bignum-into-integer">Unified <code>Fixnum</code> and <code>Bignum</code> into <code>Integer</code></h2>
 
-<h2 id="purpose">Purpose</h2>
+<p>It&rsquo;s backward compatible too.</p>
 
-<p>If you really don't want to install Nix under /nix (or you can't) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.</p>
+<pre><code>$ irb
+irb(main):001:0&gt; RUBY_VERSION
+=&gt; &quot;2.3.1&quot;
+irb(main):002:0&gt; (2**100).class
+=&gt; Bignum
+irb(main):003:0&gt; 2.class
+=&gt; Fixnum
+irb(main):004:0&gt; Fixnum
+=&gt; Fixnum
+irb(main):005:0&gt; Bignum
+=&gt; Bignum
+irb(main):006:0&gt; Bogonum
+NameError: uninitialized constant Bogonum
+        from (irb):6
+        from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;'
+irb(main):007:0&gt; quit
 
-<p>Now whenever you want to run a command under Nix's control, you should prefix with nixrun.</p>
+$ nix-env -f . -iA ruby_2_4_0
+replacing old ‘ruby-2.3.1-p0’
+installing ‘ruby-2.4.0’
 
-<p>Good luck.</p>
-
-<h2 id="homedir-install-sh"><code>homedir_install.sh</code></h2>
-
-<pre><code class="language-sh">function install_nix() {
-  local -r bindir=&quot;${HOME}/opt/bin&quot;
-  local -r proot_url=&quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&quot;
-  local -r nixdir=&quot;${HOME}/mnt/nix&quot;
-  local -r nixver=&quot;1.11.2&quot;
-  local -r arch=&quot;x86_64&quot;
-  local -r os=&quot;linux&quot;
-  local -r nixbz2_url=&quot;http://nixos.org/releases/nix/nix-${nixver}/nix-${nixver}-${arch}-${os}.tar.bz2&quot;
-
-  mkdir -p &quot;${bindir}&quot;
-  wget -O &quot;${bindir}/proot&quot; &quot;${proot_url}&quot;
-  chmod u+x &quot;${bindir}/proot&quot;
-
-  mkdir -p &quot;${nixdir}&quot;
-  pushd &quot;${nixdir}&quot;
-  wget &quot;${nixbz2_url}&quot;
-  tar xjf nix-*bz2
-
-  local -r nixbin=&quot;$(dirname &quot;$(find &quot;${nixdir}&quot; -name &quot;nix-shell&quot; | head -1)&quot;)&quot;
-  export PATH=&quot;${bindir}:${nixbin}:${PATH}&quot;
-  {
-    echo &quot;#!/usr/bin/env bash&quot;
-    echo
-    echo &quot;proot -b \&quot;${nixdir}/nix-${nixver}-${arch}-${os}/:/nix\&quot; \$@&quot;
-  } &gt; &quot;${bindir}/nixrun&quot;
-  chmod u+x &quot;${bindir}/nixrun&quot;
-}
-
-set -eu
-set -o pipefail
-
-install_nix
+$ irb
+irb(main):001:0&gt; RUBY_VERSION
+=&gt; &quot;2.4.0&quot;
+irb(main):002:0&gt; (2**100).class
+=&gt; Integer
+irb(main):003:0&gt; 2.class
+=&gt; Integer
+irb(main):004:0&gt; Fixnum
+(irb):4: warning: constant ::Fixnum is deprecated
+=&gt; Integer
+irb(main):005:0&gt; Bignum
+(irb):5: warning: constant ::Bignum is deprecated
+=&gt; Integer
+irb(main):006:0&gt; Bogonum
+NameError: uninitialized constant Bogonum
+        from (irb):6
+        from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;'
+irb(main):007:0&gt; quit
 </code></pre>
 
-<p><strong>Update:</strong> Thanks to <a href="https://github.com/willprice" title="Will Price (@willprice)" rel="nofollow noreferrer" target="_blank">Will Price (@willprice)</a> for pointing out my original link to the proot static binary was broken on Oct 23, 2017: https://github.com/proot-me/proot/issues/120#issuecomment-338649213</p>
+<h2 id="array-min-array-max-optimization-in-ruby-v2-4-0">Array#min/Array#max optimization in Ruby v2.4.0+</h2>
+
+<pre><code># content of ruby_array_benchmarks.rb
+require 'benchmark'
+
+LARGE_ARRAY = (1..100_000_000).to_a.freeze
+
+puts &quot;Ruby v#{RUBY_VERSION}&quot;
+
+Benchmark.bm(100) do |b|
+  b.report('Array#min on large array') do
+    LARGE_ARRAY.min
+  end
+
+  b.report('Array#max on large array') do
+    LARGE_ARRAY.max
+  end
+end
+</code></pre>
+
+<p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p>
+
+<pre><code>$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+
+$ ruby ruby_array_benchmarks.rb
+Ruby v2.3.3
+                                                                                                           user     system      total        real
+Array#min on large array                                                                               4.670000   0.000000   4.670000 (  4.673932)
+Array#max on large array                                                                               4.650000   0.000000   4.650000 (  4.644266)
+
+$ nix-env -f . -iA ruby_2_4_0
+replacing old ‘ruby-2.3.3’
+installing ‘ruby-2.4.0’
+
+$ ruby ruby_array_benchmarks.rb
+Ruby v2.4.0
+                                                                                                           user     system      total        real
+Array#min on large array                                                                               0.170000   0.000000   0.170000 (  0.169169)
+Array#max on large array                                                                               0.180000   0.000000   0.180000 (  0.186183)
+</code></pre>
+
+<p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.
+Thre are other changes, which I haven&rsquo;t had time to check out yet.
+Note: the 2.3.3 build i used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
 
     </div>
 
@@ -226,7 +263,7 @@ install_nix
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>161</span>
+                   <span>278</span>
             </p>
             
             <p class="copyright-item">
@@ -246,10 +283,10 @@ install_nix
 
     <div class="post-nav">
         
-        <a href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" class="prev" rel="prev" title="Scala WTFs"><i class="iconfont icon-dajiantou"></i>&nbsp;Scala WTFs</a>
+        <a href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" class="prev" rel="prev" title="Nix in your home directory"><i class="iconfont icon-dajiantou"></i>&nbsp;Nix in your home directory</a>
          
         
-        <a href="https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/" class="next" rel="next" title="Ruby 2.4 changes overview">Ruby 2.4 changes overview&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        <a href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" class="next" rel="next" title="Decoding lens operators">Decoding lens operators&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 

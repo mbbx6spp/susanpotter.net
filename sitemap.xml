@@ -73,6 +73,20 @@
     </url>
   
     <url>
+      <loc>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</loc>
+      
+      <lastmod>2016-12-25T00:00:00+00:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</loc>
       
       <lastmod>2016-08-30T00:00:00+00:00</lastmod>

@@ -32,6 +32,16 @@ data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule
     </item>
     
     <item>
+      <title>Ruby 2.4 changes overview</title>
+      <link>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</link>
+      <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</guid>
+      <description>Unified Fixnum and Bignum into Integer It&amp;rsquo;s backward compatible too.
+$ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Bignum irb(main):003:0&amp;gt; 2.class =&amp;gt; Fixnum irb(main):004:0&amp;gt; Fixnum =&amp;gt; Fixnum irb(main):005:0&amp;gt; Bignum =&amp;gt; Bignum irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39; irb(main):007:0&amp;gt; quit $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.4.0&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Integer irb(main):003:0&amp;gt; 2.class =&amp;gt; Integer irb(main):004:0&amp;gt; Fixnum (irb):4: warning: constant ::Fixnum is deprecated =&amp;gt; Integer irb(main):005:0&amp;gt; Bignum (irb):5: warning: constant ::Bignum is deprecated =&amp;gt; Integer irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.</description>
+    </item>
+    
+    <item>
       <title>Nix in your home directory</title>
       <link>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</link>
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
