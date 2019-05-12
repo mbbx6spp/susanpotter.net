@@ -73,6 +73,20 @@
     </url>
   
     <url>
+      <loc>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</loc>
+      
+      <lastmod>2016-08-30T00:00:00+00:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</loc>
       
       <lastmod>2014-02-02T00:00:00+00:00</lastmod>
@@ -90,6 +104,20 @@
       <loc>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</loc>
       
       <lastmod>2014-01-25T00:00:00+00:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</loc>
+      
+      <lastmod>2012-01-10T00:31:13-05:00</lastmod>
       
       
       <changefreq>monthly</changefreq>

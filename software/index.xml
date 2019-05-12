@@ -32,6 +32,18 @@ data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule
     </item>
     
     <item>
+      <title>Nix in your home directory</title>
+      <link>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</link>
+      <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</guid>
+      <description>Prerequisites  wget is installed tar is installed  Purpose If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
+Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.
+Good luck.
+homedir_install.sh function install_nix() { local -r bindir=&amp;quot;${HOME}/opt/bin&amp;quot; local -r proot_url=&amp;quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&amp;quot; local -r nixdir=&amp;quot;${HOME}/mnt/nix&amp;quot; local -r nixver=&amp;quot;1.</description>
+    </item>
+    
+    <item>
       <title>Scala WTFs</title>
       <link>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</link>
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
@@ -49,6 +61,16 @@ scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp
       <guid>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</guid>
       <description>Homebrew Install after the command-line tools for Xcode.
  tmux erlang haskell-platform zsh git figlet scala sbt rbenv ruby-build s3cmd pit  brew install tmux erlang haskell-platform zsh \ git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems  veewee  App Store  Opera Skitch XCode (Command-line tools) Miro (if only there was a way to uninstall iTunes)  Manual Installs  Skype Chrome Firefox Adium Command-line tools from Xcode (after install) GitHub for Mac Java 7 (and change default to this in Java Preferences) DropBox Growl (latest free version) VirtualBox Vagrant - see http://vagrantup.</description>
+    </item>
+    
+    <item>
+      <title>Erlang OTP Glossary</title>
+      <link>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</link>
+      <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</guid>
+      <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&#39;t have to!:)
+ Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively. OTP Release - A fully deployable distribution to run on an &#34;</description>
     </item>
     
   </channel>

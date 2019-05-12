@@ -363,6 +363,67 @@ operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Nix in your home directory</title>
+      <link>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</link>
+      <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</guid>
+      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget&lt;/code&gt; is installed&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tar&lt;/code&gt; is installed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;purpose&#34;&gt;Purpose&lt;/h2&gt;
+
+&lt;p&gt;If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.&lt;/p&gt;
+
+&lt;p&gt;Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.&lt;/p&gt;
+
+&lt;p&gt;Good luck.&lt;/p&gt;
+
+&lt;h2 id=&#34;homedir-install-sh&#34;&gt;&lt;code&gt;homedir_install.sh&lt;/code&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;function install_nix() {
+  local -r bindir=&amp;quot;${HOME}/opt/bin&amp;quot;
+  local -r proot_url=&amp;quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&amp;quot;
+  local -r nixdir=&amp;quot;${HOME}/mnt/nix&amp;quot;
+  local -r nixver=&amp;quot;1.11.2&amp;quot;
+  local -r arch=&amp;quot;x86_64&amp;quot;
+  local -r os=&amp;quot;linux&amp;quot;
+  local -r nixbz2_url=&amp;quot;http://nixos.org/releases/nix/nix-${nixver}/nix-${nixver}-${arch}-${os}.tar.bz2&amp;quot;
+
+  mkdir -p &amp;quot;${bindir}&amp;quot;
+  wget -O &amp;quot;${bindir}/proot&amp;quot; &amp;quot;${proot_url}&amp;quot;
+  chmod u+x &amp;quot;${bindir}/proot&amp;quot;
+
+  mkdir -p &amp;quot;${nixdir}&amp;quot;
+  pushd &amp;quot;${nixdir}&amp;quot;
+  wget &amp;quot;${nixbz2_url}&amp;quot;
+  tar xjf nix-*bz2
+
+  local -r nixbin=&amp;quot;$(dirname &amp;quot;$(find &amp;quot;${nixdir}&amp;quot; -name &amp;quot;nix-shell&amp;quot; | head -1)&amp;quot;)&amp;quot;
+  export PATH=&amp;quot;${bindir}:${nixbin}:${PATH}&amp;quot;
+  {
+    echo &amp;quot;#!/usr/bin/env bash&amp;quot;
+    echo
+    echo &amp;quot;proot -b \&amp;quot;${nixdir}/nix-${nixver}-${arch}-${os}/:/nix\&amp;quot; \$@&amp;quot;
+  } &amp;gt; &amp;quot;${bindir}/nixrun&amp;quot;
+  chmod u+x &amp;quot;${bindir}/nixrun&amp;quot;
+}
+
+set -eu
+set -o pipefail
+
+install_nix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Thanks to &lt;a href=&#34;https://github.com/willprice&#34; title=&#34;Will Price (@willprice)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Will Price (@willprice)&lt;/a&gt; for pointing out my original link to the proot static binary was broken on Oct 23, 2017: https://github.com/proot-me/proot/issues/120#issuecomment-338649213&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Scala WTFs</title>
       <link>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</link>
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
@@ -454,6 +515,51 @@ res0: Int = 555555584
 &lt;li&gt;VirtualBox&lt;/li&gt;
 &lt;li&gt;Vagrant - see http://vagrantup.com&lt;/li&gt;
 &lt;li&gt;Packer - see http://packer.io&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Erlang OTP Glossary</title>
+      <link>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</link>
+      <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</guid>
+      <description>&lt;p&gt;I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&#39;t have to!:)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Erlang/OTP&lt;/strong&gt; - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP Release&lt;/strong&gt; - A fully deployable distribution to run on an &lt;strong&gt;&#34;Erlang node&#34;&lt;/strong&gt; (see below). An OTP Release may have one or more OTP Applications running inside of it at any time.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP Application&lt;/strong&gt; - Usually a &lt;strong&gt;stateful&lt;/strong&gt; long-running and active set of &lt;strong&gt;Erlang processes&lt;/strong&gt; that collaborate together to achieve a well-defined set of responsibilities. It is a packaging of these collaborating modules and processes into a directory structure (see &#39;OTP Application Conventions&#39; below) along with metadata about the OTP Application and default/fallback environment variable values (in case the OTP Release above doesn&#39;t provide any values for them).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP Application Resource File&lt;/strong&gt; - Contains metadata and environment variable value defaults/fallbacks for the OTP Application.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP Application Callback Module&lt;/strong&gt; - For all &lt;strong&gt;active&lt;/strong&gt; OTP Applications a callback module providing the `application` &lt;strong&gt;Erlang behaviour&lt;/strong&gt; must be defined and export `start/2` and `stop/0` as per the expected contract (see [OTP Application manual](http://www.erlang.org/doc/design_principles/applications.html)).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP Supervisor&lt;/strong&gt; - Each &lt;strong&gt;active&lt;/strong&gt; OTP Application Callback Module will start a root supervisor to run the different components of the application inside of a supervision tree.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP gen_server&lt;/strong&gt; - A supervisor can launch one or more workers and/or one or more supervisors to create the supervision tree. One type of OTP defined behaviour is a `gen_server` that enables the very common client/server semantics. A `gen_server` callback/implementation module is launched as an Erlang process that can keep state running in a loop and receive messages sent from other Erlang processes. These messages may be `call`ed (i.e. the client blocks until the `gen_server` implementation replies) or can be `cast` (i.e. the client sends and forgets that it sent that message).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP gen_event&lt;/strong&gt; - A lesser used OTP defined behaviour and broadcast module for event handling/broadcasting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OTP gen_fsm&lt;/strong&gt; - A lesser used OTP defined behaviour for FSMs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Erlang behaviours&lt;/strong&gt; - a defined/expected interface that a module is expected to export. Any deviation from the defined/expected interface for a module defined as providing this &lt;strong&gt;Erlang behaviour&lt;/strong&gt; will show up as a compiler &lt;strong&gt;warning&lt;/strong&gt; (not error).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Erlang node&lt;/strong&gt; - one instance of a BEAM VM runtime, potentially having multiple OS processes in a process tree.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Erlang process&lt;/strong&gt; - a very lightweight thread inside of the BEAM VM that only permits sharing global state via a process mailbox that can receive messages from other Erlang processes. The BEAM VM can create Erlang processes with very low resource consumption; with `+K true` passed in as a VM option upon startup, `epoll` (and other kernel polling mechanisms depending on the OS that Node.js/EventMachine utilizes) can be used to determine which Erlang processes are runnable at any moment, to minimize I/O blocking/wait times without impacting programming-style and impairing code readability/debuggability (which Node.js/EventMachine does drastically).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;recommended-reading&#34;&gt;Recommended Reading&lt;/h2&gt;
+
+&lt;p&gt;Book:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.manning.com/logan/&#34; title=&#34;OTP in Action&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;OTP in Action&lt;/a&gt; - Manning Publishing: very useful for the budding Erlanger that wants to building production systems in OTP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Online:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://learnyousomeerlang.com/&#34; title=&#34;Learn You Some Erlang&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Learn You Some Erlang&lt;/a&gt; - Great online learning resource for Erlangers plus OTP beginner and intermediate developers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Code:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/basho&#34; title=&#34;Basho Erlang Projects&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Basho Erlang Projects&lt;/a&gt; - Often the best way to learn is by looking at a living breathing codebase that uses the language and/or libraries you are learning. A great source is Basho&#39;s Erlang projects. Check out rebar, lager, poolboy, riak_kv, riak_search and many more.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

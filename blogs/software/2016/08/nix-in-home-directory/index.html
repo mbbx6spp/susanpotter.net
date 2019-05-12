@@ -10,9 +10,9 @@
   
   
   
-  <link rel="prev" href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" />
-  <link rel="next" href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" />
-  <link rel="canonical" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  <link rel="prev" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
+  <link rel="next" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           Decoding lens operators | Susan Potter
+           Nix in your home directory | Susan Potter
        
   </title>
-  <meta name="title" content="Decoding lens operators | Susan Potter">
+  <meta name="title" content="Nix in your home directory | Susan Potter">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,18 +35,20 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Decoding lens operators"/>
-<meta name="twitter:description" content="Notation conventions The following table provides a quick overview of conventions used in symbolic operators in the lens library.
-   Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &lt;&lt; before change returns value before specified change   &lt; after change returns value after specified change   ?"/>
+<meta name="twitter:title" content="Nix in your home directory"/>
+<meta name="twitter:description" content="Prerequisites  wget is installed tar is installed  Purpose If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
+Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.
+Good luck.
+homedir_install.sh function install_nix() { local -r bindir=&quot;${HOME}/opt/bin&quot; local -r proot_url=&quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&quot; local -r nixdir=&quot;${HOME}/mnt/nix&quot; local -r nixver=&quot;1."/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "Decoding lens operators",
+  "headline": "Nix in your home directory",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/"
+    "@id": "https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/"
   },
   "image": {
     "@type": "ImageObject",
@@ -56,10 +58,10 @@
   },
   "genre": "software",
   
-  "wordcount": 95,
-  "url": "https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/",
-  "datePublished": "2018-04-21T14:15:59-05:00",
-  "dateModified": "2018-04-21T14:15:59-05:00",
+  "wordcount": 161,
+  "url": "https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/",
+  "datePublished": "2016-08-30T00:00:00+00:00",
+  "dateModified": "2016-08-30T00:00:00+00:00",
   
   "publisher": {
     "@type": "Organization",
@@ -131,19 +133,14 @@
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">Decoding lens operators</h1>
+        <h1 class="post-title">Nix in your home directory</h1>
         <div class="post-meta">
             Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2018-04-21 >21 April 2018</time>
+                    on <time datetime=2016-08-30 >30 August 2016</time>
                 </span>
                 in
-                <i class="iconfont icon-folder"></i>
-                <span class="post-category">
-                        <a href="https://susanpotter.net/categories/haskell/"> haskell </a>
-                        <a href="https://susanpotter.net/categories/functional-programming/"> functional programming </a>
-                        
-                </span>
+                
                 <i class="iconfont icon-timer"></i>
                 1 min
         </div>
@@ -164,83 +161,58 @@
           
           
 
-          <h2 id="notation-conventions">Notation conventions</h2>
+          <h2 id="prerequisites">Prerequisites</h2>
 
-<p>The following table provides a quick overview of conventions used in symbolic 
-operators in the <code>lens</code> library.</p>
+<ul>
+<li><code>wget</code> is installed</li>
+<li><code>tar</code> is installed</li>
+</ul>
 
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Concept</th>
-<th>Denotes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>^</code></td>
-<td>getter</td>
-<td>gets value from structure</td>
-</tr>
+<h2 id="purpose">Purpose</h2>
 
-<tr>
-<td><code>~</code></td>
-<td>setter</td>
-<td>sets values in structure</td>
-</tr>
+<p>If you really don't want to install Nix under /nix (or you can't) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.</p>
 
-<tr>
-<td><code>%</code></td>
-<td>over</td>
-<td>apply transformation over selected substructure</td>
-</tr>
+<p>Now whenever you want to run a command under Nix's control, you should prefix with nixrun.</p>
 
-<tr>
-<td><code>=</code></td>
-<td>state</td>
-<td>threads state through</td>
-</tr>
+<p>Good luck.</p>
 
-<tr>
-<td><code>&lt;&lt;</code></td>
-<td>before change</td>
-<td>returns value before specified change</td>
-</tr>
+<h2 id="homedir-install-sh"><code>homedir_install.sh</code></h2>
 
-<tr>
-<td><code>&lt;</code></td>
-<td>after change</td>
-<td>returns value after specified change</td>
-</tr>
+<pre><code class="language-sh">function install_nix() {
+  local -r bindir=&quot;${HOME}/opt/bin&quot;
+  local -r proot_url=&quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&quot;
+  local -r nixdir=&quot;${HOME}/mnt/nix&quot;
+  local -r nixver=&quot;1.11.2&quot;
+  local -r arch=&quot;x86_64&quot;
+  local -r os=&quot;linux&quot;
+  local -r nixbz2_url=&quot;http://nixos.org/releases/nix/nix-${nixver}/nix-${nixver}-${arch}-${os}.tar.bz2&quot;
 
-<tr>
-<td><code>?</code></td>
-<td><code>Maybe</code></td>
-<td>optionality</td>
-</tr>
+  mkdir -p &quot;${bindir}&quot;
+  wget -O &quot;${bindir}/proot&quot; &quot;${proot_url}&quot;
+  chmod u+x &quot;${bindir}/proot&quot;
 
-<tr>
-<td><code>!</code></td>
-<td>force</td>
-<td>force value</td>
-</tr>
-</tbody>
-</table>
+  mkdir -p &quot;${nixdir}&quot;
+  pushd &quot;${nixdir}&quot;
+  wget &quot;${nixbz2_url}&quot;
+  tar xjf nix-*bz2
 
-<h2 id="tutorial">Tutorial</h2>
+  local -r nixbin=&quot;$(dirname &quot;$(find &quot;${nixdir}&quot; -name &quot;nix-shell&quot; | head -1)&quot;)&quot;
+  export PATH=&quot;${bindir}:${nixbin}:${PATH}&quot;
+  {
+    echo &quot;#!/usr/bin/env bash&quot;
+    echo
+    echo &quot;proot -b \&quot;${nixdir}/nix-${nixver}-${arch}-${os}/:/nix\&quot; \$@&quot;
+  } &gt; &quot;${bindir}/nixrun&quot;
+  chmod u+x &quot;${bindir}/nixrun&quot;
+}
 
-<h3 id="data-types">Data Types</h3>
+set -eu
+set -o pipefail
 
-<p>Let's start understanding how to <em>use</em> the <code>lens</code> library by defining some data types of an application:</p>
-
-<pre><code class="language-haskell">
-
+install_nix
 </code></pre>
 
-<h3 id="practical-nested-getting">Practical Nested Getting</h3>
-
-<h3 id="practical-nested-setting">Practical Nested Setting</h3>
+<p><strong>Update:</strong> Thanks to <a href="https://github.com/willprice" title="Will Price (@willprice)" rel="nofollow noreferrer" target="_blank">Will Price (@willprice)</a> for pointing out my original link to the proot static binary was broken on Oct 23, 2017: https://github.com/proot-me/proot/issues/120#issuecomment-338649213</p>
 
     </div>
 
@@ -254,7 +226,7 @@ operators in the <code>lens</code> library.</p>
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>95</span>
+                   <span>161</span>
             </p>
             
             <p class="copyright-item">
@@ -274,10 +246,10 @@ operators in the <code>lens</code> library.</p>
 
     <div class="post-nav">
         
-        <a href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" class="prev" rel="prev" title="Nix in your home directory"><i class="iconfont icon-dajiantou"></i>&nbsp;Nix in your home directory</a>
+        <a href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" class="prev" rel="prev" title="Scala WTFs"><i class="iconfont icon-dajiantou"></i>&nbsp;Scala WTFs</a>
          
         
-        <a href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" class="next" rel="next" title="Practical Recursion Schemes">Practical Recursion Schemes&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        <a href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" class="next" rel="next" title="Decoding lens operators">Decoding lens operators&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 
