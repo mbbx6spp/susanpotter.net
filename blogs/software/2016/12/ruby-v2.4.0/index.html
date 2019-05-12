@@ -37,7 +37,7 @@
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ruby 2.4 changes overview"/>
 <meta name="twitter:description" content="Unified Fixnum and Bignum into Integer It&rsquo;s backward compatible too.
-$ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.3.1&quot; irb(main):002:0&gt; (2**100).class =&gt; Bignum irb(main):003:0&gt; 2.class =&gt; Fixnum irb(main):004:0&gt; Fixnum =&gt; Fixnum irb(main):005:0&gt; Bignum =&gt; Bignum irb(main):006:0&gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;&#39; irb(main):007:0&gt; quit $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’ $ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.4.0&quot; irb(main):002:0&gt; (2**100).class =&gt; Integer irb(main):003:0&gt; 2.class =&gt; Integer irb(main):004:0&gt; Fixnum (irb):4: warning: constant ::Fixnum is deprecated =&gt; Integer irb(main):005:0&gt; Bignum (irb):5: warning: constant ::Bignum is deprecated =&gt; Integer irb(main):006:0&gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/."/>
+$ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.3.1&quot; irb(main):002:0&gt; (2**100).class =&gt; Bignum irb(main):003:0&gt; 2.class =&gt; Fixnum irb(main):004:0&gt; Fixnum =&gt; Fixnum irb(main):005:0&gt; Bignum =&gt; Bignum irb(main):006:0&gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;&#39; irb(main):007:0&gt; quit  $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’  $ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.4.0&quot; irb(main):002:0&gt; (2**100).class =&gt; Integer irb(main):003:0&gt; 2."/>
 
   <script type="application/ld+json">
 {
@@ -165,7 +165,7 @@ $ irb irb(main):001:0&gt; RUBY_VERSION =&gt; &quot;2.3.1&quot; irb(main):002:0&g
 
 <p>It&rsquo;s backward compatible too.</p>
 
-<pre><code class="language-shell">$ irb
+<pre><code class="language-ruby">$ irb
 irb(main):001:0&gt; RUBY_VERSION
 =&gt; &quot;2.3.1&quot;
 irb(main):002:0&gt; (2**100).class
@@ -181,12 +181,14 @@ NameError: uninitialized constant Bogonum
         from (irb):6
         from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;'
 irb(main):007:0&gt; quit
+</code></pre>
 
-$ nix-env -f . -iA ruby_2_4_0
+<pre><code class="language-shell">$ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.1-p0’
 installing ‘ruby-2.4.0’
+</code></pre>
 
-$ irb
+<pre><code class="language-ruby">$ irb
 irb(main):001:0&gt; RUBY_VERSION
 =&gt; &quot;2.4.0&quot;
 irb(main):002:0&gt; (2**100).class

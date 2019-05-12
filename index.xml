@@ -374,7 +374,7 @@ operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s backward compatible too.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ irb
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
 irb(main):001:0&amp;gt; RUBY_VERSION
 =&amp;gt; &amp;quot;2.3.1&amp;quot;
 irb(main):002:0&amp;gt; (2**100).class
@@ -390,12 +390,14 @@ NameError: uninitialized constant Bogonum
         from (irb):6
         from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;
 irb(main):007:0&amp;gt; quit
+&lt;/code&gt;&lt;/pre&gt;
 
-$ nix-env -f . -iA ruby_2_4_0
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.1-p0’
 installing ‘ruby-2.4.0’
+&lt;/code&gt;&lt;/pre&gt;
 
-$ irb
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
 irb(main):001:0&amp;gt; RUBY_VERSION
 =&amp;gt; &amp;quot;2.4.0&amp;quot;
 irb(main):002:0&amp;gt; (2**100).class
