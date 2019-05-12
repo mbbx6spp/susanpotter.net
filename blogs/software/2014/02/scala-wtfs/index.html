@@ -10,9 +10,9 @@
   
   
   
-  <link rel="prev" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
-  <link rel="next" href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" />
-  <link rel="canonical" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  <link rel="prev" href="https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/" />
+  <link rel="next" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           Decoding lens operators | Susan Potter
+           Scala WTFs | Susan Potter
        
   </title>
-  <meta name="title" content="Decoding lens operators | Susan Potter">
+  <meta name="title" content="Scala WTFs | Susan Potter">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,18 +35,18 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Decoding lens operators"/>
-<meta name="twitter:description" content="Notation conventions The following table provides a quick overview of conventions used in symbolic operators in the lens library.
-   Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &lt;&lt; before change returns value before specified change   &lt; after change returns value after specified change   ?"/>
+<meta name="twitter:title" content="Scala WTFs"/>
+<meta name="twitter:description" content="Small sample of reasons why the Scala standard library (especially collections) might need rewriting (many taken from Paul Phillips talks on the Scala Collections library):
+scala&gt; List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&gt; List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&gt; List(1, 2) ::: List(&quot;a&quot;, &quot;b&quot;) // it&#39;d be funny if you didn&#39;t care."/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "Decoding lens operators",
+  "headline": "Scala WTFs",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/"
+    "@id": "https://susanpotter.net/blogs/software/2014/02/scala-wtfs/"
   },
   "image": {
     "@type": "ImageObject",
@@ -56,10 +56,10 @@
   },
   "genre": "software",
   
-  "wordcount": 95,
-  "url": "https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/",
-  "datePublished": "2018-04-21T14:15:59-05:00",
-  "dateModified": "2018-04-21T14:15:59-05:00",
+  "wordcount": 139,
+  "url": "https://susanpotter.net/blogs/software/2014/02/scala-wtfs/",
+  "datePublished": "2014-02-02T00:00:00+00:00",
+  "dateModified": "2014-02-02T00:00:00+00:00",
   
   "publisher": {
     "@type": "Organization",
@@ -131,19 +131,14 @@
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">Decoding lens operators</h1>
+        <h1 class="post-title">Scala WTFs</h1>
         <div class="post-meta">
             Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2018-04-21 >21 April 2018</time>
+                    on <time datetime=2014-02-02 >2 February 2014</time>
                 </span>
                 in
-                <i class="iconfont icon-folder"></i>
-                <span class="post-category">
-                        <a href="https://susanpotter.net/categories/haskell/"> haskell </a>
-                        <a href="https://susanpotter.net/categories/functional-programming/"> functional programming </a>
-                        
-                </span>
+                
                 <i class="iconfont icon-timer"></i>
                 1 min
         </div>
@@ -164,83 +159,30 @@
           
           
 
-          <h2 id="notation-conventions">Notation conventions</h2>
+          <p>Small sample of reasons why the Scala standard library (especially collections) might need rewriting (many taken from Paul Phillips talks on the Scala Collections library):</p>
 
-<p>The following table provides a quick overview of conventions used in symbolic 
-operators in the <code>lens</code> library.</p>
+<pre><code class="language-scala">scala&gt; List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;).toSet // the only reasonable line of code in here
+res1: scala.collection.immutable.Set[String] = Set(a, b, c)
 
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Concept</th>
-<th>Denotes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>^</code></td>
-<td>getter</td>
-<td>gets value from structure</td>
-</tr>
+scala&gt; List(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;).toSet() // seen this when learning Scala first time. ROFL.
+res2: Boolean = false
 
-<tr>
-<td><code>~</code></td>
-<td>setter</td>
-<td>sets values in structure</td>
-</tr>
+scala&gt; List(1, 2) ::: List(&quot;a&quot;, &quot;b&quot;) // it'd be funny if you didn't care.
+res3: List[Any] = List(1, 2, a, b)
 
-<tr>
-<td><code>%</code></td>
-<td>over</td>
-<td>apply transformation over selected substructure</td>
-</tr>
+scala&gt; List(1, 2) ::: List(3, 4.0) // sad panda
+res4: List[AnyVal] = List(1, 2, 3.0, 4.0)
 
-<tr>
-<td><code>=</code></td>
-<td>state</td>
-<td>threads state through</td>
-</tr>
+scala&gt; List(1, 2, 3) contains &quot;wtf?&quot; // LMAO if it didn't hurt so much
+res5: Boolean = false
 
-<tr>
-<td><code>&lt;&lt;</code></td>
-<td>before change</td>
-<td>returns value before specified change</td>
-</tr>
+scala&gt; Double.MaxValue - Int.MaxValue == Double.MaxValue // I don't even ...
+res6: Boolean = true
 
-<tr>
-<td><code>&lt;</code></td>
-<td>after change</td>
-<td>returns value after specified change</td>
-</tr>
-
-<tr>
-<td><code>?</code></td>
-<td><code>Maybe</code></td>
-<td>optionality</td>
-</tr>
-
-<tr>
-<td><code>!</code></td>
-<td>force</td>
-<td>force value</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="tutorial">Tutorial</h2>
-
-<h3 id="data-types">Data Types</h3>
-
-<p>Let's start understanding how to <em>use</em> the <code>lens</code> library by defining some data types of an application:</p>
-
-<pre><code class="language-haskell">
+scala&gt; 555555555.round // LOL
+res0: Int = 555555584
 
 </code></pre>
-
-<h3 id="practical-nested-getting">Practical Nested Getting</h3>
-
-<h3 id="practical-nested-setting">Practical Nested Setting</h3>
 
     </div>
 
@@ -254,7 +196,7 @@ operators in the <code>lens</code> library.</p>
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>95</span>
+                   <span>139</span>
             </p>
             
             <p class="copyright-item">
@@ -274,10 +216,10 @@ operators in the <code>lens</code> library.</p>
 
     <div class="post-nav">
         
-        <a href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" class="prev" rel="prev" title="Scala WTFs"><i class="iconfont icon-dajiantou"></i>&nbsp;Scala WTFs</a>
+        <a href="https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/" class="prev" rel="prev" title="OSX Lion (10.7.4) work laptop setup"><i class="iconfont icon-dajiantou"></i>&nbsp;OSX Lion (10.7.4) work laptop setup</a>
          
         
-        <a href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" class="next" rel="next" title="Practical Recursion Schemes">Practical Recursion Schemes&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        <a href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" class="next" rel="next" title="Decoding lens operators">Decoding lens operators&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 

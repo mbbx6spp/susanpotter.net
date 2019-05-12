@@ -362,5 +362,101 @@ operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
 </description>
     </item>
     
+    <item>
+      <title>Scala WTFs</title>
+      <link>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</link>
+      <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</guid>
+      <description>&lt;p&gt;Small sample of reasons why the Scala standard library (especially collections) might need rewriting (many taken from Paul Phillips talks on the Scala Collections library):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet // the only reasonable line of code in here
+res1: scala.collection.immutable.Set[String] = Set(a, b, c)
+
+scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet() // seen this when learning Scala first time. ROFL.
+res2: Boolean = false
+
+scala&amp;gt; List(1, 2) ::: List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;) // it&#39;d be funny if you didn&#39;t care.
+res3: List[Any] = List(1, 2, a, b)
+
+scala&amp;gt; List(1, 2) ::: List(3, 4.0) // sad panda
+res4: List[AnyVal] = List(1, 2, 3.0, 4.0)
+
+scala&amp;gt; List(1, 2, 3) contains &amp;quot;wtf?&amp;quot; // LMAO if it didn&#39;t hurt so much
+res5: Boolean = false
+
+scala&amp;gt; Double.MaxValue - Int.MaxValue == Double.MaxValue // I don&#39;t even ...
+res6: Boolean = true
+
+scala&amp;gt; 555555555.round // LOL
+res0: Int = 555555584
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OSX Lion (10.7.4) work laptop setup</title>
+      <link>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</link>
+      <pubDate>Sat, 25 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</guid>
+      <description>&lt;h2 id=&#34;homebrew&#34;&gt;Homebrew&lt;/h2&gt;
+
+&lt;p&gt;Install after the command-line tools for Xcode.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;tmux&lt;/li&gt;
+&lt;li&gt;erlang&lt;/li&gt;
+&lt;li&gt;haskell-platform&lt;/li&gt;
+&lt;li&gt;zsh&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;figlet&lt;/li&gt;
+&lt;li&gt;scala&lt;/li&gt;
+&lt;li&gt;sbt&lt;/li&gt;
+&lt;li&gt;rbenv&lt;/li&gt;
+&lt;li&gt;ruby-build&lt;/li&gt;
+&lt;li&gt;s3cmd&lt;/li&gt;
+&lt;li&gt;pit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install tmux erlang haskell-platform zsh \
+  git figlet scala sbt rbenv ruby-build s3cmd pit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;rubygems&#34;&gt;RubyGems&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;veewee&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;app-store&#34;&gt;App Store&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Opera&lt;/li&gt;
+&lt;li&gt;Skitch&lt;/li&gt;
+&lt;li&gt;XCode (Command-line tools)&lt;/li&gt;
+&lt;li&gt;Miro (if only there was a way to uninstall iTunes)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;manual-installs&#34;&gt;Manual Installs&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Skype&lt;/li&gt;
+&lt;li&gt;Chrome&lt;/li&gt;
+&lt;li&gt;Firefox&lt;/li&gt;
+&lt;li&gt;Adium&lt;/li&gt;
+&lt;li&gt;Command-line tools from Xcode (after install)&lt;/li&gt;
+&lt;li&gt;GitHub for Mac&lt;/li&gt;
+&lt;li&gt;Java 7 (and change default to this in Java Preferences)&lt;/li&gt;
+&lt;li&gt;DropBox&lt;/li&gt;
+&lt;li&gt;Growl (latest free version)&lt;/li&gt;
+&lt;li&gt;VirtualBox&lt;/li&gt;
+&lt;li&gt;Vagrant - see http://vagrantup.com&lt;/li&gt;
+&lt;li&gt;Packer - see http://packer.io&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

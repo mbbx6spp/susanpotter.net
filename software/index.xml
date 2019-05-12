@@ -31,5 +31,25 @@ data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule
    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
+    <item>
+      <title>Scala WTFs</title>
+      <link>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</link>
+      <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</guid>
+      <description>Small sample of reasons why the Scala standard library (especially collections) might need rewriting (many taken from Paul Phillips talks on the Scala Collections library):
+scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&amp;gt; List(1, 2) ::: List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;) // it&#39;d be funny if you didn&#39;t care.</description>
+    </item>
+    
+    <item>
+      <title>OSX Lion (10.7.4) work laptop setup</title>
+      <link>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</link>
+      <pubDate>Sat, 25 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</guid>
+      <description>Homebrew Install after the command-line tools for Xcode.
+ tmux erlang haskell-platform zsh git figlet scala sbt rbenv ruby-build s3cmd pit  brew install tmux erlang haskell-platform zsh \ git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems  veewee  App Store  Opera Skitch XCode (Command-line tools) Miro (if only there was a way to uninstall iTunes)  Manual Installs  Skype Chrome Firefox Adium Command-line tools from Xcode (after install) GitHub for Mac Java 7 (and change default to this in Java Preferences) DropBox Growl (latest free version) VirtualBox Vagrant - see http://vagrantup.</description>
+    </item>
+    
   </channel>
 </rss>

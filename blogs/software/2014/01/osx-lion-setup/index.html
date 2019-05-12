@@ -10,9 +10,9 @@
   
   
   
-  <link rel="prev" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
-  <link rel="next" href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" />
-  <link rel="canonical" href="https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/" />
+  
+  <link rel="next" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
+  <link rel="canonical" href="https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,10 +24,10 @@
   <title>
        
        
-           Decoding lens operators | Susan Potter
+           OSX Lion (10.7.4) work laptop setup | Susan Potter
        
   </title>
-  <meta name="title" content="Decoding lens operators | Susan Potter">
+  <meta name="title" content="OSX Lion (10.7.4) work laptop setup | Susan Potter">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -35,18 +35,18 @@
 
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Decoding lens operators"/>
-<meta name="twitter:description" content="Notation conventions The following table provides a quick overview of conventions used in symbolic operators in the lens library.
-   Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &lt;&lt; before change returns value before specified change   &lt; after change returns value after specified change   ?"/>
+<meta name="twitter:title" content="OSX Lion (10.7.4) work laptop setup"/>
+<meta name="twitter:description" content="Homebrew Install after the command-line tools for Xcode.
+ tmux erlang haskell-platform zsh git figlet scala sbt rbenv ruby-build s3cmd pit  brew install tmux erlang haskell-platform zsh \ git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems  veewee  App Store  Opera Skitch XCode (Command-line tools) Miro (if only there was a way to uninstall iTunes)  Manual Installs  Skype Chrome Firefox Adium Command-line tools from Xcode (after install) GitHub for Mac Java 7 (and change default to this in Java Preferences) DropBox Growl (latest free version) VirtualBox Vagrant - see http://vagrantup."/>
 
   <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "headline": "Decoding lens operators",
+  "headline": "OSX Lion (10.7.4) work laptop setup",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/"
+    "@id": "https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/"
   },
   "image": {
     "@type": "ImageObject",
@@ -56,10 +56,10 @@
   },
   "genre": "software",
   
-  "wordcount": 95,
-  "url": "https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/",
-  "datePublished": "2018-04-21T14:15:59-05:00",
-  "dateModified": "2018-04-21T14:15:59-05:00",
+  "wordcount": 93,
+  "url": "https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/",
+  "datePublished": "2014-01-25T00:00:00+00:00",
+  "dateModified": "2014-01-25T00:00:00+00:00",
   
   "publisher": {
     "@type": "Organization",
@@ -131,19 +131,14 @@
       		
 <article class="post-warp">
     <header class="post-header">
-        <h1 class="post-title">Decoding lens operators</h1>
+        <h1 class="post-title">OSX Lion (10.7.4) work laptop setup</h1>
         <div class="post-meta">
             Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
                 <span class="post-time">
-                    on <time datetime=2018-04-21 >21 April 2018</time>
+                    on <time datetime=2014-01-25 >25 January 2014</time>
                 </span>
                 in
-                <i class="iconfont icon-folder"></i>
-                <span class="post-category">
-                        <a href="https://susanpotter.net/categories/haskell/"> haskell </a>
-                        <a href="https://susanpotter.net/categories/functional-programming/"> functional programming </a>
-                        
-                </span>
+                
                 <i class="iconfont icon-timer"></i>
                 1 min
         </div>
@@ -164,83 +159,60 @@
           
           
 
-          <h2 id="notation-conventions">Notation conventions</h2>
+          <h2 id="homebrew">Homebrew</h2>
 
-<p>The following table provides a quick overview of conventions used in symbolic 
-operators in the <code>lens</code> library.</p>
+<p>Install after the command-line tools for Xcode.</p>
 
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Concept</th>
-<th>Denotes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>^</code></td>
-<td>getter</td>
-<td>gets value from structure</td>
-</tr>
+<ul>
+<li>tmux</li>
+<li>erlang</li>
+<li>haskell-platform</li>
+<li>zsh</li>
+<li>git</li>
+<li>figlet</li>
+<li>scala</li>
+<li>sbt</li>
+<li>rbenv</li>
+<li>ruby-build</li>
+<li>s3cmd</li>
+<li>pit</li>
+</ul>
 
-<tr>
-<td><code>~</code></td>
-<td>setter</td>
-<td>sets values in structure</td>
-</tr>
-
-<tr>
-<td><code>%</code></td>
-<td>over</td>
-<td>apply transformation over selected substructure</td>
-</tr>
-
-<tr>
-<td><code>=</code></td>
-<td>state</td>
-<td>threads state through</td>
-</tr>
-
-<tr>
-<td><code>&lt;&lt;</code></td>
-<td>before change</td>
-<td>returns value before specified change</td>
-</tr>
-
-<tr>
-<td><code>&lt;</code></td>
-<td>after change</td>
-<td>returns value after specified change</td>
-</tr>
-
-<tr>
-<td><code>?</code></td>
-<td><code>Maybe</code></td>
-<td>optionality</td>
-</tr>
-
-<tr>
-<td><code>!</code></td>
-<td>force</td>
-<td>force value</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="tutorial">Tutorial</h2>
-
-<h3 id="data-types">Data Types</h3>
-
-<p>Let's start understanding how to <em>use</em> the <code>lens</code> library by defining some data types of an application:</p>
-
-<pre><code class="language-haskell">
-
+<pre><code class="language-sh">brew install tmux erlang haskell-platform zsh \
+  git figlet scala sbt rbenv ruby-build s3cmd pit
 </code></pre>
 
-<h3 id="practical-nested-getting">Practical Nested Getting</h3>
+<h2 id="rubygems">RubyGems</h2>
 
-<h3 id="practical-nested-setting">Practical Nested Setting</h3>
+<ul>
+<li>veewee</li>
+</ul>
+
+<h2 id="app-store">App Store</h2>
+
+<ul>
+<li>Opera</li>
+<li>Skitch</li>
+<li>XCode (Command-line tools)</li>
+<li>Miro (if only there was a way to uninstall iTunes)</li>
+</ul>
+
+<h2 id="manual-installs">Manual Installs</h2>
+
+<ul>
+<li>Skype</li>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Adium</li>
+<li>Command-line tools from Xcode (after install)</li>
+<li>GitHub for Mac</li>
+<li>Java 7 (and change default to this in Java Preferences)</li>
+<li>DropBox</li>
+<li>Growl (latest free version)</li>
+<li>VirtualBox</li>
+<li>Vagrant - see http://vagrantup.com</li>
+<li>Packer - see http://packer.io</li>
+</ul>
 
     </div>
 
@@ -254,7 +226,7 @@ operators in the <code>lens</code> library.</p>
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>95</span>
+                   <span>93</span>
             </p>
             
             <p class="copyright-item">
@@ -273,11 +245,9 @@ operators in the <code>lens</code> library.</p>
     </div>
 
     <div class="post-nav">
-        
-        <a href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" class="prev" rel="prev" title="Scala WTFs"><i class="iconfont icon-dajiantou"></i>&nbsp;Scala WTFs</a>
          
         
-        <a href="https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/" class="next" rel="next" title="Practical Recursion Schemes">Practical Recursion Schemes&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+        <a href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" class="next" rel="next" title="Scala WTFs">Scala WTFs&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 
