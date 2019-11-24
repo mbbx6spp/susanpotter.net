@@ -88,6 +88,12 @@ code.verbatim {
     padding: 0 4px;
 }
 
+article p code.verbatim,
+article h2 code.verbatim {
+    background-color: #eee !important;
+    color: #333;
+}
+
 code.language-haskell,
 code.language-erl,
 code.language-ruby,
