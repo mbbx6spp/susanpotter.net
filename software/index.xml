@@ -2,113 +2,113 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software on Susan Potter</title>
-    <link>https://susanpotter.net/software/</link>
+    <link>/software/</link>
     <description>Recent content in Software on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Apr 2019 17:11:08 -0500</lastBuildDate>
     
-	<atom:link href="https://susanpotter.net/software/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/software/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Practical Recursion Schemes</title>
-      <link>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</link>
+      <link>/blogs/software/2018/10/practical-recursion-schemes/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</guid>
+      <guid>/blogs/software/2018/10/practical-recursion-schemes/</guid>
       <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
     <item>
       <title>Decoding lens operators</title>
-      <link>https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/</link>
+      <link>/blogs/software/2018/04/haskell-decoding-lenses/</link>
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/</guid>
+      <guid>/blogs/software/2018/04/haskell-decoding-lenses/</guid>
       <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
     <item>
       <title>Ruby 2.4 changes overview</title>
-      <link>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</link>
+      <link>/blogs/software/2016/12/ruby-v2.4.0/</link>
       <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</guid>
+      <guid>/blogs/software/2016/12/ruby-v2.4.0/</guid>
       <description>Unified Fixnum and Bignum into Integer It&amp;rsquo;s backward compatible too.
 $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Bignum irb(main):003:0&amp;gt; 2.class =&amp;gt; Fixnum irb(main):004:0&amp;gt; Fixnum =&amp;gt; Fixnum irb(main):005:0&amp;gt; Bignum =&amp;gt; Bignum irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39; irb(main):007:0&amp;gt; quit  $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’  $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.4.0&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Integer irb(main):003:0&amp;gt; 2.</description>
     </item>
     
     <item>
       <title>Nix in your home directory</title>
-      <link>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</link>
+      <link>/blogs/software/2016/08/nix-in-home-directory/</link>
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</guid>
+      <guid>/blogs/software/2016/08/nix-in-home-directory/</guid>
       <description>Prerequisites     wget is installed    tar is installed   Purpose   If you really don&amp;#39;t want to install Nix under /nix (or you can&amp;#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.  Now whenever you want to run a command under Nix&amp;#39;s control, you should prefix with nixrun.  Good luck.</description>
     </item>
     
     <item>
       <title>Parametricity</title>
-      <link>https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/</link>
+      <link>/blogs/software/2014/09/parametricity-practitioners-guide/</link>
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/</guid>
+      <guid>/blogs/software/2014/09/parametricity-practitioners-guide/</guid>
       <description>Introduction   The fundamental idea of parametricity is that from parametric &amp;#34;pure&amp;#34; functions we can determine interesting properties and, moreover, we can tell much more from these parametric types than functions fixed with specific types. Goals   The following article is an attempt to:    introduce the ideas and some terms informally with the aim of targeting industry practitioners used to mainstream languages and methods    highlight (through examples) the use and motivation of defining functions to be as generic as possible    provide links to further reading on the topic for the reader to investigate more formally if desired   Prerequisites &amp;amp; Terminology   The idea of parametricity only works when three things hold:    We reason about &amp;#34;pure&amp;#34; functions only.</description>
     </item>
     
     <item>
       <title>Scala WTFs</title>
-      <link>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</link>
+      <link>/blogs/software/2014/02/scala-wtfs/</link>
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</guid>
+      <guid>/blogs/software/2014/02/scala-wtfs/</guid>
       <description>Small sample of Scala WTFs circa 2014 (many taken from Paul Phillips talks on the Scala Collections library):
 scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&amp;gt; List(1, 2) ::: List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;) // it&#39;d be funny if you didn&#39;t care. res3: List[Any] = List(1, 2, a, b) scala&amp;gt; List(1, 2) ::: List(3, 4.</description>
     </item>
     
     <item>
       <title>OSX Lion (10.7.4) work laptop setup</title>
-      <link>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</link>
+      <link>/blogs/software/2014/01/osx-lion-setup/</link>
       <pubDate>Sat, 25 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</guid>
+      <guid>/blogs/software/2014/01/osx-lion-setup/</guid>
       <description>Homebrew   Install after the command-line tools for Xcode.    tmux    erlang    haskell-platform    zsh    git    figlet    scala    sbt    rbenv    ruby-build    s3cmd    pit   brew install tmux erlang haskell-platform zsh \  git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems     veewee   App Store     Opera    Skitch    XCode (Command-line tools)    Miro (if only there was a way to uninstall iTunes)   Manual Installs     Skype    Chrome    Firefox    Adium    Command-line tools from Xcode (after install)    GitHub for Mac    Java 7 (and change default to this in Java Preferences)    DropBox    Growl (latest free version)    VirtualBox    Vagrant - see http://vagrantup.</description>
     </item>
     
     <item>
       <title>Erlang OTP Glossary</title>
-      <link>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</link>
+      <link>/blogs/software/2012/01/erlang-otp-glossary/</link>
       <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</guid>
+      <guid>/blogs/software/2012/01/erlang-otp-glossary/</guid>
       <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&amp;#39;t have to!:)    Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</description>
     </item>
     
     <item>
       <title>Erlang Meck API notes</title>
-      <link>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</link>
+      <link>/blogs/software/2011/03/erlang-meck-api/</link>
       <pubDate>Wed, 23 Mar 2011 01:11:30 -0500</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</guid>
+      <guid>/blogs/software/2011/03/erlang-meck-api/</guid>
       <description>Notes on using Meck API (a mocking library in Erlang) which are not well documented. % Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity).</description>
     </item>
     
     <item>
       <title>Custom Security Handler Nitrogen</title>
-      <link>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</link>
+      <link>/blogs/software/2011/02/custom-security-handler-nitrogen/</link>
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</guid>
+      <guid>/blogs/software/2011/02/custom-security-handler-nitrogen/</guid>
       <description>An example of a custom security handler implementation for Nitrogen 2.x.  customer_security_handler.erl %%% HEADER %%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&amp;#34;nitrogen_core/include/wf.hrl&amp;#34;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS  %% @hidden %% @todo Add authentication code.</description>
     </item>
     
     <item>
       <title>My .gitconfig &amp; .tigrc files</title>
-      <link>https://susanpotter.net/blogs/software/2007/11/gitconfig/</link>
+      <link>/blogs/software/2007/11/gitconfig/</link>
       <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>https://susanpotter.net/blogs/software/2007/11/gitconfig/</guid>
+      <guid>/blogs/software/2007/11/gitconfig/</guid>
       <description>[user] name = Susan Potter # make sure you change this email = me@susanpotter.net # make sure you change this [color] diff = auto status = auto branch = auto [diff] rename = copy color = auto [apply] whitespace = strip [pager] color = true [status] color = auto [branch] autosetuprebase = always [alias] co = &amp;#34;checkout&amp;#34; ci = &amp;#34;commit&amp;#34; ciall = &amp;#34;commit -a -v&amp;#34; unmerge = &amp;#34;reset --hard ORIG_HEAD&amp;#34; lsbr = &amp;#34;branch -a&amp;#34; # list all branches, even remote ones mkbr = &amp;#34;branch&amp;#34; # create branch if you specify a branch name after it, e.</description>
     </item>
     

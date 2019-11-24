@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Susan Potter</title>
-    <link>https://susanpotter.net/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 Oct 2018 18:45:40 -0500</lastBuildDate>
     
-	<atom:link href="https://susanpotter.net/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>functional programming</title>
-      <link>https://susanpotter.net/categories/functional-programming/</link>
+      <link>/categories/functional-programming/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
-      <guid>https://susanpotter.net/categories/functional-programming/</guid>
+      <guid>/categories/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>haskell</title>
-      <link>https://susanpotter.net/categories/haskell/</link>
+      <link>/categories/haskell/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
-      <guid>https://susanpotter.net/categories/haskell/</guid>
+      <guid>/categories/haskell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>software</title>
-      <link>https://susanpotter.net/categories/software/</link>
+      <link>/categories/software/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
-      <guid>https://susanpotter.net/categories/software/</guid>
+      <guid>/categories/software/</guid>
       <description></description>
     </item>
     
