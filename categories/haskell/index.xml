@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Haskell on Susan Potter</title>
+    <title>haskell on Susan Potter</title>
     <link>https://susanpotter.net/categories/haskell/</link>
-    <description>Recent content in Haskell on Susan Potter</description>
+    <description>Recent content in haskell on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 Oct 2018 18:45:40 -0500</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</guid>
-      <description>Recursive data types Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine:
-data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor Foldable The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
+      <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
     <item>
@@ -27,8 +26,7 @@ data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/</guid>
-      <description>Notation conventions The following table provides a quick overview of conventions used in symbolic operators in the lens library.
-   Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
+      <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
   </channel>

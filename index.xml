@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Susan Potter on Susan Potter</title>
+    <title>Susan Potter</title>
     <link>https://susanpotter.net/</link>
-    <description>Recent content in Susan Potter on Susan Potter</description>
+    <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 May 2019 22:41:25 -0500</lastBuildDate>
-    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://susanpotter.net/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Shorts</title>
@@ -15,16 +17,7 @@
       <pubDate>Sat, 11 May 2019 22:41:25 -0500</pubDate>
       
       <guid>https://susanpotter.net/film/2019/05/shorts/</guid>
-      <description>&lt;p&gt;My absolute favorite format of film is the short film. Here are a list of short films I loved watching:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=02HY5ZGyG9M&#34; title=&#34;Re-Gifted (2018)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Re-Gifted (2018)&lt;/a&gt;: CGI 3D short film that follows the life of a decrative ornament.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=dyIFohEjkyM&#34; title=&#34;3x3 (2009)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;3x3 (2009)&lt;/a&gt;: A tale of two different approaches to mastery.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://vimeo.com/203126235&#34; title=&#34;The Bigger Picture (2015)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;The Bigger Picture (2015)&lt;/a&gt;: Two brothers struggling to cope with their elderly mother&#39;s care.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=tWPnKYwbqtg&#34; title=&#34;Round About Five (2005)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Round About Five (2005)&lt;/a&gt;: A bicycle courier and a businessman share a fleeeting moment during a London rush hour.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=XBvX00jq-iM&#34; title=&#34;Restoration (2018)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Restoration (2018)&lt;/a&gt;: A man drives his father&#39;s restored car and contemplates the gravity of the past.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>My absolute favorite format of film is the short film. Here are a list of short films I loved watching:    Re-Gifted (2018): CGI 3D short film that follows the life of a decrative ornament.    3x3 (2009): A tale of two different approaches to mastery.    The Bigger Picture (2015): Two brothers struggling to cope with their elderly mother&amp;#39;s care.    Round About Five (2005): A bicycle courier and a businessman share a fleeeting moment during a London rush hour.</description>
     </item>
     
     <item>
@@ -33,37 +26,7 @@
       <pubDate>Tue, 23 Apr 2019 09:17:38 -0500</pubDate>
       
       <guid>https://susanpotter.net/about/</guid>
-      <description>&lt;p&gt;I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.&lt;/p&gt;
-
-&lt;p&gt;Feel free to ask me:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;how I might be able to help your Engineering organization live up to their highest potential;&lt;/li&gt;
-&lt;li&gt;how I could streamline your delivery workflow and also improve quality;&lt;/li&gt;
-&lt;li&gt;how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;&lt;/li&gt;
-&lt;li&gt;how I would improve productivity by optimizing for &lt;a href=&#34;https://en.wikipedia.org/wiki/Flow_(psychology)&#34; title=&#34;Flow&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Flow&lt;/a&gt;;&lt;/li&gt;
-&lt;li&gt;how you could use algebraic properties to test-infect our distributed systems;&lt;/li&gt;
-&lt;li&gt;how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;&lt;/li&gt;
-&lt;li&gt;how I have led teams building type-safe software that reduced long-term maintenance costs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Current general purpose languages:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Haskell&lt;/li&gt;
-&lt;li&gt;Ruby&lt;/li&gt;
-&lt;li&gt;Bash&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Current configuration langauges:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Dhall&lt;/li&gt;
-&lt;li&gt;Nix&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.g. NixOS), and declarative infrastructure.&lt;/p&gt;
-</description>
+      <description>I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.  Feel free to ask me:    how I might be able to help your Engineering organization live up to their highest potential;    how I could streamline your delivery workflow and also improve quality;    how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;    how I would improve productivity by optimizing for Flow;    how you could use algebraic properties to test-infect our distributed systems;    how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;    how I have led teams building type-safe software that reduced long-term maintenance costs    Current general purpose languages:    Haskell    Ruby    Bash    Current configuration langauges:    Dhall    Nix    Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.</description>
     </item>
     
     <item>
@@ -72,208 +35,7 @@
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</guid>
-      <description>&lt;h2 id=&#34;recursive-data-types&#34;&gt;Recursive data types&lt;/h2&gt;
-
-&lt;p&gt;Recursive data structures pop up all over in software from general-purpose structures
-like lists and binary trees to more application-specific structures like this AST from
-a simple business rules engine:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;  data BusinessRule input output
-    = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output)
-    | Return (input -&amp;gt; output)
-    | Stop
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;functor&#34;&gt;&lt;code&gt;Functor&lt;/code&gt;&lt;/h2&gt;
-
-&lt;h2 id=&#34;foldable&#34;&gt;&lt;code&gt;Foldable&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;The &lt;code&gt;Foldable&lt;/code&gt; class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.&lt;/p&gt;
-
-&lt;p&gt;Intuitively this is an assortment of =List=-like fold methods on other structures&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;class Foldable t where
-  foldMap :: Monoid m =&amp;gt; (a -&amp;gt; m) -&amp;gt; t a -&amp;gt; m
-  fold    :: Monoid m =&amp;gt; t m -&amp;gt; m
-  foldr   :: (a -&amp;gt; b -&amp;gt; b) -&amp;gt; b -&amp;gt; t a -&amp;gt; b
-  foldl   :: (a -&amp;gt; b -&amp;gt; a) -&amp;gt; a -&amp;gt; t b -&amp;gt; a
-  foldr1  :: (a -&amp;gt; a -&amp;gt; a) -&amp;gt; t a -&amp;gt; a
-  foldl1  :: (a -&amp;gt; a -&amp;gt; a) -&amp;gt; t a -&amp;gt; a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Example of defining a &lt;code&gt;Foldable&lt;/code&gt; instance manually:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data Tree a
-  = Empty
-  | Leaf a
-  | Node (Tree a) (Tree a)
-
-instance Foldable Tree where
-  foldMap f Empty = mempty
-  foldMap f (Leaf x) = f x
-  foldMap f (Node l r) = foldMap f l &amp;lt;&amp;gt; foldMap f r
-
-count :: Foldable t =&amp;gt; t a -&amp;gt; Int
-count = getSum . foldMap (const $ Sum 1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Foldable&lt;/code&gt; is derivable using the &lt;code&gt;DeriveFoldable&lt;/code&gt; language pragma like so:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data Tree a
-  = Empty
-  | Leaf a
-  | Node (Tree a) (Tree a)
-  deriving (Foldable)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;traversable&#34;&gt;Traversable&lt;/h2&gt;
-
-&lt;p&gt;Traversable gives you the ability to traverse a structure from left-to-right, performing
-an effectful action on each element and preserving the shape.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Intuitively it is &lt;code&gt;fmap&lt;/code&gt; with effects&lt;/li&gt;
-&lt;li&gt;Derivable using &lt;code&gt;DeriveTraversable&lt;/code&gt; language pragma&lt;/li&gt;
-&lt;li&gt;See &#39;Applicative Progamming with Effects&#39;, by McBride and Paterson&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;class (Functor t, Foldable t) =&amp;gt; Traversable t where
-  traverse  :: Applicative f =&amp;gt; (a -&amp;gt; f b) -&amp;gt; t a -&amp;gt; f (t b)
-  sequenceA :: Applicative f =&amp;gt; t (f a) -&amp;gt; f (t a)
-  mapM      :: Monad m =&amp;gt; (a -&amp;gt; m b) -&amp;gt;  t a -&amp;gt;  m (t a)
-  sequence  :: Monad m =&amp;gt; t (m a) -&amp;gt; m (t a)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Example for this for &lt;code&gt;Tree&lt;/code&gt; type defining the instance manually is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;instance Traversable Tree where
-  traverse f Empty = pure Empty
-  traverse f (Leaf x) = Leaf &amp;lt;$&amp;gt; f x
-  traverse f (Node l r) = Node &amp;lt;$&amp;gt; traverse f l &amp;lt;*&amp;gt; traverse f r
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notes:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;mapM&lt;/code&gt; and &lt;code&gt;sequence&lt;/code&gt; generalize Prelude functions of the same name&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sequence&lt;/code&gt; can also be thought of as a generalized matrix transpose&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sequence :: Monad m =&amp;gt; t (m a) -&amp;gt; m (t a)
-sequence = mapM id
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;fixed-points-of-functors&#34;&gt;Fixed Points of Functors&lt;/h2&gt;
-
-&lt;p&gt;An idea from category theory which gives:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;data-type generic functions&lt;/li&gt;
-&lt;li&gt;compositional data&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Fixed points are represented by the type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;newtype Fix f = Fix { unFix :: f (Fix f) }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A functor &lt;code&gt;f&lt;/code&gt; is a data-type of kind &lt;code&gt;* -&amp;gt; *&lt;/code&gt; together with an &lt;code&gt;fmap&lt;/code&gt; function.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;Fix f = f (f (f (f ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;useful-functions&#34;&gt;Useful functions&lt;/h2&gt;
-
-&lt;h3 id=&#34;fan-out-aka-fork&#34;&gt;fan-out aka &lt;em&gt;fork&lt;/em&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;(&amp;amp;&amp;amp;&amp;amp;)
-  :: (b -&amp;gt; c)
-  -&amp;gt; (b -&amp;gt; d)
-  -&amp;gt; b
-  -&amp;gt; (c, d)
-(f &amp;amp;&amp;amp;&amp;amp; g) = \x -&amp;gt; (f x, g x)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;fan-in&#34;&gt;fan-in&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;(|||)
-  :: (b -&amp;gt; d)
-  -&amp;gt; (c -&amp;gt; d)
-  -&amp;gt; Either b c
-  -&amp;gt; d
-(f ||| g) = either
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;function-product&#34;&gt;function product&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;(***)
-  :: (a -&amp;gt; c)
-  -&amp;gt; (b -&amp;gt; d)
-  -&amp;gt; (a, b)
-  -&amp;gt; (c, d)
-(f *** g) = \(x, y) -&amp;gt; (f x, g y)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;generalized-unzip-for-functions&#34;&gt;generalized unzip for functions&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;funzip
-  :: Functor f
-  =&amp;gt; f (a, b)
-  -&amp;gt; (f a, f b)
-funzip = fmap fst &amp;amp;&amp;amp;&amp;amp; fmap snd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;data-type-generic-programming&#34;&gt;Data-type generic programming&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;allows us to parameterise functions on the structure, or shape, of a data-type&lt;/li&gt;
-&lt;li&gt;useful for large complex data-types, where boilerplate traversal code often dominates,&lt;/li&gt;
-  especially when updating a small subset of constructors
-&lt;li&gt;for recursion schemes, we can capture the pattern as a standalone combinator&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ul&gt;
-Limitations:
-&lt;li&gt;The set of data-types that can be represented by means of &lt;code&gt;Fix&lt;/code&gt; is limited to regular data-types.&lt;/li&gt;
-&lt;li&gt;Nested data-types and mutually recursive data-types require higher-order approaches.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In order to work with lists using a data-type generic &lt;code&gt;cata&lt;/code&gt; combinator, we need a new &#34;unfixed&#34; type representation.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data ListF a r = C a r | N
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;ListF a r&lt;/code&gt; is not an ordinary functor, but we can define a polymorphic functor instance for &lt;code&gt;ListF a&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;instance Functor (ListF a) where
-  fmap f N = N
-  fmap f (C x xs) = C x (f xs)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We might also want a pattern functor for natural numbers!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;data NatF r = Succ r | Zero deriving Functor
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;catamorphism&#34;&gt;Catamorphism&lt;/h2&gt;
-
-&lt;p&gt;We would like to write &lt;code&gt;foldr&lt;/code&gt; once for all data-types.
-Category theory shows us how to define it data-type generically for a functor fixed-point.&lt;/p&gt;
-
-&lt;h3 id=&#34;that-catamorphism-fusion-law&#34;&gt;That catamorphism-fusion law&lt;/h3&gt;
-
-&lt;p&gt;The &lt;em&gt;catamorphism-fusion&lt;/em&gt; law is arguably the most important law, and can be used to transform
-the composition of a function with a catamorphism into a single catamorphism, eliminating
-intermediate data structures.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;h . f = g . fmap h =&amp;gt; h . cata f = cata g
-  where f :: f a -&amp;gt; a
-        g :: f b -&amp;gt; b
-        h :: a -&amp;gt; b
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;composing-algebras&#34;&gt;Composing Algebras&lt;/h3&gt;
-</description>
+      <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
     <item>
@@ -282,84 +44,7 @@ intermediate data structures.&lt;/p&gt;
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2018/04/haskell-decoding-lenses/</guid>
-      <description>&lt;h2 id=&#34;notation-conventions&#34;&gt;Notation conventions&lt;/h2&gt;
-
-&lt;p&gt;The following table provides a quick overview of conventions used in symbolic 
-operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Symbol&lt;/th&gt;
-&lt;th&gt;Concept&lt;/th&gt;
-&lt;th&gt;Denotes&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;^&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;getter&lt;/td&gt;
-&lt;td&gt;gets value from structure&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;~&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;setter&lt;/td&gt;
-&lt;td&gt;sets values in structure&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;over&lt;/td&gt;
-&lt;td&gt;apply transformation over selected substructure&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;state&lt;/td&gt;
-&lt;td&gt;threads state through&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;before change&lt;/td&gt;
-&lt;td&gt;returns value before specified change&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;after change&lt;/td&gt;
-&lt;td&gt;returns value after specified change&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;?&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Maybe&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;optionality&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;!&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;force&lt;/td&gt;
-&lt;td&gt;force value&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h2&gt;
-
-&lt;h3 id=&#34;data-types&#34;&gt;Data Types&lt;/h3&gt;
-
-&lt;p&gt;Let&#39;s start understanding how to &lt;em&gt;use&lt;/em&gt; the &lt;code&gt;lens&lt;/code&gt; library by defining some data types of an application:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;practical-nested-getting&#34;&gt;Practical Nested Getting&lt;/h3&gt;
-
-&lt;h3 id=&#34;practical-nested-setting&#34;&gt;Practical Nested Setting&lt;/h3&gt;
-</description>
+      <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
     <item>
@@ -368,102 +53,8 @@ operators in the &lt;code&gt;lens&lt;/code&gt; library.&lt;/p&gt;
       <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/</guid>
-      <description>
-
-&lt;h2 id=&#34;unified-fixnum-and-bignum-into-integer&#34;&gt;Unified &lt;code&gt;Fixnum&lt;/code&gt; and &lt;code&gt;Bignum&lt;/code&gt; into &lt;code&gt;Integer&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;It&amp;rsquo;s backward compatible too.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
-irb(main):001:0&amp;gt; RUBY_VERSION
-=&amp;gt; &amp;quot;2.3.1&amp;quot;
-irb(main):002:0&amp;gt; (2**100).class
-=&amp;gt; Bignum
-irb(main):003:0&amp;gt; 2.class
-=&amp;gt; Fixnum
-irb(main):004:0&amp;gt; Fixnum
-=&amp;gt; Fixnum
-irb(main):005:0&amp;gt; Bignum
-=&amp;gt; Bignum
-irb(main):006:0&amp;gt; Bogonum
-NameError: uninitialized constant Bogonum
-        from (irb):6
-        from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;
-irb(main):007:0&amp;gt; quit
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ nix-env -f . -iA ruby_2_4_0
-replacing old ‘ruby-2.3.1-p0’
-installing ‘ruby-2.4.0’
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
-irb(main):001:0&amp;gt; RUBY_VERSION
-=&amp;gt; &amp;quot;2.4.0&amp;quot;
-irb(main):002:0&amp;gt; (2**100).class
-=&amp;gt; Integer
-irb(main):003:0&amp;gt; 2.class
-=&amp;gt; Integer
-irb(main):004:0&amp;gt; Fixnum
-(irb):4: warning: constant ::Fixnum is deprecated
-=&amp;gt; Integer
-irb(main):005:0&amp;gt; Bignum
-(irb):5: warning: constant ::Bignum is deprecated
-=&amp;gt; Integer
-irb(main):006:0&amp;gt; Bogonum
-NameError: uninitialized constant Bogonum
-        from (irb):6
-        from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;
-irb(main):007:0&amp;gt; quit
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;array-min-array-max-optimization-in-ruby-v2-4-0&#34;&gt;Array#min/Array#max optimization in Ruby v2.4.0+&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# content of ruby_array_benchmarks.rb
-require &#39;benchmark&#39;
-
-LARGE_ARRAY = (1..100_000_000).to_a.freeze
-
-puts &amp;quot;Ruby v#{RUBY_VERSION}&amp;quot;
-
-Benchmark.bm(100) do |b|
-  b.report(&#39;Array#min on large array&#39;) do
-    LARGE_ARRAY.min
-  end
-
-  b.report(&#39;Array#max on large array&#39;) do
-    LARGE_ARRAY.max
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now let&amp;rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
-
-$ ruby ruby_array_benchmarks.rb
-Ruby v2.3.3
-                                                                                                           user     system      total        real
-Array#min on large array                                                                               4.670000   0.000000   4.670000 (  4.673932)
-Array#max on large array                                                                               4.650000   0.000000   4.650000 (  4.644266)
-
-$ nix-env -f . -iA ruby_2_4_0
-replacing old ‘ruby-2.3.3’
-installing ‘ruby-2.4.0’
-
-$ ruby ruby_array_benchmarks.rb
-Ruby v2.4.0
-                                                                                                           user     system      total        real
-Array#min on large array                                                                               0.170000   0.000000   0.170000 (  0.169169)
-Array#max on large array                                                                               0.180000   0.000000   0.180000 (  0.186183)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.&lt;/p&gt;
-
-&lt;p&gt;There are other changes, which I haven&amp;rsquo;t had time to check out yet.&lt;/p&gt;
-
-&lt;p&gt;Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.&lt;/p&gt;
-</description>
+      <description>Unified Fixnum and Bignum into Integer It&amp;rsquo;s backward compatible too.
+$ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Bignum irb(main):003:0&amp;gt; 2.class =&amp;gt; Fixnum irb(main):004:0&amp;gt; Fixnum =&amp;gt; Fixnum irb(main):005:0&amp;gt; Bignum =&amp;gt; Bignum irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39; irb(main):007:0&amp;gt; quit  $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’  $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.4.0&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Integer irb(main):003:0&amp;gt; 2.</description>
     </item>
     
     <item>
@@ -472,59 +63,16 @@ Array#max on large array                                                        
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/</guid>
-      <description>&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;wget&lt;/code&gt; is installed&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;tar&lt;/code&gt; is installed&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;purpose&#34;&gt;Purpose&lt;/h2&gt;
-
-&lt;p&gt;If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.&lt;/p&gt;
-
-&lt;p&gt;Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.&lt;/p&gt;
-
-&lt;p&gt;Good luck.&lt;/p&gt;
-
-&lt;h2 id=&#34;homedir-install-sh&#34;&gt;&lt;code&gt;homedir_install.sh&lt;/code&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;function install_nix() {
-  local -r bindir=&amp;quot;${HOME}/opt/bin&amp;quot;
-  local -r proot_url=&amp;quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&amp;quot;
-  local -r nixdir=&amp;quot;${HOME}/mnt/nix&amp;quot;
-  local -r nixver=&amp;quot;1.11.2&amp;quot;
-  local -r arch=&amp;quot;x86_64&amp;quot;
-  local -r os=&amp;quot;linux&amp;quot;
-  local -r nixbz2_url=&amp;quot;http://nixos.org/releases/nix/nix-${nixver}/nix-${nixver}-${arch}-${os}.tar.bz2&amp;quot;
-
-  mkdir -p &amp;quot;${bindir}&amp;quot;
-  wget -O &amp;quot;${bindir}/proot&amp;quot; &amp;quot;${proot_url}&amp;quot;
-  chmod u+x &amp;quot;${bindir}/proot&amp;quot;
-
-  mkdir -p &amp;quot;${nixdir}&amp;quot;
-  pushd &amp;quot;${nixdir}&amp;quot;
-  wget &amp;quot;${nixbz2_url}&amp;quot;
-  tar xjf nix-*bz2
-
-  local -r nixbin=&amp;quot;$(dirname &amp;quot;$(find &amp;quot;${nixdir}&amp;quot; -name &amp;quot;nix-shell&amp;quot; | head -1)&amp;quot;)&amp;quot;
-  export PATH=&amp;quot;${bindir}:${nixbin}:${PATH}&amp;quot;
-  {
-    echo &amp;quot;#!/usr/bin/env bash&amp;quot;
-    echo
-    echo &amp;quot;proot -b \&amp;quot;${nixdir}/nix-${nixver}-${arch}-${os}/:/nix\&amp;quot; \$@&amp;quot;
-  } &amp;gt; &amp;quot;${bindir}/nixrun&amp;quot;
-  chmod u+x &amp;quot;${bindir}/nixrun&amp;quot;
-}
-
-set -eu
-set -o pipefail
-
-install_nix
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Thanks to &lt;a href=&#34;https://github.com/willprice&#34; title=&#34;Will Price (@willprice)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Will Price (@willprice)&lt;/a&gt; for pointing out my original link to the proot static binary was broken on Oct 23, 2017: https://github.com/proot-me/proot/issues/120#issuecomment-338649213&lt;/p&gt;
-</description>
+      <description>Prerequisites     wget is installed    tar is installed   Purpose   If you really don&amp;#39;t want to install Nix under /nix (or you can&amp;#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.  Now whenever you want to run a command under Nix&amp;#39;s control, you should prefix with nixrun.  Good luck.</description>
+    </item>
+    
+    <item>
+      <title>Parametricity</title>
+      <link>https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/</link>
+      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/</guid>
+      <description>Introduction   The fundamental idea of parametricity is that from parametric &amp;#34;pure&amp;#34; functions we can determine interesting properties and, moreover, we can tell much more from these parametric types than functions fixed with specific types. Goals   The following article is an attempt to:    introduce the ideas and some terms informally with the aim of targeting industry practitioners used to mainstream languages and methods    highlight (through examples) the use and motivation of defining functions to be as generic as possible    provide links to further reading on the topic for the reader to investigate more formally if desired   Prerequisites &amp;amp; Terminology   The idea of parametricity only works when three things hold:    We reason about &amp;#34;pure&amp;#34; functions only.</description>
     </item>
     
     <item>
@@ -533,31 +81,8 @@ install_nix
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2014/02/scala-wtfs/</guid>
-      <description>&lt;p&gt;Small sample of reasons why the Scala standard library (especially collections) might need rewriting (many taken from Paul Phillips talks on the Scala Collections library):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet // the only reasonable line of code in here
-res1: scala.collection.immutable.Set[String] = Set(a, b, c)
-
-scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet() // seen this when learning Scala first time. ROFL.
-res2: Boolean = false
-
-scala&amp;gt; List(1, 2) ::: List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;) // it&#39;d be funny if you didn&#39;t care.
-res3: List[Any] = List(1, 2, a, b)
-
-scala&amp;gt; List(1, 2) ::: List(3, 4.0) // sad panda
-res4: List[AnyVal] = List(1, 2, 3.0, 4.0)
-
-scala&amp;gt; List(1, 2, 3) contains &amp;quot;wtf?&amp;quot; // LMAO if it didn&#39;t hurt so much
-res5: Boolean = false
-
-scala&amp;gt; Double.MaxValue - Int.MaxValue == Double.MaxValue // I don&#39;t even ...
-res6: Boolean = true
-
-scala&amp;gt; 555555555.round // LOL
-res0: Int = 555555584
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Small sample of Scala WTFs circa 2014 (many taken from Paul Phillips talks on the Scala Collections library):
+scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&amp;gt; List(1, 2) ::: List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;) // it&#39;d be funny if you didn&#39;t care. res3: List[Any] = List(1, 2, a, b) scala&amp;gt; List(1, 2) ::: List(3, 4.</description>
     </item>
     
     <item>
@@ -566,61 +91,7 @@ res0: Int = 555555584
       <pubDate>Sat, 25 Jan 2014 00:00:00 +0000</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2014/01/osx-lion-setup/</guid>
-      <description>&lt;h2 id=&#34;homebrew&#34;&gt;Homebrew&lt;/h2&gt;
-
-&lt;p&gt;Install after the command-line tools for Xcode.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;tmux&lt;/li&gt;
-&lt;li&gt;erlang&lt;/li&gt;
-&lt;li&gt;haskell-platform&lt;/li&gt;
-&lt;li&gt;zsh&lt;/li&gt;
-&lt;li&gt;git&lt;/li&gt;
-&lt;li&gt;figlet&lt;/li&gt;
-&lt;li&gt;scala&lt;/li&gt;
-&lt;li&gt;sbt&lt;/li&gt;
-&lt;li&gt;rbenv&lt;/li&gt;
-&lt;li&gt;ruby-build&lt;/li&gt;
-&lt;li&gt;s3cmd&lt;/li&gt;
-&lt;li&gt;pit&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;brew install tmux erlang haskell-platform zsh \
-  git figlet scala sbt rbenv ruby-build s3cmd pit
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;rubygems&#34;&gt;RubyGems&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;veewee&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;app-store&#34;&gt;App Store&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Opera&lt;/li&gt;
-&lt;li&gt;Skitch&lt;/li&gt;
-&lt;li&gt;XCode (Command-line tools)&lt;/li&gt;
-&lt;li&gt;Miro (if only there was a way to uninstall iTunes)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;manual-installs&#34;&gt;Manual Installs&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Skype&lt;/li&gt;
-&lt;li&gt;Chrome&lt;/li&gt;
-&lt;li&gt;Firefox&lt;/li&gt;
-&lt;li&gt;Adium&lt;/li&gt;
-&lt;li&gt;Command-line tools from Xcode (after install)&lt;/li&gt;
-&lt;li&gt;GitHub for Mac&lt;/li&gt;
-&lt;li&gt;Java 7 (and change default to this in Java Preferences)&lt;/li&gt;
-&lt;li&gt;DropBox&lt;/li&gt;
-&lt;li&gt;Growl (latest free version)&lt;/li&gt;
-&lt;li&gt;VirtualBox&lt;/li&gt;
-&lt;li&gt;Vagrant - see http://vagrantup.com&lt;/li&gt;
-&lt;li&gt;Packer - see http://packer.io&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Homebrew   Install after the command-line tools for Xcode.    tmux    erlang    haskell-platform    zsh    git    figlet    scala    sbt    rbenv    ruby-build    s3cmd    pit   brew install tmux erlang haskell-platform zsh \  git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems     veewee   App Store     Opera    Skitch    XCode (Command-line tools)    Miro (if only there was a way to uninstall iTunes)   Manual Installs     Skype    Chrome    Firefox    Adium    Command-line tools from Xcode (after install)    GitHub for Mac    Java 7 (and change default to this in Java Preferences)    DropBox    Growl (latest free version)    VirtualBox    Vagrant - see http://vagrantup.</description>
     </item>
     
     <item>
@@ -629,43 +100,7 @@ res0: Int = 555555584
       <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2012/01/erlang-otp-glossary/</guid>
-      <description>&lt;p&gt;I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&#39;t have to!:)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Erlang/OTP&lt;/strong&gt; - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP Release&lt;/strong&gt; - A fully deployable distribution to run on an &lt;strong&gt;&#34;Erlang node&#34;&lt;/strong&gt; (see below). An OTP Release may have one or more OTP Applications running inside of it at any time.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP Application&lt;/strong&gt; - Usually a &lt;strong&gt;stateful&lt;/strong&gt; long-running and active set of &lt;strong&gt;Erlang processes&lt;/strong&gt; that collaborate together to achieve a well-defined set of responsibilities. It is a packaging of these collaborating modules and processes into a directory structure (see &#39;OTP Application Conventions&#39; below) along with metadata about the OTP Application and default/fallback environment variable values (in case the OTP Release above doesn&#39;t provide any values for them).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP Application Resource File&lt;/strong&gt; - Contains metadata and environment variable value defaults/fallbacks for the OTP Application.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP Application Callback Module&lt;/strong&gt; - For all &lt;strong&gt;active&lt;/strong&gt; OTP Applications a callback module providing the `application` &lt;strong&gt;Erlang behaviour&lt;/strong&gt; must be defined and export `start/2` and `stop/0` as per the expected contract (see [OTP Application manual](http://www.erlang.org/doc/design_principles/applications.html)).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP Supervisor&lt;/strong&gt; - Each &lt;strong&gt;active&lt;/strong&gt; OTP Application Callback Module will start a root supervisor to run the different components of the application inside of a supervision tree.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP gen_server&lt;/strong&gt; - A supervisor can launch one or more workers and/or one or more supervisors to create the supervision tree. One type of OTP defined behaviour is a `gen_server` that enables the very common client/server semantics. A `gen_server` callback/implementation module is launched as an Erlang process that can keep state running in a loop and receive messages sent from other Erlang processes. These messages may be `call`ed (i.e. the client blocks until the `gen_server` implementation replies) or can be `cast` (i.e. the client sends and forgets that it sent that message).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP gen_event&lt;/strong&gt; - A lesser used OTP defined behaviour and broadcast module for event handling/broadcasting.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;OTP gen_fsm&lt;/strong&gt; - A lesser used OTP defined behaviour for FSMs.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Erlang behaviours&lt;/strong&gt; - a defined/expected interface that a module is expected to export. Any deviation from the defined/expected interface for a module defined as providing this &lt;strong&gt;Erlang behaviour&lt;/strong&gt; will show up as a compiler &lt;strong&gt;warning&lt;/strong&gt; (not error).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Erlang node&lt;/strong&gt; - one instance of a BEAM VM runtime, potentially having multiple OS processes in a process tree.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Erlang process&lt;/strong&gt; - a very lightweight thread inside of the BEAM VM that only permits sharing global state via a process mailbox that can receive messages from other Erlang processes. The BEAM VM can create Erlang processes with very low resource consumption; with `+K true` passed in as a VM option upon startup, `epoll` (and other kernel polling mechanisms depending on the OS that Node.js/EventMachine utilizes) can be used to determine which Erlang processes are runnable at any moment, to minimize I/O blocking/wait times without impacting programming-style and impairing code readability/debuggability (which Node.js/EventMachine does drastically).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;recommended-reading&#34;&gt;Recommended Reading&lt;/h2&gt;
-
-&lt;p&gt;Book:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.manning.com/logan/&#34; title=&#34;OTP in Action&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;OTP in Action&lt;/a&gt; - Manning Publishing: very useful for the budding Erlanger that wants to building production systems in OTP.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Online:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://learnyousomeerlang.com/&#34; title=&#34;Learn You Some Erlang&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Learn You Some Erlang&lt;/a&gt; - Great online learning resource for Erlangers plus OTP beginner and intermediate developers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Code:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/basho&#34; title=&#34;Basho Erlang Projects&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Basho Erlang Projects&lt;/a&gt; - Often the best way to learn is by looking at a living breathing codebase that uses the language and/or libraries you are learning. A great source is Basho&#39;s Erlang projects. Check out rebar, lager, poolboy, riak_kv, riak_search and many more.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&amp;#39;t have to!:)    Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</description>
     </item>
     
     <item>
@@ -674,34 +109,7 @@ res0: Int = 555555584
       <pubDate>Wed, 23 Mar 2011 01:11:30 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2011/03/erlang-meck-api/</guid>
-      <description>&lt;p&gt;Notes on using Meck API (a mocking library in Erlang) which are not well documented.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;% Will create a fully mocked version of existing_module until caller crashes
-meck:new(ExistingModule). 
-
-% Will create a fully mocked version of existing_module even after caller crashes
-meck:new(ExistingModule, [nolink]).
-
-% Will allow you to overload existing module, keeping old functions around
-meck:new(ExistingModule, [passthrough]).
-
-% Unload mocks and revert to real module implementation
-meck:unload(ExistingModule).
-
-% Remove functions from the mock module
-meck:delete(WhateverMockedModule, SomeFun, Arity).
-
-% Get list of all function calls made to the module (in order).
-History = meck:history(MockedModule).
-% History will look _similar_ to an Erlang trace but with {{M, F, A}, Return} format
-% e.g. where MockedModule = my_mod
-% [
-%  {{my_mod, print, []}, ok},
-%  {{my_mod, sum, [1,2,3]}, 6},
-%  {{my_mod, copy_file, [&amp;quot;non_existing_file&amp;quot;, &amp;quot;other_file_name&amp;quot;]}, error, enoent, Stack}
-% ]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Notes on using Meck API (a mocking library in Erlang) which are not well documented. % Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity).</description>
     </item>
     
     <item>
@@ -710,107 +118,7 @@ History = meck:history(MockedModule).
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2011/02/custom-security-handler-nitrogen/</guid>
-      <description>&lt;p&gt;An example of a custom security handler implementation for Nitrogen 2.x.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;customer_security_handler.erl&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;%%%   HEADER
-%%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt;
-%%% @date 2011-02-16T17:08
-%%% @license BSD
-%%% @doc Example of a security_handler behavior implementation module.
-%%% It assumes a callback module is passed in that exports:
-%%% login_path/0 and authorized/2.
-%%% @end
--module(custom_security_handler).
-
--include_lib(&amp;quot;nitrogen_core/include/wf.hrl&amp;quot;).
-
--behaviour(security_handler).
-
-% security_handler behavior exports
--export([init/2, finish/2]).
-
-%%%.
-%%%   CALLBACKS
-
-%% @hidden
-%% @todo Add authentication code. Currently only authorization.
-init(CallbackModule, State) -&amp;gt;
-  PageModule = wf:page_module(),
-  User = wf:user(),
-  case CallbackModule:authorized(User, PageModule) of
-      true -&amp;gt; {CallbackModule, State};
-      _ -&amp;gt; redirect_to_login_page(CallbackModule)
-  end.
-
-%% @hidden
-finish(CallbackModule, State) -&amp;gt;
-  {CallbackModule, State}.
-
-%%%.
-%%%   PRIVATE FUNCTIONS
-%% @private
-redirect_to_login_page(CallbackModule) -&amp;gt;
-  wf:redirect_to_login(CallbackModule:login_path()).
-
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%&#39;,%%%. foldmethod=marker:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;custom_security_handler_callback.erl&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;%%%   HEADER
-%%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt;
-%%% @date 2011-02-16T17:08
-%%% @license BSD
-%%% @doc Example of a security_handler callback module.
-%%% @end
--module(custom_security_handler_callback).
-
--include_lib(&amp;quot;nitrogen_core/include/wf.hrl&amp;quot;).
-
-% security_handler callback exports
--export([authorized/2, login_url/0]).
-
-%%%.
-%%%   CALLBACKS
-
-%% @hidden
-authorized(_User, home_page) -&amp;gt; true;
-authorized(User, admin_page) -&amp;gt; admin_authorization(User);
-authorized(User, _) -&amp;gt; user_authorization(User).
-
-%% @hidden
-login_path() -&amp;gt;
-  &amp;quot;/login&amp;quot;.
-
-%%%.
-%%%   PRIVATE FUNCTIONS
-%% @private
-admin_authorization(User) -&amp;gt;
-  case User of
-    &amp;quot;admin&amp;quot; -&amp;gt; true;
-    _ -&amp;gt; false
-  end.
-
-user_authorization(User) -&amp;gt;
-  case User of
-    undefined -&amp;gt; false;
-    _ -&amp;gt; true
-  end.
-%%%.
-%%% vim: set filetype=erlang tabstop=2 foldmarker=%%%&#39;,%%%. foldmethod=marker:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In your application&#39;s supervisor code:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-erl&#34;&gt;%% in your supervisor loop function where you call
-%% nitrogen:run/0, you will need to add the following
-%% code above your nitrogen:run/0 call
-nitrogen:handler(custom_security_handler, custom_security_handler_callback),
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>An example of a custom security handler implementation for Nitrogen 2.x.  customer_security_handler.erl %%% HEADER %%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&amp;#34;nitrogen_core/include/wf.hrl&amp;#34;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS  %% @hidden %% @todo Add authentication code.</description>
     </item>
     
     <item>
@@ -819,116 +127,7 @@ nitrogen:handler(custom_security_handler, custom_security_handler_callback),
       <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2007/11/gitconfig/</guid>
-      <description>&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[user]
-  name = Susan Potter # make sure you change this
-  email = me@susanpotter.net # make sure you change this
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-[diff]
-  rename = copy
-  color = auto
-[apply]
-  whitespace = strip
-[pager]
-  color = true
-[status]
-  color = auto
-[branch]
-  autosetuprebase = always
-[alias]
-  co = &amp;quot;checkout&amp;quot;
-  ci = &amp;quot;commit&amp;quot;
-  ciall = &amp;quot;commit -a -v&amp;quot;
-  unmerge = &amp;quot;reset --hard ORIG_HEAD&amp;quot;
-  lsbr = &amp;quot;branch -a&amp;quot; # list all branches, even remote ones
-  mkbr = &amp;quot;branch&amp;quot; # create branch if you specify a branch name after it, e.g. git mkbr upgrading_rails
-  # remove branch named after it, e.g. git rmbr upgrading_rails
-  rmbr = &amp;quot;branch -d&amp;quot;
-  # rename branch from one name to another
-  mvbr = &amp;quot;branch -m&amp;quot;
-  # 
-  track = &amp;quot;branch --track&amp;quot;
-  log = &amp;quot;log -p&amp;quot;
-  lol = &amp;quot;log --graph --decorate --pretty=oneline --abbrev-commit&amp;quot;
-  lola = &amp;quot;log --graph --decorate --pretty=oneline --abbrev-commit --all&amp;quot;
-  # list remote repositories
-  lsrem = &amp;quot;remote&amp;quot;
-  # list all tags, to keep commands consistent, e.g. git lstag
-  lstag = &amp;quot;tag -l&amp;quot;
-  # list unmerged branches
-  lsunmerged = &amp;quot;branch --no-merged&amp;quot;
-  # create a new tag based on specified commit
-  mktag = &amp;quot;tag -a&amp;quot;
-  # remove existing tag by name
-  rmtag = &amp;quot;tag -d&amp;quot;
-  # rename tag from one name to another
-  mvtag = &amp;quot;tag -m&amp;quot;
-  # create new remote repository for project
-  mkrem = &amp;quot;remote add&amp;quot;
-  # initialize all submodules
-  modinit = &amp;quot;submodule init&amp;quot;
-  # update all submodules
-  modup = &amp;quot;submodule update&amp;quot;
-  # show status of all submodules
-  modst = &amp;quot;submodule status&amp;quot;
-  # add new submodule, i.e. git modadd module-name url
-  modadd = &amp;quot;submodule add&amp;quot;
-  # push local committed changes to rubyforge and origin (usually GitHub)
-  osspush = !git push rubyforge master &amp;amp;&amp;amp; git push origin master
-  # pull changes from rubyforge and origin (usually GitHub)
-  osspull = !git pull rubyforge master &amp;amp;&amp;amp; git pull origin master
-  # sync (pull then push) from rubyforge and origin (usually GitHub)
-  osssync = !git osspull &amp;amp;&amp;amp; git osspush
-  # show last 15 log entries
-  recentlog = &amp;quot;log -n 15&amp;quot;
-  # search alias
-  search = &amp;quot;log --pretty=short -S&amp;quot;
-  # short log
-  shlog = &amp;quot;log --oneline --decorate&amp;quot;
-  # snap RPEO
-  snap = &amp;quot;clone --depth 1&amp;quot;
-  # show status, keep same as svn command I used most frequently
-  st = &amp;quot;status --porcelain&amp;quot;
-  # another alias for status that some scripts might use
-  stat = &amp;quot;status --porcelain&amp;quot;
-  # fetch and rebase from svn repository
-  spull = !git svn fetch &amp;amp;&amp;amp; git svn rebase
-  # push keeping each local commit as atomic.
-  spush = !git svn dcommit
-  # tracking push
-  tpush = &amp;quot;push -u&amp;quot;
-  # pull &amp;amp; update submodules at once - assumed you are on tracking local branch
-  up = !git pull &amp;amp;&amp;amp; git submodule update
-  # word diff
-  wdiff = &amp;quot;diff --word-diff&amp;quot;
-  # prints out the branches a commit is on
-  whbr = &amp;quot;branch -a --contains&amp;quot;
-  # prints commits from a branch are already present upstream
-  whci = &amp;quot;cherry -v&amp;quot;
-  # prints out the tags a commit is a part of
-  whtag = &amp;quot;name-rev --name-only&amp;quot;
-[rerere]
-  enabled = 1
-[merge]
-  tool = gvimdiff
-[url &amp;quot;https://github.com/&amp;quot;]
-  insteadOf = &amp;quot;gh:&amp;quot;
-[url &amp;quot;git@github.com:&amp;quot;]
-  insteadOf = &amp;quot;git@gh:&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;set show-author = abbreviated
-set show-date = relative
-set show-rev-graph = yes
-set show-refs = yes
-set show-line-numbers = yes
-set line-number-interval = 5
-set tab-size = 2
-set commit-encoding = &amp;quot;UTF-8&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>[user] name = Susan Potter # make sure you change this email = me@susanpotter.net # make sure you change this [color] diff = auto status = auto branch = auto [diff] rename = copy color = auto [apply] whitespace = strip [pager] color = true [status] color = auto [branch] autosetuprebase = always [alias] co = &amp;#34;checkout&amp;#34; ci = &amp;#34;commit&amp;#34; ciall = &amp;#34;commit -a -v&amp;#34; unmerge = &amp;#34;reset --hard ORIG_HEAD&amp;#34; lsbr = &amp;#34;branch -a&amp;#34; # list all branches, even remote ones mkbr = &amp;#34;branch&amp;#34; # create branch if you specify a branch name after it, e.</description>
     </item>
     
   </channel>

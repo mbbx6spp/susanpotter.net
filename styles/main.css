@@ -1,0 +1,105 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+}
+
+h1.author {
+    color: rgb(243, 0, 52);
+}
+
+nav.navigation {
+    background-color: rgb(18, 54, 82);
+    background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
+    border-bottom-color: rgb(51, 51, 51);
+    box-shadow: rgb(153, 153, 153) 0px 4px 8px 0px;
+    color: rgb(255,255,255);
+}
+
+nav .navigation-title {
+    color: rgb(255,255,255);
+    text-transform: capitalize;
+    font-size: 1.4em;
+}
+
+nav .navigation-list .navigation-item .navigation-link {
+    color: rgb(255,255,255);
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.content {
+    background-color: #fff;
+}
+
+footer {
+    background-color: #c3c3c3;
+}
+
+.avatar img {
+    width: 20em;
+}
+
+span.social-item {
+    margin: 2px 6px;
+}
+
+h2.info {
+    font-weight: 400;
+    color: #444;
+}
+
+.list ul li {
+    border-bottom: 1px dashed #aaa;
+    padding: 8px 0 0 0;
+}
+
+.list ul li:hover {
+    background-color: #eef;
+}
+
+.list ul li span {
+    text-transform: uppercase;
+    weight: bolder;
+}
+
+.list ul li a {
+    text-transform: none;
+}
+
+code {
+    margin: 0px;
+    padding: 0px;
+}
+
+code.verbatim {
+    block: inline;
+    margin: 0;
+    padding: 0 4px;
+}
+
+code.language-haskell,
+code.language-erl,
+code.language-ruby,
+code.language-javascript,
+code.language-text
+{
+    width: 100%;
+    padding: 12px;
+    margin: 0;
+}
+
+pre {
+    margin: 15px 5px;
+    padding: 0;
+}

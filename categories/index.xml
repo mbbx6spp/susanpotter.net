@@ -6,12 +6,13 @@
     <description>Recent content in Categories on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 22 Oct 2018 18:45:40 -0500</lastBuildDate>
     
 	<atom:link href="https://susanpotter.net/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Functional Programming</title>
+      <title>functional programming</title>
       <link>https://susanpotter.net/categories/functional-programming/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
@@ -20,7 +21,7 @@
     </item>
     
     <item>
-      <title>Haskell</title>
+      <title>haskell</title>
       <link>https://susanpotter.net/categories/haskell/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
@@ -29,7 +30,7 @@
     </item>
     
     <item>
-      <title>Software</title>
+      <title>software</title>
       <link>https://susanpotter.net/categories/software/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       

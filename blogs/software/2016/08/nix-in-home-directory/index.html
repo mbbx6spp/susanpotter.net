@@ -1,315 +1,266 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
   <head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
-  
-  
-  
-  
-  
-  <link rel="prev" href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" />
-  <link rel="next" href="https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/" />
-  <link rel="canonical" href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/" />
-  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           Nix in your home directory | Susan Potter
-       
-  </title>
-  <meta name="title" content="Nix in your home directory | Susan Potter">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="https://susanpotter.net/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Nix in your home directory - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/">
+    <meta property="og:image" content="https://susanpotter.net/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/">
+    <meta name="twitter:image" content="https://susanpotter.net/">
+
+    <base href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/">
+    <title>
+  Nix in your home directory - Susan Potter
+</title>
+
+    <link rel="canonical" href="https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/">
     
-  
-  <link rel="stylesheet" href="/font/iconfont.css">
-  <link rel="stylesheet" href="/css/main.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="https://susanpotter.net/css/normalize.min.css">
+    <link rel="stylesheet" href="https://susanpotter.net/css/style.min.css">
 
+    
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Nix in your home directory"/>
-<meta name="twitter:description" content="Prerequisites  wget is installed tar is installed  Purpose If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
-Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.
-Good luck.
-homedir_install.sh function install_nix() { local -r bindir=&quot;${HOME}/opt/bin&quot; local -r proot_url=&quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&quot; local -r nixdir=&quot;${HOME}/mnt/nix&quot; local -r nixver=&quot;1."/>
+    
+      <link rel="stylesheet" href="https://susanpotter.net/styles/main.css">
+    
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Nix in your home directory",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/"
-  },
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://susanpotter.net/cover.png",
-    "width": 800,
-    "height": 600
-  },
-  "genre": "software",
-  
-  "wordcount": 161,
-  "url": "https://susanpotter.net/blogs/software/2016/08/nix-in-home-directory/",
-  "datePublished": "2016-08-30T00:00:00+00:00",
-  "dateModified": "2016-08-30T00:00:00+00:00",
-  
-  "publisher": {
-    "@type": "Organization",
-    "name": "Susan Potter",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://susanpotter.net/logo.png",
-      "width": 127,
-      "height": 40
-    }
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Susan Potter"
-  },
-  "description": ""
-}
-</script>
-</head>
+    <link rel="icon" type="image/png" href="https://susanpotter.net/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://susanpotter.net/images/favicon-16x16.png" sizes="16x16">
 
-  
-             
-  
+    
+      <link rel="alternate" href="https://susanpotter.net/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="https://susanpotter.net/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
 
+    <meta name="generator" content="Hugo 0.58.0" />
+  </head>
 
   <body class="">
-    <div class="wrapper">
-        <nav class="navbar">
-    <div class="container">
-        <div class="navbar-header header-logo">
-        	<a href="https://susanpotter.net/">Susan Potter</a>
-        </div>
-        <div class="menu navbar-right">
-                
-                
-                <a class="menu-item" href="/software/" title="">Software</a>
-                
-                <a class="menu-item" href="/categories/" title="">Categories</a>
-                
-                <a class="menu-item" href="/about/" title="">About</a>
-                
-                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
-        </div>
-    </div>
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://susanpotter.net/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://susanpotter.net/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://susanpotter.net/categories/">Categories</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://susanpotter.net/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
 </nav>
-<nav class="navbar-mobile" id="nav-mobile" style="display: none">
-     <div class="container">
-        <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="https://susanpotter.net/">Susan Potter</a></div>
-            <div class="menu-toggle">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-     
-          <div class="menu" id="mobile-menu">
-                
-                
-                <a class="menu-item" href="/software/" title="">Software</a>
-                
-                <a class="menu-item" href="/categories/" title="">Categories</a>
-                
-                <a class="menu-item" href="/about/" title="">About</a>
-                
-        </div>
-    </div>
-</nav>
-    	 <main class="main">
-          <div class="container">
-      		
-<article class="post-warp">
-    <header class="post-header">
-        <h1 class="post-title">Nix in your home directory</h1>
-        <div class="post-meta">
-            Written by <a href="https://susanpotter.net/" rel="author">Susan Potter</a> with ♥ 
-                <span class="post-time">
-                    on <time datetime=2016-08-30 >30 August 2016</time>
-                </span>
-                in
-                
-                <i class="iconfont icon-timer"></i>
-                1 min
-        </div>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Nix in your home directory</h1>
     </header>
-    <div class="post-content">
-        
 
-        
-
-        
-        
-     
-          
-          
-          
-
-          
-          
-          
-
-          <h2 id="prerequisites">Prerequisites</h2>
-
+    
+<h2 id="headline-1">
+Prerequisites
+</h2>
 <ul>
-<li><code>wget</code> is installed</li>
-<li><code>tar</code> is installed</li>
+<li>
+<p>
+<code class="verbatim">wget</code> is installed
+</p>
+</li>
+<li>
+<p>
+<code class="verbatim">tar</code> is installed
+</p>
+</li>
 </ul>
+<h2 id="headline-2">
+Purpose
+</h2>
+<p>
+If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
+</p>
+<p>
+Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.
+</p>
+<p>
+Good luck.
+</p>
+<h2 id="headline-3">
+<code class="verbatim">homedir_install.sh</code>
+</h2>
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">function</span> install_nix<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  local -r bindir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/opt/bin&#34;</span>
+  local -r proot_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&#34;</span>
+  local -r nixdir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/mnt/nix&#34;</span>
+  local -r nixver<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.11.2&#34;</span>
+  local -r arch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x86_64&#34;</span>
+  local -r os<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;linux&#34;</span>
+  local -r nixbz2_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://nixos.org/releases/nix/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>os<span style="color:#e6db74">}</span><span style="color:#e6db74">.tar.bz2&#34;</span>
 
-<h2 id="purpose">Purpose</h2>
+  mkdir -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  wget -O <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/proot&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>proot_url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  chmod u+x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/proot&#34;</span>
 
-<p>If you really don't want to install Nix under /nix (or you can't) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.</p>
-
-<p>Now whenever you want to run a command under Nix's control, you should prefix with nixrun.</p>
-
-<p>Good luck.</p>
-
-<h2 id="homedir-install-sh"><code>homedir_install.sh</code></h2>
-
-<pre><code class="language-sh">function install_nix() {
-  local -r bindir=&quot;${HOME}/opt/bin&quot;
-  local -r proot_url=&quot;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&quot;
-  local -r nixdir=&quot;${HOME}/mnt/nix&quot;
-  local -r nixver=&quot;1.11.2&quot;
-  local -r arch=&quot;x86_64&quot;
-  local -r os=&quot;linux&quot;
-  local -r nixbz2_url=&quot;http://nixos.org/releases/nix/nix-${nixver}/nix-${nixver}-${arch}-${os}.tar.bz2&quot;
-
-  mkdir -p &quot;${bindir}&quot;
-  wget -O &quot;${bindir}/proot&quot; &quot;${proot_url}&quot;
-  chmod u+x &quot;${bindir}/proot&quot;
-
-  mkdir -p &quot;${nixdir}&quot;
-  pushd &quot;${nixdir}&quot;
-  wget &quot;${nixbz2_url}&quot;
+  mkdir -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  pushd <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  wget <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>nixbz2_url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
   tar xjf nix-*bz2
 
-  local -r nixbin=&quot;$(dirname &quot;$(find &quot;${nixdir}&quot; -name &quot;nix-shell&quot; | head -1)&quot;)&quot;
-  export PATH=&quot;${bindir}:${nixbin}:${PATH}&quot;
-  {
-    echo &quot;#!/usr/bin/env bash&quot;
+  local -r nixbin<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>dirname <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>find <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -name <span style="color:#e6db74">&#34;nix-shell&#34;</span> | head -1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+  export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>nixbin<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>PATH<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#f92672">{</span>
+    echo <span style="color:#e6db74">&#34;#!/usr/bin/env bash&#34;</span>
     echo
-    echo &quot;proot -b \&quot;${nixdir}/nix-${nixver}-${arch}-${os}/:/nix\&quot; \$@&quot;
-  } &gt; &quot;${bindir}/nixrun&quot;
-  chmod u+x &quot;${bindir}/nixrun&quot;
-}
+    echo <span style="color:#e6db74">&#34;proot -b \&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>os<span style="color:#e6db74">}</span><span style="color:#e6db74">/:/nix\&#34; \$@&#34;</span>
+  <span style="color:#f92672">}</span> &gt; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nixrun&#34;</span>
+  chmod u+x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nixrun&#34;</span>
+<span style="color:#f92672">}</span>
 
 set -eu
 set -o pipefail
 
-install_nix
-</code></pre>
+install_nix</code></pre></div>
+</div>
+<p>
+<strong>Update:</strong> Thanks to <a href="https://github.com/willprice">Will Price (@willprice)</a> for pointing out my original link to the proot static binary was broken on Oct 23, 2017: <a href="https://github.com/proot-me/proot/issues/120#issuecomment-338649213">https://github.com/proot-me/proot/issues/120#issuecomment-338649213</a>
+</p>
 
-<p><strong>Update:</strong> Thanks to <a href="https://github.com/willprice" title="Will Price (@willprice)" rel="nofollow noreferrer" target="_blank">Will Price (@willprice)</a> for pointing out my original link to the proot static binary was broken on Oct 23, 2017: https://github.com/proot-me/proot/issues/120#issuecomment-338649213</p>
+  </article>
+</section>
 
-    </div>
 
-    <div class="post-copyright">
-             
-            <p class="copyright-item">
-                <span>Author:</span>
-                <span>Susan Potter </span>
-                </p>
-            
-           
-            <p class="copyright-item">
-                    <span>Words:</span>
-                   <span>161</span>
-            </p>
-            
-            <p class="copyright-item">
-                
-
-            
-    </div>
-
-  
-    <div class="post-tags">
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
         
-        <section>
-                <a href="javascript:window.history.back();">Back</a></span> · 
-                <span><a href="https://susanpotter.net/">Home</a></span>
-        </section>
-    </div>
-
-    <div class="post-nav">
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2016%2f08%2fnix-in-home-directory%2f&ref_src=twsrc%5Etfw&text=Nix%20in%20your%20home%20directory Susan%20Potter&tw_p=tweetbutton&url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2016%2f08%2fnix-in-home-directory%2f"><i class="fab fa-twitter"></i></a>
         
-        <a href="https://susanpotter.net/blogs/software/2014/02/scala-wtfs/" class="prev" rel="prev" title="Scala WTFs"><i class="iconfont icon-dajiantou"></i>&nbsp;Scala WTFs</a>
-         
         
-        <a href="https://susanpotter.net/blogs/software/2016/12/ruby-v2.4.0/" class="next" rel="next" title="Ruby 2.4 changes overview">Ruby 2.4 changes overview&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2016%2f08%2fnix-in-home-directory%2f"><i class="fab fa-linkedin"></i></a>
         
-    </div>
-
-    <div class="post-comment">
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2016%2f08%2fnix-in-home-directory%2f&ref_src=twsrc%5Etfw&text=Nix%20in%20your%20home%20directory Susan%20Potter&tw_p=tweetbutton&url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2016%2f08%2fnix-in-home-directory%2f"><i class="fab fa-twitter"></i></a>
           
           
+            <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2016%2f08%2fnix-in-home-directory%2f"><i class="fab fa-linkedin"></i></a>
           
-    </div>
-</article>
-          </div>
-		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2006 - 2019</span>
-        
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://susanpotter.net/">Susan Potter</a> | </span>
-         
-
-		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
-    </div>
+        </div>
+      
+    </section>
+  </div>
 </footer>
 
-
-
-
-
-
-
-
-
-
-
+      
+    </main>
 
     
-    
-    <script src="/js/vendor_no_gallery.min.js" async=""></script>
-    
-  
-
-
-
-
-
-
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-837842-1', 'auto');
 	
 	ga('send', 'pageview');
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-
-     </div>
+  <script src="https://susanpotter.net/js/app.js"></script>
+  
   </body>
 </html>

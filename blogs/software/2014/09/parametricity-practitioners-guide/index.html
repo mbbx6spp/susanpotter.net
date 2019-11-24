@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="https://susanpotter.net/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Parametricity - Susan Potter
+">
+    <meta property="og:description" content="A quick and handy guide to how to leverage parametricity in practice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/">
+    <meta property="og:image" content="https://susanpotter.net/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/">
+    <meta name="twitter:image" content="https://susanpotter.net/">
+
+    <base href="https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/">
+    <title>
+  Parametricity - Susan Potter
+</title>
+
+    <link rel="canonical" href="https://susanpotter.net/blogs/software/2014/09/parametricity-practitioners-guide/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="https://susanpotter.net/css/normalize.min.css">
+    <link rel="stylesheet" href="https://susanpotter.net/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="https://susanpotter.net/styles/main.css">
+    
+
+    <link rel="icon" type="image/png" href="https://susanpotter.net/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://susanpotter.net/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="https://susanpotter.net/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="https://susanpotter.net/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.58.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://susanpotter.net/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://susanpotter.net/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://susanpotter.net/categories/">Categories</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://susanpotter.net/about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Parametricity</h1>
+    </header>
+
+    
+<h1 id="parametricity-part-1">
+Introduction
+</h1>
+<p>
+The fundamental idea of parametricity is that from parametric <em>&#34;pure&#34;</em> functions
+we can determine interesting properties and, moreover, we can tell much more
+from these parametric types than functions fixed with specific types.
+</p>
+<h2 id="headline-2">
+Goals
+</h2>
+<p>
+The following article is an attempt to:
+</p>
+<ul>
+<li>
+<p>
+introduce the ideas and some terms informally with the aim of targeting industry practitioners used to mainstream languages and methods
+</p>
+</li>
+<li>
+<p>
+highlight (through examples) the use and motivation of defining functions to be as generic as possible
+</p>
+</li>
+<li>
+<p>
+provide links to further reading on the topic for the reader to investigate more formally if desired
+</p>
+</li>
+</ul>
+<h2 id="assumptions">
+Prerequisites &amp; Terminology
+</h2>
+<p>
+The idea of parametricity only works when three things hold:
+</p>
+<ol>
+<li>
+<p>
+We reason about <strong>&#34;pure&#34;</strong> functions only. i.e., parametricity cannot hold if a
+function is dependent on anything outside of its explicit inputs (or static
+definitions). Otherwise we are unable to <strong>reason</strong> about the code in this delightful
+way.
+</p>
+<p>
+All core business logic (in my experience) can be implemented using &#34;pure&#34;
+functions in most high-level languages today though some languages and ecosystems
+steer your more or provide better feedback tooling to help you define &#34;pure&#34;
+functions than others.
+</p>
+</li>
+<li>
+<p>
+Our <em>&#34;pure&#34;</em> functions are <strong>total</strong>. A total function is one which always produces
+a result for all inputs to the function, even if it takes a while to compute. In
+practice, this means we can&#39;t have exceptions raised or infinite recursion for any
+input the function takes.
+</p>
+</li>
+<li>
+<p>
+Your source language supports <strong>parametric polymorphism</strong>. Parametric polymorphism is
+when a function or a data type can be written generically so that it can handle
+values identically without depending on their type in any way. This means if we
+have a generic type signature but use runtime reflection to determine
+implementation, all bets are off, i.e., this form of reasoning is unavailable to us.
+</p>
+</li>
+</ol>
+<p>
+I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article,
+preferring the former given my target audience. The core material in this article is
+from Philip Wadler&#39;s <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a> paper, which uses the term <em>theorems</em>
+exclusively.
+</p>
+<p>
+Readers with more formal backgrounds in this already may cringe. This was an
+intentional choice by the author to broaden reach of this material.
+</p>
+<h2 id="motivations">
+Motivations
+</h2>
+<p>
+Wouldn&#39;t it be great if we were able to mathematically <strong>reason</strong> about our code
+to make our lives as simple as possible when debugging or eliminate debugging
+altogether in some cases?
+</p>
+<p>
+Mathematically reasoning in software is not new and much of the programming language
+theory (PLT) research community has been gaining deeper understanding of the
+possibilities for decades already. It also comes in many shapes and sizes, e.g.,
+logical reasoning, equational reasoning, parametricity, etc.
+</p>
+<p>
+As a lazy industry developer, I like being able to take advantage of other people&#39;s
+reusable work, whether it is reusable libraries, automated testing suites, or
+reasoning frameworks.
+</p>
+<p>
+Reasoning - given our programming environment satisfies all prerequisites - allows us
+to more confidently know how our code <em>can</em> behave. By understanding the properties of
+units of code that can be composed we can build functionality on top of a solid
+foundation with less surprises in later phases of development.
+</p>
+<p>
+What software developer likes surprises, especially in production?
+Not me. At least not when I am on call. ;)
+</p>
+<h2 id="examples">
+Examples
+</h2>
+<p>
+Let&#39;s look at some examples of what I mean by <em>properties</em> (or <em>theorems</em> in the
+paper linked above) about functions from it&#39;s generic type signatures.
+</p>
+<h2 id="headline-6">
+Getting Started
+</h2>
+<p>
+Below is a type [signature] of a function. Assuming it is a pure function
+and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function 
+such that it typechecks and satisfies our prerequisites above?
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a</code></pre></div>
+</div>
+<p>
+Let&#39;s back up a little first to ensure those who can&#39;t read Haskell easily can
+understand the function type above.
+</p>
+<ul>
+<li>
+<p>
+<code class="verbatim">f1</code> is the name of the function
+</p>
+</li>
+<li>
+<p>
+<code class="verbatim">::</code> translates to <em>&#34;has type&#34;</em>
+</p>
+</li>
+<li>
+<p>
+the first <code class="verbatim">a</code> after <code class="verbatim">::</code> is the generic type for the argument for <code class="verbatim">f1</code>
+</p>
+</li>
+<li>
+<p>
+<code class="verbatim">-&gt;</code> can read as <em>&#34;to&#34;</em> or <em>&#34;producing&#34;</em> depending on how you prefer to read function types
+</p>
+</li>
+<li>
+<p>
+the <code class="verbatim">a</code> after the <code class="verbatim">-&gt;</code> is the generic type for the result of <code class="verbatim">f1</code>
+</p>
+</li>
+</ul>
+<p>
+So reading the above code snippet out loud might sound like, <em>&#34;f1 is a function that
+has type generic a to generic a&#34;</em>.
+</p>
+<p>
+Note: lower case types in Haskell (like <code class="verbatim">a</code> above) are parametric types. When these
+are used in a type signature the only restriction is that when there are two <code class="verbatim">x</code>
+types mentions, then they must refer to the same type at the callsite.
+</p>
+<p>
+Parametric types are determined by the caller of the function <code class="verbatim">f1</code> in this case.
+</p>
+<p>
+Now that we can read the above Haskell type, let&#39;s fix <code class="verbatim">a</code> to a few different types
+for to explore possibilities. We will start with fixing <code class="verbatim">a</code> to <code class="verbatim">String</code>.
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1str</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span></code></pre></div>
+</div>
+<p>
+Assume the only thing the result of function <code class="verbatim">f1str</code> can depend on is
+its input value (in this case just one input), then it could be any
+&#34;transformation&#34; of the input. Now in this case the type is
+<code class="verbatim">String -&gt; String</code>, there are many kinds of transformations that we can
+apply to the input to derive the result in a pure way. For example, we
+could apply a hash function on the input <code class="verbatim">String</code> value to produce a result
+of type <code class="verbatim">String</code>. We could <code class="verbatim">reverse</code> the string or just take up to the first three
+characters of the input string (if they exist) and provide that as the
+resulting value.
+</p>
+<p>
+There are many (when you factor in all combinations of these
+transformations from <code class="verbatim">String -&gt; String</code> and <code class="verbatim">String -&gt; r</code> with <code class="verbatim">r -&gt; String</code>)
+possibilities too.
+</p>
+<p>
+Now let&#39;s try <code class="verbatim">Int -&gt; Int</code>, there are not that many coinciding
+&#34;transforms&#34; that are valid for both =String=s and =Int=s. Now
+extending this to any type from input to output we realize there is only
+one possible definition, which is the identity function:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    identity <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
+    identity a <span style="color:#f92672">=</span> a</code></pre></div>
+</div>
+<p>
+What the above says is that given a value of type <code class="verbatim">a</code> the function <code class="verbatim">identity</code>
+produces that value back as the result.
+</p>
+<p>
+Yes, ok, that example was trivial, yet we see how when we made the
+types more and more generic and parametric we could make more and
+more assertions about the definition of the function?
+</p>
+<p>
+That&#39;s a critical piece of the idea behind parametricity.
+</p>
+<p>
+In this case, we could have compiler machinery generate that function definition
+for us (the thing on the right-hand-side, RHS, of the <code class="verbatim">=</code> on the second line is
+the definition) given just the type we wanted and a suitably &#34;pure&#34; and total
+capable language with parametric polymorphism. This isn&#39;t that inspiring yet,
+but if we can have machinery generate our programs for us given just a type
+signature beyond just the identity function, wouldn&#39;t that be mind boggling?
+</p>
+<h2 id="headline-7">
+Getting Real
+</h2>
+<p>
+Now let&#39;s take a look at a less trivial example:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f2 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
+    f2 f as <span style="color:#f92672">=</span> <span style="color:#f92672">???</span></code></pre></div>
+</div>
+<p>
+We are given a function from type <code class="verbatim">a</code> to type <code class="verbatim">b</code>. Let&#39;s say this is
+something like <code class="verbatim">String -&gt; Int</code> which could take the string argument and
+produce its length as the result value. This means after taking that function,
+let&#39;s say <code class="verbatim">length</code>, we would be taking a list of strings and returning a list of
+ints representing their lengths.
+</p>
+<p>
+So what can we say about this function, even the concrete one defined
+above? Well, the most likely definition of that is:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f2 <span style="color:#f92672">::</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
+    f2 f ss <span style="color:#f92672">=</span> map f ss</code></pre></div>
+</div>
+<p>
+Well that just means that <code class="verbatim">f2</code> is <code class="verbatim">map</code>, right? The more generic we make
+the types the more sure we are that we can&#39;t have other possible definitions for
+this, which could eventually lead to type-directed programming or program derivations
+by the compiler.
+</p>
+<p>
+Now we can continue on elaborating on how reasoning about code using
+parametricity might be a good thing.
+</p>
+<p>
+Now let&#39;s look at the following:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f3 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+    f3 f ma <span style="color:#f92672">=</span> <span style="color:#f92672">???</span></code></pre></div>
+</div>
+<p>
+First we need to understand (maybe?) what the <code class="verbatim">Maybe</code> type is about.
+Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other
+such construct do not exist. It&#39;s a blissful land where if you are told
+there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an
+actual <code class="verbatim">PandaBear</code> value. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or
+=null=s.
+</p>
+<p>
+Sometimes you really aren&#39;t sure if there will be a value of that type
+there. Sometimes it might be nothing or &#34;blank&#34;. So we have to be able
+to tell the calling code that somehow. We do that with the type
+<code class="verbatim">Maybe a</code>.
+</p>
+<p>
+This is what the sum type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    <span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> a <span style="color:#f92672">|</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
+</div>
+<p>
+Now we need to look at how we would use this:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">  <span style="color:#75715e">-- We can use our @sqrt@ function like so:</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 1</span>
+  <span style="color:#75715e">-- Just 1</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 0</span>
+  <span style="color:#75715e">-- Nothing</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt -1</span>
+  <span style="color:#75715e">-- Nothing</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 9</span>
+  <span style="color:#75715e">-- Just 3</span>
+  sqrt <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Double</span>
+  sqrt i
+    <span style="color:#f92672">|</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> <span style="color:#66d9ef">Math</span><span style="color:#f92672">.</span>sqrt i
+    <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
+
+  <span style="color:#75715e">-- This function can be used like so:</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; let withDefault = defaulting 60</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; withDefault (Just 30)</span>
+  <span style="color:#75715e">-- 30</span>
+  <span style="color:#75715e">-- &gt;&gt;&gt; withDefault Nothing</span>
+  <span style="color:#75715e">-- 60</span>
+  defaulting <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> a
+  defaulting a1 (<span style="color:#66d9ef">Just</span> a2) <span style="color:#f92672">=</span> a2
+  defaulting a1 <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">=</span> a1</code></pre></div>
+</div>
+<p>
+There are two functions here using <code class="verbatim">Maybe a</code> of some kind. The <code class="verbatim">sqrt</code>
+function takes an <code class="verbatim">Int</code> value and if it is not zero of greater it will
+return a &#34;nothing&#34; value since our return type is a <code class="verbatim">Double</code> (rather
+than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be
+<code class="verbatim">Int -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>,
+etc can exist for types then we can infer a logical error in the type
+signature exists and that the definition of <code class="verbatim">sqrt</code> is problematic due to
+it&#39;s ambiguity when given zero or less as input value. This is mightily
+helpful to help you design better APIs.
+</p>
+<p>
+I the second function we have a <code class="verbatim">defaulting</code> function which takes a
+default value as a first argument and a &#34;maybe&#34; value of the same
+underlying type, <code class="verbatim">a</code> in this case, and in the case that the <code class="verbatim">Maybe a</code>
+value is &#34;something&#34; it will return that. Otherwise it returns the
+default.
+</p>
+<p>
+Hopefully you can see the value of the <code class="verbatim">Maybe a</code> type now. Let&#39;s get
+back to the original function we were going to investigate:
+<code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function,
+what can we assert from the type signature?
+</p>
+<p>
+It seems obvious that if we can assume nothing about type <code class="verbatim">a</code> or <code class="verbatim">b</code>
+because they can be ANYTHING AT ALL, then there is only one definition
+of the function that can possibly exist. Let&#39;s see what this might look
+like with the definition expanded for
+<code class="verbatim">f3 :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    <span style="color:#75715e">-- Here we are using pattern matching which if you aren&#39;t used to Haskell, Erlang,</span>
+    <span style="color:#75715e">-- Scala or other languages that have this might be alien to you. Basically we are</span>
+    <span style="color:#75715e">-- &#34;branching&#34; the code path between the cases when a `Just x` value is provided</span>
+    <span style="color:#75715e">-- versus when a `Nothing` value is provided as input. It yields (in my opinion)</span>
+    <span style="color:#75715e">-- far more readable code than `if/else` branching.</span>
+    <span style="color:#75715e">-- There is also the benefit that the compiler can warn you when you haven&#39;t covered</span>
+    <span style="color:#75715e">-- all value constructors for a type you are matching on. :) I like types. Sue me.</span>
+    f3 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+    f3 f (<span style="color:#66d9ef">Just</span> x) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> f x
+    f3 f <span style="color:#66d9ef">Nothing</span>  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
+</div>
+<p>
+This reduces to the following definition where you can find <code class="verbatim">fmap</code> in
+Haskell&#39;s Prelude (read: automatically imported standard libraries, it&#39;s
+a good approximation anyway).
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f3 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+    f3 f ma <span style="color:#f92672">=</span> fmap f ma</code></pre></div>
+</div>
+<p>
+The basic idea here is that we apply the function from <code class="verbatim">a -&gt; b</code> on the
+value of <code class="verbatim">Maybe a</code> in the case that it is a <code class="verbatim">Just a</code> value. If it is a
+<code class="verbatim">Nothing</code> value it will result in a <code class="verbatim">Nothing</code> in the the type of
+<code class="verbatim">Maybe b</code> for the result of the function.
+</p>
+<h2 id="conclusion">
+Conclusion
+</h2>
+<p>
+Hopefully I have been able to illustrate the value of using the basic
+idea of parametricity (even in a very informal way) as both a way to
+reason about other people&#39;s code and also offering an example of how
+inspecting types signatures using basic understanding of parametricity
+can show logical design level errors in your own API design.
+</p>
+<h2 id="headline-9">
+Original Source
+</h2>
+<p>
+This article was adapted (for English writing style) from my original Gist in 2014:
+<a href="https://gist.github.com/mbbx6spp/8da36c6cceb89a52d405">Original Gist</a>
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f&ref_src=twsrc%5Etfw&text=Parametricity Susan%20Potter&tw_p=tweetbutton&url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f&ref_src=twsrc%5Etfw&text=Parametricity Susan%20Potter&tw_p=tweetbutton&url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-twitter"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fsusanpotter.net%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-linkedin"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="https://susanpotter.net/js/app.js"></script>
+  
+  </body>
+</html>

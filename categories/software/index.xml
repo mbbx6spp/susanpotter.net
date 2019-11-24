@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software on Susan Potter</title>
+    <title>software on Susan Potter</title>
     <link>https://susanpotter.net/categories/software/</link>
-    <description>Recent content in Software on Susan Potter</description>
+    <description>Recent content in software on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 Oct 2018 18:45:40 -0500</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
       
       <guid>https://susanpotter.net/blogs/software/2018/10/practical-recursion-schemes/</guid>
-      <description>Recursive data types Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine:
-data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor Foldable The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
+      <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
   </channel>
