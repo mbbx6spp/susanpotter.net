@@ -67,12 +67,12 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; i
     </item>
     
     <item>
-      <title>Parametricity</title>
+      <title>Parametricity: A Practitioners Guide</title>
       <link>/blogs/software/2014/09/parametricity-practitioners-guide/</link>
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blogs/software/2014/09/parametricity-practitioners-guide/</guid>
-      <description>Introduction   The fundamental idea of parametricity is that from parametric &amp;#34;pure&amp;#34; functions we can determine interesting properties and, moreover, we can tell much more from these parametric types than functions fixed with specific types. Goals   The following article is an attempt to:    introduce the ideas and some terms informally with the aim of targeting industry practitioners used to mainstream languages and methods    highlight (through examples) the use and motivation of defining functions to be as generic as possible    provide links to further reading on the topic for the reader to investigate more formally if desired   Prerequisites &amp;amp; Terminology   The idea of parametricity only works when three things hold:    We reason about &amp;#34;pure&amp;#34; functions only.</description>
+      <description>Introduction   The fundamental idea of parametricity is that from parametric &amp;#34;pure&amp;#34; and total functions we can determine interesting properties and much more from the parametric types than equivalent functions fixed with specific types only. Goals   The following article is an attempt to:    introduce the ideas and some terms informally with the aim of targeting industry practitioners used to mainstream languages and methods    motivate the utility of various kinds of reasoning applied to software development in practice through familiar examples    highlight (again through examples) the utility of defining functions to be as generic as possible    describe the tradeoffs in theory and ways to mitigate them using GHC pragmas    provide links to further reading on the topic for the reader to investigate more formally if desired   Prerequisites &amp;amp; Terminology   The idea of parametricity only works when three things hold:    We reason about &amp;#34;pure&amp;#34; functions only.</description>
     </item>
     
     <item>

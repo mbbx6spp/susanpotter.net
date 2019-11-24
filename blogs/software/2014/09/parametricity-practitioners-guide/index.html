@@ -11,7 +11,7 @@
 
     <meta property="og:site_name" content="Susan Potter">
     <meta property="og:title" content="
-  Parametricity - Susan Potter
+  Parametricity: A Practitioners Guide - Susan Potter
 ">
     <meta property="og:description" content="A quick and handy guide to how to leverage parametricity in practice.">
     <meta property="og:type" content="website">
@@ -23,7 +23,7 @@
 
     <base href="../../../../../blogs/software/2014/09/parametricity-practitioners-guide/">
     <title>
-  Parametricity - Susan Potter
+  Parametricity: A Practitioners Guide - Susan Potter
 </title>
 
     <link rel="canonical" href="../../../../../blogs/software/2014/09/parametricity-practitioners-guide/">
@@ -87,7 +87,7 @@
   <section class="container page">
   <article>
     <header>
-      <h1>Parametricity</h1>
+      <h1>Parametricity: A Practitioners Guide</h1>
     </header>
 
     
@@ -95,9 +95,9 @@
 Introduction
 </h1>
 <p>
-The fundamental idea of parametricity is that from parametric <em>&#34;pure&#34;</em> functions
-we can determine interesting properties and, moreover, we can tell much more
-from these parametric types than functions fixed with specific types.
+The fundamental idea of parametricity is that from parametric <em>&#34;pure&#34;</em> and <em>total</em>
+functions we can determine interesting properties and much more from the parametric
+types than equivalent functions fixed with specific types only.
 </p>
 <h2 id="headline-2">
 Goals
@@ -113,7 +113,17 @@ introduce the ideas and some terms informally with the aim of targeting industry
 </li>
 <li>
 <p>
-highlight (through examples) the use and motivation of defining functions to be as generic as possible
+motivate the utility of various kinds of reasoning applied to software development in practice through familiar examples
+</p>
+</li>
+<li>
+<p>
+highlight (again through examples) the utility of defining functions to be as generic as possible
+</p>
+</li>
+<li>
+<p>
+describe the tradeoffs in theory and ways to mitigate them using GHC pragmas
 </p>
 </li>
 <li>
@@ -145,10 +155,11 @@ functions than others.
 </li>
 <li>
 <p>
-Our <em>&#34;pure&#34;</em> functions are <strong>total</strong>. A total function is one which always produces
-a result for all inputs to the function, even if it takes a while to compute. In
-practice, this means we can&#39;t have exceptions raised or infinite recursion for any
-input the function takes.
+Our <em>&#34;pure&#34;</em> functions are <strong>total</strong>. In FP circles this is assumed but because this
+material is aimed at mainstream programmers this needs to be called out. A total
+function is one which always produces a result for all inputs to the function, even
+if it takes a while to compute. In practice, this means we can&#39;t have exceptions
+raised or infinite recursion for any input the function takes.
 </p>
 </li>
 <li>
@@ -164,31 +175,181 @@ implementation, all bets are off, i.e., this form of reasoning is unavailable to
 <p>
 I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article,
 preferring the former given my target audience. The core material in this article is
-from Philip Wadler&#39;s <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a> paper, which uses the term <em>theorems</em>
-exclusively.
+loosely based on Philip Wadler&#39;s <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a> paper, which uses the term
+<em>theorems</em> exclusively.
 </p>
 <p>
-Readers with more formal backgrounds in this already may cringe. This was an
-intentional choice by the author to broaden reach of this material.
+Readers with more formal backgrounds may be cringing at the definitions. This was an
+intentional choice by the author to broaden reach of this material for wider
+application.
 </p>
-<h2 id="motivations">
-Motivations
+<h2 id="headline-4">
+A Familiar Form of Reasoning
 </h2>
 <p>
-Wouldn&#39;t it be great if we were able to mathematically <strong>reason</strong> about our code
-to make our lives as simple as possible when debugging or eliminate debugging
+Programmers of every stripe already use one or more thinking tools from one form of
+reasoning no matter their language of choice: <strong>logical reasoning</strong>.
+</p>
+<p>
+With logical reasoning we have three primary thinking tools available to us, which we
+can use in isolation or in combination with each other. They are:
+</p>
+<ul>
+<li>
+<p>
+abduction
+</p>
+</li>
+<li>
+<p>
+induction
+</p>
+</li>
+<li>
+<p>
+deduction
+</p>
+</li>
+</ul>
+<h3 id="headline-5">
+Abduction
+</h3>
+<p>
+Abduction (in logical reasoning) is the act of attempting to infer the best
+explanation for a given set of observations. As programmers in industry we employ this
+logical reasoning tool every time we tackle a bug report to varying levels of
+effectiveness. A bug report usually describes a set of observations by users who have
+witnessed our software doing something that was unexpected. Assuming this observed
+behavior is a defect, we then try to formulate hypotheses about where in the code
+this could be going wrong based on our understanding of the codebase and our
+understanding of how the data flows through the software. This specific act is
+<em>abduction</em>!
+</p>
+<h3 id="headline-6">
+Induction
+</h3>
+<p>
+When we are given a rule, sometimes we can generalize the rule to check if the rule
+holds for larger structures. When we have a way to generate the next biggest value
+or structure and there is strict ordering (i.e. for values ∀ x, y ∈ S,
+either x &lt;= y or x &gt;= y) across the set of values used as input, then we can use the
+thinking tool of induction to prove or disprove whether the rule holds.
+</p>
+<p>
+As an example, let&#39;s say we are told that the sum of all natural numbers incrementing
+by one from zero to a number <code class="verbatim">n</code> is <code class="verbatim">sumOfNats n = n * (n + 1) / 2</code> we can use
+induction to show if this does, in fact, hold with the following work outline:
+</p>
+<ol>
+<li>
+<p>
+First we start with the <em>base case</em>. For natural numbers the <em>base case</em> is zero, 0.
+<code class="verbatim">sumOfNats 0 = 0 * (0 + 1) / 2</code>. Because anything multiplied by zero is zero, the
+result of the rule is zero using zero as the input. This is our expected value too
+(the sum of all natural numbers incrementing by one starting at zero and ending at
+zero is zero, right?).
+</p>
+</li>
+<li>
+<p>
+Now we assume that the rule holds for some natural number, let&#39;s call it <code class="verbatim">k</code>, that
+means we have <code class="verbatim">sumOfNats k = k * (k + 1) / 2</code>. All we have done here is alpha
+conversion in the lambda calculus (i.e., renaming our parameter all the way through
+the definition consistently). The next step substitutes the next ((k + 1)<sup>th</sup>)
+natural number into the rule equation.
+</p>
+</li>
+<li>
+<p>
+We expect our sum of natural numbers starting at zero and incrementing by one
+ending at <code class="verbatim">(k + 1)</code> to be equal to the expression <code class="verbatim">1 + 2 + ... + k + (k + 1)</code>.
+Since we assume (from the second step above) that the sum of naturals until <code class="verbatim">k</code> is
+<code class="verbatim">k * (k + 1) / 2</code> then we expect <code class="verbatim">k * (k + 1) / 2 + (k + 1)</code> to equal
+<code class="verbatim">(k + 1) * (k + 2) / 2</code>. Now we can use algebra rearrangement to show whether these
+are equivalent expressions or not:
+</p>
+<ul>
+<li>
+<p>
+Multiply out terms in numerator of expected result:
+</p>
+</li>
+</ul>
+<p>
+<code class="verbatim">(k * (k + 1) / 2) + (k + 1) = ((k^2 + k) / 2) + (k + 1)</code>
+</p>
+<ul>
+<li>
+<p>
+Expand terms and factor out constant of 1/2:
+</p>
+</li>
+</ul>
+<p>
+<code class="verbatim">1/2*k^2 + 3/2k + 1 = 1/2 * (k^2 + 3k + 2) = 1/2 * (k + 1)*(k + 2)</code>
+</p>
+<ul>
+<li>
+<p>
+Factor polynomial in numerator:
+</p>
+</li>
+</ul>
+<p>
+<code class="verbatim">(k + 1) * (k + 2) / 2 = rule-based result substituting in (k+1) for k in the rule equation</code>
+</p>
+<p>
+You might think there is circular logic involved because in step 2 we assume
+the rule holds of the k<sup>th</sup> number, however, if you tried to <em>prove</em> the rule
+<code class="verbatim">sumOfNats2 k = k * (k - 1) / 2</code> held in step 3 you would not be able to
+reconcile the expected result with the result computed by the (k + 1)<sup>th</sup>
+substitution of the rule. You should try it on your own to convince yourself.
+</p>
+</li>
+</ol>
+<p>
+While mathematicians use this form of logical reasoning sometimes, especially in
+number theory proofs, a growing number of programmers using proof assistant languages
+are increasingly using induction to prove properties on functions acting on data
+inputs (as opposed to codata).
+</p>
+<h3 id="headline-7">
+Deduction
+</h3>
+<p>
+When you have a logical rule, inputs to that rule, or the conclusion made from
+that rule without the inputs, you can often use the thinking tool of deduction.
+</p>
+<p>
+When we read code to understand why the code worked the way it did (like when
+continuing the effort on fixing the defect from a bug report from the <em>abduction</em>
+section earlier) we might use deduction to execute the code in our minds before
+we run it in a debugger.
+</p>
+<p>
+This is probably the thinking tool in logical reasoning no programmer needs an
+introduction to since we will typically use this at least once a day.
+</p>
+<h2 id="headline-8">
+Give Me More (forms of reasoning)!
+</h2>
+<p>
+Wouldn&#39;t it be great if we were able to <strong>reason</strong> about our code in a variety of ways
+that  make our lives as simple as possible when debugging or eliminate debugging
 altogether in some cases?
 </p>
 <p>
-Mathematically reasoning in software is not new and much of the programming language
-theory (PLT) research community has been gaining deeper understanding of the
-possibilities for decades already. It also comes in many shapes and sizes, e.g.,
-logical reasoning, equational reasoning, parametricity, etc.
+Reasoning in software (beyond rudimentary logical reasoning) is not new and much of
+the programming language theory (PLT) research community has been gaining deeper
+understanding of the possibilities for decades already. It also comes in many shapes
+and sizes, e.g., logical reasoning, equational reasoning, parametricity,
+axiomatic laws, etc.
 </p>
 <p>
-As a lazy industry developer, I like being able to take advantage of other people&#39;s
-reusable work, whether it is reusable libraries, automated testing suites, or
-reasoning frameworks.
+As an industry developer, I like being able to take advantage of other people&#39;s
+reusable work, whether it is a reusable library, our automated testing suites, or
+reasoning thinking tools developed and tested by mathematicians and scientists over
+many decades or centuries.
 </p>
 <p>
 Reasoning - given our programming environment satisfies all prerequisites - allows us
@@ -201,22 +362,20 @@ What software developer likes surprises, especially in production?
 Not me. At least not when I am on call. ;)
 </p>
 <h2 id="examples">
-Examples
+Getting Started with Parametricity
 </h2>
 <p>
 Let&#39;s look at some examples of what I mean by <em>properties</em> (or <em>theorems</em> in the
 paper linked above) about functions from it&#39;s generic type signatures.
 </p>
-<h2 id="headline-6">
-Getting Started
-</h2>
 <p>
 Below is a type [signature] of a function. Assuming it is a pure function
-and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function 
+and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function
 such that it typechecks and satisfies our prerequisites above?
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
+<span style="color:#a6e22e">f1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
 Let&#39;s back up a little first to ensure those who can&#39;t read Haskell easily can
@@ -266,7 +425,8 @@ Now that we can read the above Haskell type, let&#39;s fix <code class="verbatim
 for to explore possibilities. We will start with fixing <code class="verbatim">a</code> to <code class="verbatim">String</code>.
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1str</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1str</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+<span style="color:#a6e22e">f1str</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
 Assume the only thing the result of function <code class="verbatim">f1str</code> can depend on is
@@ -291,8 +451,8 @@ extending this to any type from input to output we realize there is only
 one possible definition, which is the identity function:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    identity <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
-    identity a <span style="color:#f92672">=</span> a</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">identity</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
+<span style="color:#a6e22e">identity</span> a <span style="color:#f92672">=</span> a</code></pre></div>
 </div>
 <p>
 What the above says is that given a value of type <code class="verbatim">a</code> the function <code class="verbatim">identity</code>
@@ -314,15 +474,15 @@ capable language with parametric polymorphism. This isn&#39;t that inspiring yet
 but if we can have machinery generate our programs for us given just a type
 signature beyond just the identity function, wouldn&#39;t that be mind boggling?
 </p>
-<h2 id="headline-7">
-Getting Real
+<h2 id="headline-10">
+Applying Parametricity
 </h2>
 <p>
 Now let&#39;s take a look at a less trivial example:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f2 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
-    f2 f as <span style="color:#f92672">=</span> <span style="color:#f92672">???</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f2</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
+<span style="color:#a6e22e">f2</span> f as <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
 We are given a function from type <code class="verbatim">a</code> to type <code class="verbatim">b</code>. Let&#39;s say this is
@@ -336,8 +496,8 @@ So what can we say about this function, even the concrete one defined
 above? Well, the most likely definition of that is:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f2 <span style="color:#f92672">::</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
-    f2 f ss <span style="color:#f92672">=</span> map f ss</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f2</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
+<span style="color:#a6e22e">f2</span> f ss <span style="color:#f92672">=</span> map f ss</code></pre></div>
 </div>
 <p>
 Well that just means that <code class="verbatim">f2</code> is <code class="verbatim">map</code>, right? The more generic we make
@@ -353,8 +513,8 @@ parametricity might be a good thing.
 Now let&#39;s look at the following:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f3 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
-    f3 f ma <span style="color:#f92672">=</span> <span style="color:#f92672">???</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+<span style="color:#a6e22e">f3</span> f ma <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
 First we need to understand (maybe?) what the <code class="verbatim">Maybe</code> type is about.
@@ -374,35 +534,35 @@ to tell the calling code that somehow. We do that with the type
 This is what the sum type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    <span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> a <span style="color:#f92672">|</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> a <span style="color:#f92672">|</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
 </div>
 <p>
 Now we need to look at how we would use this:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">  <span style="color:#75715e">-- We can use our @sqrt@ function like so:</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 1</span>
-  <span style="color:#75715e">-- Just 1</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 0</span>
-  <span style="color:#75715e">-- Nothing</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt -1</span>
-  <span style="color:#75715e">-- Nothing</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 9</span>
-  <span style="color:#75715e">-- Just 3</span>
-  sqrt <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Double</span>
-  sqrt i
-    <span style="color:#f92672">|</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> <span style="color:#66d9ef">Math</span><span style="color:#f92672">.</span>sqrt i
-    <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- We can use our @sqrt@ function like so:</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; sqrt 1</span>
+<span style="color:#75715e">-- Just 1</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; sqrt 0</span>
+<span style="color:#75715e">-- Nothing</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; sqrt -1</span>
+<span style="color:#75715e">-- Nothing</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; sqrt 9</span>
+<span style="color:#75715e">-- Just 3</span>
+<span style="color:#a6e22e">sqrt</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Double</span>
+<span style="color:#a6e22e">sqrt</span> i
+  <span style="color:#f92672">|</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> <span style="color:#66d9ef">Math</span><span style="color:#f92672">.</span>sqrt i
+  <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
 
-  <span style="color:#75715e">-- This function can be used like so:</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; let withDefault = defaulting 60</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; withDefault (Just 30)</span>
-  <span style="color:#75715e">-- 30</span>
-  <span style="color:#75715e">-- &gt;&gt;&gt; withDefault Nothing</span>
-  <span style="color:#75715e">-- 60</span>
-  defaulting <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> a
-  defaulting a1 (<span style="color:#66d9ef">Just</span> a2) <span style="color:#f92672">=</span> a2
-  defaulting a1 <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">=</span> a1</code></pre></div>
+<span style="color:#75715e">-- This function can be used like so:</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; let withDefault = defaulting 60</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; withDefault (Just 30)</span>
+<span style="color:#75715e">-- 30</span>
+<span style="color:#75715e">-- &gt;&gt;&gt; withDefault Nothing</span>
+<span style="color:#75715e">-- 60</span>
+<span style="color:#a6e22e">defaulting</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> a
+<span style="color:#a6e22e">defaulting</span> a1 (<span style="color:#66d9ef">Just</span> a2) <span style="color:#f92672">=</span> a2
+<span style="color:#a6e22e">defaulting</span> a1 <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">=</span> a1</code></pre></div>
 </div>
 <p>
 There are two functions here using <code class="verbatim">Maybe a</code> of some kind. The <code class="verbatim">sqrt</code>
@@ -436,16 +596,16 @@ like with the definition expanded for
 <code class="verbatim">f3 :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>:
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    <span style="color:#75715e">-- Here we are using pattern matching which if you aren&#39;t used to Haskell, Erlang,</span>
-    <span style="color:#75715e">-- Scala or other languages that have this might be alien to you. Basically we are</span>
-    <span style="color:#75715e">-- &#34;branching&#34; the code path between the cases when a `Just x` value is provided</span>
-    <span style="color:#75715e">-- versus when a `Nothing` value is provided as input. It yields (in my opinion)</span>
-    <span style="color:#75715e">-- far more readable code than `if/else` branching.</span>
-    <span style="color:#75715e">-- There is also the benefit that the compiler can warn you when you haven&#39;t covered</span>
-    <span style="color:#75715e">-- all value constructors for a type you are matching on. :) I like types. Sue me.</span>
-    f3 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
-    f3 f (<span style="color:#66d9ef">Just</span> x) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> f x
-    f3 f <span style="color:#66d9ef">Nothing</span>  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- Here we are using pattern matching which if you aren&#39;t used to Haskell, Erlang,</span>
+<span style="color:#75715e">-- Scala or other languages that have this might be alien to you. Basically we are</span>
+<span style="color:#75715e">-- &#34;branching&#34; the code path between the cases when a `Just x` value is provided</span>
+<span style="color:#75715e">-- versus when a `Nothing` value is provided as input. It yields (in my opinion)</span>
+<span style="color:#75715e">-- far more readable code than `if/else` branching.</span>
+<span style="color:#75715e">-- There is also the benefit that the compiler can warn you when you haven&#39;t covered</span>
+<span style="color:#75715e">-- all value constructors for a type you are matching on. :) I like types. Sue me.</span>
+<span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+<span style="color:#a6e22e">f3</span> f (<span style="color:#66d9ef">Just</span> x) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> f x
+<span style="color:#a6e22e">f3</span> f <span style="color:#66d9ef">Nothing</span>  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
 </div>
 <p>
 This reduces to the following definition where you can find <code class="verbatim">fmap</code> in
@@ -453,14 +613,20 @@ Haskell&#39;s Prelude (read: automatically imported standard libraries, it&#39;s
 a good approximation anyway).
 </p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">    f3 <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
-    f3 f ma <span style="color:#f92672">=</span> fmap f ma</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+<span style="color:#a6e22e">f3</span> f ma <span style="color:#f92672">=</span> fmap f ma</code></pre></div>
 </div>
 <p>
-The basic idea here is that we apply the function from <code class="verbatim">a -&gt; b</code> on the
+The basic idea here is that we apply the function from <code class="verbatim">(a -&gt; b)</code> on the
 value of <code class="verbatim">Maybe a</code> in the case that it is a <code class="verbatim">Just a</code> value. If it is a
 <code class="verbatim">Nothing</code> value it will result in a <code class="verbatim">Nothing</code> in the the type of
-<code class="verbatim">Maybe b</code> for the result of the function.
+<code class="verbatim">Maybe b</code> for the result of the function and nothing needs to be done.
+</p>
+<p>
+By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code> must be equal to our friend
+<code class="verbatim">fmap</code> in the <code class="verbatim">Data.Functor</code> module because the <code class="verbatim">f</code> and <code class="verbatim">ma</code> are the same values
+and positions on both the left-hand side (LHS) and the right-hand side (RHS).
+Therefore, <code class="verbatim">f3 = fmap</code>.
 </p>
 <h2 id="conclusion">
 Conclusion
@@ -472,7 +638,7 @@ reason about other people&#39;s code and also offering an example of how
 inspecting types signatures using basic understanding of parametricity
 can show logical design level errors in your own API design.
 </p>
-<h2 id="headline-9">
+<h2 id="headline-12">
 Original Source
 </h2>
 <p>
@@ -491,7 +657,7 @@ This article was adapted (for English writing style) from my original Gist in 20
     
       <div class="sns-shares sp-sns-shares">
         
-          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f&ref_src=twsrc%5Etfw&text=Parametricity Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-twitter"></i></a>
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f&ref_src=twsrc%5Etfw&text=Parametricity%3a%20A%20Practitioners%20Guide Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-twitter"></i></a>
         
         
           <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-linkedin"></i></a>
@@ -552,7 +718,7 @@ This article was adapted (for English writing style) from my original Gist in 20
         <div class="sns-shares pc-sns-shares">
           <span>Share:</span>
           
-            <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f&ref_src=twsrc%5Etfw&text=Parametricity Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-twitter"></i></a>
+            <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f&ref_src=twsrc%5Etfw&text=Parametricity%3a%20A%20Practitioners%20Guide Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-twitter"></i></a>
           
           
             <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2014%2f09%2fparametricity-practitioners-guide%2f"><i class="fab fa-linkedin"></i></a>
