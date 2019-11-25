@@ -417,6 +417,9 @@ Imagine you live in a world where <code class="verbatim">null</code>, <code clas
 <p>
 Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell this to the caller of the code in some way. We do that with the type <code class="verbatim">Maybe a</code>.
 </p>
+<h3 id="headline-11">
+A <code class="verbatim">Maybe</code> Excursion
+</h3>
 <p>
 The following is what the type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:
 </p>
@@ -424,7 +427,22 @@ The following is what the type definition of <code class="verbatim">Maybe a</cod
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> a <span style="color:#f92672">|</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
 </div>
 <p>
-Now we need to look at how we would use this:
+This definition means that there are precisely two ways to construct a value of type <code class="verbatim">Maybe a</code>:
+</p>
+<ul>
+<li>
+<p>
+using the <code class="verbatim">Just</code> data constructor (as seen on the right-hand side of the equals sign of the definition) and passing a value of type <code class="verbatim">a</code>
+</p>
+</li>
+<li>
+<p>
+using the <code class="verbatim">Nothing</code> data constructor (which takes no arguments)
+</p>
+</li>
+</ul>
+<p>
+To explore how we could use this type we show two functions below:
 </p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- We can use our @sqrt@ function like so:</span>
@@ -452,21 +470,28 @@ Now we need to look at how we would use this:
 <span style="color:#a6e22e">defaulting</span> a1 <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">=</span> a1</code></pre></div>
 </div>
 <p>
-There are two functions here using <code class="verbatim">Maybe a</code> of some kind. The <code class="verbatim">sqrt</code> function takes a <code class="verbatim">Double</code> value and if it is non-negative it will return a <code class="verbatim">Nothing</code> value since our return type is a <code class="verbatim">Double</code> (rather than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be <code class="verbatim">Double -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, etc. can exist then we can deduce a design error in the type signature if we wish to strive for <em>total</em> functions. The definition of the <code class="verbatim">Double -&gt; Double</code> variety of <code class="verbatim">sqrt</code> is problematic due to its ambiguity when given a negative <code class="verbatim">Double</code> input value. This process has identified a problem with the design of our function type.
+There are two functions above returning <code class="verbatim">Maybe a</code>. The <code class="verbatim">sqrt</code> function takes a <code class="verbatim">Double</code> value and if it is non-negative it will return a <code class="verbatim">Nothing</code> value since our return type is a <code class="verbatim">Double</code> (rather than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be <code class="verbatim">Double -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, etc. can exist then we can deduce a design error in the type signature if we wish to strive for <em>total</em> functions. The definition of the <code class="verbatim">Double -&gt; Double</code> variety of <code class="verbatim">sqrt</code> is problematic due to its ambiguity when given a negative <code class="verbatim">Double</code> input value. This process has identified a problem with the design of our function type.
 </p>
 <p>
 Another way we could have resolved this is by ensuring the only values that can be passed in as inputs are non-negative by restricting the input type or expanding the result type to the <code class="verbatim">Complex</code> codomain. There are merits to these ideas, but consideration of them is outside of the scope of this post.
 </p>
 <p>
-In the second function, we have a <code class="verbatim">defaulting</code> function, which takes a default value as a first argument and a &#34;maybe&#34; value of the same underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the default.
+Note that because the <code class="verbatim">sqrt</code> function is concrete in its type - assuming we couldn&#39;t see its definition - we could not be sure this is giving us back the square root of the given value. We could instead have defined the function to divide an unknown constant by the given number.
 </p>
 <p>
-Hopefully, you can see the value of the <code class="verbatim">Maybe a</code> type now. Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
+In the second function, <code class="verbatim">defaulting</code>, which takes a value as a first argument and a &#34;maybe&#34; value of the same underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the first input value.
 </p>
 <p>
-It seems obvious that if we can assume nothing about type <code class="verbatim">a</code> or <code class="verbatim">b</code> because they can be ANYTHING AT ALL, then there is only one definition
-of the function that can exist. Let&#39;s see what this might look
-like with the definition expanded for <code class="verbatim">f3 :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>:
+Both <code class="verbatim">sqrt</code> and <code class="verbatim">defaulting</code> demonstrate the utility of the <code class="verbatim">Maybe a</code> type.
+</p>
+<h3 id="headline-12">
+Back to properties
+</h3>
+<p>
+Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
+</p>
+<p>
+It seems obvious that if we can assume nothing about type <code class="verbatim">a</code> or <code class="verbatim">b</code> because they can be ANYTHING AT ALL, then there is only one definition of the function that can exist that uses all arguments. Let&#39;s see what this might look like with the definition expanded for <code class="verbatim">f3 :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>:
 </p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
@@ -474,10 +499,10 @@ like with the definition expanded for <code class="verbatim">f3 :: (a -&gt; b) -
 <span style="color:#a6e22e">f3</span> f <span style="color:#66d9ef">Nothing</span>  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
 </div>
 <p>
-Here we are using pattern matching, which if you aren&#39;t used to Haskell, Erlang, Scala, or OCaml, this might be alien to you. We are <em>branching</em> the code path between the cases when a <code class="verbatim">Just x</code> value is provided versus when we are provided <code class="verbatim">Nothing</code> as input. It yields (in my opinion) more readable code than typical <code class="verbatim">if/else</code> or switch statement branching.
+Here we are using pattern matching. This allows us to <em>branch</em> the code path between the cases when a <code class="verbatim">Just x</code> value is provided versus when we are provided <code class="verbatim">Nothing</code> as input. It yields (in my opinion) more readable code than typical <code class="verbatim">if/else</code> or switch statement branching.
 </p>
 <p>
-There is also the benefit that the compiler can warn you when you haven&#39;t covered all value constructors for a type you are matching on, eliminating one common cause of bugs in software.
+When we program in a language that doesn&#39;t have have null pointers as a way of life, the compiler can warn us when we haven&#39;t covered all data constructors for a type you are matching on, eliminating one common cause of bugs in software.
 </p>
 <p>
 We can reduce <code class="verbatim">f3</code> to the following definition where you can find <code class="verbatim">fmap</code> in Haskell&#39;s Prelude (a Prelude is an automatically imported standard library of functions and types).
@@ -492,7 +517,7 @@ The basic idea here is that we apply the function from <code class="verbatim">(a
 <p>
 By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code> must be equal to our friend <code class="verbatim">fmap</code> in the <code class="verbatim">Data.Functor</code> module because the <code class="verbatim">f</code> and <code class="verbatim">ma</code> are the same values and positions on both the left-hand side (LHS) and the right-hand side (RHS). Therefore, <code class="verbatim">f3 = fmap</code>.
 </p>
-<h2 id="headline-11">
+<h2 id="headline-13">
 Applying Parametricity (in Javascript)
 </h2>
 <p>
@@ -504,7 +529,7 @@ Conclusion
 <p>
 Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to reason about other people&#39;s code and also offering an example of how inspecting types signatures using a basic understanding of parametricity can show logical design level errors in your API design.
 </p>
-<h2 id="headline-13">
+<h2 id="headline-15">
 Original Source
 </h2>
 <p>
