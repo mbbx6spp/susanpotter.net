@@ -11,7 +11,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    text-transform: none;
+    text-transform: capitalize;
 }
 
 h1.author {
@@ -32,7 +32,7 @@ nav .navigation-title {
     font-size: 1.4em;
 }
 
-nav .navigation-list {
+nav .menu-mobile {
     background-color: rgb(18, 54, 82);
     background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
 }
