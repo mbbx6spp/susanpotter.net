@@ -32,6 +32,9 @@ nav .navigation-title {
     font-size: 1.4em;
 }
 
+nav .menu-mobile .btn-mobile {
+    color: rgba(255, 255, 255, 0.9);
+}
 nav .menu-mobile  .navigation-list {
     background-color: rgba(18, 54, 82, 0.95);
     // background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
@@ -59,7 +62,11 @@ footer .fixed-bar {
 }
 
 span.social-item {
-    margin: 2px 6px;
+    margin: 2px 4px;
+}
+
+.social-list span {
+    font-size: 0.8em;
 }
 
 h2.info {
