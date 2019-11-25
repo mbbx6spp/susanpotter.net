@@ -431,10 +431,10 @@ Now let&#39;s look at the following:
 First, we need to understand what the <code class="verbatim">Maybe</code> type is.
 </p>
 <p>
-Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other such construct do not exist. It&#39;s a pleasant land where if you are told there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an actual <code class="verbatim">PandaBear</code> value. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or =null=s.
+Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other such representations of the null pointer do not exist. In this world, if you are told there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an actual <code class="verbatim">PandaBear</code> value provided. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or =null=s.
 </p>
 <p>
-Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell the calling code that in some way. We do that with the type <code class="verbatim">Maybe a</code>.
+Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell this to the caller of the code in some way. We do that with the type <code class="verbatim">Maybe a</code>.
 </p>
 <p>
 The following is what the type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:
@@ -455,9 +455,9 @@ Now we need to look at how we would use this:
 <span style="color:#75715e">-- Nothing</span>
 <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 9</span>
 <span style="color:#75715e">-- Just 3</span>
-<span style="color:#a6e22e">sqrt</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Double</span>
+<span style="color:#a6e22e">sqrt</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Double</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Double</span>
 <span style="color:#a6e22e">sqrt</span> i
-  <span style="color:#f92672">|</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> <span style="color:#66d9ef">Math</span><span style="color:#f92672">.</span>sqrt i
+  <span style="color:#f92672">|</span> i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> <span style="color:#66d9ef">Math</span><span style="color:#f92672">.</span>sqrt i
   <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
 
 <span style="color:#75715e">-- This function can be used like so:</span>
@@ -471,19 +471,18 @@ Now we need to look at how we would use this:
 <span style="color:#a6e22e">defaulting</span> a1 <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">=</span> a1</code></pre></div>
 </div>
 <p>
-There are two functions here using <code class="verbatim">Maybe a</code> of some kind. The <code class="verbatim">sqrt</code> function takes an <code class="verbatim">Int</code> value and if it is not zero of greater it will return a &#34;nothing&#34; value since our return type is a <code class="verbatim">Double</code> (rather
-than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be
-<code class="verbatim">Int -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, etc. can exist then we can deduce a logical error in the type signature. The definition of <code class="verbatim">sqrt</code> is problematic due to its ambiguity when given zero or less as an <code class="verbatim">Int</code> input value. This process has identified a problem with the design of our function type.
+There are two functions here using <code class="verbatim">Maybe a</code> of some kind. The <code class="verbatim">sqrt</code> function takes a <code class="verbatim">Double</code> value and if it is non-negative it will return a <code class="verbatim">Nothing</code> value since our return type is a <code class="verbatim">Double</code> (rather than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be <code class="verbatim">Double -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, etc. can exist then we can deduce a design error in the type signature if we wish to strive for <em>total</em> functions. The definition of the <code class="verbatim">Double -&gt; Double</code> variety of <code class="verbatim">sqrt</code> is problematic due to its ambiguity when given a negative <code class="verbatim">Double</code> input value. This process has identified a problem with the design of our function type.
 </p>
 <p>
-I the second function, we have a <code class="verbatim">defaulting</code> function, which takes a default value as a first argument and a &#34;maybe&#34; value of the same
+Another way we could have resolved this is by ensuring the only values that can be passed in as inputs are non-negative by restricting the input type or expanding the result type to the <code class="verbatim">Complex</code> codomain. There are merits to these ideas, but consideration of them is outside of the scope of this post.
+</p>
+<p>
+In the second function, we have a <code class="verbatim">defaulting</code> function, which takes a default value as a first argument and a &#34;maybe&#34; value of the same
 underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the
 default.
 </p>
 <p>
-Hopefully, you can see the value of the <code class="verbatim">Maybe a</code> type now. Let&#39;s get
-back to the original function we were going to investigate:
-<code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
+Hopefully, you can see the value of the <code class="verbatim">Maybe a</code> type now. Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
 </p>
 <p>
 It seems obvious that if we can assume nothing about type <code class="verbatim">a</code> or <code class="verbatim">b</code> because they can be ANYTHING AT ALL, then there is only one definition
