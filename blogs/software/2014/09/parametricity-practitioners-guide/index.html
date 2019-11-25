@@ -217,12 +217,7 @@ Now we assume that the rule holds for some natural number, let&#39;s call it <co
 </li>
 <li>
 <p>
-We expect our sum of natural numbers starting at zero and incrementing by one
-ending at <code class="verbatim">(k + 1)</code> to be equal to the expression <code class="verbatim">1 + 2 + ... + k + (k + 1)</code>.
-Since we assume (from the second step above) that the sum of naturals until <code class="verbatim">k</code> is
-<code class="verbatim">k * (k + 1) / 2</code> then we expect <code class="verbatim">k * (k + 1) / 2 + (k + 1)</code> to equal
-<code class="verbatim">(k + 1) * (k + 2) / 2</code>. Now we can use algebra rearrangement to show whether these
-are equivalent expressions or not:
+We expect our sum of natural numbers starting at zero and incrementing by one ending at <code class="verbatim">(k + 1)</code> to be equal to the expression <code class="verbatim">1 + 2 + ... + k + (k + 1)</code>. Since we assume (from the second step above) that the sum of naturals until <code class="verbatim">k</code> is <code class="verbatim">k * (k + 1) / 2</code> then we expect <code class="verbatim">k * (k + 1) / 2 + (k + 1)</code> to equal <code class="verbatim">(k + 1) * (k + 2) / 2</code>. Now we can use algebra rearrangement to show whether these are equivalent expressions or not:
 </p>
 <ul>
 <li>
@@ -312,8 +307,7 @@ and that <code class="verbatim">a</code> can be any type, how many possible defi
 <span style="color:#a6e22e">f1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-Let&#39;s back up a little first to ensure those who can&#39;t read Haskell easily can
-understand the function type above.
+Let&#39;s back up a little first to ensure those who can&#39;t read Haskell easily can understand the function type above.
 </p>
 <ul>
 <li>
@@ -359,20 +353,14 @@ Now that we can read the Haskell type above let&#39;s fix <code class="verbatim"
 <span style="color:#a6e22e">f1str</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-Assume the only thing the result of function <code class="verbatim">f1str</code> can depend on is
-its input value (in this case, just one input), then it could be any
-&#34;transformation&#34; of the input. Now, in this case, the type is
-<code class="verbatim">String -&gt; String</code>, there are many kinds of transformations that we can apply to the input to derive the result in a pure way. For example, we could apply a hash function on the input <code class="verbatim">String</code> value to produce a result of type <code class="verbatim">String</code>. We could <code class="verbatim">reverse</code> the string or take up to the first three characters of the input string (if they exist) and provide that as the resulting value.
+Assume the only thing the result of function <code class="verbatim">f1str</code> can depend on is its input value (in this case, just one input), then it could be any
+&#34;transformation&#34; of the input. Now, in this case, the type is <code class="verbatim">String -&gt; String</code>, there are many kinds of transformations that we can apply to the input to derive the result in a pure way. For example, we could apply a hash function on the input <code class="verbatim">String</code> value to produce a result of type <code class="verbatim">String</code>. We could <code class="verbatim">reverse</code> the string or take up to the first three characters of the input string (if they exist) and provide that as the resulting value.
 </p>
 <p>
-There are many (when you factor in all combinations of these
-transformations from <code class="verbatim">String -&gt; String</code> and <code class="verbatim">String -&gt; r</code> with <code class="verbatim">r -&gt; String</code>) possibilities too.
+There are many (when you factor in all combinations of these transformations from <code class="verbatim">String -&gt; String</code> and <code class="verbatim">String -&gt; r</code> with <code class="verbatim">r -&gt; String</code>) possibilities too.
 </p>
 <p>
-Now let&#39;s try <code class="verbatim">Int -&gt; Int</code>, there are not that many coinciding
-&#34;transforms&#34; that are valid for both =String=s and =Int=s. Now
-extending this to any type from input to output we realize there is only
-one possible definition, which is the identity function:
+Now let&#39;s try <code class="verbatim">Int -&gt; Int</code>, there are not that many coinciding &#34;transforms&#34; that are valid for both =String=s and =Int=s. Now extending this to any type from input to output we realize there is only one possible definition, which is the identity function:
 </p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">identity</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
@@ -382,9 +370,7 @@ one possible definition, which is the identity function:
 What the above says is that given a value of type <code class="verbatim">a</code> the function <code class="verbatim">identity</code> produces that value back as the result.
 </p>
 <p>
-Yes, ok, that example was trivial, yet we see how when we made the
-types more and more generic and parametric we could make more and
-more assertions about the definition of the function?
+Yes, ok, that example was trivial, yet we see how when we made the types more and more generic and parametric we could make more and more assertions about the definition of the function?
 </p>
 <p>
 That&#39;s a critical piece of the idea behind parametricity.
@@ -403,12 +389,10 @@ Now let&#39;s take a look at a less trivial example:
 <span style="color:#a6e22e">f2</span> f as <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-We are given a function from type <code class="verbatim">a</code> to type <code class="verbatim">b</code>. Let&#39;s say this is
-something like <code class="verbatim">String -&gt; Int</code>, which could take the string argument and produce its length as the result value. After taking that function, let&#39;s say <code class="verbatim">length</code>, we would be taking a list of strings and returning a list of ints representing their lengths.
+We are given a function from type <code class="verbatim">a</code> to type <code class="verbatim">b</code>. Let&#39;s say this is something like <code class="verbatim">String -&gt; Int</code>, which could take the string argument and produce its length as the result value. After taking that function, let&#39;s say <code class="verbatim">length</code>, we would be taking a list of strings and returning a list of ints representing their lengths.
 </p>
 <p>
-What can we say about this function, even the concrete one defined
-above? Well, the most likely definition of that is:
+What can we say about this function, even the concrete one defined above? Well, the most likely definition of that is:
 </p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f2</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
@@ -477,9 +461,7 @@ There are two functions here using <code class="verbatim">Maybe a</code> of some
 Another way we could have resolved this is by ensuring the only values that can be passed in as inputs are non-negative by restricting the input type or expanding the result type to the <code class="verbatim">Complex</code> codomain. There are merits to these ideas, but consideration of them is outside of the scope of this post.
 </p>
 <p>
-In the second function, we have a <code class="verbatim">defaulting</code> function, which takes a default value as a first argument and a &#34;maybe&#34; value of the same
-underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the
-default.
+In the second function, we have a <code class="verbatim">defaulting</code> function, which takes a default value as a first argument and a &#34;maybe&#34; value of the same underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the default.
 </p>
 <p>
 Hopefully, you can see the value of the <code class="verbatim">Maybe a</code> type now. Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
@@ -508,9 +490,7 @@ We can reduce <code class="verbatim">f3</code> to the following definition where
 <span style="color:#a6e22e">f3</span> f ma <span style="color:#f92672">=</span> fmap f ma</code></pre></div>
 </div>
 <p>
-The basic idea here is that we apply the function from <code class="verbatim">(a -&gt; b)</code> on the
-value of <code class="verbatim">Maybe a</code> in the case that it is a <code class="verbatim">Just a</code> value. If it is a
-<code class="verbatim">Nothing</code> value it will result in a <code class="verbatim">Nothing</code> in the type of <code class="verbatim">Maybe b</code> for the result of the function.
+The basic idea here is that we apply the function from <code class="verbatim">(a -&gt; b)</code> on the value of <code class="verbatim">Maybe a</code> in the case that it is a <code class="verbatim">Just a</code> value. If it is a <code class="verbatim">Nothing</code> value it will result in a <code class="verbatim">Nothing</code> in the type of <code class="verbatim">Maybe b</code> for the result of the function.
 </p>
 <p>
 By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code> must be equal to our friend <code class="verbatim">fmap</code> in the <code class="verbatim">Data.Functor</code> module because the <code class="verbatim">f</code> and <code class="verbatim">ma</code> are the same values and positions on both the left-hand side (LHS) and the right-hand side (RHS). Therefore, <code class="verbatim">f3 = fmap</code>.
@@ -525,10 +505,7 @@ TODO
 Conclusion
 </h2>
 <p>
-Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to
-reason about other people&#39;s code and also offering an example of how
-inspecting types signatures using a basic understanding of parametricity
-can show logical design level errors in your API design.
+Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to reason about other people&#39;s code and also offering an example of how inspecting types signatures using a basic understanding of parametricity can show logical design level errors in your API design.
 </p>
 <h2 id="headline-13">
 Original Source
