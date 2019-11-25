@@ -32,9 +32,9 @@ nav .navigation-title {
     font-size: 1.4em;
 }
 
-nav .menu-mobile {
-    background-color: rgb(18, 54, 82);
-    background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
+nav .menu-mobile  .navigation-list {
+    background-color: rgba(18, 54, 82, 0.95);
+    // background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
 }
 
 nav .navigation-list .navigation-item .navigation-link {
