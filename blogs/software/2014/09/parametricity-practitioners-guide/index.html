@@ -95,9 +95,7 @@
 Introduction
 </h2>
 <p>
-The fundamental idea of parametricity is that from parametric <em>&#34;pure&#34;</em> and <em>total</em>
-functions we can determine interesting properties and much more from the parametric
-types than equivalent functions fixed with specific types only.
+The big idea of parametricity is that from parametric (or generic) <em>&#34;pure&#34;</em> functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.
 </p>
 <h2 id="headline-2">
 Goals
@@ -149,7 +147,7 @@ Core business logic (in my experience) can be implemented using &#34;pure&#34; f
 </li>
 <li>
 <p>
-Our <em>&#34;pure&#34;</em> functions are <strong>total</strong>. A total function is one that produces a result for all inputs to the function, even if it takes a while to compute. In practice, this means we can&#39;t have exceptions raised or infinite recursion for any input the function takes.
+Our <em>&#34;pure&#34;</em> functions should be <strong>total</strong> for correctness. A total function is one that produces a result for all inputs to the function, even if it takes a while to compute. In practice, this means we can&#39;t have exceptions raised or infinite recursion for any input the function takes.
 </p>
 </li>
 <li>
@@ -159,20 +157,16 @@ Your source language supports <strong>parametric polymorphism</strong>. Parametr
 </li>
 </ol>
 <p>
-I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article,
-preferring the former given my target audience. The core material in this article is
-loosely based on Philip Wadler&#39;s <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a> paper, which uses the term
-<em>theorems</em> exclusively.
+I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article, preferring the former given my target audience. The core material in this article is loosely based on Philip Wadler&#39;s <em><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a></em> paper, which uses the term <em>theorems</em> exclusively.
 </p>
 <p>
-Readers with more formal backgrounds may be cringing at the definitions. Using these less formal definitions was intentional to broaden the reach of this material for broader application.
+Readers with more formal backgrounds may cringe at the definitions. Using these less formal definitions was intentional to broaden the reach of the ideas of parametricity for broader application.
 </p>
 <h2 id="headline-4">
 A Familiar Form of Reasoning
 </h2>
 <p>
-Programmers of every stripe already use one or more thinking tools from one form of
-reasoning no matter their language of choice: <strong>logical reasoning</strong>.
+Programmers of every stripe already use thinking tools from one form of reasoning no matter their language of choice: <strong>logical reasoning</strong>.
 </p>
 <p>
 With logical reasoning, we have three primary thinking tools available to us, which we can use in isolation or combination with each other. They are:
