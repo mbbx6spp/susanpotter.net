@@ -32,6 +32,11 @@ nav .navigation-title {
     font-size: 1.4em;
 }
 
+nav .navigation-list {
+    background-color: rgb(18, 54, 82);
+    background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
+}
+
 nav .navigation-list .navigation-item .navigation-link {
     color: rgb(255,255,255);
     text-transform: uppercase;
@@ -42,8 +47,11 @@ nav .navigation-list .navigation-item .navigation-link {
     background-color: #fff;
 }
 
-footer {
-    background-color: #c3c3c3;
+footer .fixed-bar {
+    border-top-color: rgb(160, 160, 160);
+    background-image:
+        -moz-linear-gradient(rgb(200, 200, 200) 0%,
+                             rgb(255, 255, 255) 100%);
 }
 
 .avatar img {
