@@ -520,26 +520,6 @@ By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code
 <p>
 By analysing the type of <code class="verbatim">f3</code> we determined how a function must be defined in order to produce a &#34;pure&#34; and total function without ignoring arguments. As a consequence we identified it must be the same function as another already available to us in the Prelude simply by looking at its type.
 </p>
-<p>
-This has implications such as:
-</p>
-<ul>
-<li>
-<p>
-allowing us to analyze third party code which we may not have the source for
-</p>
-</li>
-<li>
-<p>
-allowing us to identify design flaws in our types
-</p>
-</li>
-<li>
-<p>
-allowing compilers to generate code for us when there is only one possible definition or narrow down the universe of possibilities to a small number
-</p>
-</li>
-</ul>
 <h2 id="headline-13">
 Applying Parametricity (in Javascript)
 </h2>
@@ -552,6 +532,26 @@ Conclusion
 <p>
 Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to reason about other people&#39;s code and also offering an example of how inspecting types signatures using a basic understanding of parametricity can show logical design level errors in your API design.
 </p>
+<p>
+To recap parametricity enables us to:
+</p>
+<ul>
+<li>
+<p>
+analyze third party code which we may not have the source for
+</p>
+</li>
+<li>
+<p>
+identify design flaws in our types
+</p>
+</li>
+<li>
+<p>
+generate code for us when there is only one possible definition or narrow down the universe of possibilities to a small number
+</p>
+</li>
+</ul>
 <h2 id="headline-15">
 Original Source
 </h2>
