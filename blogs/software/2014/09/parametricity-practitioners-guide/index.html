@@ -95,6 +95,12 @@
 Introduction
 </h2>
 <p>
+What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
+</p>
+<p>
+Wouldn&#39;t it be great if we were able to <strong>reason</strong> about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?
+</p>
+<p>
 The big idea of parametricity is that from parametric (or generic) <em>&#34;pure&#34;</em> functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.
 </p>
 <h2 id="headline-2">
@@ -270,41 +276,26 @@ Deduction is the thinking tool in logical reasoning that no programmer needs an 
 Give Me More (forms of reasoning)!
 </h2>
 <p>
-Wouldn&#39;t it be great if we were able to <strong>reason</strong> about our code in a variety of ways that make our lives as simple as possible when debugging or eliminate debugging altogether in some cases?
+As an industry developer, I like being able to take advantage of other people&#39;s reusable work, whether it is a reusable library, our automated testing suites, or reasoning thinking tools developed and tested by mathematicians and scientists over many decades or centuries.
 </p>
 <p>
-Reasoning in software (beyond rudimentary logical thinking) is not new, and much of the programming language theory (PLT) research community has been gaining a more in-depth understanding of the possibilities for decades already. It also comes in many shapes and sizes, e.g., logical reasoning, equational reasoning, parametricity,
-axiomatic laws, etc.
-</p>
-<p>
-As an industry developer, I like being able to take advantage of other people&#39;s
-reusable work, whether it is a reusable library, our automated testing suites, or
-reasoning thinking tools developed and tested by mathematicians and scientists over
-many decades or centuries.
-</p>
-<p>
-Reasoning - given our programming environment satisfies all prerequisites - provides us confidence, helping us know how our code <em>can</em> behave. By understanding the properties of units of a system that can be composed, we can build functionality on top of a solid foundation with fewer surprises in later phases of development.
-</p>
-<p>
-What software developer likes surprises, especially in production?
-Not me. At least not when I am on call. ;)
+Reasoning provides us confidence, helping us know how our code <em>can</em> behave. By understanding the properties of units of a system that can be composed, we can build functionality on top of a solid foundation with fewer surprises in later phases of development.
 </p>
 <h2 id="examples">
 Getting Started with Parametricity
 </h2>
 <p>
-Let&#39;s look at some examples of what I mean by <em>properties</em> (or <em>theorems</em> in the paper linked above) about functions from its generic type signatures.
+Let&#39;s look at some examples of what I mean by <em>properties</em> about functions from its generic type signatures.
 </p>
 <p>
-Below is a type [signature] of a function. Assuming it is a pure function
-and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function such that it typechecks and satisfies our prerequisites above?
+Below is a type [signature] of a function. Assuming it is a pure function and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function such that it typechecks and satisfies our prerequisites above?
 </p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
 <span style="color:#a6e22e">f1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-Let&#39;s back up a little first to ensure those who can&#39;t read Haskell easily can understand the function type above.
+Let&#39;s back up a little and have a quick referesher on how to read Haskell:
 </p>
 <ul>
 <li>
