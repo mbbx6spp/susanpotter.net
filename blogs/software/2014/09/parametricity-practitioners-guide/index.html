@@ -341,14 +341,10 @@ Now that we can read the Haskell type above let&#39;s fix <code class="verbatim"
 <span style="color:#a6e22e">f1str</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-Assume the only thing the result of function <code class="verbatim">f1str</code> can depend on is its input value (in this case, just one input), then it could be any
-&#34;transformation&#34; of the input. Now, in this case, the type is <code class="verbatim">String -&gt; String</code>, there are many kinds of transformations that we can apply to the input to derive the result in a pure way. For example, we could apply a hash function on the input <code class="verbatim">String</code> value to produce a result of type <code class="verbatim">String</code>. We could <code class="verbatim">reverse</code> the string or take up to the first three characters of the input string (if they exist) and provide that as the resulting value.
+If the function <code class="verbatim">f1str</code> can depend only on its input then it could be any transformation. In this case, the type <code class="verbatim">(String -&gt; String)</code> there are many kinds of transformations from a given <code class="verbatim">String</code> to another <code class="verbatim">String</code>. For example, we could apply a hash function on the input value or reverse the given string or some combination of the two. There are many possibilities.
 </p>
 <p>
-There are many (when you factor in all combinations of these transformations from <code class="verbatim">String -&gt; String</code> and <code class="verbatim">String -&gt; r</code> with <code class="verbatim">r -&gt; String</code>) possibilities too.
-</p>
-<p>
-Now let&#39;s try <code class="verbatim">Int -&gt; Int</code>, there are not that many coinciding &#34;transforms&#34; that are valid for both =String=s and =Int=s. Now extending this to any type from input to output we realize there is only one possible definition, which is the identity function:
+Now let&#39;s try <code class="verbatim">(Int -&gt; Int)</code>, there are not that many coinciding &#34;transforms&#34; that are valid for both =String=s and =Int=s. Now extending this to any type from input to output we realize there is only one possible definition, which is the identity function:
 </p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">identity</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
@@ -358,7 +354,7 @@ Now let&#39;s try <code class="verbatim">Int -&gt; Int</code>, there are not tha
 What the above says is that given a value of type <code class="verbatim">a</code> the function <code class="verbatim">identity</code> produces that value back as the result.
 </p>
 <p>
-Yes, ok, that example was trivial, yet we see how when we made the types more and more generic and parametric we could make more and more assertions about the definition of the function?
+Yes, ok, that example was trivial, yet we see how when we made the types more generic and parametric we could make more assertions about the definition of the function?
 </p>
 <p>
 That&#39;s a critical piece of the idea behind parametricity.
@@ -400,7 +396,7 @@ To continue exploring parametricity we look at a new function <code class="verba
 First, we need to understand what the <code class="verbatim">Maybe</code> type constructor is.
 </p>
 <p>
-Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other such representations of the null pointer do not exist. In this world, if you are told there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an actual <code class="verbatim">PandaBear</code> value provided. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or =null=s.
+Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other such representations of the null pointer do not exist. In this world, if you are told there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an actual <code class="verbatim">PandaBear</code> value provided. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or <code class="verbatim">null</code> s.
 </p>
 <p>
 Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell this to the caller of the code in some way. We do that with the type <code class="verbatim">Maybe a</code>.
