@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>DynamoDB: Basics</title>
+      <link>/blogs/software/2019/10/dynamodb-basics/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2019/10/dynamodb-basics/</guid>
+      <description>Introduction   This post is introducing the ideas, principles, and concepts used with DynamoDB as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   From using DynamoDB for the last couple of months the big takeaway is that data modeling is still vital.</description>
+    </item>
+    
+    <item>
       <title>Practical Recursion Schemes</title>
       <link>/blogs/software/2018/10/practical-recursion-schemes/</link>
       <pubDate>Mon, 22 Oct 2018 18:45:40 -0500</pubDate>
@@ -55,6 +64,15 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; i
       
       <guid>/blogs/software/2014/09/parametricity-practitioners-guide/</guid>
       <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)  Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?  The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
+    </item>
+    
+    <item>
+      <title>Profunctors: An exploration in less than 100 lines of code</title>
+      <link>/blogs/software/2014/09/profuntors/</link>
+      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2014/09/profuntors/</guid>
+      <description> Introduction  Original Source   This article was adapted with more explanation from my original Gist in 2018: Original Gist </description>
     </item>
     
     <item>
