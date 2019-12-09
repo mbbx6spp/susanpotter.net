@@ -139,7 +139,7 @@ normalization
 </li>
 <li>
 <p>
-<code class="verbatim">JOIN</code>
+<code class="verbatim">JOIN</code> <strong>across</strong> tables (we implicitly &#34;join&#34; within the same DynamoDB table across <em>partitions</em>)
 </p>
 </li>
 </ul>
@@ -160,18 +160,23 @@ Terminology
 <tbody>
 <tr>
 <td>Table</td>
-<td>table or related table set</td>
+<td>set of related tables</td>
 <td>DynamoDB tables less rigidly defined</td>
+</tr>
+<tr>
+<td>Partition</td>
+<td>table</td>
+<td>Multiple entities can be modeled inside the same DDB table</td>
 </tr>
 <tr>
 <td>Item</td>
 <td>record</td>
-<td>values for relevant attributes</td>
+<td>Key-Value pairs describing a data value</td>
 </tr>
 <tr>
 <td>Primary Key</td>
 <td>primary key</td>
-<td>uniquely identify each record in a table</td>
+<td>Uniquely identify each item in a DynamoDB table</td>
 </tr>
 <tr>
 <td>Attribute</td>
