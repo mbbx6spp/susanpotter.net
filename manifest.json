@@ -1,5 +1,4 @@
 {
-  "short_name": "Susan Potter",
   "name": "Susan Potter",
   "icons": [
     {
@@ -14,8 +13,7 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#ffffff",
-  "display": "standalone",
+  "display": "minimal-ui",
   "scope": "/",
   "theme_color": "#123652"
 }
