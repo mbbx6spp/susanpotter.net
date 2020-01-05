@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Unikernels - Susan Potter
+">
+    <meta property="og:description" content="Unikernels">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/blogs/software/2019/12/unikernels/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/blogs/software/2019/12/unikernels/">
+    <meta name="twitter:image" content="/">
+
+    <base href="../../../../../blogs/software/2019/12/unikernels/">
+    <title>
+  Unikernels - Susan Potter
+</title>
+
+    <link rel="canonical" href="../../../../../blogs/software/2019/12/unikernels/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="../../../../../css/normalize.min.css">
+    <link rel="stylesheet" href="../../../../../css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="../../../../../styles/main.css">
+    
+
+    <link rel="icon" type="image/png" href="../../../../../images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../../../../../images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="../../../../../index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="../../../../../index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.58.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="../../../../../">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="../../../../../software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="../../../../../categories/">Categories</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="../../../../../about/">About</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Unikernels</h1>
+    </header>
+
+    
+<p>
+This is an adaptation of a Slack chat rant (slightly reworded to read better for the audience) from work in 2017.
+</p>
+<h2 id="headline-1">
+Notes on unikernels
+</h2>
+<p>
+You might have heard terms like <em>unikernel</em>, <em>nanokernel</em>, or <em>library operating systems</em>.
+</p>
+<p>
+<a href="https://mirage.io/">MirageOS</a> is probably the research project that has received the most love (the research team was acquihired by Docker a few years ago). It is language-based (they use OCaml), meaning you need to write unikernel applications code in OCaml and it can build an image for various virtualization targets (as well as a Linux and probably macOS/BSD binary for development purposes). It strips all aspects of the runtime/OS that the application doesn&#39;t need. i.e. if it doesn&#39;t need the UDP or SCTP stack, then it isn&#39;t shipped in the &#34;library OS&#34; target binaries.
+</p>
+<p>
+Some docs on this are here:
+<a href="https://mirage.io/docs/">https://mirage.io/docs/</a>
+</p>
+<p>
+A non-research oriented introduction can be found here: <a href="https://mirage.io/wiki/overview-of-mirage">https://mirage.io/wiki/overview-of-mirage</a>
+</p>
+<p>
+Other language-based unikernels include:
+</p>
+<ul>
+<li>
+<p>
+IncudeOS (C/C++)
+</p>
+</li>
+<li>
+<p>
+HaLVM (Haskell)
+</p>
+</li>
+<li>
+<p>
+LingVM (Erlang, though it is dead, I am pretty sure now)
+</p>
+</li>
+</ul>
+<p>
+There are different varieties of unikernels (sometimes also called nanokernels or &#34;library OSes&#34;) which are called Rump kernels. These try to work on top of existing OSes and pare down the build of it to be just-what-you-need OS distros to an extreme (much tighter and more optimized than what you get in the general purpose just-what-you-need distros like NixOS). The tradeoff is that rump kernels require more build/release effort w.r.t. tool integration.
+</p>
+<p>
+The big win with the language-based unikernels (and the hope with the rump unikernels) is you only ship the code your application uses. Absolutely nothing else, i.e. compiler target optimization to an extreme (related to whole program optimization which is an area of research in the GHC/LLVM toolchain in academia today). Projects like this whole program optimizer that targets VHDL from a subset of Haskell is intriguing:
+<a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a>
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f&ref_src=twsrc%5Etfw&text=Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f&ref_src=twsrc%5Etfw&text=Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-twitter"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-linkedin"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="../../../../../js/app.js"></script>
+  
+  </body>
+</html>

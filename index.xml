@@ -6,10 +6,19 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unikernels</title>
+      <link>/blogs/software/2019/12/unikernels/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2019/12/unikernels/</guid>
+      <description>This is an adaptation of a Slack chat rant (slightly reworded to read better for the audience) from work in 2017. Notes on unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems.  MirageOS is probably the research project that has received the most love (the research team was acquihired by Docker a few years ago). It is language-based (they use OCaml), meaning you need to write unikernel applications code in OCaml and it can build an image for various virtualization targets (as well as a Linux and probably macOS/BSD binary for development purposes).</description>
+    </item>
     
     <item>
       <title>DynamoDB: Basics</title>

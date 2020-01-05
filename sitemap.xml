@@ -3,14 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blogs/software/2019/10/dynamodb-basics/</loc>
-    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/blogs/software/2019/12/unikernels/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2019/10/dynamodb-basics/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
