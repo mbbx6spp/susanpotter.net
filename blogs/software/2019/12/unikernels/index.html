@@ -151,41 +151,55 @@ I have seen unikernels referred to as nanokernels or library operating systems.
 Rump kernels
 </h3>
 <p>
-Rump kernels are either a kind of unikernel or a stepping stone to unikernels
+<em>Rump kernels</em> are either a kind of unikernel or a stepping stone to unikernels
 depending on who you talk to. Rump kernels try to work on top of existing
 operating systems (OSes) to pare down the build to only what is needed.
-These are often terms Just-Enough operating system distributions what qualifies varies
+These are often termed <em>Just-Enough operating systems</em> and what qualifies varies
 from context to context.
 </p>
 <p>
-In a meeting with Azure people, I once heard them refer to NixOS as a Just-Enough OS
-in 2015. Even as an enthusiastic NixOS user since then I have mixed feelings about this
-definition, but I certainly understand why it was labeled that way.
+In a meeting with Azure staff in 2015, I heard them refer to NixOS as a Just-Enough OS.
+Even as an enthusiastic NixOS user back then I had mixed feelings about this
+classification, yet I understand why it was labeled that way.
 </p>
 <p>
-The trade-off compared to unikernels defined above is that rump kernels leverage
-existing mature build tooling ecosystems. However, they are often riddled
-with gross legacy decisions that make builds less hermetic or reproducible (outside
-of the Nix/Guix worlds), and the resulting artifacts are less slimline as unikernels
-by definition thus the comparative attach surface area is still greater with rump kernels
-as compared with unikernels. Though the attack surface area will be less than a typical
-system build that runs an equivalent application on a typical <em>fat</em> distribution of
-the same flavor (e.g. Linux, BSD, etc.) and more familiar system level debugging
-tooling is available compared to unikernels where this is very much &#34;in development&#34;
-mode.
+The main build-level trade-off compared to unikernels defined above is that rump
+kernels leverage existing mature build tooling ecosystems. However, they are often
+riddled with gross legacy decisions that make builds less hermetic or reproducible
+(outside of the Nix/Guix worlds), and the resulting artifacts are less slimline as
+unikernels by definition thus the comparative attach surface area is still greater
+with rump kernels as compared with unikernels. Though the attack surface area will be
+less than a typical system build that runs an equivalent application on a typical
+distribution of the same flavor (e.g. Linux, BSD, etc.) and more familiar system-level
+debugging tooling is available compared to unikernels where this is very much
+<em>&#34;in development&#34;</em> mode.
 </p>
 <p>
 Rump kernels do allow you to <em>more</em> incrementally migrate your application
-from typical fat OS deployments to more streamlined rump kernel deployments.
+from typical OS deployments (where everything including the kitchen-sink is installed
+without manual effort to reduce this down) out of the box to more streamlined rump
+kernel deployments.
 </p>
 <p>
 The big win with the language-based unikernels (and the hope with the rump unikernels)
-is you only ship the code your application uses. Absolutely nothing else, i.e.
-compiler target optimization to an extreme (related to whole program optimization
-which is an area of research in the GHC/LLVM toolchain in academia today). Projects
-like this whole program optimizer that targets VHDL from a subset of Haskell is
-intriguing:
+is you only ship the code your application uses. Absolutely nothing else, meaning the
+compiler target optimizes to an extreme.
+</p>
+<h3 id="headline-4">
+Related areas
+</h3>
+<p>
+This is related to another area I am intrigued about as a bystander which is <em>whole
+program optimization</em>. Projects like this <a href="https://github.com/mu-chaco/ReWire">whole program optimizer</a> targeting VHDL
+from a subset of Haskell is exciting work to me:
 <a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a>
+</p>
+<p>
+Arguably unikernels would could enable more application of whole program optimization
+at all levels.
+</p>
+<p>
+We will wait to see what happens in this space.
 </p>
 
   </article>
