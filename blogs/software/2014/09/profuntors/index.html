@@ -14,7 +14,7 @@
     <meta property="og:title" content="
   Profunctors: An exploration in less than 100 lines of code - Susan Potter
 ">
-    <meta property="og:description" content="A quick and handy guide to how to leverage parametricity in practice.">
+    <meta property="og:description" content="Introducing the idea of profunctors">
     <meta property="og:type" content="website">
     <meta property="og:url" content="/blogs/software/2014/09/profuntors/">
     <meta property="og:image" content="/">
@@ -95,7 +95,94 @@
 <h2 id="headline-1">
 Introduction
 </h2>
+<p>
+<em>Profunctors</em> are a remarkably practical abstraction for many things modern software
+development is concerned with today.
+</p>
+<p>
+Consider that much of distributed systems software today concerns the following
+activity pairs:
+</p>
+<dl>
+<dt>
+encoding &amp; decoding
+</dt>
+<dd>
+<p>
+We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)
+</p>
+</dd>
+<dt>
+serializing &amp; deserializing
+</dt>
+<dd>
+<p>
+We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.g. JSON is a <em>format</em> that data representations can be serialized to, however, there is more detail for clients, servers, or peers must negotiation in terms of data representation beyond just &#34;I will send you this sum type to you as JSON&#34;.
+</p>
+</dd>
+<dt>
+encrypting &amp; decrypting
+</dt>
+<dd>
+<p>
+We sometimes need to encrypt a piece of data so we can send it to another party such that if it is intercepted by a third party it would be difficult (at worst) to find a way to decrypt it without shared knowledge already, e.g. every time we visit a website over HTTPS our user-agent (typically browser) and the server negotiates keys, cipher suites, and protocols to communicate with in a <em>handshake</em> process and then each side encrypts and decrypts via that shared context.
+</p>
+</dd>
+<dt>
+signing &amp; validating
+</dt>
+<dd>
+<p>
+We increasingly need to produce content that we identify as having been written by us such that another party can check it was us who authored the content. For example, we might want to publish statements to our users periodically (monthly, let&#39;s say) asserting that we have not received (to our knowledge) any secret subpoenas to share user data with government agencies. When that declaration is no longer true, we can say something entirely different in the monthly message. This is known as a <em><a href="https://www.eff.org/deeplinks/2014/04/warrant-canary-faq">Warrant Canary</a></em> but we also need to allow users to know <strong>we</strong> authored those messages. We do this by signing the statement each month (and to ensure we didn&#39;t just generate the statements ahead of time and slow release them, we also need to comment on current day news headlines or today&#39;s weather). Signing content allows readers to check you have a private key that allowed you to sign a statement as you. A simpler example is when we want to ensure one part of a system generated the content where we require the content is signed to validate by a different actor later in the process.
+</p>
+</dd>
+</dl>
+<p>
+These paired activities can often be modeled as a <em>Profunctor</em>.
+</p>
+<p>
+We can also elegantly express the idea of functional optics with <em>Profunctor</em> as the
+central abstraction as well.
+</p>
 <h2 id="headline-2">
+<span class="todo">TODO</span>
+Reviewing covariant and contravariant functors
+</h2>
+<h2 id="headline-3">
+<span class="todo">TODO</span>
+Pairing covariant and contravariant functors together (Profunctors)
+</h2>
+<h2 id="headline-4">
+<span class="todo">TODO</span>
+Related ideas
+</h2>
+<p>
+Some reminders of interesting ideas to point readers to for further investigation and
+application:
+</p>
+<ul>
+<li>
+<p>
+Adjunctions
+</p>
+</li>
+<li>
+<p>
+Codensity
+</p>
+</li>
+<li>
+<p>
+Strong
+</p>
+</li>
+<li>
+<p>
+Costar
+</p>
+</li>
+</ul>
+<h2 id="headline-5">
 Original Source
 </h2>
 <p>

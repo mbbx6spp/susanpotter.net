@@ -20,5 +20,14 @@
       <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
+    <item>
+      <title>Principles of economics applied to software development, reliability engineering, and technical leadership</title>
+      <link>/blogs/software/2017/06/economic-theory/</link>
+      <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
+      
+      <guid>/blogs/software/2017/06/economic-theory/</guid>
+      <description>One of my favorite subjects as a lay person is economics from which I have found many useful applications of core principles relating to my work in software development, technical leadership as well as my recent reliability engineering roles.  This is a post to share some of my thoughts around this. A few ideas from economics   The ideas from economics that have resonated with me at work are:   opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
+    </item>
+    
   </channel>
 </rss>

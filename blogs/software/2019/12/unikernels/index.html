@@ -12,9 +12,9 @@
 
     <meta property="og:site_name" content="Susan Potter">
     <meta property="og:title" content="
-  Unikernels - Susan Potter
+  Random notes on Unikernels - Susan Potter
 ">
-    <meta property="og:description" content="Unikernels">
+    <meta property="og:description" content="Random thoughts on unikernels, nanokernels, and library operating systems">
     <meta property="og:type" content="website">
     <meta property="og:url" content="/blogs/software/2019/12/unikernels/">
     <meta property="og:image" content="/">
@@ -24,7 +24,7 @@
 
     <base href="../../../../../blogs/software/2019/12/unikernels/">
     <title>
-  Unikernels - Susan Potter
+  Random notes on Unikernels - Susan Potter
 </title>
 
     <link rel="canonical" href="../../../../../blogs/software/2019/12/unikernels/">
@@ -88,21 +88,34 @@
   <section class="container page">
   <article>
     <header>
-      <h1>Unikernels</h1>
+      <h1>Random notes on Unikernels</h1>
     </header>
 
     
 <p>
-This is an adaptation of a Slack chat rant (slightly reworded to read better for the audience) from work in 2017.
+This is an adaptation of a Slack chat rant (slightly reworded to read better for the
+audience) from work in 2017.
 </p>
 <h2 id="headline-1">
-Notes on unikernels
+Random notes on unikernels
 </h2>
+<h3 id="headline-2">
+Introducing unikernels
+</h3>
 <p>
 You might have heard terms like <em>unikernel</em>, <em>nanokernel</em>, or <em>library operating systems</em>.
+These aren&#39;t always used in exactly the same way, but they are highly related terms.
 </p>
 <p>
-<a href="https://mirage.io/">MirageOS</a> is probably the research project that has received the most love (the research team was acquihired by Docker a few years ago). It is language-based (they use OCaml), meaning you need to write unikernel applications code in OCaml and it can build an image for various virtualization targets (as well as a Linux and probably macOS/BSD binary for development purposes). It strips all aspects of the runtime/OS that the application doesn&#39;t need. i.e. if it doesn&#39;t need the UDP or SCTP stack, then it isn&#39;t shipped in the &#34;library OS&#34; target binaries.
+<a href="https://mirage.io/">MirageOS</a> is the research project that has received the most industry love of which I
+am aware. The research team was acquihired by Docker a few years ago). It is
+language-based (they use OCaml), meaning you need to write <em>unikernel</em> applications
+in OCaml and it will build an image for various virtualization targets (as well as a
+Linux and probably macOS/BSD binary to run on existing OSes for development purposes).
+It strips all aspects of the runtime/OS that the application doesn&#39;t need. i.e. if it
+doesn&#39;t need the UDP or SCTP stack, then it isn&#39;t shipped in the &#34;library OS&#34; target
+binaries reducing your attack surface area. These are one of the awesome things that
+excite me about the possibility of the idea of unikernels.
 </p>
 <p>
 Some docs on this are here:
@@ -127,15 +140,51 @@ HaLVM (Haskell)
 </li>
 <li>
 <p>
-LingVM (Erlang, though it is dead, I am pretty sure now)
+LingVM (Erlang, though it is dead, I think)
 </p>
 </li>
 </ul>
 <p>
-There are different varieties of unikernels (sometimes also called nanokernels or &#34;library OSes&#34;) which are called Rump kernels. These try to work on top of existing OSes and pare down the build of it to be just-what-you-need OS distros to an extreme (much tighter and more optimized than what you get in the general purpose just-what-you-need distros like NixOS). The tradeoff is that rump kernels require more build/release effort w.r.t. tool integration.
+I have seen unikernels referred to as nanokernels or library operating systems.
+</p>
+<h3 id="headline-3">
+Rump kernels
+</h3>
+<p>
+Rump kernels are either a kind of unikernel or a stepping stone to unikernels
+depending on who you talk to. Rump kernels try to work on top of existing
+operating systems (OSes) to pare down the build to only what is needed.
+These are often terms Just-Enough operating system distributions what qualifies varies
+from context to context.
 </p>
 <p>
-The big win with the language-based unikernels (and the hope with the rump unikernels) is you only ship the code your application uses. Absolutely nothing else, i.e. compiler target optimization to an extreme (related to whole program optimization which is an area of research in the GHC/LLVM toolchain in academia today). Projects like this whole program optimizer that targets VHDL from a subset of Haskell is intriguing:
+In a meeting with Azure people, I once heard them refer to NixOS as a Just-Enough OS
+in 2015. Even as an enthusiastic NixOS user since then I have mixed feelings about this
+definition, but I certainly understand why it was labeled that way.
+</p>
+<p>
+The trade-off compared to unikernels defined above is that rump kernels leverage
+existing mature build tooling ecosystems. However, they are often riddled
+with gross legacy decisions that make builds less hermetic or reproducible (outside
+of the Nix/Guix worlds), and the resulting artifacts are less slimline as unikernels
+by definition thus the comparative attach surface area is still greater with rump kernels
+as compared with unikernels. Though the attack surface area will be less than a typical
+system build that runs an equivalent application on a typical <em>fat</em> distribution of
+the same flavor (e.g. Linux, BSD, etc.) and more familiar system level debugging
+tooling is available compared to unikernels where this is very much &#34;in development&#34;
+mode.
+</p>
+<p>
+Rump kernels do allow you to <em>more</em> incrementally migrate your application
+from typical fat OS deployments to more streamlined rump kernel deployments.
+</p>
+<p>
+The big win with the language-based unikernels (and the hope with the rump unikernels)
+is you only ship the code your application uses. Absolutely nothing else, i.e.
+compiler target optimization to an extreme (related to whole program optimization
+which is an area of research in the GHC/LLVM toolchain in academia today). Projects
+like this whole program optimizer that targets VHDL from a subset of Haskell is
+intriguing:
 <a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a>
 </p>
 
@@ -150,7 +199,7 @@ The big win with the language-based unikernels (and the hope with the rump unike
     
       <div class="sns-shares sp-sns-shares">
         
-          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f&ref_src=twsrc%5Etfw&text=Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-twitter"></i></a>
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f&ref_src=twsrc%5Etfw&text=Random%20notes%20on%20Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-twitter"></i></a>
         
         
           <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-linkedin"></i></a>
@@ -211,7 +260,7 @@ The big win with the language-based unikernels (and the hope with the rump unike
         <div class="sns-shares pc-sns-shares">
           <span>Share:</span>
           
-            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f&ref_src=twsrc%5Etfw&text=Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f&ref_src=twsrc%5Etfw&text=Random%20notes%20on%20Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
           
           
             <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2019%2f12%2funikernels%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>

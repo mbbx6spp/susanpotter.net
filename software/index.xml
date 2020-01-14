@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Unikernels</title>
+      <title>Random notes on Unikernels</title>
       <link>/blogs/software/2019/12/unikernels/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/blogs/software/2019/12/unikernels/</guid>
-      <description>This is an adaptation of a Slack chat rant (slightly reworded to read better for the audience) from work in 2017. Notes on unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems.  MirageOS is probably the research project that has received the most love (the research team was acquihired by Docker a few years ago). It is language-based (they use OCaml), meaning you need to write unikernel applications code in OCaml and it can build an image for various virtualization targets (as well as a Linux and probably macOS/BSD binary for development purposes).</description>
+      <description>This is an adaptation of a Slack chat rant (slightly reworded to read better for the audience) from work in 2017. Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.  MirageOS is the research project that has received the most industry love of which I am aware.</description>
     </item>
     
     <item>
@@ -45,6 +45,15 @@
       
       <guid>/blogs/software/2018/04/haskell-decoding-lenses/</guid>
       <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
+    </item>
+    
+    <item>
+      <title>Principles of economics applied to software development, reliability engineering, and technical leadership</title>
+      <link>/blogs/software/2017/06/economic-theory/</link>
+      <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
+      
+      <guid>/blogs/software/2017/06/economic-theory/</guid>
+      <description>One of my favorite subjects as a lay person is economics from which I have found many useful applications of core principles relating to my work in software development, technical leadership as well as my recent reliability engineering roles.  This is a post to share some of my thoughts around this. A few ideas from economics   The ideas from economics that have resonated with me at work are:   opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
     </item>
     
     <item>
@@ -81,7 +90,7 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; i
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/blogs/software/2014/09/profuntors/</guid>
-      <description> Introduction  Original Source   This article was adapted with more explanation from my original Gist in 2018: Original Gist </description>
+      <description>Introduction   Profunctors are a remarkably practical abstraction for many things modern software development is concerned with today.  Consider that much of distributed systems software today concerns the following activity pairs:   encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
     </item>
     
     <item>
