@@ -49,7 +49,7 @@
       <link href="../../../../../index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -64,11 +64,11 @@
         
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../software/">Software</a>
+              <a class="navigation-link" href="../../../../../categories/economics">Economics</a>
             </li>
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../categories/">Categories</a>
+              <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
             <li class="navigation-item   align-left  ">
@@ -92,18 +92,18 @@
     </header>
 
     
-<h2 id="headline-1">
+<h3 id="headline-1">
 Introduction
-</h2>
+</h3>
 <p>
 This post is introducing the ideas, principles, and concepts used with DynamoDB as I have been learning how to leverage this technology in a new project.
 </p>
 <p>
 This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
 </p>
-<h2 id="headline-2">
+<h3 id="headline-2">
 Key takeaways
-</h2>
+</h3>
 <p>
 From using DynamoDB for the last couple of months the big takeaway is that data modeling is still vital. The process of data modeling looks almost identical to working in the RDBMS sphere except the specifics are different. The high-level process still looks like this:
 </p>
@@ -147,9 +147,9 @@ normalization
 <p>
 Despite my initial reservations, DynamoDB has some compelling traits that I am still exploring which promote iterative data modeling (instead of model-the-universe top-down approach) more naturally than RDBMS&#39; <em>cultural</em> instincts (this doesn&#39;t need to be the only way we model in the RDBMS world either, it is merely a cultural attachment to an older way of thinking about software and data IMO).
 </p>
-<h2 id="headline-3">
+<h3 id="headline-3">
 Terminology
-</h2>
+</h3>
 <table>
 <thead>
 <tr>
@@ -186,9 +186,9 @@ Terminology
 </tr>
 </tbody>
 </table>
-<h2 id="headline-4">
+<h3 id="headline-4">
 DynamoDB Primary Keys
-</h2>
+</h3>
 <p>
 You can have two kinds of primary keys:
 </p>
@@ -204,9 +204,9 @@ Composite primary key (partition key + sort key)
 </p>
 </li>
 </ul>
-<h2 id="headline-5">
+<h3 id="headline-5">
 DynamoDB API
-</h2>
+</h3>
 <p>
 The API consists of operations on:
 </p>
@@ -227,9 +227,9 @@ scans (like a full table scan, which you want to avoid)
 </p>
 </li>
 </ul>
-<h2 id="headline-6">
+<h3 id="headline-6">
 Data Modeling for DynamoDB
-</h2>
+</h3>
 <p>
 There are a few explicit steps that we borrow from our prior experience of data modeling in the relational world:
 </p>
@@ -263,9 +263,9 @@ identify self-describing mechanism for primary keys
 <p>
 identify secondary indices based on access patterns as input
 </p>
-<h3 id="headline-7">
+<h4 id="headline-7">
 Defining naming conventions
-</h3>
+</h4>
 </li>
 </ul>
 <p>
@@ -294,29 +294,29 @@ Just keep it simple and make sure it is applied consistently across your service
 <p>
 It seems silly to do first, but it will save a lot of irritation or rework later.
 </p>
-<h3 id="headline-8">
+<h4 id="headline-8">
 Identifying entities
-</h3>
-<h3 id="headline-9">
+</h4>
+<h4 id="headline-9">
 Identifying attributes
-</h3>
-<h3 id="headline-10">
+</h4>
+<h4 id="headline-10">
 Identifying access patterns
-</h3>
+</h4>
 <p>
 The way you identify access patterns to design a DynamoDB table well (for your current needs) is much like you would identify access patterns in the RDBMS world: by understanding the business requirements of the software. Second/third systems have the benefit of having clarity of access and usage patterns, but the risk in migrating data from one datastore to another is that the migrations aren&#39;t particularly simple, not to mention cutting over 24/7 systems over without downtime or data loss.
 </p>
 <p>
 When reading user stories or technical stories it is possible to infer how data would need to be queried.
 </p>
-<h3 id="headline-11">
+<h4 id="headline-11">
 <span class="todo">TODO</span>
 Identifying self-describing mechanism for primary keys
-</h3>
-<h3 id="headline-12">
+</h4>
+<h4 id="headline-12">
 <span class="todo">TODO</span>
 Identifying secondary indices based on access patterns as input
-</h3>
+</h4>
 
   </article>
 </section>

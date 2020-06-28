@@ -49,7 +49,7 @@
       <link href="../../../../../index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -64,11 +64,11 @@
         
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../software/">Software</a>
+              <a class="navigation-link" href="../../../../../categories/economics">Economics</a>
             </li>
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../categories/">Categories</a>
+              <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
             <li class="navigation-item   align-left  ">
@@ -92,9 +92,9 @@
     </header>
 
     
-<h2 id="headline-1">
+<h3 id="headline-1">
 Introduction
-</h2>
+</h3>
 <p>
 <em>Profunctors</em> are a remarkably practical abstraction for many things modern software
 development is concerned with today.
@@ -144,41 +144,55 @@ These paired activities can often be modeled as a <em>Profunctor</em>.
 We can also elegantly express the idea of functional optics with <em>Profunctor</em> as the
 central abstraction as well.
 </p>
-<h2 id="headline-2">
+<h3 id="headline-2">
 <span class="todo">TODO</span>
 Reviewing covariant and contravariant functors
-</h2>
+</h3>
 <p>
 Let&#39;s review covariant and contravariant functors so we can use these terms through
 the rest of the post.
 </p>
 <p>
-In one direction (e.g. encoding, serialization, encrypting, signing) we start with
-data that needs some post-transformation producing new data that can be used.
-This &#34;produces&#34; what the parametric type transformation and is modeled neatly by the
-<em>covariant functor</em> abstraction. For example, we want to provide functions to the
-transformation function (<code class="verbatim">(f)map</code> in this case) to take a given underlying value of
-type <code class="verbatim">a</code> and produce a new value of type <code class="verbatim">b</code> via <code class="verbatim">(a -&gt; b)</code> supplying the contextual
-value that contains <code class="verbatim">a</code>&#39;s as input and producing the contextual value that contains
-<code class="verbatim">b</code>&#39;s.
+In one direction (e.g. encoding, deserializing, decrypting, validating) we start with
+data that needs some post-transformation yielding new types of data that can be used.
+This &#34;produces&#34; data that has been transformed and is modeled neatly by the
+<em>covariant functor</em> abstraction.
+</p>
+<p>
+For example, we want to provide functions to the transformation function (<code class="verbatim">(f)map</code>
+in this case) to take a given underlying value of type <code class="verbatim">a</code> and produce a new value of
+type <code class="verbatim">b</code> via <code class="verbatim">(a -&gt; b)</code> supplying the contextual value that contains <code class="verbatim">a</code>&#39;s as input
+and producing the contextual value that contains <code class="verbatim">b</code>&#39;s.
+</p>
+<p>
+Let&#39;s explore this idea with an example. Say we <strong>know</strong> the starting representation
+of some data that is stored on disk. This might be a byte string or something similar.
+Assume we have already read in the data from the file on disk to a <code class="verbatim">ByteString</code> value.
+</p>
+<p>
+There might be additional context provide that allows us to transform that <code class="verbatim">ByteString</code>
+value into a suitable encoding from some metadata in the datastore or filesystem.
+</p>
+<p>
+TODO: Code snippet here.
 </p>
 <p>
 Contextual values can be approximating initially to containers of zero or more
 values of an underlying type.
 </p>
 <p>
-In the other direction (e.g. decoding, deserialization, decrypting, validating) we
+In the other direction (e.g. decoding, serializing, encrypting, signing) we
 know how to consume the given [parametric] type to do something with the fixed result.
 This &#34;consumption&#34; of the unknown is modeled by the <em>contravariant functor</em> abstraction.
 </p>
-<h2 id="headline-3">
+<h3 id="headline-3">
 <span class="todo">TODO</span>
 Pairing covariant and contravariant functors together (Profunctors)
-</h2>
-<h2 id="headline-4">
+</h3>
+<h3 id="headline-4">
 <span class="todo">TODO</span>
 Related ideas
-</h2>
+</h3>
 <p>
 Some reminders of interesting ideas to point readers to for further investigation and
 application:
@@ -205,9 +219,9 @@ Costar
 </p>
 </li>
 </ul>
-<h2 id="headline-5">
+<h3 id="headline-5">
 Original Source
-</h2>
+</h3>
 <p>
 This article was adapted with more explanation from my original Gist in 2018:
 <a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">Original Gist</a>

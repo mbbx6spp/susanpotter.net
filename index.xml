@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Susan Potter</title>
@@ -44,7 +44,7 @@
       <pubDate>Tue, 23 Apr 2019 09:17:38 -0500</pubDate>
       
       <guid>/about/</guid>
-      <description>I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.  Feel free to ask me:    how I might be able to help your Engineering organization live up to their highest potential;    how I could streamline your delivery workflow and also improve quality;    how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;    how I would improve productivity by optimizing for Flow;    how you could use algebraic properties to test-infect our distributed systems;    how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;    how I have led teams building type-safe software that reduced long-term maintenance costs    Current general purpose languages:    Haskell    Ruby    Bash    Current configuration langauges:    Dhall    Nix    Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.</description>
+      <description>I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.  Feel free to ask me:    how I might be able to help your Engineering organization live up to their highest potential;    how I could streamline your delivery workflow and also improve quality;    how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;    how I would improve productivity by optimizing for Flow;    how you could use algebraic properties to test-infect our distributed systems;    how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;    how I have led teams building type-safe software that reduced long-term maintenance costs    Current general purpose languages:    Haskell    JavaScript    PureScript    TypeScript    Ruby    Current configuration langauges:    Dhall    Nix    Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.</description>
     </item>
     
     <item>
@@ -84,13 +84,22 @@
     </item>
     
     <item>
+      <title>A Mathematician in Scotland</title>
+      <link>/jokes/a-mathematician-in-scotland/</link>
+      <pubDate>Fri, 10 Mar 2017 15:45:57 -0500</pubDate>
+      
+      <guid>/jokes/a-mathematician-in-scotland/</guid>
+      <description>A passage I came across recently amused me and I wished to share:   A mathematician, a physicist, and an engineer are riding a train through Scotland.  The engineer looks out the window, sees a black sheep, and exclaims, &amp;#34;Hey! They&amp;#39;ve got black sheep in Scotland!&amp;#34;  The physicist looks out the window and corrects the engineer, &amp;#34;Strictly speaking, all we know is that there&amp;#39;s at least one black sheep in Scotland.</description>
+    </item>
+    
+    <item>
       <title>Ruby 2.4 changes overview</title>
       <link>/blogs/software/2016/12/ruby-v2.4.0/</link>
       <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>/blogs/software/2016/12/ruby-v2.4.0/</guid>
       <description>Unified Fixnum and Bignum into Integer It&amp;rsquo;s backward compatible too.
-$ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Bignum irb(main):003:0&amp;gt; 2.class =&amp;gt; Fixnum irb(main):004:0&amp;gt; Fixnum =&amp;gt; Fixnum irb(main):005:0&amp;gt; Bignum =&amp;gt; Bignum irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&#39; irb(main):007:0&amp;gt; quit  $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’  $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.4.0&amp;quot; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Integer irb(main):003:0&amp;gt; 2.</description>
+$ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Bignum irb(main):003:0&amp;gt; 2.class =&amp;gt; Fixnum irb(main):004:0&amp;gt; Fixnum =&amp;gt; Fixnum irb(main):005:0&amp;gt; Bignum =&amp;gt; Bignum irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&amp;#39; irb(main):007:0&amp;gt; quit $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.4.0&amp;#34; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Integer irb(main):003:0&amp;gt; 2.class =&amp;gt; Integer irb(main):004:0&amp;gt; Fixnum (irb):4: warning: constant ::Fixnum is deprecated =&amp;gt; Integer irb(main):005:0&amp;gt; Bignum (irb):5: warning: constant ::Bignum is deprecated =&amp;gt; Integer irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.</description>
     </item>
     
     <item>
@@ -118,7 +127,7 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;quot;2.3.1&amp;quot; i
       
       <guid>/blogs/software/2014/02/scala-wtfs/</guid>
       <description>Small sample of Scala WTFs circa 2014 (many taken from Paul Phillips talks on the Scala Collections library):
-scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&amp;gt; List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&amp;gt; List(1, 2) ::: List(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;) // it&#39;d be funny if you didn&#39;t care. res3: List[Any] = List(1, 2, a, b) scala&amp;gt; List(1, 2) ::: List(3, 4.</description>
+scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&amp;gt; List(1, 2) ::: List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;) // it&amp;#39;d be funny if you didn&amp;#39;t care. res3: List[Any] = List(1, 2, a, b) scala&amp;gt; List(1, 2) ::: List(3, 4.</description>
     </item>
     
     <item>

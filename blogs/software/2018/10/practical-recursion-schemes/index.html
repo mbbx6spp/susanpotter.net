@@ -49,7 +49,7 @@
       <link href="../../../../../index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -64,11 +64,11 @@
         
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../software/">Software</a>
+              <a class="navigation-link" href="../../../../../categories/economics">Economics</a>
             </li>
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../categories/">Categories</a>
+              <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
             <li class="navigation-item   align-left  ">
@@ -92,9 +92,9 @@
     </header>
 
     
-<h2 id="headline-1">
+<h3 id="headline-1">
 Recursive data types
-</h2>
+</h3>
 <p>
 Recursive data structures pop up all over in software from general-purpose structures
 like lists and binary trees to more application-specific structures like this AST from
@@ -106,12 +106,12 @@ a simple business rules engine:
     <span style="color:#f92672">|</span> <span style="color:#66d9ef">Return</span> (input <span style="color:#f92672">-&gt;</span> output)
     <span style="color:#f92672">|</span> <span style="color:#66d9ef">Stop</span></code></pre></div>
 </div>
-<h2 id="headline-2">
+<h3 id="headline-2">
 <code class="verbatim">Functor</code>
-</h2>
-<h2 id="headline-3">
+</h3>
+<h3 id="headline-3">
 <code class="verbatim">Foldable</code>
-</h2>
+</h3>
 <p>
 The <code class="verbatim">Foldable</code> class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.
 </p>
@@ -154,9 +154,9 @@ Example of defining a <code class="verbatim">Foldable</code> instance manually:
   <span style="color:#f92672">|</span> <span style="color:#66d9ef">Node</span> (<span style="color:#66d9ef">Tree</span> a) (<span style="color:#66d9ef">Tree</span> a)
   <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Foldable</span>)</code></pre></div>
 </div>
-<h2 id="headline-4">
+<h3 id="headline-4">
 Traversable
-</h2>
+</h3>
 <p>
 Traversable gives you the ability to traverse a structure from left-to-right, performing
 an effectful action on each element and preserving the shape.
@@ -213,9 +213,9 @@ Notes:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">sequence</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monad</span> m <span style="color:#f92672">=&gt;</span> t (m a) <span style="color:#f92672">-&gt;</span> m (t a)
 <span style="color:#a6e22e">sequence</span> <span style="color:#f92672">=</span> mapM id</code></pre></div>
 </div>
-<h2 id="headline-5">
+<h3 id="headline-5">
 Fixed Points of Functors
-</h2>
+</h3>
 <p>
 An idea from category theory which gives:
 </p>
@@ -243,12 +243,12 @@ A functor <code class="verbatim">f</code> is a data-type of kind <code class="ve
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">Fix</span> f <span style="color:#f92672">=</span> f (f (f (f <span style="color:#f92672">...</span></code></pre></div>
 </div>
-<h2 id="headline-6">
+<h3 id="headline-6">
 Useful functions
-</h2>
-<h3 id="headline-7">
-fan-out aka <em>fork</em>
 </h3>
+<h4 id="headline-7">
+fan-out aka <em>fork</em>
+</h4>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">&amp;&amp;&amp;</span>)
   <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> c)
@@ -257,9 +257,9 @@ fan-out aka <em>fork</em>
   <span style="color:#f92672">-&gt;</span> (c, d)
 (f <span style="color:#f92672">&amp;&amp;&amp;</span> g) <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> (f x, g x)</code></pre></div>
 </div>
-<h3 id="headline-8">
+<h4 id="headline-8">
 fan-in
-</h3>
+</h4>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">|||</span>)
   <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> d)
@@ -268,9 +268,9 @@ fan-in
   <span style="color:#f92672">-&gt;</span> d
 (f <span style="color:#f92672">|||</span> g) <span style="color:#f92672">=</span> either</code></pre></div>
 </div>
-<h3 id="headline-9">
+<h4 id="headline-9">
 function product
-</h3>
+</h4>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">***</span>)
   <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> c)
@@ -279,9 +279,9 @@ function product
   <span style="color:#f92672">-&gt;</span> (c, d)
 (f <span style="color:#f92672">***</span> g) <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>(x, y) <span style="color:#f92672">-&gt;</span> (f x, g y)</code></pre></div>
 </div>
-<h3 id="headline-10">
+<h4 id="headline-10">
 generalized unzip for functions
-</h3>
+</h4>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">funzip</span>
   <span style="color:#f92672">::</span> <span style="color:#66d9ef">Functor</span> f
@@ -289,9 +289,9 @@ generalized unzip for functions
   <span style="color:#f92672">-&gt;</span> (f a, f b)
 <span style="color:#a6e22e">funzip</span> <span style="color:#f92672">=</span> fmap fst <span style="color:#f92672">&amp;&amp;&amp;</span> fmap snd</code></pre></div>
 </div>
-<h2 id="headline-11">
+<h3 id="headline-11">
 Data-type generic programming
-</h2>
+</h3>
 <ul>
 <li>
 <p>
@@ -345,16 +345,16 @@ We might also want a pattern functor for natural numbers!
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">NatF</span> r <span style="color:#f92672">=</span> <span style="color:#66d9ef">Succ</span> r <span style="color:#f92672">|</span> <span style="color:#66d9ef">Zero</span> <span style="color:#66d9ef">deriving</span> <span style="color:#66d9ef">Functor</span></code></pre></div>
 </div>
-<h2 id="headline-12">
+<h3 id="headline-12">
 Catamorphism
-</h2>
+</h3>
 <p>
 We would like to write <code class="verbatim">foldr</code> once for all data-types.
 Category theory shows us how to define it data-type generically for a functor fixed-point.
 </p>
-<h3 id="headline-13">
+<h4 id="headline-13">
 That catamorphism-fusion law
-</h3>
+</h4>
 <p>
 The <em>catamorphism-fusion</em> law is arguably the most important law, and can be used to transform
 the composition of a function with a catamorphism into a single catamorphism, eliminating
@@ -366,9 +366,9 @@ intermediate data structures.
         g <span style="color:#f92672">::</span> f b <span style="color:#f92672">-&gt;</span> b
         h <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> b</code></pre></div>
 </div>
-<h3 id="headline-14">
+<h4 id="headline-14">
 Composing Algebras
-</h3>
+</h4>
 
   </article>
 </section>

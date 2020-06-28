@@ -49,7 +49,7 @@
       <link href="../../../../../index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -64,11 +64,11 @@
         
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../software/">Software</a>
+              <a class="navigation-link" href="../../../../../categories/economics">Economics</a>
             </li>
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../categories/">Categories</a>
+              <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
             <li class="navigation-item   align-left  ">
@@ -91,84 +91,70 @@
       <h1>Ruby 2.4 changes overview</h1>
     </header>
 
-    
-
-<h2 id="unified-fixnum-and-bignum-into-integer">Unified <code>Fixnum</code> and <code>Bignum</code> into <code>Integer</code></h2>
-
+    <h2 id="unified-fixnum-and-bignum-into-integer">Unified <code>Fixnum</code> and <code>Bignum</code> into <code>Integer</code></h2>
 <p>It&rsquo;s backward compatible too.</p>
-
-<pre><code class="language-ruby">$ irb
-irb(main):001:0&gt; RUBY_VERSION
-=&gt; &quot;2.3.1&quot;
-irb(main):002:0&gt; (2**100).class
-=&gt; Bignum
-irb(main):003:0&gt; 2.class
-=&gt; Fixnum
-irb(main):004:0&gt; Fixnum
-=&gt; Fixnum
-irb(main):005:0&gt; Bignum
-=&gt; Bignum
-irb(main):006:0&gt; Bogonum
-NameError: uninitialized constant Bogonum
-        from (irb):6
-        from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;'
-irb(main):007:0&gt; quit
-</code></pre>
-
-<pre><code class="language-shell">$ nix-env -f . -iA ruby_2_4_0
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> irb
+irb(main):<span style="color:#ae81ff">001</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">RUBY_VERSION</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2.3.1</span><span style="color:#e6db74">&#34;</span>
+irb(main):<span style="color:#ae81ff">002</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">**</span><span style="color:#ae81ff">100</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+irb(main):<span style="color:#ae81ff">003</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+irb(main):<span style="color:#ae81ff">004</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+irb(main):<span style="color:#ae81ff">005</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+irb(main):<span style="color:#ae81ff">006</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bogonum</span>
+<span style="color:#e6db74">NameError</span>: uninitialized constant <span style="color:#66d9ef">Bogonum</span>
+        from (irb):<span style="color:#ae81ff">6</span>
+        <span style="color:#f92672"></span>from <span style="color:#e6db74">/</span><span style="color:#e6db74">home</span><span style="color:#e6db74">/s</span>potter<span style="color:#f92672">/</span><span style="color:#f92672">.</span>nix<span style="color:#f92672">-</span>profile<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span><span style="color:#e6db74">irb</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672"></span><span style="color:#e6db74">:in</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">&lt;main&gt;&#39;
+</span><span style="color:#e6db74">irb(main):007:0&gt; quit
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.1-p0’
 installing ‘ruby-2.4.0’
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> irb
+irb(main):<span style="color:#ae81ff">001</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">RUBY_VERSION</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2.4.0</span><span style="color:#e6db74">&#34;</span>
+irb(main):<span style="color:#ae81ff">002</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">**</span><span style="color:#ae81ff">100</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">003</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">004</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+(irb):<span style="color:#ae81ff">4</span><span style="color:#f92672"></span>: <span style="color:#e6db74">warning</span>: constant <span style="color:#f92672">::</span><span style="color:#66d9ef">Fixnum</span> is deprecated
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">005</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+(irb):<span style="color:#ae81ff">5</span><span style="color:#f92672"></span>: <span style="color:#e6db74">warning</span>: constant <span style="color:#f92672">::</span><span style="color:#66d9ef">Bignum</span> is deprecated
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">006</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bogonum</span>
+<span style="color:#e6db74">NameError</span>: uninitialized constant <span style="color:#66d9ef">Bogonum</span>
+        from (irb):<span style="color:#ae81ff">6</span>
+        <span style="color:#f92672"></span>from <span style="color:#e6db74">/</span><span style="color:#e6db74">home</span><span style="color:#e6db74">/s</span>potter<span style="color:#f92672">/</span><span style="color:#f92672">.</span>nix<span style="color:#f92672">-</span>profile<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span><span style="color:#e6db74">irb</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672"></span><span style="color:#e6db74">:in</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">&lt;main&gt;&#39;
+</span><span style="color:#e6db74">irb(main):007:0&gt; quit
+</span></code></pre></div><h2 id="arrayminarraymax-optimization-in-ruby-v240">Array#min/Array#max optimization in Ruby v2.4.0+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e"># content of ruby_array_benchmarks.rb</span>
+require <span style="color:#e6db74">&#39;benchmark&#39;</span>
 
-<pre><code class="language-ruby">$ irb
-irb(main):001:0&gt; RUBY_VERSION
-=&gt; &quot;2.4.0&quot;
-irb(main):002:0&gt; (2**100).class
-=&gt; Integer
-irb(main):003:0&gt; 2.class
-=&gt; Integer
-irb(main):004:0&gt; Fixnum
-(irb):4: warning: constant ::Fixnum is deprecated
-=&gt; Integer
-irb(main):005:0&gt; Bignum
-(irb):5: warning: constant ::Bignum is deprecated
-=&gt; Integer
-irb(main):006:0&gt; Bogonum
-NameError: uninitialized constant Bogonum
-        from (irb):6
-        from /home/spotter/.nix-profile/bin/irb:11:in `&lt;main&gt;'
-irb(main):007:0&gt; quit
-</code></pre>
+<span style="color:#66d9ef">LARGE_ARRAY</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">..</span><span style="color:#ae81ff">100_000_000</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>to_a<span style="color:#f92672">.</span>freeze
 
-<h2 id="array-min-array-max-optimization-in-ruby-v2-4-0">Array#min/Array#max optimization in Ruby v2.4.0+</h2>
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Ruby v</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">RUBY_VERSION</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
-<pre><code class="language-ruby"># content of ruby_array_benchmarks.rb
-require 'benchmark'
+<span style="color:#66d9ef">Benchmark</span><span style="color:#f92672">.</span>bm(<span style="color:#ae81ff">100</span><span style="color:#f92672"></span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>b<span style="color:#f92672">|</span>
+  b<span style="color:#f92672">.</span>report(<span style="color:#e6db74">&#39;Array#min on large array&#39;</span>) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">LARGE_ARRAY</span><span style="color:#f92672">.</span>min
+  <span style="color:#66d9ef">end</span>
 
-LARGE_ARRAY = (1..100_000_000).to_a.freeze
-
-puts &quot;Ruby v#{RUBY_VERSION}&quot;
-
-Benchmark.bm(100) do |b|
-  b.report('Array#min on large array') do
-    LARGE_ARRAY.min
-  end
-
-  b.report('Array#max on large array') do
-    LARGE_ARRAY.max
-  end
-end
-</code></pre>
-
-<p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p>
-
-<pre><code class="language-shell">$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+  b<span style="color:#f92672">.</span>report(<span style="color:#e6db74">&#39;Array#max on large array&#39;</span>) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">LARGE_ARRAY</span><span style="color:#f92672">.</span>max
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
 
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.3.3
                                                                                                            user     system      total        real
-Array#min on large array                                                                               4.670000   0.000000   4.670000 (  4.673932)
-Array#max on large array                                                                               4.650000   0.000000   4.650000 (  4.644266)
+Array#min on large array                                                                               4.670000   0.000000   4.670000 <span style="color:#f92672">(</span>  4.673932<span style="color:#f92672">)</span>
+Array#max on large array                                                                               4.650000   0.000000   4.650000 <span style="color:#f92672">(</span>  4.644266<span style="color:#f92672">)</span>
 
 $ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.3’
@@ -177,14 +163,10 @@ installing ‘ruby-2.4.0’
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.4.0
                                                                                                            user     system      total        real
-Array#min on large array                                                                               0.170000   0.000000   0.170000 (  0.169169)
-Array#max on large array                                                                               0.180000   0.000000   0.180000 (  0.186183)
-</code></pre>
-
-<p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p>
-
+Array#min on large array                                                                               0.170000   0.000000   0.170000 <span style="color:#f92672">(</span>  0.169169<span style="color:#f92672">)</span>
+Array#max on large array                                                                               0.180000   0.000000   0.180000 <span style="color:#f92672">(</span>  0.186183<span style="color:#f92672">)</span>
+</code></pre></div><p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p>
 <p>There are other changes, which I haven&rsquo;t had time to check out yet.</p>
-
 <p>Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
 
   </article>

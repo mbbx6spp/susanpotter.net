@@ -49,7 +49,7 @@
       <link href="../../../../../index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.58.0" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -64,11 +64,11 @@
         
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../software/">Software</a>
+              <a class="navigation-link" href="../../../../../categories/economics">Economics</a>
             </li>
           
             <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="../../../../../categories/">Categories</a>
+              <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
             <li class="navigation-item   align-left  ">
@@ -92,9 +92,9 @@
     </header>
 
     
-<h2 id="parametricity-part-1">
+<h3 id="parametricity-part-1">
 Introduction
-</h2>
+</h3>
 <p>
 What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
 </p>
@@ -104,9 +104,9 @@ Wouldn&#39;t it be great if we were able to <strong>reason</strong> about our co
 <p>
 The big idea of parametricity is that from parametric (or generic) <em>&#34;pure&#34;</em> functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.
 </p>
-<h2 id="headline-2">
+<h3 id="headline-2">
 Goals
-</h2>
+</h3>
 <p>
 The following article is an attempt to:
 </p>
@@ -137,9 +137,9 @@ provide links to further reading on the topic for the reader to investigate more
 </p>
 </li>
 </ul>
-<h2 id="assumptions">
+<h3 id="assumptions">
 Prerequisites &amp; Terminology
-</h2>
+</h3>
 <p>
 The idea of parametricity only works when three things hold:
 </p>
@@ -166,9 +166,9 @@ Your source language supports <strong>parametric polymorphism</strong>. Parametr
 <p>
 I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article, preferring the former given my target audience. The core material in this article is loosely based on Philip Wadler&#39;s <em><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a></em> paper, which uses the term <em>theorems</em> exclusively.
 </p>
-<h2 id="headline-4">
+<h3 id="headline-4">
 A Familiar Form of Reasoning
-</h2>
+</h3>
 <p>
 Programmers of every stripe already use thinking tools from one form of reasoning no matter their language of choice: <strong>logical reasoning</strong>.
 </p>
@@ -192,15 +192,15 @@ deduction
 </p>
 </li>
 </ul>
-<h3 id="headline-5">
+<h4 id="headline-5">
 Abduction
-</h3>
+</h4>
 <p>
 Abduction (in logical reasoning) is the act of attempting to infer the best explanation for a given set of observations. As programmers in working in industry, we employ this logical reasoning tool every time we tackle a bug report to varying levels of effectiveness. A bug report usually describes a set of observations by users who have witnessed our software doing something unexpected. Assuming this observed behavior is a defect, we then try to formulate hypotheses about where in the code this could be going wrong based on our understanding of the codebase and our understanding of how the data flows through the software. This specific act is <em>abduction</em>!
 </p>
-<h3 id="headline-6">
+<h4 id="headline-6">
 Induction
-</h3>
+</h4>
 <p>
 When given a rule, we can sometimes generalize the rule to check if the rule holds for larger structures. When we have a way to generate the next value, and there is strict total ordering (i.e., ∀ x, y ∈ S, either x &lt; y or x &gt; y), then we can use the thinking tool of induction to prove or disprove whether the rule holds.
 </p>
@@ -261,9 +261,9 @@ You might think there is circular logic involved because, in step 2, we assume t
 <p>
 While mathematicians use this form of logical reasoning sometimes, especially in number theory proofs, a growing number of programmers using proof assistant languages are increasingly using induction to prove properties on functions acting on data inputs (as opposed to codata).
 </p>
-<h3 id="headline-7">
+<h4 id="headline-7">
 Deduction
-</h3>
+</h4>
 <p>
 When you have a logical rule, inputs to that rule, or the conclusion made from that rule without the inputs, you can often use the thinking tool of deduction.
 </p>
@@ -273,18 +273,18 @@ When we read code to understand why the system worked the way it did (like when 
 <p>
 Deduction is the thinking tool in logical reasoning that no programmer needs an introduction to since we will typically use this at least once a day.
 </p>
-<h2 id="give-me-more-forms-of-reasoning">
+<h3 id="give-me-more-forms-of-reasoning">
 Give Me More (forms of reasoning)!
-</h2>
+</h3>
 <p>
 As an industry developer, I like being able to take advantage of other people&#39;s reusable work, whether it is a reusable library, our automated testing suites, or reasoning thinking tools developed and tested by mathematicians and scientists over many decades or centuries.
 </p>
 <p>
 Reasoning provides us confidence, helping us know how our code <em>can</em> behave. By understanding the properties of units of a system that can be composed, we can build functionality on top of a solid foundation with fewer surprises in later phases of development.
 </p>
-<h2 id="examples">
+<h3 id="examples">
 Getting Started with Parametricity
-</h2>
+</h3>
 <p>
 Let&#39;s look at some examples of what I mean by <em>properties</em> about functions from its generic type signatures.
 </p>
@@ -363,9 +363,9 @@ That&#39;s a critical piece of the idea behind parametricity.
 <p>
 In this case, we could have compiler machinery generate that function definition for us (the thing on the right-hand-side, RHS, of the <code class="verbatim">=</code> on the second line is the definition) given just the type we wanted and a suitably &#34;pure&#34; and total capable language with parametric polymorphism. What if our compiler machinery generates our programs for us given just a type signature for less trivial examples, wouldn&#39;t that be mind-boggling?
 </p>
-<h2 id="headline-10">
+<h3 id="headline-10">
 Applying Parametricity (in Haskell)
-</h2>
+</h3>
 <p>
 Now let&#39;s take a look at a less trivial example:
 </p>
@@ -402,9 +402,9 @@ Imagine you live in a world where <code class="verbatim">null</code>, <code clas
 <p>
 Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell this to the caller of the code in some way. We do that with the type <code class="verbatim">Maybe a</code>.
 </p>
-<h3 id="headline-11">
+<h4 id="headline-11">
 A <code class="verbatim">Maybe</code> Excursion
-</h3>
+</h4>
 <p>
 The following is what the type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:
 </p>
@@ -469,9 +469,9 @@ In the second function, <code class="verbatim">defaulting</code>, which takes a 
 <p>
 Both <code class="verbatim">sqrt</code> and <code class="verbatim">defaulting</code> demonstrate the utility of the <code class="verbatim">Maybe a</code> type.
 </p>
-<h3 id="headline-12">
+<h4 id="headline-12">
 Back to properties
-</h3>
+</h4>
 <p>
 Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
 </p>
@@ -505,21 +505,21 @@ By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code
 <p>
 By analysing the type of <code class="verbatim">f3</code> we determined how a function must be defined in order to produce a &#34;pure&#34; and total function without ignoring arguments. As a consequence we identified it must be the same function as another already available to us in the Prelude simply by looking at its type.
 </p>
-<h2 id="headline-13">
+<h3 id="headline-13">
 Too General <code class="verbatim">\implies</code> Less Performant (sometimes)
-</h2>
+</h3>
 <p>
 TODO
 </p>
-<h2 id="headline-14">
+<h3 id="headline-14">
 Applying Parametricity (in Javascript)
-</h2>
+</h3>
 <p>
 TODO
 </p>
-<h2 id="conclusion">
+<h3 id="conclusion">
 Conclusion
-</h2>
+</h3>
 <p>
 Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to reason about other people&#39;s code and also offering an example of how inspecting types signatures using a basic understanding of parametricity can show logical design level errors in your API design.
 </p>
@@ -546,9 +546,9 @@ generate code for us when there is only one possible definition or narrow down t
 <p>
 We should beware that writing general code comes at costs (potentially performance), however, with compilers like GHC we can provide hints to the code generator to <code class="verbatim">SPECIALIZE</code> for commonly used types to allow for more inlining.
 </p>
-<h2 id="headline-16">
+<h3 id="headline-16">
 Original Source
-</h2>
+</h3>
 <p>
 This article was adapted (for English writing style) from my original Gist in 2014:
 <a href="https://gist.github.com/mbbx6spp/8da36c6cceb89a52d405">Original Gist</a>
