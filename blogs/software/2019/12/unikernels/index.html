@@ -93,8 +93,8 @@
 
     
 <p>
-This is an adaptation of a Slack chat rant (slightly reworded to read better for the
-audience) from work in 2017.
+This is an adaptation of a Slack chat explanation from work (slightly
+reworded to read better for the audience) from work in 2017.
 </p>
 <h3 id="headline-1">
 Random notes on unikernels
@@ -108,7 +108,7 @@ These aren&#39;t always used in exactly the same way, but they are highly relate
 </p>
 <p>
 <a href="https://mirage.io/">MirageOS</a> is the research project that has received the most industry love of which I
-am aware. The research team was acquihired by Docker a few years ago). It is
+am aware. The research team was acquihired by Docker a few years ago. It is
 language-based (they use OCaml), meaning you need to write <em>unikernel</em> applications
 in OCaml and it will build an image for various virtualization targets (as well as a
 Linux and probably macOS/BSD binary to run on existing OSes for development purposes).
@@ -130,12 +130,12 @@ Other language-based unikernels include:
 <ul>
 <li>
 <p>
-IncudeOS (C/C++)
+<a href="https://www.includeos.org/">IncludeOS</a> (C/C++)
 </p>
 </li>
 <li>
 <p>
-HaLVM (Haskell)
+<a href="https://galois.com/project/halvm/">HaLVM</a> (Haskell)
 </p>
 </li>
 <li>
@@ -154,25 +154,20 @@ Rump kernels
 <em>Rump kernels</em> are either a kind of unikernel or a stepping stone to unikernels
 depending on who you talk to. Rump kernels try to work on top of existing
 operating systems (OSes) to pare down the build to only what is needed.
-These are often termed <em>Just-Enough operating systems</em> and what qualifies varies
-from context to context.
-</p>
-<p>
-In a meeting with Azure staff in 2015, I heard them refer to NixOS as a Just-Enough OS.
-Even as an enthusiastic NixOS user back then I had mixed feelings about this
-classification, yet I understand why it was labeled that way.
+These are sometimes termed <em>Just-enough Operating Systems</em> (JeOS) and
+what qualifies varies from context to context.
 </p>
 <p>
 The main build-level trade-off compared to unikernels defined above is that rump
 kernels leverage existing mature build tooling ecosystems. However, they are often
-riddled with gross legacy decisions that make builds less hermetic or reproducible
+riddled with legacy decisions that make builds less hermetic or reproducible
 (outside of the Nix/Guix worlds), and the resulting artifacts are less slimline as
 unikernels by definition thus the comparative attach surface area is still greater
-with rump kernels as compared with unikernels. Though the attack surface area will be
+with rump kernels as compared with unikernels though the attack surface area will be
 less than a typical system build that runs an equivalent application on a typical
-distribution of the same flavor (e.g. Linux, BSD, etc.) and more familiar system-level
-debugging tooling is available compared to unikernels where this is very much
-<em>&#34;in development&#34;</em> mode.
+distribution of the same flavor (e.g. Linux, BSD, etc.). A benefit of
+rump kernels is the ability to leverage familiar system-level
+debugging tooling available compared to unikernels.
 </p>
 <p>
 Rump kernels do allow you to <em>more</em> incrementally migrate your application
