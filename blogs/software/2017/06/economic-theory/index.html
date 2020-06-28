@@ -93,18 +93,18 @@
 
     
 <p>
-One of my favorite subjects as a lay person is economics from which I have found many
-useful applications of core principles relating to my work in software development,
-technical leadership as well as my recent reliability engineering roles.
+One of my favorite subjects as a lay person is economics. I have found many
+useful applications of methods and concepts to my work in software development,
+technical leadership, and reliability engineering roles.
 </p>
 <p>
-This is a post to share some of my thoughts around this.
+This is a post to share some of these.
 </p>
 <h3 id="headline-1">
 A few ideas from economics
 </h3>
 <p>
-The ideas from economics that have resonated with me at work are:
+Below is an overview of ideas from economics that have resonated with me at work:
 </p>
 <dl>
 <dt>
@@ -123,7 +123,7 @@ causal inference with natural experiments
 <p>
 This uses results from a <em>natural
 experiment</em> to answer questions which have enormous potential for distributed
-systems (I think).
+systems.
 </p>
 </dd>
 <dt>
@@ -133,9 +133,9 @@ comparative advantage
 <p>
 This is not an intuitive idea and typically used in
 international trade policy to determine which trading partner would be better
-for the bigger dynamic system to be producing even when they aren&#39;t the best
-at it globally. This has implications for my work in the best people to assign
-work to given other constraints.
+for the larger dynamic system to be producing even when they aren&#39;t the best
+at it globally. This has implications for technical leadership with
+respect to the best person to assign work to given other constraints.
 </p>
 </dd>
 <dt>
@@ -156,7 +156,7 @@ lump of labor fallacy
 A fallacy that is a common misconception in society at
 large where people think there is a fixed amount of work so automation or
 immigration yields job losses for manual native workers. There are more deeper
-insights here too. Implications in operations, &#34;DevOps&#34; culture, etc.
+insights here too. This idea has implications in operations, &#34;DevOps&#34; culture, etc.
 </p>
 </dd>
 </dl>
@@ -164,30 +164,32 @@ insights here too. Implications in operations, &#34;DevOps&#34; culture, etc.
 Opportunity Cost
 </h3>
 <p>
-<em>Opportunity cost</em> is the idea that to engage in some activity we are typically making
-ourselves or others unavailable to do other activities for that dedicated duration.
+<em>Opportunity cost</em> is the idea that to engage in some activity we are
+making ourselves or others unavailable for other activities for that duration.
 </p>
 <p>
-Paired with the idea of core competencies, which is our distilled understanding of what
-makes our company, product, and/or team special, we can pick more strategically which
-parts of our application or platform our in-house product team builds versus buys.
+Paired with the idea of core competencies, which is our distilled
+understanding of what makes our company, product, and/or team special,
+we can strategically pick which parts of our application or platform
+our in-house product team builds versus buys.
 </p>
 <h3 id="headline-3">
 Causal inference with natural experiments
 </h3>
 <p>
-To determine causality scientists of all stripes typically design experiments,
-collect observations, and then analyze those results derived from the observations.
+To determine causality - scientists and engineers of all stripes - design experiments,
+collect observations, and analyze those results derived from the observations.
 Today most <em>designed</em> experiments are randomized.
 </p>
 <p>
-However, when it is too expensive to conduct a designed randomized experiment or it&#39;s
-difficult to replicate the conditions of the real world another category of experiment
-might be used. These are known as <em>natural experiments</em> where recorded observations
-from the real world environment can be analyzed in a meaningful way.
+However, when it is too expensive to designed a randomized
+experiment or it&#39;s difficult to replicate the conditions of the real
+world, another category of experiment can be used effectively. These
+are known as <em>natural experiments</em> where recorded observations from
+the real world environment can be analyzed in a meaningful way.
 </p>
 <p>
-Consider in the 90s when New Jersey increased their minimum wage from $4.25 to $5.05
+Consider in the 90s, when New Jersey increased their minimum wage from $4.25 to $5.05
 per hour. Adjacent Pennsylvania retained its minimum wage at $4.25 (the price before
 the increase in New Jersey) so economists surveyed a large number of fast food
 restaurants across both states to try to detect whether raising the minimum wage would
@@ -197,13 +199,93 @@ state legislation changed outside of the economists&#39; control; the economists
 setup the conditions of either New Jersey or Pennsylvania so they could run the
 experiment, they merely exploited <em>naturally</em> occurring conditions to extract
 observations that are meaningful to an interesting question of causality, e.g. in this
-case, does raising the minimum wage lead to lower employment growth.
+case, did raising the minimum wage lead to lower employment growth?
+Read the paper to find out. :)
 </p>
 <p>
-As a former software reliability engineer (SRE) I find myself wondering whether and/or
-how a change in one part of the system will impact the behavior of the rest, much like
-an economist studying factors that might impact employment growth.
+As a former software reliability engineer (SRE), I find myself
+wondering whether and how a change in one part of the system will
+impact the behavior of the rest. This is much like an economist studying
+factors that could impact employment growth. When production is being
+stressed in a specific way, I find ways to experiment in that moment
+to provide answers to causality questions. These periods are not as
+long-lived as most economic natural experiments, so it is important
+that your infrastructure allows for dynamic experimentation. We can
+facilitate experimentation through a variety of tools, such as:
 </p>
+<ul>
+<li>
+<p>
+queryable structured logging
+</p>
+</li>
+<li>
+<p>
+good coverage metrics instrumentation
+</p>
+</li>
+<li>
+<p>
+visualization
+</p>
+</li>
+<li>
+<p>
+distributed tracing
+</p>
+</li>
+<li>
+<p>
+traffic mirroring
+</p>
+</li>
+</ul>
+<p>
+However, the crucial element is this mindset of conducting natural
+experiments and knowing when it is fine to do this in a production
+setting so we can learn more about the real system because often
+simulated performance or stress tests are not adequate to depict the
+system as it often is stressed in production.
+</p>
+<h3 id="headline-4">
+Comparative advantage
+</h3>
+<p>
+<em>Comparative advantage</em> has to do with choosing trade partners with a
+lower relative opportunity cost than other possible trade partners to
+produce a good.
+</p>
+<p>
+In technical leadership and engineering management, we can use this
+idea when trying to determine the best person to work on a project or
+do a task at a specific time.
+</p>
+<p>
+Let&#39;s say that it is end of July when many developers are on vacation in
+the northern hemisphere. We have a need to upgrade an application
+dependency before August 15th so that other projects can start which
+depend on that being shipped. In July, we have three developers
+available but we want to be sure we are finished before the middle of
+August. Out of the three developers available one mid-level developer
+has had some experience with upgrading application dependencies,
+however, this upgrade is a more complex upgrade than they have handled
+before. Neither of the other two developers have worked on this
+before. The senior developer with direct experience with this level of
+upgrade complexity is out on vacation until July 10 leaving only two
+work days before July 15th to work on it. Given the constraints, we
+should prefer to assign this work to the mid-level developer because
+even if the senior developer was capable of upgrading in two days, the
+opportunity costs of not meeting our deadline far exceed the extra
+time it would take the mid-level developer to do the task.
+</p>
+<h3 id="headline-5">
+<span class="todo">TODO</span>
+Thinking on the margins
+</h3>
+<h3 id="headline-6">
+<span class="todo">TODO</span>
+Lump  of labor fallacy
+</h3>
 
   </article>
 </section>
