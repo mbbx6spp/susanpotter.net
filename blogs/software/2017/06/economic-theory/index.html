@@ -93,7 +93,7 @@
 
     
 <p>
-One of my favorite subjects as a lay person is economics. I have found many
+One of my favorite subjects as a layperson is economics. I have found many
 useful applications of methods and concepts to my work in software development,
 technical leadership, and reliability engineering roles.
 </p>
@@ -122,7 +122,7 @@ others.
 <dd>
 <p>
 This uses results from a <em>natural
-experiment</em> to answer questions which have enormous potential for distributed
+experiment</em> to answer questions that have enormous potential for distributed
 systems.
 </p>
 </dd>
@@ -131,11 +131,12 @@ systems.
 </dt>
 <dd>
 <p>
-This is not an intuitive idea and typically used in
-international trade policy to determine which trading partner would be better
-for the larger dynamic system to be producing even when they aren&#39;t the best
-at it globally. This has implications for technical leadership with
-respect to the best person to assign work to given other constraints.
+This is not an intuitive idea and
+typically used in international trade policy to determine which
+trade partner would be better to produce a good even when they
+aren&#39;t the best at it globally. This has implications for technical
+leadership concerning the best person to assign work to given
+other constraints.
 </p>
 </dd>
 <dt>
@@ -143,8 +144,8 @@ respect to the best person to assign work to given other constraints.
 </dt>
 <dd>
 <p>
-This inspects when marginal costs outweigh marginal
-benefit. This has implications for me in my work when scoping, and specifying
+This inspects when the marginal costs
+outweigh the marginal benefit. This has implications for me in my work when scoping, and specifying
 infrastructure and system architectures.
 </p>
 </dd>
@@ -153,9 +154,9 @@ infrastructure and system architectures.
 </dt>
 <dd>
 <p>
-A fallacy that is a common misconception in society at
+This is a common misconception in society at
 large where people think there is a fixed amount of work so automation or
-immigration yields job losses for manual native workers. There are more deeper
+immigration yields job losses for manual native workers. There are deeper
 insights here too. This idea has implications in operations, &#34;DevOps&#34; culture, etc.
 </p>
 </dd>
@@ -182,7 +183,7 @@ Causal inference with natural experiments
 </h4>
 <p>
 To determine causality - engineers of all stripes - design experiments,
-collect observations, and analyze those results derived from the observations.
+collect observations and analyze those results derived from the observations.
 Today most <em>designed</em> experiments are randomized.
 </p>
 <p>
@@ -195,28 +196,27 @@ the real world environment can be analyzed in a meaningful way.
 <p>
 Consider in the 90s, when New Jersey increased their minimum wage from $4.25 to $5.05
 per hour. Adjacent Pennsylvania retained its minimum wage at $4.25 (the price before
-the increase in New Jersey) so economists surveyed a large number of fast food
+the increase in New Jersey) so economists surveyed a large number of fast-food
 restaurants across both states to try to detect whether raising the minimum wage would
 negatively impact employment growth this in industry. The <a href="https://www.nber.org/papers/w4509">paper</a> can explain its
 conclusions better than I can, but the relevant part for our discussion is that
 state legislation changed outside of the economists&#39; control; the economists didn&#39;t
-setup the conditions of either New Jersey or Pennsylvania so they could run the
+set up the conditions of either New Jersey or Pennsylvania so they could run the
 experiment, they merely exploited <em>naturally</em> occurring conditions to extract
-observations that are meaningful to an interesting question of causality, e.g. in this
-case, did raising the minimum wage lead to lower employment growth?
+observations that are meaningful to an interesting question of
+causality, e.g. did raising the minimum wage lower employment growth?
 Read the paper to find out. :)
 </p>
 <p>
-As a distributed systems engineer who has been on-call I&#39;ve find myself
+As a distributed systems engineer who has had to be on-call, I&#39;ve found myself
 wondering how a change in one part of the system will impact the
 behavior of the rest. This is much like an economist studying
 factors that could impact employment growth. When production is being
-stressed in a specific way, I find ways to experiment in that moment
-to try to provide answers to causality questions. These periods are
-not as long-lived as most economic natural experiments, so it is important
-that your infrastructure allows for dynamic experimentation. We need
-to be able to facilitate experimentation through a variety of tools,
-such as:
+stressed in a specific way, I find ways to experiment to provide
+answers to causality questions. These periods are not as long-lived as
+most economic natural experiments, so your infrastructure must allow
+for dynamic experimentation. We need to be able
+to facilitate experimentation through a variety of tools, such as:
 </p>
 <ul>
 <li>
@@ -266,22 +266,23 @@ idea when trying to determine the best person to work on a project or
 do a task at a specific time.
 </p>
 <p>
-Let&#39;s say that it is end of July when many developers are on vacation in
-the northern hemisphere. We have a need to upgrade an application
-dependency before August 15th so that other projects can start which
-depend on that being shipped. In July, we have three developers
-available but we want to be sure we are finished before the middle of
-August. Out of the three developers available one mid-level developer
-has had some experience with upgrading application dependencies,
-however, this upgrade is a more complex upgrade than they have handled
-before. Neither of the other two developers have worked on this
-before. The senior developer with direct experience with this level of
-upgrade complexity is out on vacation until July 10 leaving only two
-work days before July 15th to work on it. Given the constraints, we
-should prefer to assign this work to the mid-level developer because
-even if the senior developer was capable of upgrading in two days, the
-opportunity costs of not meeting our deadline far exceed the extra
-time it would take the mid-level developer to do the task.
+Let&#39;s say that it is the end of July when many developers are on
+vacation. We have a need to upgrade an application dependency before
+August 15th so that other projects can start which depend on that
+being shipped.
+In July, we have three developers available but we want to be sure we
+are finished before the middle of August. Out of the three developers
+available, one developer has had some experience with upgrading
+application dependencies, however, this upgrade is a more complex
+upgrade than they have handled before. Neither of the other two
+developers has worked on this before. A more experienced developer with
+direct experience with this scope upgrade complexity is out on
+vacation until July 11, leaving only two workdays before July 15th to
+work on it. Given the constraints, we should prefer to assign this
+work to the mid-level developer because even if the more experienced developer
+was capable of upgrading within two days, the opportunity costs of not
+meeting our deadline exceed the extra time it would take the
+mid-level developer to do the upgrade.
 </p>
 <h4 id="headline-6">
 Thinking on the margins
@@ -292,11 +293,11 @@ cost more than its benefits offer. This is where the thought process
 of thinking on the margins helps.
 </p>
 <p>
-In infrastructure engineering there are many scenarios where we might
-be able to take advantage of a new technology like a cloud provider
-resource type, but because it doesn&#39;t yet support caching or
+In infrastructure engineering, there are many scenarios where we might
+be able to take advantage of new technology such as a new cloud provider
+resource type, yet because it doesn&#39;t yet support caching or
 compression (or whatever) we would then have to implement that in our
-application code such that the overall speed up would not give us the
+application code such that the overall speedup would not give us the
 net benefit we sought. In fact, it might yield net negative benefit
 when evaluating its use for our specific needs, even if the marketing
 blurb by the cloud provider reads very convincingly to the CTO or VP
@@ -311,9 +312,9 @@ benefits do not exist.
 Lump  of labor fallacy
 </h4>
 <p>
-At the advent of DevOps, in the 2000s when the term was coin,
+At the advent of DevOps, in the 2000s when the term was coined,
 automation was one of the key ideas. In the world of economics, the
-general notion of <em>automation</em> is associated with a well known misconception
+general notion of <em>automation</em> is associated with a well-known misconception
 known as the &#39;lump of labor fallacy&#39;. The premise of &#39;lump of labor&#39; states
 that there is a fixed amount of work available in the economy at large
 such that if you were to automate a task you would permanently
@@ -321,7 +322,7 @@ eliminate jobs and no new jobs would be created as a byproduct of the automation
 </p>
 <p>
 In 1891 economist Schloss rebuked the idea that lowering the number of
-hours of labor in a work day would see reductions in unemployment and
+hours of labor in a workday would see reductions in unemployment and
 termed this the &#39;lump of labor fallacy.&#39;
 </p>
 <p>
@@ -350,13 +351,14 @@ Concluding thoughts
 </h3>
 <p>
 Transferring and applying concepts from other disciplines (including
-but not limited to economics) has helped me rethinking my approaches
-in software development, delivery, system design, and management. Hopefully
-this provided enough to read background on the ideas you found most
-interesting or inspired you to borrow from other disciplines you are familiar.
+but not limited to economics) has helped me rethink my approaches
+in software development, delivery, system design, and management. Hopefully,
+this provided enough to read the background on the ideas you found most
+interesting or inspired you to borrow from other disciplines you are
+familiar with.
 </p>
 <p>
-You could also look at safety and reliability engineering disciplines
+You could look at safety and reliability engineering disciplines
 for SRE applicable ideas from aviation and construction fields as well.
 </p>
 <p>
