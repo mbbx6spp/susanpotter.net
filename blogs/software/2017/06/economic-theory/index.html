@@ -165,7 +165,8 @@ Opportunity Cost
 </h3>
 <p>
 <em>Opportunity cost</em> is the idea that to engage in some activity we are
-making ourselves or others unavailable for other activities for that duration.
+making those tasked unavailable for other activities for the duration
+it takes to get the work done.
 </p>
 <p>
 Paired with the idea of core competencies, which is our distilled
@@ -177,12 +178,12 @@ our in-house product team builds versus buys.
 Causal inference with natural experiments
 </h3>
 <p>
-To determine causality - scientists and engineers of all stripes - design experiments,
+To determine causality - engineers of all stripes - design experiments,
 collect observations, and analyze those results derived from the observations.
 Today most <em>designed</em> experiments are randomized.
 </p>
 <p>
-However, when it is too expensive to designed a randomized
+However, when it is too expensive to design a randomized
 experiment or it&#39;s difficult to replicate the conditions of the real
 world, another category of experiment can be used effectively. These
 are known as <em>natural experiments</em> where recorded observations from
@@ -203,15 +204,16 @@ case, did raising the minimum wage lead to lower employment growth?
 Read the paper to find out. :)
 </p>
 <p>
-As a former software reliability engineer (SRE), I find myself
-wondering whether and how a change in one part of the system will
-impact the behavior of the rest. This is much like an economist studying
+As a distributed systems engineer who has been on-call I&#39;ve find myself
+wondering how a change in one part of the system will impact the
+behavior of the rest. This is much like an economist studying
 factors that could impact employment growth. When production is being
 stressed in a specific way, I find ways to experiment in that moment
-to provide answers to causality questions. These periods are not as
-long-lived as most economic natural experiments, so it is important
-that your infrastructure allows for dynamic experimentation. We can
-facilitate experimentation through a variety of tools, such as:
+to try to provide answers to causality questions. These periods are
+not as long-lived as most economic natural experiments, so it is important
+that your infrastructure allows for dynamic experimentation. We need
+to be able to facilitate experimentation through a variety of tools,
+such as:
 </p>
 <ul>
 <li>
@@ -241,7 +243,7 @@ traffic mirroring
 </li>
 </ul>
 <p>
-However, the crucial element is this mindset of conducting natural
+However, the crucial element is the mindset of conducting natural
 experiments and knowing when it is fine to do this in a production
 setting so we can learn more about the real system because often
 simulated performance or stress tests are not adequate to depict the
@@ -279,13 +281,67 @@ opportunity costs of not meeting our deadline far exceed the extra
 time it would take the mid-level developer to do the task.
 </p>
 <h3 id="headline-5">
-<span class="todo">TODO</span>
 Thinking on the margins
 </h3>
+<p>
+Sometimes a speedup, cost savings, or optimization of another kind can
+cost more than its benefits offer. This is where the thought process
+of thinking on the margins helps.
+</p>
+<p>
+In infrastructure engineering there are many scenarios where we might
+be able to take advantage of a new technology like a cloud provider
+resource type, but because it doesn&#39;t yet support caching or
+compression (or whatever) we would then have to implement that in our
+application code such that the overall speed up would not give us the
+net benefit we sought. In fact, it might yield net negative benefit
+when evaluating its use for our specific needs, even if the marketing
+blurb by the cloud provider reads very convincingly to the CTO or VP
+of Engineering.
+</p>
+<p>
+By thinking on the margin we avoid making the mistake of investing the
+time and effort to migrate to this new resource type when the net
+benefits do not exist.
+</p>
 <h3 id="headline-6">
-<span class="todo">TODO</span>
 Lump  of labor fallacy
 </h3>
+<p>
+At the advent of DevOps, in the 2000s when the term was coin,
+automation was one of the key ideas. In the world of economics, the
+general notion of <em>automation</em> is associated with a well known misconception
+known as the &#39;lump of labor fallacy&#39;. The premise of &#39;lump of labor&#39; states
+that there is a fixed amount of work available in the economy at large
+such that if you were to automate a task you would permanently
+eliminate jobs and no new jobs would be created as a byproduct of the automation.
+</p>
+<p>
+In 1891 economist Schloss rebuked the idea that lowering the number of
+hours of labor in a work day would see reductions in unemployment and
+termed this the &#39;lump of labor fallacy.&#39;
+</p>
+<p>
+Today many economists use the &#39;lump of labor fallacy&#39; to
+rebuke the idea that increasing the productivity of existing labor, growing
+the labor pool (e.g. via immigration), or increasing automation will
+increase unemployment.
+</p>
+<p>
+The original idea of &#39;lump of labor&#39; (not the fallacy) suggests the
+economy is a zero-sum game, which most economists do not consider true.
+</p>
+<p>
+This fallacy is a very important idea to apply to your operations
+mindset within your engineering organization. Specifically, you might
+be able to automate deployments of application changes such that you
+increase the number of deployments per day on your team, but that may
+also increase the risk of instability in production thus creating more
+operational work in the process. It is work keeping this in mind when
+you are sequencing your strategic goals so you have a reliable
+infrastructure in place before increasing application change
+deployments (as one example).
+</p>
 
   </article>
 </section>
