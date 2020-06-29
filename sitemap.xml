@@ -211,4 +211,10 @@
     <priority>0.5</priority>
   </url>
   
+  <url>
+    <loc>/talks/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
 </urlset>

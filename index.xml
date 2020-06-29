@@ -175,5 +175,14 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <description>[user] name = Susan Potter # make sure you change this email = me@susanpotter.net # make sure you change this [color] diff = auto status = auto branch = auto [diff] rename = copy color = auto [apply] whitespace = strip [pager] color = true [status] color = auto [branch] autosetuprebase = always [alias] co = &amp;#34;checkout&amp;#34; ci = &amp;#34;commit&amp;#34; ciall = &amp;#34;commit -a -v&amp;#34; unmerge = &amp;#34;reset --hard ORIG_HEAD&amp;#34; lsbr = &amp;#34;branch -a&amp;#34; # list all branches, even remote ones mkbr = &amp;#34;branch&amp;#34; # create branch if you specify a branch name after it, e.</description>
     </item>
     
+    <item>
+      <title>Talks</title>
+      <link>/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/</guid>
+      <description> TODO </description>
+    </item>
+    
   </channel>
 </rss>
