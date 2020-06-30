@@ -57,6 +57,15 @@
     </item>
     
     <item>
+      <title>Ruby Idioms, Part 2</title>
+      <link>/blogs/software/2007/01/ruby-idioms-part-2/</link>
+      <pubDate>Mon, 22 Jan 2007 19:21:00 -0600</pubDate>
+      
+      <guid>/blogs/software/2007/01/ruby-idioms-part-2/</guid>
+      <description>Now the &amp;#34;idiom&amp;#34; we will use is not specific to Ruby, since I am pretty sure Perl has one of the constructs we will use to solve the stated problem, but it is still idiomatic, since the majority of popular OO languages (static, dynamic or otherwise) do not have it (as far as I know). Also some consider this to be a sub-optimal idiom, because there is a terser way to do something like this.</description>
+    </item>
+    
+    <item>
       <title>Ruby Idioms, Part 1</title>
       <link>/blogs/software/2007/01/ruby-idioms-part-1/</link>
       <pubDate>Mon, 22 Jan 2007 19:16:00 -0600</pubDate>

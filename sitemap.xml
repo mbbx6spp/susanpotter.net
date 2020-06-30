@@ -108,6 +108,13 @@
   </url>
   
   <url>
+    <loc>/tags/economics/</loc>
+    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/categories/economics/</loc>
     <lastmod>2017-06-22T15:42:40-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -123,6 +130,13 @@
   
   <url>
     <loc>/blogs/software/2017/06/economic-theory/</loc>
+    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2017-06-22T15:42:40-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -206,6 +220,13 @@
   </url>
   
   <url>
+    <loc>/tags/idioms/</loc>
+    <lastmod>2007-01-24T18:48:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/tags/ruby/</loc>
     <lastmod>2007-01-24T18:48:00-06:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -214,13 +235,6 @@
   
   <url>
     <loc>/blogs/software/2007/01/ruby-idioms-part-7/</loc>
-    <lastmod>2007-01-24T18:48:00-06:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2007-01-24T18:48:00-06:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -257,13 +271,6 @@
   <url>
     <loc>/blogs/software/2007/01/ruby-idioms-part-2/</loc>
     <lastmod>2007-01-22T19:21:00-06:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/idioms/</loc>
-    <lastmod>2007-01-22T19:16:00-06:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
