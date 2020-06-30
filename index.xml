@@ -66,15 +66,6 @@
     </item>
     
     <item>
-      <title>Profunctors: An exploration in less than 100 lines of code</title>
-      <link>/blogs/software/2018/10/profuntors/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs/software/2018/10/profuntors/</guid>
-      <description>Introduction   Profunctors are a remarkably practical abstraction for many things modern software development is concerned with today.  Consider that much of distributed systems software today concerns the following activity pairs:   encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
-    </item>
-    
-    <item>
       <title>Decoding lens operators</title>
       <link>/blogs/software/2018/04/haskell-decoding-lenses/</link>
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
