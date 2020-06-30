@@ -30,12 +30,30 @@
     </item>
     
     <item>
+      <title>From Zero to Haskell: Lessons Learned (ZuriHac 2019 / Zurich, Switzerland)</title>
+      <link>/talks/2019/from-zero-to-haskell-lessons-learned/</link>
+      <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2019/from-zero-to-haskell-lessons-learned/</guid>
+      <description>  ZuriHac 2019 / June 2019 - Zurich, Switzerland Keywords     Haskell    Training    Mentoring    Functional Programming   Abstract   TODO Slides   </description>
+    </item>
+    
+    <item>
       <title>Shorts</title>
       <link>/film/2019/05/shorts/</link>
       <pubDate>Sat, 11 May 2019 22:41:25 -0500</pubDate>
       
       <guid>/film/2019/05/shorts/</guid>
       <description>My absolute favorite format of film is the short film. Here are a list of short films I loved watching:    Re-Gifted (2018): CGI 3D short film that follows the life of a decrative ornament.    3x3 (2009): A tale of two different approaches to mastery.    The Bigger Picture (2015): Two brothers struggling to cope with their elderly mother&amp;#39;s care.    Round About Five (2005): A bicycle courier and a businessman share a fleeeting moment during a London rush hour.</description>
+    </item>
+    
+    <item>
+      <title>Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)</title>
+      <link>/talks/2019/dynamically-scaling-political-news-and-activism-hub/</link>
+      <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2019/dynamically-scaling-political-news-and-activism-hub/</guid>
+      <description>C-U Cloud Meetup / April 26, 2019 - Champaign, IL Keywords     AWS    Auto Scaling    EC2    Infrastructure   Abstract   On any given day we can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
     </item>
     
     <item>
@@ -63,6 +81,15 @@
       
       <guid>/blogs/software/2018/04/haskell-decoding-lenses/</guid>
       <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
+    </item>
+    
+    <item>
+      <title>Functional Operations (Functional Programming at Comcast Labs Connect)</title>
+      <link>/talks/2018/functional-operations-comcast-labs-connect/</link>
+      <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2018/functional-operations-comcast-labs-connect/</guid>
+      <description>Functional Programming at Comcast Labs Connect / March 2018 - Philadelphia, PA Keywords     Functional Programming    Nix    NixOS    Operations   Abstract   Maintaining configurations for different kinds of nodes and cloud resources in a [micro]service architecture can be an operational nightmare, especially if not managed with the application codebase. CI and CD job environments diverge from production configuration yielding their results unpredictable at best or produce false positives in the worst case.</description>
     </item>
     
     <item>
@@ -94,12 +121,39 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
     </item>
     
     <item>
+      <title>Functional and Reactive Operations</title>
+      <link>/talks/2016/functional-and-reactive-operations/</link>
+      <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2016/functional-and-reactive-operations/</guid>
+      <description>Reactive Summit / October 4, 2016 - Austin, TX Keywords     Functional Programming    Reactive Infrastructure    Nix    NixOS   Abstract   When we start greenfield development of a new service or web application today we&amp;#39;d likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success.</description>
+    </item>
+    
+    <item>
+      <title>Put a Type On It: Idris Types as Propositions</title>
+      <link>/talks/2016/put-a-type-on-it-idris/</link>
+      <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2016/put-a-type-on-it-idris/</guid>
+      <description>  Strange Loop 2016 / September 2016 - St. Louis, MO Abstract  Slides   </description>
+    </item>
+    
+    <item>
       <title>Nix in your home directory</title>
       <link>/blogs/software/2016/08/nix-in-home-directory/</link>
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>/blogs/software/2016/08/nix-in-home-directory/</guid>
       <description>Prerequisites     wget is installed    tar is installed   Purpose   If you really don&amp;#39;t want to install Nix under /nix (or you can&amp;#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.  Now whenever you want to run a command under Nix&amp;#39;s control, you should prefix with nixrun.  Good luck.</description>
+    </item>
+    
+    <item>
+      <title>From Zero To Production (NixOS, Erlang)</title>
+      <link>/talks/2016/from-zero-to-production-nixos-erlang-factory/</link>
+      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2016/from-zero-to-production-nixos-erlang-factory/</guid>
+      <description>Erlang Factory SF 2016 / March 2016 - San Francisco, CA Abstract   This talk will introduce the audience to the Nix packaging, NixOS, and related ecosystem tools for Erlang/Elixir developers.  By reviewing common development, testing, and deployment problems we will look at what Nix has to offer to aid Erlang/Elixir developers in these areas.  From seamless developer environment bootstrapping to consistent CI environments and beyond.</description>
     </item>
     
     <item>
@@ -131,12 +185,48 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
     </item>
     
     <item>
+      <title>Functional Algebra: Monoids Applied</title>
+      <link>/talks/2012/functional-algebra-monoids-applied/</link>
+      <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2012/functional-algebra-monoids-applied/</guid>
+      <description>SCNA 2012 / November 10, 2012 - Chicago, IL Abstract   In functional programming, words from Category Theory are thrown around, but how useful are they really?  This session looks at applications of monoids specifically and how using their algebraic properties offers a solid foundation of reasoning in many types of business domains and reduces developer error as computational context complexity increases.  This will provide a tiny peak at Category Theory&amp;#39;s practical uses in software development and modeling.</description>
+    </item>
+    
+    <item>
+      <title>Why Haskell?</title>
+      <link>/talks/2012/why-haskell/</link>
+      <pubDate>Fri, 16 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2012/why-haskell/</guid>
+      <description>Code PaLOUsa 2012 / March 16, 2012 - Louisville, KY Abstract   Monads, also known as Kleisli triples in Category Theory, are an (endo-)functor together with two natural transformations, which are surprisingly useful in pure languages like Haskell, but this talk will NOT reference monads. Ever. (Well, at least not in this talk.)  Instead what I intend to impress upon an audience of newcomers to Haskell is the wide array of freely available libraries most of which is liberally licensed open source software, intuitive package management, practical build tools, reasonable documentation (when you know how to read it and where to find it), interactive shell (or REPL), mature compiler, stable runtime, testing tools that will blow your mind away, and a small but collaborative and knowledgeable community of developers.</description>
+    </item>
+    
+    <item>
       <title>Erlang OTP Glossary</title>
       <link>/blogs/software/2012/01/erlang-otp-glossary/</link>
       <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
       
       <guid>/blogs/software/2012/01/erlang-otp-glossary/</guid>
       <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&amp;#39;t have to!:)    Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</description>
+    </item>
+    
+    <item>
+      <title>Dynamo: Not just for datastores</title>
+      <link>/talks/2011/dynamo-not-just-for-datastores/</link>
+      <pubDate>Mon, 19 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2011/dynamo-not-just-for-datastores/</guid>
+      <description>Strange Loop 2011 / September 19, 2011 - St. Louis, MO Abstract   Find out how to build decentralized distributed systems based on a Dynamo-esque philosophy using riak_core, which is used to abstract away some of the more complicated decentralized and distributed features of Riak KV, Riak Search and other applications. Assumes some knowledge of basic Erlang and its concepts of behaviors. The audience will discover which Dynamo features can be taken advantage of via riak_core and how to build a simple example.</description>
+    </item>
+    
+    <item>
+      <title>Distributed Developer Workflows using Git</title>
+      <link>/talks/2011/distributed-developer-workflows-git/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2011/distributed-developer-workflows-git/</guid>
+      <description>C-U Developer Meetup / August, 2011 - Urbana, IL Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.  This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
     </item>
     
     <item>
@@ -149,12 +239,30 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
     </item>
     
     <item>
+      <title>Deploying Distributed Software Services to the Cloud (without Breaking a Sweat)</title>
+      <link>/talks/2011/deploying-distributed-software-services-to-the-cloud/</link>
+      <pubDate>Sat, 05 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2011/deploying-distributed-software-services-to-the-cloud/</guid>
+      <description>Code PaLOUsa 2011 / March, 2011 - Louisville, KY Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.  The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
+    </item>
+    
+    <item>
       <title>Custom Security Handler Nitrogen</title>
       <link>/blogs/software/2011/02/custom-security-handler-nitrogen/</link>
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>
       
       <guid>/blogs/software/2011/02/custom-security-handler-nitrogen/</guid>
       <description>An example of a custom security handler implementation for Nitrogen 2.x.  customer_security_handler.erl %%% HEADER %%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&amp;#34;nitrogen_core/include/wf.hrl&amp;#34;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS  %% @hidden %% @todo Add authentication code.</description>
+    </item>
+    
+    <item>
+      <title>Designing for Concurrency</title>
+      <link>/talks/2010/designing-for-concurrency/</link>
+      <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/2010/designing-for-concurrency/</guid>
+      <description> C-U Software Development Group / August 2010 - Champaign, IL  </description>
     </item>
     
     <item>
@@ -263,15 +371,6 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       
       <guid>/blogs/software/1/01/scm-next-generation/</guid>
       <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
-    </item>
-    
-    <item>
-      <title>Talks</title>
-      <link>/talks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/talks/</guid>
-      <description>2019  From Zero to Haskell: Lessons Learned   ZuriHac 2019 / June 2019 - Zurich, Switzerland Abstract   TODO Slides   Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)   C-U Cloud Meetup / April 2019 - Champaign, IL Abstract   On any given day we can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
     </item>
     
   </channel>
