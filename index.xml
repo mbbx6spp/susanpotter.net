@@ -271,7 +271,7 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/talks/</guid>
-      <description>2019  From Zero to Haskell: Lessons Learned   ZuriHac 2019 / June 2019 - Zurich, Switzerland Abstract   TODO Slides   Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)  Abstract   On any given day DailyKos can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
+      <description>2019  From Zero to Haskell: Lessons Learned   ZuriHac 2019 / June 2019 - Zurich, Switzerland Abstract   TODO Slides   Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)   C-U Cloud Meetup / April 2019 - Champaign, IL Abstract   On any given day DailyKos can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
     </item>
     
   </channel>
