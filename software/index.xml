@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>DynamoDB: Basics</title>
-      <link>/blogs/software/2019/10/dynamodb-basics/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs/software/2019/10/dynamodb-basics/</guid>
-      <description>Introduction   This post is introducing the ideas, principles, and concepts used with DynamoDB as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   From using DynamoDB for the last couple of months the big takeaway is that data modeling is still vital.</description>
-    </item>
-    
-    <item>
       <title>Decoding lens operators</title>
       <link>/blogs/software/2018/04/haskell-decoding-lenses/</link>
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
@@ -212,6 +203,15 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
     </item>
     
     <item>
+      <title></title>
+      <link>/blogs/software/1/01/dynamodb-basics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/1/01/dynamodb-basics/</guid>
+      <description>DynamoDB: Basics Introduction   This post is introducing the ideas, principles, and concepts used with DynamoDB as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   From using DynamoDB for the last couple of months the big takeaway is that data modeling is still vital.</description>
+    </item>
+    
+    <item>
       <title>Rubyisms: naming conventions</title>
       <link>/blogs/software/1/01/rubyisms-naming-conventions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -227,6 +227,15 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       
       <guid>/blogs/software/1/01/scm-next-generation/</guid>
       <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
+    </item>
+    
+    <item>
+      <title>Test-Infected Infrastructure</title>
+      <link>/blogs/software/1/01/test-infected-infrastructure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/1/01/test-infected-infrastructure/</guid>
+      <description>Getting Real   Rich Hickey gave a talk at Strangeloop 2011 which I had to watch online as I had to leave that conference early that year - so much sadness - titled &amp;#34;Simple Made Easy&amp;#34;.  Ignore his type systems trolling.  Highlights from the talk includes methods of informal reasoning about code. He derisively discounts the TDD fad, but what he says about &amp;#34;guard rails&amp;#34; and the fact that bugs still leak out from type systems and test suites should not be regarded as dismissing using them at all.</description>
     </item>
     
   </channel>
