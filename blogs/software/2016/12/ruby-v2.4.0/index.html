@@ -152,9 +152,9 @@ puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Ruby v<
 
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.3.3
-                                                                                                           user     system      total        real
-Array#min on large array                                                                               4.670000   0.000000   4.670000 <span style="color:#f92672">(</span>  4.673932<span style="color:#f92672">)</span>
-Array#max on large array                                                                               4.650000   0.000000   4.650000 <span style="color:#f92672">(</span>  4.644266<span style="color:#f92672">)</span>
+                                                                              user     system      total        real
+Array#min on large array                                                  4.670000   0.000000   4.670000 <span style="color:#f92672">(</span>  4.673932<span style="color:#f92672">)</span>
+Array#max on large array                                                  4.650000   0.000000   4.650000 <span style="color:#f92672">(</span>  4.644266<span style="color:#f92672">)</span>
 
 $ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.3’
@@ -162,9 +162,9 @@ installing ‘ruby-2.4.0’
 
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.4.0
-                                                                                                           user     system      total        real
-Array#min on large array                                                                               0.170000   0.000000   0.170000 <span style="color:#f92672">(</span>  0.169169<span style="color:#f92672">)</span>
-Array#max on large array                                                                               0.180000   0.000000   0.180000 <span style="color:#f92672">(</span>  0.186183<span style="color:#f92672">)</span>
+                                                                              user     system      total        real
+Array#min on large array                                                  0.170000   0.000000   0.170000 <span style="color:#f92672">(</span>  0.169169<span style="color:#f92672">)</span>
+Array#max on large array                                                  0.180000   0.000000   0.180000 <span style="color:#f92672">(</span>  0.186183<span style="color:#f92672">)</span>
 </code></pre></div><p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p>
 <p>There are other changes, which I haven&rsquo;t had time to check out yet.</p>
 <p>Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
