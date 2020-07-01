@@ -75,6 +75,10 @@
               <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="../../../../../snippets/">Snippets</a>
+            </li>
+          
         
         
       </ul>
@@ -506,18 +510,6 @@ By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code
 <p>
 By analysing the type of <code class="verbatim">f3</code> we determined how a function must be defined in order to produce a &#34;pure&#34; and total function without ignoring arguments. As a consequence we identified it must be the same function as another already available to us in the Prelude simply by looking at its type.
 </p>
-<h3 id="headline-13">
-Too General <code class="verbatim">\implies</code> Less Performant (sometimes)
-</h3>
-<p>
-TODO
-</p>
-<h3 id="headline-14">
-Applying Parametricity (in Javascript)
-</h3>
-<p>
-TODO
-</p>
 <h3 id="conclusion">
 Conclusion
 </h3>
@@ -547,7 +539,7 @@ generate code for us when there is only one possible definition or narrow down t
 <p>
 We should beware that writing general code comes at costs (potentially performance), however, with compilers like GHC we can provide hints to the code generator to <code class="verbatim">SPECIALIZE</code> for commonly used types to allow for more inlining.
 </p>
-<h3 id="headline-16">
+<h3 id="headline-14">
 Original Source
 </h3>
 <p>

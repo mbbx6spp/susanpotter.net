@@ -75,6 +75,10 @@
               <a class="navigation-link" href="../../../../../software/">Software</a>
             </li>
           
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="../../../../../snippets/">Snippets</a>
+            </li>
+          
         
         
       </ul>
@@ -97,16 +101,23 @@
 Introduction
 </h3>
 <p>
-This post is introducing the ideas, principles, and concepts used with DynamoDB as I have been learning how to leverage this technology in a new project.
+This post introduces concepts and principles used to design DynamoDB
+tables as I have been learning how to leverage this technology in a
+new project.
 </p>
 <p>
-This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
+This introduction will compare and contrast the core concepts and
+ideas with those found in relational database management systems
+(RDBMS).
 </p>
 <h3 id="headline-2">
 Key takeaways
 </h3>
 <p>
-From using DynamoDB for the last couple of months the big takeaway is that data modeling is still vital. The process of data modeling looks almost identical to working in the RDBMS sphere except the specifics are different. The high-level process still looks like this:
+While using DynamoDB the last couple of months, one of the big
+takeaways is that data modeling is a vital part and that the modeling
+process itself looks structurally similar to relational database
+design. The high-level process still looks like this:
 </p>
 <ul>
 <li>
@@ -126,7 +137,8 @@ Design your primary key and secondary indices based off of your data access patt
 </li>
 </ul>
 <p>
-However, many RDBMS concepts or ideas will hinder your thought process, specifically:
+However, some relational database concepts or ideas will hinder your
+thought process, specifically:
 </p>
 <ul>
 <li>
@@ -145,9 +157,6 @@ normalization
 </p>
 </li>
 </ul>
-<p>
-Despite my initial reservations, DynamoDB has some compelling traits that I am still exploring which promote iterative data modeling (instead of model-the-universe top-down approach) more naturally than RDBMS&#39; <em>cultural</em> instincts (this doesn&#39;t need to be the only way we model in the RDBMS world either, it is merely a cultural attachment to an older way of thinking about software and data IMO).
-</p>
 <h3 id="headline-3">
 Terminology
 </h3>
@@ -188,24 +197,6 @@ Terminology
 </tbody>
 </table>
 <h3 id="headline-4">
-DynamoDB Primary Keys
-</h3>
-<p>
-You can have two kinds of primary keys:
-</p>
-<ul>
-<li>
-<p>
-Simple primary key (partition key)
-</p>
-</li>
-<li>
-<p>
-Composite primary key (partition key + sort key)
-</p>
-</li>
-</ul>
-<h3 id="headline-5">
 DynamoDB API
 </h3>
 <p>
@@ -228,18 +219,78 @@ scans (like a full table scan, which you want to avoid)
 </p>
 </li>
 </ul>
+<h3 id="headline-5">
+DynamoDB Primary Keys
+</h3>
+<p>
+You can have two kinds of primary keys:
+</p>
+<ul>
+<li>
+<p>
+Simple primary key (partition key)
+</p>
+</li>
+<li>
+<p>
+Composite primary key (partition key + sort key)
+</p>
+</li>
+</ul>
+<p>
+The partition key is used to disperse data across shards. Items with
+the same partition key reside in the same partition (some developers
+may be use the analogy as of a &#34;shard&#34; for their initial intuitions).
+</p>
+<p>
+Sort keys are used to create ranges of items within a partition.
+</p>
+<p>
+So far we have been modeling complex enough data domains such that
+composite primary keys are essential for our query access model.
+</p>
 <h3 id="headline-6">
+Secondary Indices
+</h3>
+<p>
+Retrieving items using a DynamoDB table&#39;s primary key is the most
+efficient way, but at times we will still need to support a query
+pattern that isn&#39;t supported by the primary key. This is where, to
+avoid inefficient scan operations, we are able to use secondary indices.
+</p>
+<p>
+There are two types of secondary indices:
+</p>
+<dl>
+<dt>
+Global Secondary Index (GSI)
+</dt>
+<dd>
+<p>
+can be used to provide different
+partition and sort keys.
+</p>
+</dd>
+<dt>
+Local Secondary Index (LSI)
+</dt>
+<dd>
+<p>
+used with a composite primary key
+where the partition key is the same but the sort key is different.
+</p>
+</dd>
+</dl>
+<p>
+Our DynamoDB tables typically use LSIs and a couple use GSIs.
+</p>
+<h3 id="headline-7">
 Data Modeling for DynamoDB
 </h3>
 <p>
 There are a few explicit steps that we borrow from our prior experience of data modeling in the relational world:
 </p>
 <ul>
-<li>
-<p>
-define naming conventions (yes, this is important)
-</p>
-</li>
 <li>
 <p>
 identify entities
@@ -264,7 +315,7 @@ identify self-describing mechanism for primary keys
 <p>
 identify secondary indices based on access patterns as input
 </p>
-<h4 id="headline-7">
+<h4 id="headline-8">
 Defining naming conventions
 </h4>
 </li>
@@ -295,29 +346,61 @@ Just keep it simple and make sure it is applied consistently across your service
 <p>
 It seems silly to do first, but it will save a lot of irritation or rework later.
 </p>
-<h4 id="headline-8">
-Identifying entities
-</h4>
 <h4 id="headline-9">
-Identifying attributes
-</h4>
-<h4 id="headline-10">
-Identifying access patterns
+Entities
 </h4>
 <p>
-The way you identify access patterns to design a DynamoDB table well (for your current needs) is much like you would identify access patterns in the RDBMS world: by understanding the business requirements of the software. Second/third systems have the benefit of having clarity of access and usage patterns, but the risk in migrating data from one datastore to another is that the migrations aren&#39;t particularly simple, not to mention cutting over 24/7 systems over without downtime or data loss.
+Think about the nouns in your domains and then the relationships
+between them. This provides a good starting point for identifying your
+entities. This is basically the identical process to identifying
+entities for relational database design. The one difference is that we
+will typically model many entities in one DynamoDB table together
+whereas a table in the relational database way of thinking serves a
+fundamentally different aim given a fundamental primitive of
+relational database is the <code class="verbatim">JOIN</code> which is absent in DynamoDB.
 </p>
+<h4 id="headline-10">
+Attributes
+</h4>
 <p>
-When reading user stories or technical stories it is possible to infer how data would need to be queried.
+Attributes are usually easily identified after finding your
+entities. This is identical to identifying the columns for relational
+schema design before normalizing data.
 </p>
 <h4 id="headline-11">
-<span class="todo">TODO</span>
-Identifying self-describing mechanism for primary keys
+Access patterns
 </h4>
+<p>
+The way you identify access patterns to design a DynamoDB table well
+(for your current needs) is much like you would identify access
+patterns in the RDBMS world: by understanding the business
+requirements of the software. Second/third systems have the benefit of
+having clarity of access and usage patterns, but the risk in migrating
+data from one datastore to another is that the migrations aren&#39;t
+particularly simple, not to mention cutting over 24/7 systems over
+without downtime or data loss.
+</p>
+<p>
+When reading user stories or technical stories it is possible to infer
+how data would need to be queried.
+</p>
 <h4 id="headline-12">
-<span class="todo">TODO</span>
-Identifying secondary indices based on access patterns as input
+Self-describing keys
 </h4>
+<p>
+Defining partition and sort keys that are self-describing based on a
+scheme of our entity model has allowed us to encode consistent
+querying and writing of items to provide a higher-level
+domain-oriented API on top of the lower-level DynamoDB API.
+</p>
+<h3 id="headline-13">
+Summary
+</h3>
+<p>
+There is a lot I didn&#39;t cover especially with respect to cost
+minimization. I will attempt to revisit that topic and recommended
+practices based on our experiences as we learn more.
+</p>
 
   </article>
 </section>

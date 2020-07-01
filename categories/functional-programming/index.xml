@@ -13,10 +13,10 @@
     
     <item>
       <title>Decoding lens operators</title>
-      <link>/blogs/software/2018/04/haskell-decoding-lenses/</link>
+      <link>/snippets/2018/04/haskell-decoding-lenses/</link>
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
       
-      <guid>/blogs/software/2018/04/haskell-decoding-lenses/</guid>
+      <guid>/snippets/2018/04/haskell-decoding-lenses/</guid>
       <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
