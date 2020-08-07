@@ -98,6 +98,9 @@
     </header>
 
     
+<h3 id="headline-1">
+Background
+</h3>
 <p>
 Recently I have been reviewing TypeScript code a lot. A common pattern
 I see repeated in many pull requests and open source projects is a
@@ -161,7 +164,7 @@ Here only the last invalid construction (according to the
 documentation) is raised as a type error by TypeScript. All the other
 invalid forms of the data get past `tsc` (TypeScript&#39;s typechecker).
 </p>
-<h3 id="headline-1">
+<h3 id="headline-2">
 A past journey
 </h3>
 <p>
@@ -174,7 +177,7 @@ lone wolf) with no documented way to build it. This was before the
 days when `cabal` was a convenient tool to use and certainly well
 before `stack` had entered the scene.
 </p>
-<h3 id="headline-2">
+<h3 id="headline-3">
 A return to simplicity
 </h3>
 <p>
@@ -195,7 +198,7 @@ before continuing with this post, but if you need a refresher, I wrote
 about algebraic data types on a site called Functional Algebra a few
 years ago which I moved to my own blog since. TODO: link.
 </p>
-<h3 id="headline-3">
+<h3 id="headline-4">
 Inconsistencies of the single record approach
 </h3>
 <p>
@@ -240,7 +243,7 @@ to our own functions that consume these values to check they are well
 formed according to how we intended (see inline documentation in the
 type declaration).
 </p>
-<h3 id="headline-4">
+<h3 id="headline-5">
 Native Algebraic Data Types
 </h3>
 <p>
@@ -377,7 +380,7 @@ sum of products in PureScript keeps our troublesome callers out of
 much more trouble than our record-with-many-optional-attributes
 encoding in TypeScript at the top.
 </p>
-<h3 id="headline-5">
+<h3 id="headline-6">
 TypeScript encodings of non-native algebraic data types
 </h3>
 <p>
@@ -551,7 +554,7 @@ Next we will attempt to trick TypeScript into providing exhaustivity
 checking for our switch case statements that we are using as a poor
 substitute for pattern matching.
 </p>
-<h3 id="headline-6">
+<h3 id="headline-7">
 Can we get <code class="verbatim">tsc</code> to do exhaustivity checking on our <code class="verbatim">_tag</code> switch statements?
 </h3>
 <p>
