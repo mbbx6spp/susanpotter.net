@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blogs/software/2020/08/algebraic-data-types/</loc>
+    <loc>/software/algebraic-data-types-a-simple-thing/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -11,13 +11,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/blogs/software/2020/07/growing-good-developer-habits/</loc>
+    <loc>/software/adding-and-removing-friction-to-developer-process-and-interaction-by-design/</loc>
     <lastmod>2020-07-17T19:12:46-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -39,7 +39,7 @@
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -66,7 +66,7 @@
   </url>
   
   <url>
-    <loc>/blogs/software/2019/12/unikernels/</loc>
+    <loc>/software/random-notes-on-unikernels/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -94,7 +94,7 @@
   </url>
   
   <url>
-    <loc>/blogs/software/2019/10/dynamodb-basics/</loc>
+    <loc>/software/dynamodb-the-basics/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -171,14 +171,14 @@
   </url>
   
   <url>
-    <loc>/blogs/software/2018/10/profunctors/</loc>
+    <loc>/software/profunctors-an-exploration-in-less-than-100-lines-of-haskell/</loc>
     <lastmod>2020-08-02T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/blogs/software/2018/10/practical-recursion-schemes/</loc>
+    <loc>/software/practical-recursion-schemes/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -206,7 +206,7 @@
   </url>
   
   <url>
-    <loc>/blogs/software/2017/06/economic-concepts-applied-in-software-development/</loc>
+    <loc>/software/economic-concepts-applied-in-software-development-reliability-engineering-and-technical-leadership/</loc>
     <lastmod>2017-06-22T15:42:40-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -263,21 +263,21 @@
   
   <url>
     <loc>/tags/idris/</loc>
-    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/blogs/software/2016/05/types-research/</loc>
-    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <loc>/software/to-type-or-not-to-static-type/</loc>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>/tags/types/</loc>
-    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -297,7 +297,7 @@
   </url>
   
   <url>
-    <loc>/blogs/software/2014/09/parametricity-practitioners-guide/</loc>
+    <loc>/software/parametricity-a-practitioners-guide/</loc>
     <lastmod>2014-09-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -430,7 +430,7 @@
   </url>
   
   <url>
-    <loc>/blogs/software/2007/01/scm-next-generation/</loc>
+    <loc>/software/scm-the-next-generation/</loc>
     <lastmod>2007-01-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

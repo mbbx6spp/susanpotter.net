@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Practical Recursion Schemes - Susan Potter
+">
+    <meta property="og:description" content="An outline of practical use and applications of recursion schemes through examples">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/practical-recursion-schemes/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/practical-recursion-schemes/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/software/practical-recursion-schemes/">
+    <title>
+  Practical Recursion Schemes - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/practical-recursion-schemes/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Practical Recursion Schemes</h1>
+      
+        <h2 class="date">October 22, 2018</h2>
+      
+    </header>
+
+    
+<h3 id="headline-1">
+Recursive data types
+</h3>
+<p>
+Recursive data structures pop up all over in software from general-purpose structures
+like lists and binary trees to more application-specific structures like this AST from
+a simple business rules engine:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">  <span style="color:#66d9ef">data</span> <span style="color:#66d9ef">BusinessRule</span> input output
+    <span style="color:#f92672">=</span> <span style="color:#66d9ef">IfThenElse</span> (input <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) (<span style="color:#66d9ef">BusinessRule</span> input output) (<span style="color:#66d9ef">BusinessRule</span> input output)
+    <span style="color:#f92672">|</span> <span style="color:#66d9ef">Return</span> (input <span style="color:#f92672">-&gt;</span> output)
+    <span style="color:#f92672">|</span> <span style="color:#66d9ef">Stop</span></code></pre></div>
+</div>
+<h3 id="headline-2">
+<code class="verbatim">Functor</code>
+</h3>
+<h3 id="headline-3">
+<code class="verbatim">Foldable</code>
+</h3>
+<p>
+The <code class="verbatim">Foldable</code> class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.
+</p>
+<p>
+Intuitively this is an assortment of <code class="verbatim">List</code>-like fold methods on other structures
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Foldable</span> t <span style="color:#66d9ef">where</span>
+  foldMap <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monoid</span> m <span style="color:#f92672">=&gt;</span> (a <span style="color:#f92672">-&gt;</span> m) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> m
+  fold    <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monoid</span> m <span style="color:#f92672">=&gt;</span> t m <span style="color:#f92672">-&gt;</span> m
+  foldr   <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> b
+  foldl   <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> a) <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> t b <span style="color:#f92672">-&gt;</span> a
+  foldr1  <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> a) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> a
+  foldl1  <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> a) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> a</code></pre></div>
+</div>
+<p>
+Example of defining a <code class="verbatim">Foldable</code> instance manually:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Tree</span> a
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Empty</span>
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Leaf</span> a
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Node</span> (<span style="color:#66d9ef">Tree</span> a) (<span style="color:#66d9ef">Tree</span> a)
+
+<span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Foldable</span> <span style="color:#66d9ef">Tree</span> <span style="color:#66d9ef">where</span>
+  foldMap f <span style="color:#66d9ef">Empty</span> <span style="color:#f92672">=</span> mempty
+  foldMap f (<span style="color:#66d9ef">Leaf</span> x) <span style="color:#f92672">=</span> f x
+  foldMap f (<span style="color:#66d9ef">Node</span> l r) <span style="color:#f92672">=</span> foldMap f l <span style="color:#f92672">&lt;&gt;</span> foldMap f r
+
+<span style="color:#a6e22e">count</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Foldable</span> t <span style="color:#f92672">=&gt;</span> t a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+<span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> getSum <span style="color:#f92672">.</span> foldMap (const <span style="color:#f92672">$</span> <span style="color:#66d9ef">Sum</span> <span style="color:#ae81ff">1</span>)</code></pre></div>
+</div>
+<p>
+<code class="verbatim">Foldable</code> is derivable using the <code class="verbatim">DeriveFoldable</code> language pragma like so:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Tree</span> a
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Empty</span>
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Leaf</span> a
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Node</span> (<span style="color:#66d9ef">Tree</span> a) (<span style="color:#66d9ef">Tree</span> a)
+  <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Foldable</span>)</code></pre></div>
+</div>
+<h3 id="headline-4">
+Traversable
+</h3>
+<p>
+Traversable gives you the ability to traverse a structure from left-to-right, performing
+an effectful action on each element and preserving the shape.
+</p>
+<ul>
+<li>
+<p>
+Intuitively it is <code class="verbatim">fmap</code> with effects
+</p>
+</li>
+<li>
+<p>
+Derivable using <code class="verbatim">DeriveTraversable</code> language pragma
+</p>
+</li>
+<li>
+<p>
+See &#39;Applicative Progamming with Effects&#39;, by McBride and Paterson
+</p>
+</li>
+</ul>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">class</span> (<span style="color:#66d9ef">Functor</span> t, <span style="color:#66d9ef">Foldable</span> t) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Traversable</span> t <span style="color:#66d9ef">where</span>
+  traverse  <span style="color:#f92672">::</span> <span style="color:#66d9ef">Applicative</span> f <span style="color:#f92672">=&gt;</span> (a <span style="color:#f92672">-&gt;</span> f b) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> f (t b)
+  sequenceA <span style="color:#f92672">::</span> <span style="color:#66d9ef">Applicative</span> f <span style="color:#f92672">=&gt;</span> t (f a) <span style="color:#f92672">-&gt;</span> f (t a)
+  mapM      <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monad</span> m <span style="color:#f92672">=&gt;</span> (a <span style="color:#f92672">-&gt;</span> m b) <span style="color:#f92672">-&gt;</span>  t a <span style="color:#f92672">-&gt;</span>  m (t a)
+  sequence  <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monad</span> m <span style="color:#f92672">=&gt;</span> t (m a) <span style="color:#f92672">-&gt;</span> m (t a)</code></pre></div>
+</div>
+<p>
+Example for this for <code class="verbatim">Tree</code> type defining the instance manually is:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Traversable</span> <span style="color:#66d9ef">Tree</span> <span style="color:#66d9ef">where</span>
+  traverse f <span style="color:#66d9ef">Empty</span> <span style="color:#f92672">=</span> pure <span style="color:#66d9ef">Empty</span>
+  traverse f (<span style="color:#66d9ef">Leaf</span> x) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Leaf</span> <span style="color:#f92672">&lt;$&gt;</span> f x
+  traverse f (<span style="color:#66d9ef">Node</span> l r) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Node</span> <span style="color:#f92672">&lt;$&gt;</span> traverse f l <span style="color:#f92672">&lt;*&gt;</span> traverse f r</code></pre></div>
+</div>
+<p>
+Notes:
+</p>
+<ul>
+<li>
+<p>
+<code class="verbatim">mapM</code> and <code class="verbatim">sequence</code> generalize Prelude functions of the same name
+</p>
+</li>
+<li>
+<p>
+<code class="verbatim">sequence</code> can also be thought of as a generalized matrix transpose
+</p>
+</li>
+</ul>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">sequence</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monad</span> m <span style="color:#f92672">=&gt;</span> t (m a) <span style="color:#f92672">-&gt;</span> m (t a)
+<span style="color:#a6e22e">sequence</span> <span style="color:#f92672">=</span> mapM id</code></pre></div>
+</div>
+<h3 id="headline-5">
+Fixed Points of Functors
+</h3>
+<p>
+An idea from category theory which gives:
+</p>
+<ul>
+<li>
+<p>
+data-type generic functions
+</p>
+</li>
+<li>
+<p>
+compositional data
+</p>
+</li>
+</ul>
+<p>
+Fixed points are represented by the type:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">newtype</span> <span style="color:#66d9ef">Fix</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">Fix</span> { unFix <span style="color:#f92672">::</span> f (<span style="color:#66d9ef">Fix</span> f) }</code></pre></div>
+</div>
+<p>
+A functor <code class="verbatim">f</code> is a data-type of kind <code class="verbatim">* -&gt; *</code> together with an <code class="verbatim">fmap</code> function.
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">Fix</span> f <span style="color:#f92672">=</span> f (f (f (f <span style="color:#f92672">...</span></code></pre></div>
+</div>
+<h3 id="headline-6">
+Useful functions
+</h3>
+<h4 id="headline-7">
+fan-out aka <em>fork</em>
+</h4>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">&amp;&amp;&amp;</span>)
+  <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> c)
+  <span style="color:#f92672">-&gt;</span> (b <span style="color:#f92672">-&gt;</span> d)
+  <span style="color:#f92672">-&gt;</span> b
+  <span style="color:#f92672">-&gt;</span> (c, d)
+(f <span style="color:#f92672">&amp;&amp;&amp;</span> g) <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> (f x, g x)</code></pre></div>
+</div>
+<h4 id="headline-8">
+fan-in
+</h4>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">|||</span>)
+  <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> d)
+  <span style="color:#f92672">-&gt;</span> (c <span style="color:#f92672">-&gt;</span> d)
+  <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Either</span> b c
+  <span style="color:#f92672">-&gt;</span> d
+(f <span style="color:#f92672">|||</span> g) <span style="color:#f92672">=</span> either</code></pre></div>
+</div>
+<h4 id="headline-9">
+function product
+</h4>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">***</span>)
+  <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> c)
+  <span style="color:#f92672">-&gt;</span> (b <span style="color:#f92672">-&gt;</span> d)
+  <span style="color:#f92672">-&gt;</span> (a, b)
+  <span style="color:#f92672">-&gt;</span> (c, d)
+(f <span style="color:#f92672">***</span> g) <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>(x, y) <span style="color:#f92672">-&gt;</span> (f x, g y)</code></pre></div>
+</div>
+<h4 id="headline-10">
+generalized unzip for functions
+</h4>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">funzip</span>
+  <span style="color:#f92672">::</span> <span style="color:#66d9ef">Functor</span> f
+  <span style="color:#f92672">=&gt;</span> f (a, b)
+  <span style="color:#f92672">-&gt;</span> (f a, f b)
+<span style="color:#a6e22e">funzip</span> <span style="color:#f92672">=</span> fmap fst <span style="color:#f92672">&amp;&amp;&amp;</span> fmap snd</code></pre></div>
+</div>
+<h3 id="headline-11">
+Data-type generic programming
+</h3>
+<ul>
+<li>
+<p>
+allows us to parameterise functions on the structure, or shape, of a data-type
+</p>
+</li>
+<li>
+<p>
+useful for large complex data-types, where boilerplate traversal code often dominates,
+especially when updating a small subset of constructors
+</p>
+</li>
+<li>
+<p>
+for recursion schemes, we can capture the pattern as a standalone combinator
+</p>
+</li>
+</ul>
+<p>
+Limitations:
+</p>
+<ul>
+<li>
+<p>
+The set of data-types that can be represented by means of <code class="verbatim">Fix</code> is limited to regular data-types.
+</p>
+</li>
+<li>
+<p>
+Nested data-types and mutually recursive data-types require higher-order approaches.
+</p>
+</li>
+</ul>
+<p>
+In order to work with lists using a data-type generic <code class="verbatim">cata</code> combinator, we need a new &#34;unfixed&#34; type representation.
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">ListF</span> a r <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span> a r <span style="color:#f92672">|</span> <span style="color:#66d9ef">N</span></code></pre></div>
+</div>
+<p>
+<code class="verbatim">ListF a r</code> is not an ordinary functor, but we can define a polymorphic functor instance for <code class="verbatim">ListF a</code>
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Functor</span> (<span style="color:#66d9ef">ListF</span> a) <span style="color:#66d9ef">where</span>
+  fmap f <span style="color:#66d9ef">N</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">N</span>
+  fmap f (<span style="color:#66d9ef">C</span> x xs) <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span> x (f xs)</code></pre></div>
+</div>
+<p>
+We might also want a pattern functor for natural numbers!
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">NatF</span> r <span style="color:#f92672">=</span> <span style="color:#66d9ef">Succ</span> r <span style="color:#f92672">|</span> <span style="color:#66d9ef">Zero</span> <span style="color:#66d9ef">deriving</span> <span style="color:#66d9ef">Functor</span></code></pre></div>
+</div>
+<h3 id="headline-12">
+Catamorphism
+</h3>
+<p>
+We would like to write <code class="verbatim">foldr</code> once for all data-types.
+Category theory shows us how to define it data-type generically for a functor fixed-point.
+</p>
+<h4 id="headline-13">
+That catamorphism-fusion law
+</h4>
+<p>
+The <em>catamorphism-fusion</em> law is arguably the most important law, and can be used to transform
+the composition of a function with a catamorphism into a single catamorphism, eliminating
+intermediate data structures.
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">h</span> <span style="color:#f92672">.</span> f <span style="color:#f92672">=</span> g <span style="color:#f92672">.</span> fmap h <span style="color:#f92672">=&gt;</span> h <span style="color:#f92672">.</span> cata f <span style="color:#f92672">=</span> cata g
+  <span style="color:#66d9ef">where</span> f <span style="color:#f92672">::</span> f a <span style="color:#f92672">-&gt;</span> a
+        g <span style="color:#f92672">::</span> f b <span style="color:#f92672">-&gt;</span> b
+        h <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> b</code></pre></div>
+</div>
+<h4 id="headline-14">
+Composing Algebras
+</h4>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fpractical-recursion-schemes%2f&ref_src=twsrc%5Etfw&text=Practical%20Recursion%20Schemes Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fpractical-recursion-schemes%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fpractical-recursion-schemes%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fpractical-recursion-schemes%2f&ref_src=twsrc%5Etfw&text=Practical%20Recursion%20Schemes Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fpractical-recursion-schemes%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fpractical-recursion-schemes%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>
