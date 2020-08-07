@@ -3,6 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blogs/software/2020/08/algebraic-data-types/</loc>
+    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2020/07/growing-good-developer-habits/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/habits/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/tags/halvm/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -26,20 +68,6 @@
   <url>
     <loc>/blogs/software/2019/12/unikernels/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -150,8 +178,8 @@
   </url>
   
   <url>
-    <loc>/tags/software/</loc>
-    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <loc>/blogs/software/2018/10/practical-recursion-schemes/</loc>
+    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -460,6 +488,12 @@
   <url>
     <loc>/snippets/2006/07/rubyisms-forwardables/</loc>
     <lastmod>2006-07-22T18:23:00-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/talks/1/scalaz-by-example/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

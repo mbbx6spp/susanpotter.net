@@ -6,10 +6,28 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Algebraic Data Types: A simple thing</title>
+      <link>/blogs/software/2020/08/algebraic-data-types/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2020/08/algebraic-data-types/</guid>
+      <description>Recently I have been reviewing TypeScript code a lot. A common pattern I see repeated in many pull requests and open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar? : string, /* Required for the &amp;#39;Baz&amp;#39; tagged values of Foo */ baz?</description>
+    </item>
+    
+    <item>
+      <title>Adding and removing friction to developer process and interaction by design</title>
+      <link>/blogs/software/2020/07/growing-good-developer-habits/</link>
+      <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
+      
+      <guid>/blogs/software/2020/07/growing-good-developer-habits/</guid>
+      <description>In 2015 I was binge-reading books on how to break bad habits and create good habits. Since then I have been applying the psychology research I learned from those books to my personal habits and also work habits.  When trying to form habits there are four levers that psychology researchers found made forming habits easier:    easy    obvious    This post will describe just two examples from work the last few years that I designed into my teams delivery processes to encourage developers to deliver work assigned to them as soon as possible without them fearing management was constantly monitoring individual metrics and thresholds as they .</description>
+    </item>
     
     <item>
       <title>Random notes on Unikernels</title>
@@ -63,6 +81,15 @@
       
       <guid>/blogs/software/2018/10/profunctors/</guid>
       <description>Originally adapted from a gist: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3  Profunctors are a remarkably practical abstraction for many activities software developers are concerned with on the day to day.  Consider that much of distributed systems software today concerns the following activity pairs:   Encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   Serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
+    </item>
+    
+    <item>
+      <title>Practical Recursion Schemes</title>
+      <link>/blogs/software/2018/10/practical-recursion-schemes/</link>
+      <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2018/10/practical-recursion-schemes/</guid>
+      <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
     <item>
@@ -371,6 +398,15 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       
       <guid>/snippets/2006/07/rubyisms-forwardables/</guid>
       <description>Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance. So below are some excerpts from an email conversation I had with one about Ruby&amp;#39;s standard library forwardable features:  Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc. Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish): Name = Struct.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/talks/1/scalaz-by-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/1/scalaz-by-example/</guid>
+      <description>Scalaz By Example (An IO Taster)  PDXScala Meetup / Jan 2014 - Portland, OR Abstract   Slides from an informal talk I gave at PDX Scala last night on an often missed part of Scalaz: IO. Slides   </description>
     </item>
     
     <item>
