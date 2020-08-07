@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -8,6 +10,7 @@ body {
   margin-right: 0px;
   margin-top: 0px;
   background-color: #ffffff;
+  font-family: 'Asap', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {

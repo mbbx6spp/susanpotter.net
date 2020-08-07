@@ -66,13 +66,6 @@
   </url>
   
   <url>
-    <loc>/about/</loc>
-    <lastmod>2019-04-23T09:17:38-05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/snippets/2018/04/haskell-decoding-lenses/</loc>
     <lastmod>2018-04-21T14:15:59-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -94,14 +87,14 @@
   </url>
   
   <url>
-    <loc>/tags/economics/</loc>
+    <loc>/blogs/software/2017/06/economic-concepts-applied-in-software-development/</loc>
     <lastmod>2017-06-22T15:42:40-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/blogs/software/2017/06/economic-theory/</loc>
+    <loc>/tags/economics/</loc>
     <lastmod>2017-06-22T15:42:40-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -152,6 +145,27 @@
   <url>
     <loc>/snippets/2016/08/nix-in-home-directory/</loc>
     <lastmod>2016-08-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/idris/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2016/05/types-research/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/types/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -362,6 +376,12 @@
   <url>
     <loc>/snippets/2006/07/rubyisms-forwardables/</loc>
     <lastmod>2006-07-22T18:23:00-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

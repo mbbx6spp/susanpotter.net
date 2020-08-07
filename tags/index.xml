@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>idris</title>
+      <link>/tags/idris/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/idris/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>types</title>
+      <link>/tags/types/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/types/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>darcs</title>
       <link>/tags/darcs/</link>
       <pubDate>Thu, 25 Jan 2007 21:58:00 -0600</pubDate>
