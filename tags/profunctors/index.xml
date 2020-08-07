@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>profunctors on Susan Potter</title>
+    <link>/tags/profunctors/</link>
+    <description>Recent content in profunctors on Susan Potter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/profunctors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Profunctors: An exploration in less than 100 lines of Haskell</title>
+      <link>/blogs/software/2018/10/profunctors/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2018/10/profunctors/</guid>
+      <description>Originally adapted from a gist: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3  Profunctors are a remarkably practical abstraction for many activities software developers are concerned with on the day to day.  Consider that much of distributed systems software today concerns the following activity pairs:   Encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   Serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
+    </item>
+    
+  </channel>
+</rss>
