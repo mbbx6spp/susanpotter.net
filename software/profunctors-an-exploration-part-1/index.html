@@ -93,7 +93,7 @@
     <header>
       <h1>Profunctors: An exploration, Part 1</h1>
       
-        <h2 class="date">October 30, 2018</h2>
+        <h2 class="date">August 10, 2020</h2>
       
     </header>
 
@@ -114,6 +114,14 @@ Moved the original Gist to a <a href="/snippets/2018/profunctors">snippet.</a>
 </li>
 </ul>
 <h3 id="headline-1">
+Goals
+</h3>
+<p>
+This series explores one kind of motivation and building blocks of
+Profunctors with an aim to introduce the concepts informally while
+introducing terminology along the way.
+</p>
+<h3 id="headline-2">
 Motivation
 </h3>
 <p>
@@ -140,8 +148,8 @@ into text without loss.
 <p>
 On the command-line we might do:
 </p>
-<div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ base64 <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#e6db74">&#34;some data that needs to be encoded to Base64&#34;</span>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ base64 <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#e6db74">&#34;some data that needs to be encoded to Base64&#34;</span>
 c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQK
 
 $ base64 --decode <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#e6db74">&#34;c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQK&#34;</span>
@@ -207,8 +215,8 @@ to determine the original message without more security layer context.
 <p>
 On the command-line we might do the following:
 </p>
-<div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># generate random IV</span>
+<div class="src src-shell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># generate random IV</span>
 $ openssl rand -hex <span style="color:#ae81ff">16</span> &gt; iv.txt
 
 <span style="color:#75715e"># generate random key</span>
@@ -243,7 +251,7 @@ and the content has not be tampered with.
 </p>
 </dd>
 </dl>
-<h3 id="headline-2">
+<h3 id="headline-3">
 Credits
 </h3>
 <span>Photo by <a href="https://unsplash.com/@worthyofelegance?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Alex</a> on <a href="https://unsplash.com/s/photos/yin-yang?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>

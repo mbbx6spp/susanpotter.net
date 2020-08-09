@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Profunctors: An exploration, Part 1</title>
+      <link>/software/profunctors-an-exploration-part-1/</link>
+      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/profunctors-an-exploration-part-1/</guid>
+      <description>Notes:    Originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    Moved the original Gist to a snippet.   Goals   This series explores one kind of motivation and building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. Motivation   Profunctors are a remarkably practical abstraction for many activities that software developers are concerned with on a day to day basis.</description>
+    </item>
+    
+    <item>
       <title>Profunctors: An exploration, Part 2</title>
       <link>/software/profunctors-an-exploration-part-2/</link>
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
@@ -27,15 +36,6 @@
       
       <guid>/software/adding-and-removing-friction-to-developer-process-and-interaction-by-design/</guid>
       <description>In 2015 I was binge-reading books on how to break bad habits and create good habits. Since then I have been applying the psychology research I learned from those books to my personal habits and also work habits.  When trying to form habits there are four levers that psychology researchers found made forming habits easier:    easy    obvious    This post will describe just two examples from work the last few years that I designed into my teams delivery processes to encourage developers to deliver work assigned to them as soon as possible without them fearing management was constantly monitoring individual metrics and thresholds as they .</description>
-    </item>
-    
-    <item>
-      <title>Profunctors: An exploration, Part 1</title>
-      <link>/software/profunctors-an-exploration-part-1/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/software/profunctors-an-exploration-part-1/</guid>
-      <description>Notes:    Originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    Moved the original Gist to a snippet.   Motivation   Profunctors are a remarkably practical abstraction for many activities that software developers are concerned with on a day to day basis. This first part of the Profunctor series will introduce example motivations all software developers face when doing typical application development.  Today a significant amount of software development in-the-small for web/native apps or backend services concerns the following activity pairs:   Encoding &amp;amp; decoding    We need to ensure that encoding is consistent, e.</description>
     </item>
     
     <item>
