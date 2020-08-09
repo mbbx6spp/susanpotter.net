@@ -95,6 +95,17 @@ h2.info {
     text-transform: none;
 }
 
+.dateinfo {
+    font-size: 0.8em;
+    padding-top: 0.75em;
+}
+
+h2 code {
+    display: inline;
+    background: inherit !important;
+    color: inherit;
+}
+
 code {
     margin: 0px;
     padding: 0px;
