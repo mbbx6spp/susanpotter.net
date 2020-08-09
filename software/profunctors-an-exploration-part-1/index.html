@@ -273,9 +273,14 @@ Using GnuPG (<code class="verbatim">gpg</code>) command-line tools we can sign a
 document as follows:
 </p>
 <div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ echo <span style="color:#e6db74">&#34;jake the dog and fin the human&#34;</span> &gt; sig.txt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Create some amazing content I need to sign</span>
+$ echo <span style="color:#e6db74">&#34;jake the dog and fin the human&#34;</span> &gt; sig.txt
+
+<span style="color:#75715e"># Create a detached signature of the content with my PGP signing key</span>
 $ gpg --detach-sign --armor --output sig.txt &lt;content.txt
 gpg: using <span style="color:#e6db74">&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;</span> as default secret key <span style="color:#66d9ef">for</span> signing
+
+<span style="color:#75715e"># Verify detached signature correspoonds to the content</span>
 $ gpg --verify sig.txt content.txt
 gpg: Signature made Sun <span style="color:#ae81ff">09</span> Aug <span style="color:#ae81ff">2020</span> 04:39:45 PM CDT
 gpg:                using RSA key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
