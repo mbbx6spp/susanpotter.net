@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>Algebraic Data Types: A simple thing</title>
-      <link>/software/algebraic-data-types-a-simple-thing/</link>
-      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/software/algebraic-data-types-a-simple-thing/</guid>
-      <description>Background   Recently I have been reviewing TypeScript code a lot. A common pattern I see repeated in many pull requests and open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar? : string, /* Required for the &amp;#39;Baz&amp;#39; tagged values of Foo */ baz?</description>
-    </item>
-    
-    <item>
       <title>Adding and removing friction to developer process and interaction by design</title>
       <link>/software/adding-and-removing-friction-to-developer-process-and-interaction-by-design/</link>
       <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
