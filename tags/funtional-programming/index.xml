@@ -12,21 +12,21 @@
     
     
     <item>
-      <title>Profunctors: An exploration, Part 1</title>
-      <link>/software/profunctors-an-exploration-part-1/</link>
-      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/software/profunctors-an-exploration-part-1/</guid>
-      <description>Notes:    Originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    Moved the original Gist to a snippet.   Goals   This series explores one kind of motivation and building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. Motivation   Profunctors are a remarkably practical abstraction for many activities that software developers are concerned with when building products.</description>
-    </item>
-    
-    <item>
       <title>Profunctors: An exploration, Part 2</title>
       <link>/software/profunctors-an-exploration-part-2/</link>
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/profunctors-an-exploration-part-2/</guid>
       <description>Originally adapted from a gist: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3 Moved to the original Gist to a snippet.  This is a continuation from part 1.  Profunctors are a remarkably practical abstraction for many activities software developers are concerned with on a day to day basis. Back to basics (Functors)   In one direction (e.g. decoding, deserializing, decrypting, validating) we start with data that needs some transformation yielding new types of data to be used.</description>
+    </item>
+    
+    <item>
+      <title>Profunctors: An exploration, Part 1</title>
+      <link>/software/profunctors-an-exploration-part-1/</link>
+      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/profunctors-an-exploration-part-1/</guid>
+      <description>Notes:    Originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    Moved the original Gist to a snippet.   Goals   This series explores one kind of motivation and building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. Motivation   Profunctors are a remarkably practical abstraction for many activities that software developers are concerned with when building products.</description>
     </item>
     
     <item>
