@@ -95,6 +95,15 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
     </item>
     
     <item>
+      <title>Predicate Algebra in Python</title>
+      <link>/snippets/2009/predicate-algebra-python/</link>
+      <pubDate>Mon, 09 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/snippets/2009/predicate-algebra-python/</guid>
+      <description>Updated for Python3 recently: class Predicate: &amp;#34;&amp;#34;&amp;#34;Define predicate algebra.&amp;gt;&amp;gt;&amp;gt; isEven=Predicate(lambda x: x %2 == 0)&amp;gt;&amp;gt;&amp;gt; isOdd=Predicate(lambda x: x %2 == 1)&amp;gt;&amp;gt;&amp;gt; isEven(6)True&amp;gt;&amp;gt;&amp;gt; isOdd(6)False&amp;gt;&amp;gt;&amp;gt; isEmpty=Predicate(lambda s: s == &amp;#34;&amp;#34;)&amp;gt;&amp;gt;&amp;gt; isNotEmpty=~isEmpty&amp;gt;&amp;gt;&amp;gt; isEmpty(&amp;#34;c&amp;#34;)False&amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;&amp;#34;)False&amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;hello&amp;#34;)True&amp;#34;&amp;#34;&amp;#34; def __init__(self, predicate): self.predicate = predicate def __or__(self, other): return Predicate(lambda x: self.predicate(x) or other(x)) def __and__(self, other): return Predicate(lambda x: self.predicate(x) and other(x)) def __xor__(self, other): return Predicate(lambda x: self.predicate(x) ^ other(x)) def __invert__(self): return Predicate(lambda x: not self.</description>
+    </item>
+    
+    <item>
       <title>My .gitconfig &amp; .tigrc files</title>
       <link>/snippets/2007/gitconfig/</link>
       <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
