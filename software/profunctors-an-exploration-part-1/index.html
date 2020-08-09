@@ -268,6 +268,22 @@ identify as having written such that another party can validate to
 some degree of confidence that it was us who authored the content
 and the content has not be tampered with.
 </p>
+<p>
+Using GnuPG (<code class="verbatim">gpg</code>) command-line tools we can sign and validate a
+document as follows:
+</p>
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ echo <span style="color:#e6db74">&#34;jake the dog and fin the human&#34;</span> &gt; sig.txt
+$ gpg --detach-sign --armor --output sig.txt &lt;content.txt
+gpg: using <span style="color:#e6db74">&#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;</span> as default secret key <span style="color:#66d9ef">for</span> signing
+$ gpg --verify sig.txt content.txt
+gpg: Signature made Sun <span style="color:#ae81ff">09</span> Aug <span style="color:#ae81ff">2020</span> 04:39:45 PM CDT
+gpg:                using RSA key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+gpg: Good signature from <span style="color:#e6db74">&#34;Susan Potter &lt;YY@domain.tld&gt;&#34;</span> <span style="color:#f92672">[</span>ultimate<span style="color:#f92672">]</span>
+gpg:                 aka <span style="color:#e6db74">&#34;keybase.io/mbbx6spp &lt;mbbx6spp@keybase.io&gt;&#34;</span> <span style="color:#f92672">[</span>ultimate<span style="color:#f92672">]</span>
+Primary key fingerprint: <span style="color:#ae81ff">9999</span> AAAA BBBB CCCC DDDD  EEEE FFFF <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">1111</span> <span style="color:#ae81ff">2222</span>
+     Subkey fingerprint: <span style="color:#ae81ff">1111</span> <span style="color:#ae81ff">2222</span> <span style="color:#ae81ff">3333</span> <span style="color:#ae81ff">4444</span> <span style="color:#ae81ff">5555</span>  <span style="color:#ae81ff">6666</span> <span style="color:#ae81ff">7777</span> <span style="color:#ae81ff">8888</span> <span style="color:#ae81ff">9999</span> AAAA</code></pre></div>
+</div>
 </dd>
 </dl>
 <p>
