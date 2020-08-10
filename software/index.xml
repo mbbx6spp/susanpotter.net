@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Algebraic Data Types: A simple thing</title>
-      <link>/software/algebraic-data-types-a-simple-thing/</link>
+      <title>Algebraic Data Types in TypeScript</title>
+      <link>/software/algebraic-data-types-in-typescript/</link>
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/software/algebraic-data-types-a-simple-thing/</guid>
+      <guid>/software/algebraic-data-types-in-typescript/</guid>
       <description>Background   Recently I have been reviewing TypeScript code a lot. A common pattern I see repeated in many pull requests and open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar? : string, /* Required for the &amp;#39;Baz&amp;#39; tagged values of Foo */ baz?</description>
     </item>
     
