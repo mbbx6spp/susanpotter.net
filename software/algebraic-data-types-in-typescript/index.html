@@ -94,10 +94,10 @@
       <h1>Algebraic Data Types in TypeScript</h1>
       <div class="dateinfo">
         
-        <span class="date"><strong>Date:</strong> August 10, 2020</span>
+        <span class="date"><strong>Date:</strong> August 11, 2020</span>
         
         
-        <span class="lastmod"><strong>Last modified:</strong> August 10, 2020</span>
+        <span class="lastmod"><strong>Last modified:</strong> August 11, 2020</span>
         
       </div>
 
@@ -108,9 +108,9 @@
 Background
 </h3>
 <p>
-Recently I have been reviewing TypeScript code a lot. A common pattern
-I see repeated in many pull requests and open source projects is a
-type that looks like the following:
+Recently I&#39;ve been reviewing TypeScript code at work. A common pattern
+I&#39;ve observed in pull requests and some open source projects is a type
+that looks like the following:
 </p>
 <div class="src src-typescript">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FooTag</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Bar&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;Baz&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;Qux&#39;</span>;
@@ -129,7 +129,7 @@ type that looks like the following:
 </code></pre></div>
 </div>
 <p>
-Notice that <code class="verbatim">Foo</code> is a parameterized type which means it place a value
+Notice that <code class="verbatim">Foo</code> is a parameterized type which means it places a value
 of type <code class="verbatim">A</code> which is determined by the caller somewhere in its
 structure.
 </p>
@@ -152,7 +152,7 @@ present. The above type declaration would allow us to construct the
 following values that typecheck against this type:
 </p>
 <div class="src src-typescript">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// According to the documentation this is an INVALID Bar kind of Foo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// According to the documentation, this is an INVALID Bar kind of Foo
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">123</span> };
 
 <span style="color:#75715e">// This is an INVALID Baz kind of Foo
@@ -174,17 +174,17 @@ invalid forms of the data get past <code class="verbatim">tsc</code> with no noi
 Remember Algebraic Data Types (ADTs)
 </h3>
 <p>
-I will assume you know the basics of algebraic data types
-before continuing with this post, but if you need a refresher, I wrote
-about <a href="/software/algebraic-data-types/">algebraic data types while ago</a>.
+For the remainder of this blog post, I&#39;ll assume you know the basics
+of algebraic data types before continuing with this post, but if you
+need a refresher, I wrote about <a href="/software/algebraic-data-types/">algebraic data types while ago</a>.
 </p>
 <h3 id="headline-3">
 Inconsistencies of the single record approach
 </h3>
 <p>
-The above invalid data formations (assuming the documentation is
+The invalid data formations above (assuming the documentation is
 correct) did not get caught by the <code class="verbatim">tsc</code> typechecker even though the
-data was badly formed. This adds overhead for the developer using
+data was badly constructed. This adds overhead for the developer using
 these types as inputs to their functions or outputs from their functions.
 </p>
 <p>
@@ -215,53 +215,54 @@ type annotation for the return type of the smart constructors).
 This certainly helps keep clients of our library construct valid forms
 of <code class="verbatim">Foo</code> but the type declaration can still be used by rogue callers
 or those that don&#39;t bother reading the documentation (myself
-included). We could argue about whether it is worthwhile nannying
-these developers but for the sake of this blog post I will assume we
+included). We could argue about whether it is worth our while nannying
+these developers but for the sake of this blog post, I will assume we
 want to do the best we can (within reason) to eliminate bad
 constructions of type <code class="verbatim">Foo</code> so that we don&#39;t need to add extra logic
-to our own functions that consume these values to check they are well
-formed according to how we intended (see inline documentation in the
-type declaration).
+to our functions that consume these values to check they are
+well-formed according to how we intended (read the inline
+documentation in the type declaration).
 </p>
 <h3 id="headline-4">
 Native Algebraic Data Types
 </h3>
 <p>
 Stepping back this is how we might define data types in a language
-that natively supports algebraic data types that satisfies the
+that natively supports algebraic data types satisfying the
 documentation&#39;s intent.
 </p>
 <p>
-Here the datatype in PureScript:
+Here is a datatype declaration in PureScript:
 </p>
-<div class="src src-purescript">
-<pre><code class="language-purescript" data-lang="purescript">data Foo a
-  = Bar { bar :: String }
-  | Baz { baz :: Int }
-  | Qux { qux :: Boolean, quux :: Maybe a }</code></pre>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Foo</span> a
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Bar</span> { bar <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Baz</span> { baz <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Qux</span> { qux <span style="color:#f92672">::</span> <span style="color:#66d9ef">Boolean</span>, quux <span style="color:#f92672">::</span> <span style="color:#66d9ef">Maybe</span> a }</code></pre></div>
 </div>
 <p>
 What it says is that we have one type named <code class="verbatim">Foo</code> and there are only three
 ways we can construct a valid value of <code class="verbatim">Foo</code> according to this type. Namely:
 </p>
-<div class="src src-purescript">
-<pre><code class="language-purescript" data-lang="purescript">foo0 = Bar { bar : "wowser" }
-foo1 = Baz { baz : 3000 }
-foo2 = Qux { qux : true, quux : Nothing }</code></pre>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">foo0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Bar</span> { bar <span style="color:#66d9ef">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">wowser</span><span style="color:#e6db74">&#34;</span> }
+<span style="color:#a6e22e">foo1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Baz</span> { baz <span style="color:#66d9ef">:</span> <span style="color:#ae81ff">3000</span> }
+<span style="color:#a6e22e">foo2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Qux</span> { qux <span style="color:#66d9ef">:</span> true, quux <span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Nothing</span> }</code></pre></div>
 </div>
 <p>
-Similarly the application type <code class="verbatim">Currency</code> used in the TypeScript
+Similarly, the application type <code class="verbatim">Currency</code> used in the TypeScript
 example looks like this in PureScript:
 </p>
-<div class="src src-purescript">
-<pre><code class="language-purescript" data-lang="purescript">data Currency = USD | CHF | EUR | JPY</code></pre>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Currency</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">USD</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">CHF</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">EUR</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">JPY</span></code></pre></div>
 </div>
 <p>
-With the declaration of <code class="verbatim">Foo a</code> above we are not able to construct the equivalent to
+With the declaration of <code class="verbatim">Foo a</code> above, we are not able to construct the equivalent to
 the invalid forms that escaped the TypeScript typechecker unscathed above.
 </p>
 <p>
-Attempting the the equivalent of <code class="verbatim">{ _tag : &#39;Bar&#39;, baz : 123 }</code> yields this type error:
+Here is us attempting the equivalent of <code class="verbatim">{ _tag : &#39;Bar&#39;, baz : 123
+}</code>. It yields the following type error:
 </p>
 <div class="src src-text">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">&gt;&gt;&gt; invalid0 = Bar { baz : 123 }
@@ -290,12 +291,12 @@ in value declaration invalid0
 where t0 is an unknown type</code></pre></div>
 </div>
 <p>
-Attempting the PureScript equivalent of <code class="verbatim">{ _tag : &#39;Baz&#39; }</code> does not
+Now attempting the PureScript equivalent of <code class="verbatim">{ _tag : &#39;Baz&#39; }</code> does not
 give us a type error but will infer the type as <code class="verbatim">{ baz :: Int } -&gt; Foo
 Currency</code>.
 </p>
 <p>
-Annotating with the expected type yields the following error from the
+Annotating with the type of <code class="verbatim">Foo</code> yields the following error from the
 PureScript typechecker:
 </p>
 <div class="src src-text">
@@ -364,8 +365,14 @@ encoding in TypeScript at the top.
 TypeScript encodings of non-native algebraic data types
 </h3>
 <p>
-So how can we try to encode this kind of algebraic data type in
+So how can we encode this kind of algebraic data type in
 TypeScript which doesn&#39;t natively support them (yet)?
+</p>
+<p>
+We will explore some of the design space and note the progressive
+solution&#39;s trade-offs as we go along, attempting to improve on the
+faithfulness of the encoding to PureScript&#39;s native algebraic data
+type&#39;s characteristics.
 </p>
 <p>
 Our first attempt might be the following:
@@ -394,7 +401,7 @@ We can then determine which data construction was used via a switch statement li
 <p>
 We can no longer mix and match attributes that don&#39;t correspond to the
 data constructor <em>&#34;tag&#34;</em> like we could with the &#34;tagged&#34; single
-record. However, we can pass a <code class="verbatim">null</code> value for one of the contructor
+record. However, we can pass a <code class="verbatim">null</code> value for one of the constructor
 arguments instead of giving it the required <code class="verbatim">Currency</code> value
 expected. We also probably still want to provide smart
 constructors. Also note that we now have four types: <code class="verbatim">Bar</code>, <code class="verbatim">Baz</code>,
@@ -419,7 +426,7 @@ Note that:
 <li>
 <p>
 primitive types like <code class="verbatim">string</code>, <code class="verbatim">number</code>, <code class="verbatim">boolean</code> cannot accept a
-=null value.
+<code class="verbatim">null</code> value.
 </p>
 </li>
 <li>
@@ -432,8 +439,8 @@ want since it can be anything.
 </ul>
 <p>
 Now if we wanted to eliminate the possibility of constructing a value
-of type <code class="verbatim">Bar2</code> instead of unifying all the values under <code class="verbatim">Foo2</code> then we
-could improve the type declaration:
+of type <code class="verbatim">Bar4</code> instead of unifying all the values under <code class="verbatim">Foo4</code> then we
+could update the type declaration like so:
 </p>
 <div class="src src-typescript">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Bar4</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">NonNullable</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span> }
@@ -455,7 +462,7 @@ is our intent based on the original documentation.
 This ensures we don&#39;t create values of types <code class="verbatim">Bar4</code>, <code class="verbatim">Baz4</code>, or <code class="verbatim">Qux4</code>
 instead of <code class="verbatim">Foo4</code> now giving us the same basic guarantees as
 PureScript&#39;s sum of products algebraic data type definition for data
-construction.
+construction without pattern matching or exhaustivity checking.
 </p>
 <div class="src src-typescript">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">mkBar4</span>(<span style="color:#e6db74">&#39;bla bla bla&#39;</span>)
@@ -481,34 +488,35 @@ First let&#39;s see what happens when we tell the typechecker they should
 be <code class="verbatim">Bar4</code>, <code class="verbatim">Baz4</code>, and <code class="verbatim">Qux4</code> respectively.
 </p>
 <div class="src src-typescript">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">val</span> <span style="color:#a6e22e">v0</span> : <span style="color:#66d9ef">Bar4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBar4</span>(<span style="color:#e6db74">&#39;bla bla bla&#39;</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v0</span> : <span style="color:#66d9ef">Bar4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBar4</span>(<span style="color:#e6db74">&#39;bla bla bla&#39;</span>);
 <span style="color:#a6e22e">Type</span> <span style="color:#e6db74">&#39;Foo4&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">assignable</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span>.
   <span style="color:#a6e22e">Property</span> <span style="color:#e6db74">&#39;bar&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">missing</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Baz4&#39;</span> <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">required</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span>.(<span style="color:#ae81ff">2322</span>)
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">val</span> <span style="color:#a6e22e">v1</span> : <span style="color:#66d9ef">Baz4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBaz4</span>(<span style="color:#ae81ff">3000</span>);
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v1</span> : <span style="color:#66d9ef">Baz4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBaz4</span>(<span style="color:#ae81ff">3000</span>);
 <span style="color:#a6e22e">Type</span> <span style="color:#e6db74">&#39;Foo4&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">assignable</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Baz4&#39;</span>.
   <span style="color:#a6e22e">Property</span> <span style="color:#e6db74">&#39;baz&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">missing</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span> <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">required</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Baz4&#39;</span>.(<span style="color:#ae81ff">2322</span>)
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">val</span> <span style="color:#a6e22e">v2</span> : <span style="color:#66d9ef">Qux4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkQux4</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#39;Coronavirus&#39;</span>);
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v2</span> : <span style="color:#66d9ef">Qux4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkQux4</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#39;Coronavirus&#39;</span>);
 <span style="color:#a6e22e">Type</span> <span style="color:#e6db74">&#39;Foo4&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">assignable</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Qux4&#39;</span>.
   <span style="color:#a6e22e">Property</span> <span style="color:#e6db74">&#39;qux&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">missing</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span> <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">required</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Qux4&#39;</span>.(<span style="color:#ae81ff">2322</span>)
 </code></pre></div>
 </div>
 <p>
 Removing explicit type annotations we see TypeScript infers type
-<code class="verbatim">Foo2&lt;A&gt;</code> which is ideally what we want for a faithful encoding of a sum
-algebraic data type, which is &#34;closed&#34; (some familiar with JVM
+<code class="verbatim">Foo2&lt;A&gt;</code> which is ideally what we want for a faithful encoding of a
+sum type, which is &#34;closed&#34; (some familiar with JVM
 languages may say <em>sealed</em>) over a specified number of data
-constructions at time of declaration (not extensible later).
+constructions at time of declaration (it is not extensible later).
 </p>
 <p>
 In languages that support algebraic data types natively, like
 PureScript and Haskell, the typechecker can do exhaustivity checking
 on our pattern matching clauses. This one kind of check early in
 development can eliminate a large category of common runtime defects
-very early in the development process with fast developer feedback
-while the developer still has the full context of the bugfix or
-feature in mind. This is hugely valuable on a number of fronts:
+very early in the development process converting them to compile-time
+checks yielding with fast developer feedback. This means the developer
+retains their full context of the bugfix or feature being worked on. This is
+hugely valuable on several fronts:
 </p>
 <ul>
 <li>
@@ -530,8 +538,8 @@ development, saving everyone else&#39;s time too.
 </li>
 </ul>
 <p>
-Next we will attempt to trick TypeScript into providing exhaustivity
-checking for our switch case statements that we are using as a poor
+Next, we will attempt to trick TypeScript into providing exhaustivity
+checking for our switch-case statements that we are using as a poor
 substitute for pattern matching.
 </p>
 <h3 id="headline-6">
@@ -539,8 +547,8 @@ Can we get <code class="verbatim">tsc</code> to do exhaustivity checking on our 
 </h3>
 <p>
 When I introduce TypeScript&#39;s <code class="verbatim">never</code> builtin type to coworkers, they
-often look at me perplexed. <em>&#34;What can it possibly be used for?&#34;</em> they
-often ask.
+often look at me in a perplexed way. <em>&#34;What can it possibly be used
+for?&#34;</em> they often ask.
 </p>
 <p>
 My typical explanation is something like, &#34;imagine we have a function
@@ -548,12 +556,12 @@ that we intend to be in a forever loop? What would we expect the
 return type to be in that case?&#34; (One good answer for this would be <code class="verbatim">never</code>.)
 </p>
 <p>
-Another way we can exploit the <code class="verbatim">never</code> type is to consume it where
+Another way we can exploit the <code class="verbatim">never</code> type is to consume it where we
 expect the code to be unreachable.
 </p>
 <p>
 Let&#39;s see what happens when we have a function that consumes an
-argument with type <code class="verbatim">never</code> and try to pass it an argument:
+argument with type <code class="verbatim">never</code> and try to pass an argument to it:
 </p>
 <div class="src src-typescript">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">unreachable</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">_wat</span> : <span style="color:#66d9ef">never</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">never</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">unreachable</span>(<span style="color:#a6e22e">_wat</span>);
@@ -568,10 +576,11 @@ In the shell (<code class="verbatim">ts-node</code>) we get the following except
 </code></pre></div>
 </div>
 <p>
-In the prior <code class="verbatim">switch</code> statement the <code class="verbatim">default</code> branch returned a <code class="verbatim">null</code>
-which always irritated me. Now let&#39;s replace the <code class="verbatim">return null</code>
-statement with a call to <code class="verbatim">unreachable</code> passing any argument to it at
-all. This might look something like so:
+In the earlier <code class="verbatim">switch</code> statement, the <code class="verbatim">default</code> branch returned a <code class="verbatim">null</code>
+which always irritated me because we had to update our return type to
+include <code class="verbatim">null</code>. Now let&#39;s replace the <code class="verbatim">return null</code> statement with a
+call to <code class="verbatim">unreachable</code> passing any argument to it at all. This might
+look something like the following:
 </p>
 <div class="src src-typescript">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matcher</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">foo</span> : <span style="color:#66d9ef">Foo4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span>) <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
