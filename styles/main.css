@@ -140,3 +140,13 @@ pre {
     margin: 15px 5px;
     padding: 0;
 }
+
+.substack-signup {
+    display: inline-block;
+    width: 480px;
+    height: 320px;
+}
+
+article {
+    display: inline-block;
+}
