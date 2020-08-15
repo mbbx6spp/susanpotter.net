@@ -35,7 +35,7 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-for-the-maths-inclined/</guid>
-      <description>This was initially published as a section of one of my substack posts.   You might be wondering why the term algebraic data types has the word “algebra” in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.  The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
+      <description>This was initially published as a section of one of my substack posts.   You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.  The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
     </item>
     
     <item>
