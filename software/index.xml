@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Musings on cloud computing infrastructure</title>
+      <link>/software/musings-on-cloud-computing-infrastructure/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/musings-on-cloud-computing-infrastructure/</guid>
+      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.  Since the mid-1990s availability has become the coveted prize as internet and business systems catered to users and business needs 24/7 across the globe from many different locations, increasing expectations across the board.</description>
+    </item>
+    
+    <item>
       <title>Algebraic Data Types in TypeScript</title>
       <link>/software/algebraic-data-types-in-typescript/</link>
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>

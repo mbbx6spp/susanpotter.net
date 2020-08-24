@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Musings on cloud computing infrastructure - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/musings-on-cloud-computing-infrastructure/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/musings-on-cloud-computing-infrastructure/">
+    <meta name="twitter:image" content="/">
+
+    <title>
+  Musings on cloud computing infrastructure - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/musings-on-cloud-computing-infrastructure/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Musings on cloud computing infrastructure</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> August 23, 2020</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> August 23, 2020</span>
+        
+      </div>
+
+    </header>
+
+    
+<p>
+Over the last twenty years I have worked close to or on the frontlines
+of system infrastructure delivery from hall server closets to
+multi-datacenter setups (before cloud computing was a thing) all
+the way to a variety of programmable cloud configurations across
+multiple regions and even providers and deploying multi-region
+serverless applications in minutes.
+</p>
+<p>
+Since the mid-1990s availability has become the coveted prize as
+internet and business systems catered to users and business needs 24/7
+across the globe from many different locations, increasing
+expectations across the board.
+</p>
+<p>
+As a result, most computing infrastructure at more mature organizations
+have overhead built-in to enable this availability. Over time, this
+overhead leads such companies to paint themselves into corners through
+large technology capital investment. Large capital investment leads
+to organizations becoming beholden to aging technology to leverage the
+balance sheet benefit of amortizing capital expenditures. Yet this
+squashes software delivery and practice innovation within the
+organization and has associated opportunity costs.
+</p>
+<p>
+Tech startups, on the other hand, churn through many cutting edge
+technological changes that don&#39;t always work. at a rate faster than their once-nimble
+engineering team can keep up with the cleanup. Accruing multiple
+versions of a service or capability that need to be maintained in
+production at the same time. This is often driven by high growth
+rate expectations from investors and board. Starved of engineering
+experience or strategy, many startups fall into this high churn trap.
+</p>
+<p>
+This post is a set of musings with no particular structure, related to the
+evolution of software systems infrastructure today (2020).
+</p>
+<h3 id="headline-1">
+1996-2005: Hall server closets to datacenters
+</h3>
+<h3 id="headline-2">
+2006-2015: Until the <em>&#34;cloud&#34;</em>…
+</h3>
+<p>
+The first iteration of <em>cloud computing</em> allowed businesses to focus
+on their core competencies to deliver products their customers care
+about faster for the cost of paying more in your operational costs sooner.
+</p>
+<p>
+However, even after developing more maturity than its humble early
+beginnings with EC2 instances inside VPCs managed by ASGs that get
+attached to load balancers or exposed through cloudfront
+distributions so that your applications can scale up dynamically,
+<strong>scaling down to zero was always a challenge</strong>.
+</p>
+<p>
+Mimicking datacenters via programmable compute and networking
+primitives had huge potential for reproducible automation, capacity
+planning and (sometimes) operational cost reduction that only some
+software companies exploit today. However, it still required a
+constant overhead such that scaling to zero was rarely feasible to
+accommodate modern availability expectations today. This iteration of
+the <em>&#34;cloud&#34;</em> I call the <strong>rentable programmable datacenter</strong>.
+</p>
+<h3 id="headline-3">
+Until <em>&#34;serverless&#34;</em>…
+</h3>
+<p>
+Serverless is currently allowing those of us at the forefront to
+launch new products and services to meet business objectives
+experimentally without huge upfront investments in either capital
+expenses or engineering time to fully exploit the rentable
+programmable datacenter iteration of cloud computing we discussed before.
+</p>
+<p>
+Today the prized asset (rightly or not) is <strong>data</strong>. I am not going to
+discuss the ways in which this asset is
+<a href="https://www.theguardian.com/technology/2017/may/07/the-great-british-brexit-robbery-hijacked-democracy">corrupting the very soul of democracy</a> among other things since this
+has been well documented.
+</p>
+
+  </article>
+
+  
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fmusings-on-cloud-computing-infrastructure%2f&ref_src=twsrc%5Etfw&text=Musings%20on%20cloud%20computing%20infrastructure Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fmusings-on-cloud-computing-infrastructure%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fmusings-on-cloud-computing-infrastructure%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fmusings-on-cloud-computing-infrastructure%2f&ref_src=twsrc%5Etfw&text=Musings%20on%20cloud%20computing%20infrastructure Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fmusings-on-cloud-computing-infrastructure%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fmusings-on-cloud-computing-infrastructure%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>
