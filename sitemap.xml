@@ -3,8 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/snippets/no-subtyping-in-purescript/</loc>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/snippets/</loc>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <lastmod>2020-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -123,13 +137,6 @@
   
   <url>
     <loc>/tags/nodejs/</loc>
-    <lastmod>2020-08-06T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/snippets/</loc>
     <lastmod>2020-08-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -641,12 +648,6 @@
   
   <url>
     <loc>/about/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/snippets/no-subtyping-in-purescript/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
