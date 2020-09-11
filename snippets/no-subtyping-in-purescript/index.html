@@ -169,9 +169,65 @@ values of the type <code class="verbatim">Shape</code>. That&#39;s it.
 Now, back to the original crux of your question: <em>how would we be able
 to share structural definitions across types?</em>
 </p>
+<hr>
 <p>
-TODO
+Ok, next installment. How can we share the structure of a type definition?
 </p>
+<p>
+In OO languages we would use subtyping to get interface compatibility. The reason this felt so necessary in OO is that this paradigm couples data definition and object behavior together fairly tightly (you put methods in your class definition which contains your data structure and exposes getters/setters/modifiers as well as side-effecting behavior).
+</p>
+<p>
+In functional programming (FP) we define the data definition and then functions that consume or produce this data more independently although they can both be packaged together in the same module for coherence when that is useful (for data hiding/encapsulation, etc.).
+</p>
+<p>
+So what we want in FP isn&#39;t subtyping but rather the ability to share the structure of a data definition across type definitions.
+</p>
+<p>
+Let&#39;s introduce the following data types and functions:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Employee</span>
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">MkEmployee</span> { firstName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, lastName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, title <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, address <span style="color:#f92672">::</span> <span style="color:#66d9ef">Address</span> }
+
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Customer</span>
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">BusinessEntity</span> { legalName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, address <span style="color:#f92672">::</span> <span style="color:#66d9ef">Address</span>, contacts <span style="color:#f92672">::</span> <span style="color:#66d9ef">Array</span> <span style="color:#66d9ef">Contact</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Individual</span> { firstName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, lastName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, address <span style="color:#f92672">::</span> <span style="color:#66d9ef">Address</span> }
+
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Contact</span>
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">MkContact</span> { firstName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, lastName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, title<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">String</span>, address <span style="color:#f92672">::</span> <span style="color:#66d9ef">Address</span> }
+
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Address</span>
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">MkAddress</span> { streetAddress1 <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, streetAddress2 <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, city <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, state <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, zipcode <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> }
+
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Suffix</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Jr</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Sr</span>
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Prefix</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Dr</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Professor</span>
+
+<span style="color:#a6e22e">addSuffix</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suffix</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Employee</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Employee</span>
+<span style="color:#a6e22e">addSuffix</span> <span style="color:#66d9ef">Jr</span> emp <span style="color:#f92672">=</span> emp { lastName <span style="color:#f92672">=</span> emp<span style="color:#f92672">.</span>lastName <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">, Jr.</span><span style="color:#e6db74">&#34;</span> }
+<span style="color:#a6e22e">addSuffix</span> <span style="color:#66d9ef">Sr</span> emp <span style="color:#f92672">=</span> emp { lastName <span style="color:#f92672">=</span> emp<span style="color:#f92672">.</span>lastName <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">, Sr.</span><span style="color:#e6db74">&#34;</span> }
+
+<span style="color:#a6e22e">addPrefix</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Prefix</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Employee</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Employee</span>
+<span style="color:#a6e22e">addPrefix</span> <span style="color:#66d9ef">Dr</span> emp <span style="color:#f92672">=</span> emp { firstName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dr. </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&gt;</span> emp<span style="color:#f92672">.</span>firstName }
+<span style="color:#a6e22e">addPrefix</span> <span style="color:#66d9ef">Professor</span> emp <span style="color:#f92672">=</span> emp { firstName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Prof. </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&gt;</span> emp<span style="color:#f92672">.</span>firstName }
+
+<span style="color:#75715e">-- Exercise for the reader! :)</span>
+<span style="color:#a6e22e">addSuffix</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suffix</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Contact</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Contact</span>
+<span style="color:#a6e22e">addPrefix</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Prefix</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Contact</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Contact</span></code></pre></div>
+</div>
+<p>
+Ok, so the issue here is that we might want to support <code class="verbatim">addSuffix</code> and <code class="verbatim">addPrefix</code> for all data type definitions that have a <code class="verbatim">lastName :: String</code> and <code class="verbatim">firstName :: String</code> fields respectively, but being different types we end up defining two variants even though essentially they are the same.
+</p>
+<p>
+We can solve this in multiple ways in PureScript. We could define an &#34;interface&#34; via a typeclass and instances for each data type, but then we have duplication of the implementations for these &#34;methods&#34;. Another type facility we have is structural typing which has two variations: polymorphic row types and polymorphic variants.
+</p>
+<p>
+What we would want is the first variation, row polymorphism, for this case:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">addPrefix&#39;</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Prefix</span> <span style="color:#f92672">-&gt;</span> { firstName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> } <span style="color:#f92672">-&gt;</span> { firstName <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> }
+<span style="color:#a6e22e">addPrefix&#39;</span> <span style="color:#66d9ef">Dr</span> prefixable <span style="color:#f92672">=</span> prefixable { firstName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dr. + &lt;&gt; prefixable.firstName }
+</span><span style="color:#e6db74">addPrefix&#39; Professor prefixable = prefixable { firstName = </span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">Prof</span><span style="color:#f92672">.</span> <span style="color:#f92672">+</span> <span style="color:#f92672">&lt;&gt;</span> prefixable<span style="color:#f92672">.</span>firstName }</code></pre></div>
+</div>
 
   </article>
 
