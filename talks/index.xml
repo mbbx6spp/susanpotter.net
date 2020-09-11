@@ -107,7 +107,7 @@
       <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/distributed-developer-workflows-using-git/</guid>
-      <description>C-U Developer Meetup / August, 2011 - Urbana, IL Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.  This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
+      <description>C-U Developer Meetup / August 2011 - Urbana, IL Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.  This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Sat, 05 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/deploying-distributed-software-services-to-the-cloud-without-breaking-a-sweat/</guid>
-      <description>Code PaLOUsa 2011 / March, 2011 - Louisville, KY Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.  The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
+      <description>Code PaLOUsa 2011 / March 2011 - Louisville, KY Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.  The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
     </item>
     
     <item>

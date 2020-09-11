@@ -3,14 +3,70 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/software/musings-on-cloud-computing-infrastructure/</loc>
-    <lastmod>2020-08-23T00:00:00+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2020-08-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/software/unfiltered-musings-on-enterprise-versus-startup-the-wrong-question/</loc>
+    <lastmod>2020-08-29T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/aws/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/awslambda/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/kinesis/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/purescript/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/serverless/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/musings-on-serverless/</loc>
     <lastmod>2020-08-23T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -39,13 +95,6 @@
   
   <url>
     <loc>/tags/functional-programming/</loc>
-    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-08-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -122,28 +171,7 @@
   </url>
   
   <url>
-    <loc>/tags/aws/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/tags/lambda/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/purescript/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/serverless/</loc>
     <lastmod>2020-08-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -613,6 +641,12 @@
   
   <url>
     <loc>/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/snippets/no-subtyping-in-purescript/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

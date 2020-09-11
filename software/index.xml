@@ -12,12 +12,30 @@
     
     
     <item>
-      <title>Musings on cloud computing infrastructure</title>
-      <link>/software/musings-on-cloud-computing-infrastructure/</link>
+      <title>Unfiltered musings on &#34;enterprise versus startup&#34; (the wrong question)</title>
+      <link>/software/unfiltered-musings-on-enterprise-versus-startup-the-wrong-question/</link>
+      <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/unfiltered-musings-on-enterprise-versus-startup-the-wrong-question/</guid>
+      <description>Since the mid-1990s I have worked in software development at a number of organizations that ranged from the very big and changing slowly to the very small and growing fast.  I was asked recently to give advise on the kind of organization a former colleague should target with their next career move.  My answer was unenthusiastically received until I elaborated.  The following is an excerpt from our conversation with some details edited to protect the innocent.</description>
+    </item>
+    
+    <item>
+      <title>Building a serverless application for subscription webhooks, Part 1</title>
+      <link>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</guid>
+      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.  If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
+    </item>
+    
+    <item>
+      <title>Musings on serverless</title>
+      <link>/software/musings-on-serverless/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/software/musings-on-cloud-computing-infrastructure/</guid>
-      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.  Since the mid-1990s availability has become the coveted prize as internet and business systems catered to users and business needs 24/7 across the globe from many different locations, increasing expectations across the board.</description>
+      <guid>/software/musings-on-serverless/</guid>
+      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before what we know as cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.  Since the mid-1990s availability has become the coveted prize as internet and business systems cater to users and business needs 24/7 across the globe.</description>
     </item>
     
     <item>

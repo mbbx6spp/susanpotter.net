@@ -6,18 +6,36 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Musings on cloud computing infrastructure</title>
-      <link>/software/musings-on-cloud-computing-infrastructure/</link>
+      <title>Unfiltered musings on &#34;enterprise versus startup&#34; (the wrong question)</title>
+      <link>/software/unfiltered-musings-on-enterprise-versus-startup-the-wrong-question/</link>
+      <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/unfiltered-musings-on-enterprise-versus-startup-the-wrong-question/</guid>
+      <description>Since the mid-1990s I have worked in software development at a number of organizations that ranged from the very big and changing slowly to the very small and growing fast.  I was asked recently to give advise on the kind of organization a former colleague should target with their next career move.  My answer was unenthusiastically received until I elaborated.  The following is an excerpt from our conversation with some details edited to protect the innocent.</description>
+    </item>
+    
+    <item>
+      <title>Building a serverless application for subscription webhooks, Part 1</title>
+      <link>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</guid>
+      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.  If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
+    </item>
+    
+    <item>
+      <title>Musings on serverless</title>
+      <link>/software/musings-on-serverless/</link>
       <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/software/musings-on-cloud-computing-infrastructure/</guid>
-      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.  Since the mid-1990s availability has become the coveted prize as internet and business systems catered to users and business needs 24/7 across the globe from many different locations, increasing expectations across the board.</description>
+      <guid>/software/musings-on-serverless/</guid>
+      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before what we know as cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.  Since the mid-1990s availability has become the coveted prize as internet and business systems cater to users and business needs 24/7 across the globe.</description>
     </item>
     
     <item>
@@ -308,7 +326,7 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/distributed-developer-workflows-using-git/</guid>
-      <description>C-U Developer Meetup / August, 2011 - Urbana, IL Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.  This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
+      <description>C-U Developer Meetup / August 2011 - Urbana, IL Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.  This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
     </item>
     
     <item>
@@ -326,7 +344,7 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Sat, 05 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/deploying-distributed-software-services-to-the-cloud-without-breaking-a-sweat/</guid>
-      <description>Code PaLOUsa 2011 / March, 2011 - Louisville, KY Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.  The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
+      <description>Code PaLOUsa 2011 / March 2011 - Louisville, KY Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.  The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
     </item>
     
     <item>
@@ -471,6 +489,15 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       
       <guid>/about/</guid>
       <description>I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.  Feel free to ask me:    how I might be able to help your Engineering organization live up to their highest potential;    how I could streamline your delivery workflow and also improve quality;    how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;    how I would improve productivity by optimizing for Flow;    how you could use algebraic properties to test-infect our distributed systems;    how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;    how I have led teams building type-safe software that reduced long-term maintenance costs    Current general purpose languages:    Haskell    JavaScript/TypeScript    PureScript    Ruby    Current configuration langauges:    Dhall    Nix    Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.</description>
+    </item>
+    
+    <item>
+      <title>No subtyping in PureScript</title>
+      <link>/snippets/no-subtyping-in-purescript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/snippets/no-subtyping-in-purescript/</guid>
+      <description>This is an excerpt from a code review that I sanitized for public consumption. Changes include modifying code examples to not refer to internal types or domains:  ===  PureScript (like Haskell) has zero notion of subtyping. Subtyping is often paired with inheritance in OO languages to derive moderate amounts of reuse from class-based hierarchies. Today, the OO community appears to prefer OO &amp;#34;composition&amp;#34; over inheritance (https://en.wikipedia.org/wiki/Composition_over_inheritance).  Typically OO composition yields simpler and more practical solutions to problems beyond the toy examples found in OO textbooks back in the day.</description>
     </item>
     
   </channel>
