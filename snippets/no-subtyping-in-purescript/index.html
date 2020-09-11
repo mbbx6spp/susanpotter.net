@@ -131,13 +131,16 @@ So, since we don&#39;t have <em>subtyping</em>, you might be wondering what the
 </p>
 <p>
 These are not subtypes. It does not inherit any behavior, it is just
-one valid construction for values of its type.
+one valid constructor of values for its type.
 </p>
-<div class="src src-purescript">
-<pre><code class="language-purescript" data-lang="purescript">data Shape
-  = Square { length :: Number }
-  | Rectangle { width :: Number, height :: Number }
-  | Circle { radius :: Number }</code></pre>
+<p>
+Consider:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Shape</span>
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Square</span> { length <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Rectangle</span> { width <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span>, height <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Circle</span> { radius <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span> }</code></pre></div>
 </div>
 <p>
 In the above data definition we have defined a type named Shape. It
@@ -146,21 +149,21 @@ functions that have a capitalized first character for the name. If you
 look at their types you will see they are basically just functions
 with names that look a different than usual:
 </p>
-<div class="src src-purescript">
-<pre><code class="language-purescript" data-lang="purescript">>>> :t Square
-Square :: Number -> Shape
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">:</span>t <span style="color:#66d9ef">Square</span>
+<span style="color:#66d9ef">Square</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Shape</span>
 
->>> :t Rectangle
-Rectangle :: Number -> Number -> Shape
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">:</span>t <span style="color:#66d9ef">Rectangle</span>
+<span style="color:#66d9ef">Rectangle</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Number</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Shape</span>
 
->>> :t Circle
-Circle :: Number -> Shape</code></pre>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">:</span>t <span style="color:#66d9ef">Circle</span>
+<span style="color:#66d9ef">Circle</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Number</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Shape</span></code></pre></div>
 </div>
 <p>
-At the type level it doesn&#39;t have &#34;sub types&#34; of <code class="verbatim">Square</code>, <code class="verbatim">Rectangle</code>, or
-<code class="verbatim">Circle</code>. They are just data constructors which are just functions with
-funny names. They define a way to construct valid values of the type
-<code class="verbatim">Shape</code>. That&#39;s it.
+At the type-level it doesn&#39;t have subtypes of <code class="verbatim">Square</code>, <code class="verbatim">Rectangle</code>, or
+<code class="verbatim">Circle</code>. They are just data constructors which are simply functions with
+beginning with a capital letter. They define a way to construct valid
+values of the type <code class="verbatim">Shape</code>. That&#39;s it.
 </p>
 <p>
 Now, back to the original crux of your question: <em>how would we be able
