@@ -17,7 +17,8 @@
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</guid>
-      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.  If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
+      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.
+ If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
     </item>
     
     <item>
@@ -27,7 +28,12 @@
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.  Notes:    all references to $ (dollars) is in reference to US Dollars (USD)    latencies are quoted in milliseconds (ms) unless otherwise noted    this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
+      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
+ Notes:
+  all references to $ (dollars) is in reference to US Dollars (USD)
+  latencies are quoted in milliseconds (ms) unless otherwise noted
+  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
+    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
   </channel>
