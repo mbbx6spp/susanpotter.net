@@ -25,6 +25,18 @@ non-const enum definition   Let&amp;#39;s say we wanted to rate desserts, we mig
     </item>
     
     <item>
+      <title>Using three-way diffing context for merge conflict style in Git</title>
+      <link>/software/using-three-way-diffing-context-for-merge-conflict-style-in-git/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/using-three-way-diffing-context-for-merge-conflict-style-in-git/</guid>
+      <description>It recently came to my attention that not everyone overrides the default merge.conflictStyle git-config setting. So in case anyone here wanted to try something new out that might help them provide more context during a rebase here you go.
+ I use diff3 which you can set like this:
+git config --global merge.conflictStyle diff3   When rebasing you will get the following markers:
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD THIS IS SOME CODE ||||||| merged common ancestors This is some code ======= This is some other code &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; d5439077.</description>
+    </item>
+    
+    <item>
       <title>Profunctors: Motivation, Part 1</title>
       <link>/software/profunctors-motivation-part-1/</link>
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
