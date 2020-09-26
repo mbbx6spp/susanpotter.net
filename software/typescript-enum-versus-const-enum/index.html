@@ -118,11 +118,11 @@ enum</code> in TypeScript in the generated JavaScript. Namely:</p>
 </ul>
 <p><strong>Note:</strong> all generated JavaScript code is generated from the TypeScript
 v4.1 compiler.</p>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
 non-const <code class="verbatim">enum</code> definition
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
 <p>
 Let&#39;s say we wanted to rate desserts, we might have a rating scale
 defined as an enumeration. Using the <code class="verbatim">enum</code> construct in TypeScript we
@@ -148,11 +148,11 @@ TypeScript generates the following JavaScript:</p>
 </div>
 </div>
 </div>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
 <code class="verbatim">const enum</code> definition
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
 <p>
 Now we might want to rate our day in our app so we might have a scale
 defined as a <code class="verbatim">const enum</code> for <code class="verbatim">DayRating</code> like so:</p>
@@ -168,11 +168,11 @@ defined as a <code class="verbatim">const enum</code> for <code class="verbatim"
 For the <code class="verbatim">const enum</code> definition case this would yield no JavaScript output.</p>
 </div>
 </div>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">
 <code class="verbatim">enum</code> Usage
-</h3>
-<div id="outline-text-headline-3" class="outline-text-3">
+</h2>
+<div id="outline-text-headline-3" class="outline-text-2">
 <p>
 Now you might be wondering what do usages of the enum values look like
 in each case.</p>
@@ -202,11 +202,11 @@ Which would generate the following JavaScript:</p>
 This is known as <em>inlining</em>.</p>
 </div>
 </div>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
 When can the TypeScript typechecker not inline?
-</h3>
-<div id="outline-text-headline-4" class="outline-text-3">
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
 <p>
 If you need to <em>compute</em> any enum value from, say, configuration only
 known at runtime then you may not be able to take advantage of the
@@ -260,11 +260,11 @@ Yay for type errors letting us know when we can&#39;t do something instead
 of waiting until runtime for something to blow up in unpredicatable ways.</p>
 </div>
 </div>
-<div id="outline-container-headline-5" class="outline-3">
-<h3 id="headline-5">
+<div id="outline-container-headline-5" class="outline-2">
+<h2 id="headline-5">
 What is an ambient <code class="verbatim">enum</code>?
-</h3>
-<div id="outline-text-headline-5" class="outline-text-3">
+</h2>
+<div id="outline-text-headline-5" class="outline-text-2">
 <p>
 Ambient enums are those that have the <code class="verbatim">declare</code> keyword prefixed to
 the definition. These are used to define the shape of an existing enum
