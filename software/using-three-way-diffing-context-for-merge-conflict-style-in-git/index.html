@@ -181,7 +181,7 @@ now:</p>
 <p>
 What this is saying is that another change to the upstream branch has
 removed (or moved) the <code class="verbatim">nodejs</code> version pinning, so maybe I should
-too (of course context matters given how Git works).</p>
+discard it (of course context matters given how Git works).</p>
 <p>
 Ignoring the first line of the region around our change means we just
 need to decide how to resolve the line that contains the change:</p>
@@ -194,7 +194,9 @@ need to decide how to resolve the line that contains the change:</p>
 </div>
 <p>
 The added context of the middle section allowed me to understand what
-was not relevant.</p>
+was not relevant for resolution which we could not have confidently
+deduced from just a two way merge conflict context (only the top and
+the bottom parts of the diff above).</p>
 <p>
 My resulting change was to delete the entirety of the conflict because
 I had merely commented out a line of Nix which means we could just
