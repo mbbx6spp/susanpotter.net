@@ -117,15 +117,14 @@ I use <code class="verbatim">diff3</code> which you can set like this to overrid
 </div>
 <p>
 When rebasing you will get the following markers:</p>
-<div class="src src-diff">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<div class="src src-diff3">
+<pre><code class="language-diff3" data-lang="diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 THIS IS SOME CODE
 ||||||| merged common ancestors
 This is some code
 =======
 This is some other code
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d5439077.....
-</code></pre></div>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; d5439077.....</code></pre>
 </div>
 <p>
 Notice the new section from the default version between <code class="verbatim">|||||||</code> and
@@ -146,8 +145,8 @@ An example
 My last merge conflict arose when attempting to apply an old stash to
 the latest HEAD of new branch off of our mainline. It was a Nix
 expression conflict and looked like the following:</p>
-<div class="src src-diff">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
+<div class="src src-diff3">
+<pre><code class="language-diff3" data-lang="diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
   ruby = self.ruby_2_5;
 ||||||| merged common ancestors
   nodejs = nodejs_10_22_1;
@@ -155,8 +154,7 @@ expression conflict and looked like the following:</p>
 =======
   nodejs = nodejs_10_22_1;
   #ruby = self.ruby_2_5;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
-</code></pre></div>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</code></pre>
 </div>
 <p>
 What this is saying is that the current upstream has the following at
