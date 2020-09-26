@@ -24,11 +24,11 @@ Goals     This series explores one kind of motivation and the building blocks of
     </item>
     
     <item>
-      <title>=enum= versus =const enum=</title>
-      <link>/software/enum-versus-const-enum/</link>
+      <title>TypeScript enum versus const enum</title>
+      <link>/software/typescript-enum-versus-const-enum/</link>
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/software/enum-versus-const-enum/</guid>
+      <guid>/software/typescript-enum-versus-const-enum/</guid>
       <description>Today I found that there is a difference between enum and const enum in TypeScript in the generated JavaScript. Namely:
   with a non-const enum the compiler generates an object with key-value pairs for each value.
   with a const enum the definition alone doesn&amp;#39;t generate any code, only usage of the enum does.
