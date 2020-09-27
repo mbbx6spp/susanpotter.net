@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Parsing for the non-academic programmer</title>
+      <link>/software/parsing-for-the-non-academic-programmer/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/parsing-for-the-non-academic-programmer/</guid>
+      <description>One topic I often see shunned or misunderstood by developers of all walks, is parsing. It is associated with writing compilers. The developers that feel queasy or disinterested hearing the term fall into a number of categories including:
+  those who studied computer science in college and either hated their compilers class or weren&amp;#39;t shown its relevance;
+  those who are self-taught and think this is an elitist mechanism to exclude the self-taught from conversations;</description>
+    </item>
+    
+    <item>
       <title>TypeScript enum versus const enum</title>
       <link>/software/typescript-enum-versus-const-enum/</link>
       <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>

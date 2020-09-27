@@ -12,13 +12,12 @@
     
     
     <item>
-      <title>Motivation for Reader (PureScript)</title>
-      <link>/snippets/motivation-for-reader-purescript/</link>
+      <title>Motivation for Reader (PureScript edition)</title>
+      <link>/snippets/motivation-for-reader-purescript-edition/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/motivation-for-reader-purescript/</guid>
-      <description> Assume we have to connect to a REST API that requires credentials. To call the REST API we would need to pass the credentials for the REST API to each call wrapper. Something like that following:
-getPortfolios :: Credentials -&amp;gt; Aff (Either Error (Array Portfolio)) getPortfolios (MkCredentials user pass) = do  </description>
+      <guid>/snippets/motivation-for-reader-purescript-edition/</guid>
+      <description>Assume we have to connect to a REST API that requires credentials. To call the REST API we would need to pass the credentials for the REST API to each call wrapper. Something like that following:</description>
     </item>
     
     <item>

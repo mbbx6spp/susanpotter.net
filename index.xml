@@ -6,10 +6,21 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Parsing for the non-academic programmer</title>
+      <link>/software/parsing-for-the-non-academic-programmer/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/parsing-for-the-non-academic-programmer/</guid>
+      <description>One topic I often see shunned or misunderstood by developers of all walks, is parsing. It is associated with writing compilers. The developers that feel queasy or disinterested hearing the term fall into a number of categories including:
+  those who studied computer science in college and either hated their compilers class or weren&amp;#39;t shown its relevance;
+  those who are self-taught and think this is an elitist mechanism to exclude the self-taught from conversations;</description>
+    </item>
     
     <item>
       <title>TypeScript enum versus const enum</title>
@@ -57,13 +68,12 @@ Goals     This series explores one kind of motivation and the building blocks of
     </item>
     
     <item>
-      <title>Motivation for Reader (PureScript)</title>
-      <link>/snippets/motivation-for-reader-purescript/</link>
+      <title>Motivation for Reader (PureScript edition)</title>
+      <link>/snippets/motivation-for-reader-purescript-edition/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/motivation-for-reader-purescript/</guid>
-      <description> Assume we have to connect to a REST API that requires credentials. To call the REST API we would need to pass the credentials for the REST API to each call wrapper. Something like that following:
-getPortfolios :: Credentials -&amp;gt; Aff (Either Error (Array Portfolio)) getPortfolios (MkCredentials user pass) = do  </description>
+      <guid>/snippets/motivation-for-reader-purescript-edition/</guid>
+      <description>Assume we have to connect to a REST API that requires credentials. To call the REST API we would need to pass the credentials for the REST API to each call wrapper. Something like that following:</description>
     </item>
     
     <item>
