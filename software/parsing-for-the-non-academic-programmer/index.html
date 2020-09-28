@@ -188,7 +188,7 @@ output in a composable way.</p>
 <p>
 For instance, let&#39;s imagine a simple model to represent a modern
 compiler:</p>
-<ul>
+<ol>
 <li>
 <p>we might first read in a source file path which produces the text
 read in from that path</p>
@@ -215,15 +215,48 @@ that return an AST of the same form as before but more reduced.</p>
 AST to a new format. This might be another source format, or binary,
 or - heck - multiple targets.</p>
 </li>
-</ul>
-<p>Parsing is essentially the second and third passes above. This post is
-mostly concerned with the third pass (which itself might be decomposed
-into multiple passes too).</p>
+</ol>
+<p>The concerns of parsing are contained in the second and third passes
+above. This post is mostly concerned with the third pass (which itself
+might be decomposed into multiple passes too).</p>
+<p>
+To make the above more concrete we might define functions with the
+following opaque but concrete types (for now):</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- 1. reading contents of file</span>
+<span style="color:#a6e22e">readFile</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">FilePath</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Text</span>
+
+<span style="color:#75715e">-- 2. from Text we tokenize</span>
+<span style="color:#a6e22e">tokenize</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Text</span> <span style="color:#f92672">-&gt;</span> [(<span style="color:#66d9ef">Label</span>, <span style="color:#66d9ef">Text</span>)]
+
+<span style="color:#75715e">-- 3. from a semi-structured tokenized form we produce an</span>
+<span style="color:#75715e">-- abstract syntax tree I have called Syntax below</span>
+<span style="color:#a6e22e">parse</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Label</span>, <span style="color:#66d9ef">Text</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
+
+<span style="color:#75715e">-- 4. from AST to AST</span>
+<span style="color:#a6e22e">optimizePhase1</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
+
+<span style="color:#75715e">-- 5. from AST to AST</span>
+<span style="color:#a6e22e">optimizePhase2</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
+
+<span style="color:#75715e">-- 6. from AST to Targets</span>
+<span style="color:#a6e22e">toIntel</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Sytnax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">ByteString</span>
+<span style="color:#a6e22e">toARM</span>   <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">ByteString</span>
+<span style="color:#a6e22e">toJS</span>    <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Text</span>
+
+<span style="color:#a6e22e">toTargets</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Target</span> (<span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">Text</span>)
+<span style="color:#a6e22e">toTargets</span> ast <span style="color:#f92672">=</span> <span style="color:#66d9ef">AllTargets</span> <span style="color:#f92672">&lt;$&gt;</span> toIntel ast <span style="color:#f92672">&lt;*&gt;</span> toARM ast <span style="color:#f92672">&lt;*&gt;</span> toJS ast</code></pre></div>
+</div>
 <div id="outline-container-headline-2" class="outline-2">
 <h2 id="headline-2">
 <span class="todo">TODO</span>
 Parsing by Example
 </h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+Parse a list of drivers license numbers of various formats (Illinois)
+from a file.</p>
+</div>
 </div>
 
   </article>
