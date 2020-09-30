@@ -22,7 +22,6 @@
     <meta name="twitter:site" content="/software/profunctors-an-exploration-part-2/">
     <meta name="twitter:image" content="/">
 
-    <base href="/software/profunctors-an-exploration-part-2/">
     <title>
   Profunctors: An exploration, Part 2 - Susan Potter
 </title>
@@ -48,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -94,115 +93,26 @@
       <h1>Profunctors: An exploration, Part 2</h1>
       <div class="dateinfo">
         
-        <span class="date"><strong>Date:</strong> August 10, 2020</span>
+        <span class="date"><strong>Date:</strong> September 29, 2020</span>
         
         
-        <span class="lastmod"><strong>Last modified:</strong> August 10, 2020</span>
+        <span class="lastmod"><strong>Last modified:</strong> September 29, 2020</span>
         
+      
+        <div class="draft">DRAFT</div>
+      
+
       </div>
 
     </header>
 
-    
-<p>
-Originally adapted from a gist: <a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3</a>
-Moved to the original Gist to a <a href="/snippets/2018/profunctors">snippet.</a>
-</p>
-<p>
-This is a continuation from part 1.
-</p>
-<p>
-<em>Profunctors</em> are a remarkably practical abstraction for many activities software
-developers are concerned with on a day to day basis.
-</p>
-<h3 id="headline-1">
-Back to basics (Functors)
-</h3>
-<p>
-In one direction (e.g. decoding, deserializing, decrypting,
-validating) we start with data that needs some transformation yielding
-new types of data to be used.
-</p>
-<p>
-This direction &#34;produces&#34; data that has been transformed and is
-modeled neatly by the <em>covariant functor</em> abstraction.
-</p>
-<p>
-For example, we want to provide functions to the transformation function (<code class="verbatim">(f)map</code>
-in this case) to take a given underlying value of type <code class="verbatim">a</code> and produce a new value of
-type <code class="verbatim">b</code> via <code class="verbatim">(a -&gt; b)</code> supplying the contextual value that contains <code class="verbatim">a</code>&#39;s as input
-and producing the contextual value that contains <code class="verbatim">b</code>&#39;s.
-</p>
-<p>
-Let&#39;s explore this idea with an example. Say we <strong>know</strong> the starting representation
-of some data that is stored on disk. This might be a byte string or something similar.
-Assume we have already read in the data from the file on disk to a <code class="verbatim">ByteString</code> value.
-</p>
-<p>
-There might be additional context provide that allows us to transform that <code class="verbatim">ByteString</code>
-value into a suitable encoding from some metadata in the datastore or filesystem.
-</p>
-<p>
-TODO: Code snippet here.
-</p>
-<p>
-Contextual values can be approximating initially to containers of zero or more
-values of an underlying type.
-</p>
-<p>
-In the other direction (e.g. decoding, serializing, encrypting, signing) we
-know how to consume the given [parametric] type to do something with the fixed result.
-</p>
-<p>
-This &#34;consumption&#34; of the unknown is modeled by the <em>contravariant
-functor</em> abstraction.
-</p>
-<h3 id="headline-2">
-<span class="todo">TODO</span>
-Pairing covariant and contravariant functors together (Profunctors)
-</h3>
-<h3 id="headline-3">
-Related ideas
-</h3>
-<p>
-Some reminders of interesting ideas to point readers to for further investigation and
-application:
-</p>
-<ul>
-<li>
-<p>
-Adjunctions
-</p>
-</li>
-<li>
-<p>
-Codensity
-</p>
-</li>
-<li>
-<p>
-Strong
-</p>
-</li>
-<li>
-<p>
-Costar
-</p>
-</li>
-</ul>
-<h3 id="headline-4">
-Original Source
-</h3>
-<p>
-This article was adapted with more explanation from my original Gist in 2018:
-<a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">Original Gist</a>
-</p>
-<h3 id="headline-5">
-Credits
-</h3>
-<span>Photo by <a href="https://unsplash.com/@worthyofelegance?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Alex</a> on <a href="https://unsplash.com/s/photos/yin-yang?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+    <p>
+<img src="/images/leaf-half-dead-small.jpg" alt="/images/leaf-half-dead-small.jpg" title="/images/leaf-half-dead-small.jpg" /></p>
+<span>Photo by <a href="https://unsplash.com/@mariodobelmann?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Mario Dobelmann</a> on <a href="https://unsplash.com/s/photos/yin-yang?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 
   </article>
+
+  
 </section>
 
 

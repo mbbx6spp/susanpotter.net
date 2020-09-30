@@ -190,30 +190,34 @@ For instance, let&#39;s imagine a simple model to represent a modern
 compiler:</p>
 <ol>
 <li>
-<p>we might first read in a source file path which produces the text
-read in from that path</p>
+<p><strong>Read:</strong> read in a source file path which produces the text read in
+from that path</p>
 </li>
 <li>
-<p>the text read from the file can be passed to another pass that finds
-all the relevant tokens or markers that denote structure to the source</p>
+<p><strong>Tokenize:</strong> the text read from the file can be used to find relevant
+tokens or markers that denote structure of the source</p>
 </li>
 <li>
-<p>the next pass might take in this new, more structured representation
-as input and build an abstract syntax tree (AST) that represents the
-program more logically according to its grammar</p>
+<p><strong>Syntax Analysis:</strong> given a semi-structured tokenized structure of the
+source we can analyze the syntax into terms of a parse tree (AST)</p>
 </li>
 <li>
-<p>from this AST we might be able to simplify or reduce it based on
+<p><strong>Semantic Analysis:</strong> given a parse tree of terms we can analyze
+semantics of the terms to ensure the parse tree adheres to the
+semantics of the language. Also returns a validated AST.</p>
+</li>
+<li>
+<p><strong>Optimizer:</strong> from this AST we might be able to simplify or reduce it based on
 known optimizations that are known to hold</p>
 </li>
 <li>
-<p>we might have multiple passes that decompose types of optimizations
+<p><strong>Optimizer:</strong> we might have multiple passes that decompose types of optimizations
 that return an AST of the same form as before but more reduced.</p>
 </li>
 <li>
-<p>after all optimization passes we might then translate the resulting
-AST to a new format. This might be another source format, or binary,
-or - heck - multiple targets.</p>
+<p><strong>Code Generator:</strong> after all optimization passes we might then
+translate the resulting AST to a new format. This might be another
+source format, or binary, or - heck - multiple targets.</p>
 </li>
 </ol>
 <p>The concerns of parsing are contained in the second and third passes
@@ -223,15 +227,17 @@ might be decomposed into multiple passes too).</p>
 To make the above more concrete we might define functions with the
 following opaque but concrete types (for now):</p>
 <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- 1. reading contents of file</span>
-<span style="color:#a6e22e">readFile</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">FilePath</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Text</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- 0. reading contents of file</span>
+<span style="color:#a6e22e">readFile</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">FilePath</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">EitherT</span> <span style="color:#66d9ef">Error</span> <span style="color:#66d9ef">IO</span> <span style="color:#66d9ef">Text</span>
 
-<span style="color:#75715e">-- 2. from Text we tokenize</span>
-<span style="color:#a6e22e">tokenize</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Text</span> <span style="color:#f92672">-&gt;</span> [(<span style="color:#66d9ef">Label</span>, <span style="color:#66d9ef">Text</span>)]
+<span style="color:#75715e">-- 1. tokenize flattened text source</span>
+<span style="color:#a6e22e">tokenize</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Text</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">EitherT</span> <span style="color:#66d9ef">Error</span> <span style="color:#66d9ef">Identity</span> <span style="color:#66d9ef">Token</span>
 
-<span style="color:#75715e">-- 3. from a semi-structured tokenized form we produce an</span>
-<span style="color:#75715e">-- abstract syntax tree I have called Syntax below</span>
-<span style="color:#a6e22e">parse</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Label</span>, <span style="color:#66d9ef">Text</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
+<span style="color:#75715e">-- 2. parse syntax from tokenized form</span>
+<span style="color:#a6e22e">parseSyntax</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Token</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">EitherT</span> <span style="color:#66d9ef">Error</span> <span style="color:#66d9ef">Identity</span> <span style="color:#66d9ef">Syntax</span>
+
+<span style="color:#75715e">-- 3. parse semantics of parse tree returned from prior phase</span>
+<span style="color:#a6e22e">parseSemantics</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">EitherT</span> <span style="color:#66d9ef">SemanticError</span> <span style="color:#66d9ef">Identity</span> <span style="color:#66d9ef">Syntax</span>
 
 <span style="color:#75715e">-- 4. from AST to AST</span>
 <span style="color:#a6e22e">optimizePhase1</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
@@ -252,11 +258,6 @@ following opaque but concrete types (for now):</p>
 <span class="todo">TODO</span>
 Parsing by Example
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<p>
-Parse a list of drivers license numbers of various formats (Illinois)
-from a file.</p>
-</div>
 </div>
 
   </article>
