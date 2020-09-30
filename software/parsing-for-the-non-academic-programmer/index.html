@@ -207,22 +207,17 @@ semantics of the terms to ensure the parse tree adheres to the
 semantics of the language. Also returns a validated AST.</p>
 </li>
 <li>
-<p><strong>Optimizer:</strong> from this AST we might be able to simplify or reduce it based on
+<p><strong>Optimizer (intermediate code generation):</strong> from this AST we might be able to simplify or reduce it based on
 known optimizations that are known to hold</p>
 </li>
 <li>
-<p><strong>Optimizer:</strong> we might have multiple passes that decompose types of optimizations
-that return an AST of the same form as before but more reduced.</p>
-</li>
-<li>
-<p><strong>Code Generator:</strong> after all optimization passes we might then
+<p><strong>Code Generation:</strong> after all optimization passes we might then
 translate the resulting AST to a new format. This might be another
 source format, or binary, or - heck - multiple targets.</p>
 </li>
 </ol>
-<p>The concerns of parsing are contained in the second and third passes
-above. This post is mostly concerned with the third pass (which itself
-might be decomposed into multiple passes too).</p>
+<p>The concerns of parsing are contained in lexical, syntax and semantic analysis
+phases above. This is what we will dive into more in the next section.</p>
 <p>
 To make the above more concrete we might define functions with the
 following opaque but concrete types (for now):</p>
@@ -240,24 +235,23 @@ following opaque but concrete types (for now):</p>
 <span style="color:#a6e22e">parseSemantics</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">EitherT</span> <span style="color:#66d9ef">SemanticError</span> <span style="color:#66d9ef">Identity</span> <span style="color:#66d9ef">Syntax</span>
 
 <span style="color:#75715e">-- 4. from AST to AST</span>
-<span style="color:#a6e22e">optimizePhase1</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
+<span style="color:#a6e22e">optimize</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
 
-<span style="color:#75715e">-- 5. from AST to AST</span>
-<span style="color:#a6e22e">optimizePhase2</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Syntax</span>
+<span style="color:#75715e">-- 5. from AST to Targets</span>
+<span style="color:#a6e22e">generateBinary</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Sytnax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">ByteString</span>
+<span style="color:#a6e22e">generateJS</span>     <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Text</span>
 
-<span style="color:#75715e">-- 6. from AST to Targets</span>
-<span style="color:#a6e22e">toIntel</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Sytnax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">ByteString</span>
-<span style="color:#a6e22e">toARM</span>   <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">ByteString</span>
-<span style="color:#a6e22e">toJS</span>    <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Text</span>
-
-<span style="color:#a6e22e">toTargets</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Target</span> (<span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">Text</span>)
-<span style="color:#a6e22e">toTargets</span> ast <span style="color:#f92672">=</span> <span style="color:#66d9ef">AllTargets</span> <span style="color:#f92672">&lt;$&gt;</span> toIntel ast <span style="color:#f92672">&lt;*&gt;</span> toARM ast <span style="color:#f92672">&lt;*&gt;</span> toJS ast</code></pre></div>
+<span style="color:#a6e22e">generateTargets</span>     <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Target</span> (<span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">Text</span>)
+<span style="color:#a6e22e">generateTargets</span> ast <span style="color:#f92672">=</span> <span style="color:#66d9ef">AllTargets</span> <span style="color:#f92672">&lt;$&gt;</span> generateBinary ast <span style="color:#f92672">&lt;*&gt;</span> generateJS ast</code></pre></div>
 </div>
 <div id="outline-container-headline-2" class="outline-2">
 <h2 id="headline-2">
-<span class="todo">TODO</span>
-Parsing by Example
+Parsing Overview
 </h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+In the last section we looked at the most basic modern compiler model.</p>
+</div>
 </div>
 
   </article>
