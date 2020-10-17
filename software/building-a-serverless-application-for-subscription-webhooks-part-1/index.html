@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -108,76 +108,93 @@
 
     
 <div class="abstract-block">
-<p><strong>Note:</strong> After starting to write this blog post series, AWS <a href="https://aws.amazon.com/about-aws/whats-new/2020/08/api-gateway-http-apis-adds-integration-with-five-aws-services/">announced</a> that API Gateway
+<p>
+<strong>Note:</strong> After starting to write this blog post series, AWS <a href="https://aws.amazon.com/about-aws/whats-new/2020/08/api-gateway-http-apis-adds-integration-with-five-aws-services/">announced</a> that API Gateway
 HTTP APIs could now route requests directly to five new services including Amazon
 Kinesis Data Streams. As a result I adapted the content of this series to account
-for that, however, it is possible some remnants of prior versions exist in the text.</p>
+for that, however, it is possible some remnants of prior versions exist in the text.
+</p>
 <p>
 If you notice any such sentences or fragments, please let me know on Twitter (my DMs
-are open or tweet me publicly).</p>
+are open or tweet me publicly).
+</p>
 </div>
 <p>
-This blog series has the following goals:</p>
+This blog series has the following goals:
+</p>
 <ul>
 <li>
-<p>provide one take of serverless application design and philosophy;</p>
+<p>
+provide one take of serverless application design and philosophy;
+</p>
 </li>
 <li>
-<p>discuss serverless design space options at a very high-level but
+<p>
+discuss serverless design space options at a very high-level but
 we will choose a specific path so we can build a working application
-more quickly;</p>
+more quickly;
+</p>
 </li>
 <li>
-<p>introduce Kinesis Data Streams and Firehose concepts linking to
-supplemental materials for a deeper dive;</p>
+<p>
+introduce Kinesis Data Streams and Firehose concepts linking to
+supplemental materials for a deeper dive;
+</p>
 </li>
 <li>
-<p>walk developers through the process of building a working serverless
+<p>
+walk developers through the process of building a working serverless
 application using PureScript compiling to JavaScript so we can use
 the Node.js AWS Lambda runtime so we can explore considerations of using
-well-typed functional programming to build a business application.</p>
+well-typed functional programming to build a business application.
+</p>
 </li>
 </ul>
 <hr>
-<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 A serverless philosophy
 </h3>
-<div id="outline-text-headline-1" class="outline-text-3">
 <p>
 The term <strong>serverless</strong> means different things to different
 people. Depending on who you ask, it can mean anything from using
 specific AWS resources a certain way to leveraging any programmable
 <em>&#34;cloud&#34;</em> technology to dynamically scale up and down (all the way to
-<em>zero</em>) based on customer/user demand.</p>
+<em>zero</em>) based on customer/user demand.
+</p>
 <p>
 For the purposes of this blog series we will take the latter position
 yet we happen to leverage AWS resources (since I have more experience
-using AWS resources to build production serverless applications).</p>
+using AWS resources to build production serverless applications).
+</p>
 <p>
 <strong>Scaling down to zero is an important part of the idea of <em>serverless</em> from
-an operational economics perspective.</strong></p>
+an operational economics perspective.</strong>
+</p>
 <p>
 I wrote some musings about <a href="/software/cloud-computing-infrastructure/">cloud computing infrastructure</a> previously
-if anyone is interested in a personal historical take.</p>
+if anyone is interested in a personal historical take.
+</p>
 <hr>
 <p>
 PureScript is a language that by default targets JavaScript but is
-adding a slew of new backends from Go and C++ to Erlang and Python.</p>
+adding a slew of new backends from Go and C++ to Erlang and Python.
+</p>
 <p>
 For this series we will leverage the default JavaScript backend for
 PureScript and deploy with the Node.js Lambda runtime officially
-supported by AWS.</p>
+supported by AWS.
+</p>
 <p>
-Problems with data streams:</p>
+Problems with data streams:
+</p>
 <ul>
 <li>
-<p>poison pill messages (getting stuck)</p>
+<p>
+poison pill messages (getting stuck)
+</p>
 </li>
 </ul>
 <hr>
-</div>
-</div>
 
   </article>
 

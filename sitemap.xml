@@ -3,49 +3,84 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tags/funtional-programming/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+    <loc>/tags/decisions/</loc>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/tags/haskell/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+    <loc>/software/how-to-make-seemingly-difficult-decisions/</loc>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/tags/profunctors/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/software/profunctors-an-exploration-part-2/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/software/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+    <loc>/tags/leadership/</loc>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-09-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2020-10-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/converting-pattern-matches-into-folds/</loc>
+    <lastmod>2020-10-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/funtional-programming/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/haskell/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/profunctors/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/profunctors-an-api-part-3/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/profunctors-an-exploration-part-2/</loc>
     <lastmod>2020-09-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -80,6 +115,20 @@
   </url>
   
   <url>
+    <loc>/snippets/dhalls-merge-keyword-and-union-types/</loc>
+    <lastmod>2020-09-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/snippets/</loc>
+    <lastmod>2020-09-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/software/feature-flags-in-purescript/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -88,13 +137,6 @@
   
   <url>
     <loc>/snippets/motivation-for-reader-purescript-edition/</loc>
-    <lastmod>2020-09-19T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/snippets/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

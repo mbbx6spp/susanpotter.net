@@ -17,8 +17,7 @@
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</guid>
-      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.
- If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
+      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.  If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
     </item>
     
   </channel>

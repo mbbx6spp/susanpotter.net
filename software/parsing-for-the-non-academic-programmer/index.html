@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -111,116 +111,155 @@
 One topic I often see shunned or misunderstood by developers of all
 walks, is parsing. It is associated with writing compilers. The
 developers that feel queasy or disinterested hearing the term fall
-into a number of categories including:</p>
+into a number of categories including:
+</p>
 <ul>
 <li>
-<p>those who studied computer science in college and either hated their
-compilers class or weren&#39;t shown its relevance;</p>
+<p>
+those who studied computer science in college and either hated their
+compilers class or weren&#39;t shown its relevance;
+</p>
 </li>
 <li>
-<p>those who are self-taught and think this is an elitist mechanism to
-exclude the self-taught from conversations;</p>
+<p>
+those who are self-taught and think this is an elitist mechanism to
+exclude the self-taught from conversations;
+</p>
 </li>
 <li>
-<p>those who think regular expressions solve all their problems so why
-learn about something seemingly antiquated?</p>
+<p>
+those who think regular expressions solve all their problems so why
+learn about something seemingly antiquated?
+</p>
 </li>
 </ul>
-<p>If I am honest, earlier in my career I fell into the second
+<p>
+If I am honest, earlier in my career I fell into the second
 category. Today I am still not entirely convinced every conversation
 about parsers or compiler design is completely devoid of those elitist
-motives.</p>
+motives.
+</p>
 <p>
 However, since re-discovering and better understanding Haskell and
 well-type functional programming over the last nine years, I have
 found this topic not just fascinating as an intellectual endeavor
-but also very practical to understand for work purposes.</p>
+but also very practical to understand for work purposes.
+</p>
 <p>
 This post is an attempt to synthesize some of the most interesting
 ideas that can help the non-academic programmer do any one of the
-following (depending on the situation):</p>
+following (depending on the situation):
+</p>
 <ul>
 <li>
-<p>validate formats with less bugs and sometimes (when needed) more context;</p>
+<p>
+validate formats with less bugs and sometimes (when needed) more context;
+</p>
 </li>
 <li>
-<p>identify what stage/phase of a compiler or validator an error occurs
+<p>
+identify what stage/phase of a compiler or validator an error occurs
 which can provide greater implicit insight and understanding to
-correct the core problem;</p>
+correct the core problem;
+</p>
 </li>
 <li>
-<p>more simply troubleshoot tools you depend on that leverage some form
-of parsing such as fixing bugs inside of them or their dependencies;</p>
+<p>
+more simply troubleshoot tools you depend on that leverage some form
+of parsing such as fixing bugs inside of them or their dependencies;
+</p>
 </li>
 <li>
-<p>and arguably build better designed applications or tooling.</p>
-<div id="outline-container-headline-1" class="outline-2">
+<p>
+and arguably build better designed applications or tooling.
+</p>
 <h2 id="headline-1">
 First, a brief word about compilers
 </h2>
-</div>
 </li>
 </ul>
-<p>You might be programming in a language ecosystem that supports feeding
+<p>
+You might be programming in a language ecosystem that supports feeding
 a source file at the command prompt which then gets <em>interpreted</em> on
-the fly to produce a representation that the runtime can execute.</p>
+the fly to produce a representation that the runtime can execute.
+</p>
 <p>
 One common refrain I have heard from some developers with varying
 levels of years nof experience is that this <em>interpretation</em> means
 that compilers are irrelevant for their needs. They suggest that they
 don&#39;t need to worry about compilers because in JavaScript/Ruby/Python
 (and others) they can just have their source code executed. So, why
-should they learn about compilers?</p>
+should they learn about compilers?
+</p>
 <p>
-<strong>I have news for those developers: your <em>&#34;interpreter&#34;</em> is just compiling on-the-fly.</strong></p>
+<strong>I have news for those developers: your <em>&#34;interpreter&#34;</em> is just compiling on-the-fly.</strong>
+</p>
 <p>
 A compiler is just a program (which could be part of a bigger
 program) that translates some input <em>source</em> language to a <em>target</em>
 language. In fact, if you use features from a more modern version of
 JavaScript or any version of TypeScript, you are running a
 <em>&#34;transpilation&#34;</em> process which is a compiler by another name to
-target more web browsers or Node.js runtimes.</p>
+target more web browsers or Node.js runtimes.
+</p>
 <p>
 Modern compilers are often built in what is commonly referred to as a
 multi-pass design. LLVM is one example of a multi-pass compiler. It
 has multiple pass rounds where it consumes an input and produces an
-output in a composable way.</p>
+output in a composable way.
+</p>
 <p>
 For instance, let&#39;s imagine a simple model to represent a modern
-compiler:</p>
+compiler:
+</p>
 <ol>
 <li>
-<p><strong>Read:</strong> read in a source file path which produces the text read in
-from that path</p>
+<p>
+<strong>Read:</strong> read in a source file path which produces the text read in
+from that path
+</p>
 </li>
 <li>
-<p><strong>Tokenize:</strong> the text read from the file can be used to find relevant
-tokens or markers that denote structure of the source</p>
+<p>
+<strong>Tokenize:</strong> the text read from the file can be used to find relevant
+tokens or markers that denote structure of the source
+</p>
 </li>
 <li>
-<p><strong>Syntax Analysis:</strong> given a semi-structured tokenized structure of the
-source we can analyze the syntax into terms of a parse tree (AST)</p>
+<p>
+<strong>Syntax Analysis:</strong> given a semi-structured tokenized structure of the
+source we can analyze the syntax into terms of a parse tree (AST)
+</p>
 </li>
 <li>
-<p><strong>Semantic Analysis:</strong> given a parse tree of terms we can analyze
+<p>
+<strong>Semantic Analysis:</strong> given a parse tree of terms we can analyze
 semantics of the terms to ensure the parse tree adheres to the
-semantics of the language. Also returns a validated AST.</p>
+semantics of the language. Also returns a validated AST.
+</p>
 </li>
 <li>
-<p><strong>Optimizer (intermediate code generation):</strong> from this AST we might be able to simplify or reduce it based on
-known optimizations that are known to hold</p>
+<p>
+<strong>Optimizer (intermediate code generation):</strong> from this AST we might be able to simplify or reduce it based on
+known optimizations that are known to hold
+</p>
 </li>
 <li>
-<p><strong>Code Generation:</strong> after all optimization passes we might then
+<p>
+<strong>Code Generation:</strong> after all optimization passes we might then
 translate the resulting AST to a new format. This might be another
-source format, or binary, or - heck - multiple targets.</p>
+source format, or binary, or - heck - multiple targets.
+</p>
 </li>
 </ol>
-<p>The concerns of parsing are contained in lexical, syntax and semantic analysis
-phases above. This is what we will dive into more in the next section.</p>
+<p>
+The concerns of parsing are contained in lexical, syntax and semantic analysis
+phases above. This is what we will dive into more in the next section.
+</p>
 <p>
 To make the above more concrete we might define functions with the
-following opaque but concrete types (for now):</p>
+following opaque but concrete types (for now):
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- 0. reading contents of file</span>
 <span style="color:#a6e22e">readFile</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">FilePath</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">EitherT</span> <span style="color:#66d9ef">Error</span> <span style="color:#66d9ef">IO</span> <span style="color:#66d9ef">Text</span>
@@ -244,15 +283,12 @@ following opaque but concrete types (for now):</p>
 <span style="color:#a6e22e">generateTargets</span>     <span style="color:#f92672">::</span> <span style="color:#66d9ef">Syntax</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Target</span> (<span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">ByteString</span>, <span style="color:#66d9ef">Text</span>)
 <span style="color:#a6e22e">generateTargets</span> ast <span style="color:#f92672">=</span> <span style="color:#66d9ef">AllTargets</span> <span style="color:#f92672">&lt;$&gt;</span> generateBinary ast <span style="color:#f92672">&lt;*&gt;</span> generateJS ast</code></pre></div>
 </div>
-<div id="outline-container-headline-2" class="outline-2">
 <h2 id="headline-2">
 Parsing Overview
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
 <p>
-In the last section we looked at the most basic modern compiler model.</p>
-</div>
-</div>
+In the last section we looked at the most basic modern compiler model.
+</p>
 
   </article>
 

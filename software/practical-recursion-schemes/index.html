@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -107,37 +107,32 @@
     </header>
 
     
-<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Recursive data types
 </h3>
-<div id="outline-text-headline-1" class="outline-text-3">
 <p>
 Recursive data structures pop up all over in software from general-purpose structures
 like lists and binary trees to more application-specific structures like this AST from
-a simple business rules engine:</p>
+a simple business rules engine:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">  <span style="color:#66d9ef">data</span> <span style="color:#66d9ef">BusinessRule</span> input output
     <span style="color:#f92672">=</span> <span style="color:#66d9ef">IfThenElse</span> (input <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) (<span style="color:#66d9ef">BusinessRule</span> input output) (<span style="color:#66d9ef">BusinessRule</span> input output)
     <span style="color:#f92672">|</span> <span style="color:#66d9ef">Return</span> (input <span style="color:#f92672">-&gt;</span> output)
     <span style="color:#f92672">|</span> <span style="color:#66d9ef">Stop</span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 <code class="verbatim">Functor</code>
 </h3>
-</div>
-<div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 <code class="verbatim">Foldable</code>
 </h3>
-<div id="outline-text-headline-3" class="outline-text-3">
 <p>
-The <code class="verbatim">Foldable</code> class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</p>
+The <code class="verbatim">Foldable</code> class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.
+</p>
 <p>
-Intuitively this is an assortment of <code class="verbatim">List</code>-like fold methods on other structures</p>
+Intuitively this is an assortment of <code class="verbatim">List</code>-like fold methods on other structures
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Foldable</span> t <span style="color:#66d9ef">where</span>
   foldMap <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monoid</span> m <span style="color:#f92672">=&gt;</span> (a <span style="color:#f92672">-&gt;</span> m) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> m
@@ -148,7 +143,8 @@ Intuitively this is an assortment of <code class="verbatim">List</code>-like fol
   foldl1  <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> a) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> a</code></pre></div>
 </div>
 <p>
-Example of defining a <code class="verbatim">Foldable</code> instance manually:</p>
+Example of defining a <code class="verbatim">Foldable</code> instance manually:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Tree</span> a
   <span style="color:#f92672">=</span> <span style="color:#66d9ef">Empty</span>
@@ -164,7 +160,8 @@ Example of defining a <code class="verbatim">Foldable</code> instance manually:<
 <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> getSum <span style="color:#f92672">.</span> foldMap (const <span style="color:#f92672">$</span> <span style="color:#66d9ef">Sum</span> <span style="color:#ae81ff">1</span>)</code></pre></div>
 </div>
 <p>
-<code class="verbatim">Foldable</code> is derivable using the <code class="verbatim">DeriveFoldable</code> language pragma like so:</p>
+<code class="verbatim">Foldable</code> is derivable using the <code class="verbatim">DeriveFoldable</code> language pragma like so:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Tree</span> a
   <span style="color:#f92672">=</span> <span style="color:#66d9ef">Empty</span>
@@ -172,25 +169,28 @@ Example of defining a <code class="verbatim">Foldable</code> instance manually:<
   <span style="color:#f92672">|</span> <span style="color:#66d9ef">Node</span> (<span style="color:#66d9ef">Tree</span> a) (<span style="color:#66d9ef">Tree</span> a)
   <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Foldable</span>)</code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-3">
 <h3 id="headline-4">
 Traversable
 </h3>
-<div id="outline-text-headline-4" class="outline-text-3">
 <p>
 Traversable gives you the ability to traverse a structure from left-to-right, performing
-an effectful action on each element and preserving the shape.</p>
+an effectful action on each element and preserving the shape.
+</p>
 <ul>
 <li>
-<p>Intuitively it is <code class="verbatim">fmap</code> with effects</p>
+<p>
+Intuitively it is <code class="verbatim">fmap</code> with effects
+</p>
 </li>
 <li>
-<p>Derivable using <code class="verbatim">DeriveTraversable</code> language pragma</p>
+<p>
+Derivable using <code class="verbatim">DeriveTraversable</code> language pragma
+</p>
 </li>
 <li>
-<p>See &#39;Applicative Progamming with Effects&#39;, by McBride and Paterson</p>
+<p>
+See &#39;Applicative Progamming with Effects&#39;, by McBride and Paterson
+</p>
 </li>
 </ul>
 <div class="src src-haskell">
@@ -201,7 +201,8 @@ an effectful action on each element and preserving the shape.</p>
   sequence  <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monad</span> m <span style="color:#f92672">=&gt;</span> t (m a) <span style="color:#f92672">-&gt;</span> m (t a)</code></pre></div>
 </div>
 <p>
-Example for this for <code class="verbatim">Tree</code> type defining the instance manually is:</p>
+Example for this for <code class="verbatim">Tree</code> type defining the instance manually is:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Traversable</span> <span style="color:#66d9ef">Tree</span> <span style="color:#66d9ef">where</span>
   traverse f <span style="color:#66d9ef">Empty</span> <span style="color:#f92672">=</span> pure <span style="color:#66d9ef">Empty</span>
@@ -209,57 +210,60 @@ Example for this for <code class="verbatim">Tree</code> type defining the instan
   traverse f (<span style="color:#66d9ef">Node</span> l r) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Node</span> <span style="color:#f92672">&lt;$&gt;</span> traverse f l <span style="color:#f92672">&lt;*&gt;</span> traverse f r</code></pre></div>
 </div>
 <p>
-Notes:</p>
+Notes:
+</p>
 <ul>
 <li>
-<p><code class="verbatim">mapM</code> and <code class="verbatim">sequence</code> generalize Prelude functions of the same name</p>
+<p>
+<code class="verbatim">mapM</code> and <code class="verbatim">sequence</code> generalize Prelude functions of the same name
+</p>
 </li>
 <li>
-<p><code class="verbatim">sequence</code> can also be thought of as a generalized matrix transpose</p>
+<p>
+<code class="verbatim">sequence</code> can also be thought of as a generalized matrix transpose
+</p>
 </li>
 </ul>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">sequence</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Monad</span> m <span style="color:#f92672">=&gt;</span> t (m a) <span style="color:#f92672">-&gt;</span> m (t a)
 <span style="color:#a6e22e">sequence</span> <span style="color:#f92672">=</span> mapM id</code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
 Fixed Points of Functors
 </h3>
-<div id="outline-text-headline-5" class="outline-text-3">
 <p>
-An idea from category theory which gives:</p>
+An idea from category theory which gives:
+</p>
 <ul>
 <li>
-<p>data-type generic functions</p>
+<p>
+data-type generic functions
+</p>
 </li>
 <li>
-<p>compositional data</p>
+<p>
+compositional data
+</p>
 </li>
 </ul>
-<p>Fixed points are represented by the type:</p>
+<p>
+Fixed points are represented by the type:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">newtype</span> <span style="color:#66d9ef">Fix</span> f <span style="color:#f92672">=</span> <span style="color:#66d9ef">Fix</span> { unFix <span style="color:#f92672">::</span> f (<span style="color:#66d9ef">Fix</span> f) }</code></pre></div>
 </div>
 <p>
-A functor <code class="verbatim">f</code> is a data-type of kind <code class="verbatim">* -&gt; *</code> together with an <code class="verbatim">fmap</code> function.</p>
+A functor <code class="verbatim">f</code> is a data-type of kind <code class="verbatim">* -&gt; *</code> together with an <code class="verbatim">fmap</code> function.
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">Fix</span> f <span style="color:#f92672">=</span> f (f (f (f <span style="color:#f92672">...</span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-3">
 <h3 id="headline-6">
 Useful functions
 </h3>
-<div id="outline-text-headline-6" class="outline-text-3">
-<div id="outline-container-headline-7" class="outline-4">
 <h4 id="headline-7">
 fan-out aka <em>fork</em>
 </h4>
-<div id="outline-text-headline-7" class="outline-text-4">
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">&amp;&amp;&amp;</span>)
   <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> c)
@@ -268,13 +272,9 @@ fan-out aka <em>fork</em>
   <span style="color:#f92672">-&gt;</span> (c, d)
 (f <span style="color:#f92672">&amp;&amp;&amp;</span> g) <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> (f x, g x)</code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-8" class="outline-4">
 <h4 id="headline-8">
 fan-in
 </h4>
-<div id="outline-text-headline-8" class="outline-text-4">
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">|||</span>)
   <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> d)
@@ -283,13 +283,9 @@ fan-in
   <span style="color:#f92672">-&gt;</span> d
 (f <span style="color:#f92672">|||</span> g) <span style="color:#f92672">=</span> either</code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-9" class="outline-4">
 <h4 id="headline-9">
 function product
 </h4>
-<div id="outline-text-headline-9" class="outline-text-4">
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell">(<span style="color:#f92672">***</span>)
   <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> c)
@@ -298,13 +294,9 @@ function product
   <span style="color:#f92672">-&gt;</span> (c, d)
 (f <span style="color:#f92672">***</span> g) <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>(x, y) <span style="color:#f92672">-&gt;</span> (f x, g y)</code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-10" class="outline-4">
 <h4 id="headline-10">
 generalized unzip for functions
 </h4>
-<div id="outline-text-headline-10" class="outline-text-4">
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">funzip</span>
   <span style="color:#f92672">::</span> <span style="color:#66d9ef">Functor</span> f
@@ -312,87 +304,86 @@ generalized unzip for functions
   <span style="color:#f92672">-&gt;</span> (f a, f b)
 <span style="color:#a6e22e">funzip</span> <span style="color:#f92672">=</span> fmap fst <span style="color:#f92672">&amp;&amp;&amp;</span> fmap snd</code></pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-11" class="outline-3">
 <h3 id="headline-11">
 Data-type generic programming
 </h3>
-<div id="outline-text-headline-11" class="outline-text-3">
 <ul>
 <li>
-<p>allows us to parameterise functions on the structure, or shape, of a data-type</p>
+<p>
+allows us to parameterise functions on the structure, or shape, of a data-type
+</p>
 </li>
 <li>
-<p>useful for large complex data-types, where boilerplate traversal code often dominates,
-especially when updating a small subset of constructors</p>
+<p>
+useful for large complex data-types, where boilerplate traversal code often dominates,
+especially when updating a small subset of constructors
+</p>
 </li>
 <li>
-<p>for recursion schemes, we can capture the pattern as a standalone combinator</p>
-</li>
-</ul>
-<p>Limitations:</p>
-<ul>
-<li>
-<p>The set of data-types that can be represented by means of <code class="verbatim">Fix</code> is limited to regular data-types.</p>
-</li>
-<li>
-<p>Nested data-types and mutually recursive data-types require higher-order approaches.</p>
+<p>
+for recursion schemes, we can capture the pattern as a standalone combinator
+</p>
 </li>
 </ul>
 <p>
-In order to work with lists using a data-type generic <code class="verbatim">cata</code> combinator, we need a new &#34;unfixed&#34; type representation.</p>
+Limitations:
+</p>
+<ul>
+<li>
+<p>
+The set of data-types that can be represented by means of <code class="verbatim">Fix</code> is limited to regular data-types.
+</p>
+</li>
+<li>
+<p>
+Nested data-types and mutually recursive data-types require higher-order approaches.
+</p>
+</li>
+</ul>
+<p>
+In order to work with lists using a data-type generic <code class="verbatim">cata</code> combinator, we need a new &#34;unfixed&#34; type representation.
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">ListF</span> a r <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span> a r <span style="color:#f92672">|</span> <span style="color:#66d9ef">N</span></code></pre></div>
 </div>
 <p>
-<code class="verbatim">ListF a r</code> is not an ordinary functor, but we can define a polymorphic functor instance for <code class="verbatim">ListF a</code></p>
+<code class="verbatim">ListF a r</code> is not an ordinary functor, but we can define a polymorphic functor instance for <code class="verbatim">ListF a</code>
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Functor</span> (<span style="color:#66d9ef">ListF</span> a) <span style="color:#66d9ef">where</span>
   fmap f <span style="color:#66d9ef">N</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">N</span>
   fmap f (<span style="color:#66d9ef">C</span> x xs) <span style="color:#f92672">=</span> <span style="color:#66d9ef">C</span> x (f xs)</code></pre></div>
 </div>
 <p>
-We might also want a pattern functor for natural numbers!</p>
+We might also want a pattern functor for natural numbers!
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">NatF</span> r <span style="color:#f92672">=</span> <span style="color:#66d9ef">Succ</span> r <span style="color:#f92672">|</span> <span style="color:#66d9ef">Zero</span> <span style="color:#66d9ef">deriving</span> <span style="color:#66d9ef">Functor</span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-12" class="outline-3">
 <h3 id="headline-12">
 Catamorphism
 </h3>
-<div id="outline-text-headline-12" class="outline-text-3">
 <p>
 We would like to write <code class="verbatim">foldr</code> once for all data-types.
-Category theory shows us how to define it data-type generically for a functor fixed-point.</p>
-<div id="outline-container-headline-13" class="outline-4">
+Category theory shows us how to define it data-type generically for a functor fixed-point.
+</p>
 <h4 id="headline-13">
 That catamorphism-fusion law
 </h4>
-<div id="outline-text-headline-13" class="outline-text-4">
 <p>
 The <em>catamorphism-fusion</em> law is arguably the most important law, and can be used to transform
 the composition of a function with a catamorphism into a single catamorphism, eliminating
-intermediate data structures.</p>
+intermediate data structures.
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">h</span> <span style="color:#f92672">.</span> f <span style="color:#f92672">=</span> g <span style="color:#f92672">.</span> fmap h <span style="color:#f92672">=&gt;</span> h <span style="color:#f92672">.</span> cata f <span style="color:#f92672">=</span> cata g
   <span style="color:#66d9ef">where</span> f <span style="color:#f92672">::</span> f a <span style="color:#f92672">-&gt;</span> a
         g <span style="color:#f92672">::</span> f b <span style="color:#f92672">-&gt;</span> b
         h <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> b</code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-14" class="outline-4">
 <h4 id="headline-14">
 Composing Algebras
 </h4>
-</div>
-</div>
-</div>
 
   </article>
 

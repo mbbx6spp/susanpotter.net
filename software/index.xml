@@ -12,6 +12,33 @@
     
     
     <item>
+      <title>How to make seemingly difficult decisions</title>
+      <link>/software/how-to-make-seemingly-difficult-decisions/</link>
+      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/how-to-make-seemingly-difficult-decisions/</guid>
+      <description>Originally published as a Twitter thread starting here.  Anyone who has spent any time in either a technical or people management leadership position in software development knows, you need to make seemingly difficult decisions all the time.  This week I helped a coworker through making what seemed like a difficult decision by coaching him through the following process. Process outline     Identify your options.</description>
+    </item>
+    
+    <item>
+      <title>Converting pattern matches into folds</title>
+      <link>/software/converting-pattern-matches-into-folds/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/converting-pattern-matches-into-folds/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Profunctors: An API, Part 3</title>
+      <link>/software/profunctors-an-api-part-3/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/profunctors-an-api-part-3/</guid>
+      <description> Photo by Jonatan Pie on Unsplash </description>
+    </item>
+    
+    <item>
       <title>Profunctors: An exploration, Part 2</title>
       <link>/software/profunctors-an-exploration-part-2/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
@@ -26,9 +53,7 @@
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/parsing-for-the-non-academic-programmer/</guid>
-      <description>One topic I often see shunned or misunderstood by developers of all walks, is parsing. It is associated with writing compilers. The developers that feel queasy or disinterested hearing the term fall into a number of categories including:
-  those who studied computer science in college and either hated their compilers class or weren&amp;#39;t shown its relevance;
-  those who are self-taught and think this is an elitist mechanism to exclude the self-taught from conversations;</description>
+      <description>One topic I often see shunned or misunderstood by developers of all walks, is parsing. It is associated with writing compilers. The developers that feel queasy or disinterested hearing the term fall into a number of categories including:    those who studied computer science in college and either hated their compilers class or weren&amp;#39;t shown its relevance;    those who are self-taught and think this is an elitist mechanism to exclude the self-taught from conversations;    those who think regular expressions solve all their problems so why learn about something seemingly antiquated?</description>
     </item>
     
     <item>
@@ -37,11 +62,7 @@
       <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/typescript-enum-versus-const-enum/</guid>
-      <description>Today I found that there is a difference between enum and const enum in TypeScript in the generated JavaScript. Namely:
-  with a non-const enum the compiler generates an object with key-value pairs.
-  with a const enum the definition alone doesn&amp;#39;t generate any code, only usage of the enum does.
-  Note: all generated JavaScript code is generated from the TypeScript v4.1 compiler.
-non-const enum definition   Let&amp;#39;s say we wanted to rate desserts, we might have a rating scale defined as an enumeration.</description>
+      <description>Today I found that there is a difference between enum and const enum in TypeScript in the generated JavaScript. Namely:    with a non-const enum the compiler generates an object with key-value pairs.    with a const enum the definition alone doesn&amp;#39;t generate any code, only usage of the enum does.    Note: all generated JavaScript code is generated from the TypeScript v4.</description>
     </item>
     
     <item>
@@ -50,9 +71,7 @@ non-const enum definition   Let&amp;#39;s say we wanted to rate desserts, we mig
       <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/using-three-way-diffing-context-for-merge-conflict-style-in-git/</guid>
-      <description>It recently came to my attention that not everyone overrides the default merge.conflictStyle git-config setting. So in case anyone here wanted to try something new out that would provide more context during a Git conflict resolution scenario here you go.
- I use diff3 which you can set like this to override the default:
-git config --global merge.conflictStyle diff3   When rebasing you will get the following markers:</description>
+      <description>It recently came to my attention that not everyone overrides the default merge.conflictStyle git-config setting. So in case anyone here wanted to try something new out that would provide more context during a Git conflict resolution scenario here you go.  I use diff3 which you can set like this to override the default: git config --global merge.conflictStyle diff3   When rebasing you will get the following markers:  d5439077.</description>
     </item>
     
     <item>
@@ -61,10 +80,7 @@ git config --global merge.conflictStyle diff3   When rebasing you will get the f
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/profunctors-motivation-part-1/</guid>
-      <description>Photo by Alex on Unsplash  Notes:
-  This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3
-  The Gist was moved to a snippet.
-Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. After assembling the parts of a Profunctor the reader should start to see how packaging these operators as a pair allows library designers to offer a declarative interface for their clients to build custom codecs with a small number of primitives.</description>
+      <description>Photo by Alex on Unsplash  Notes:    This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    The Gist was moved to a snippet. Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. After assembling the parts of a Profunctor the reader should start to see how packaging these operators as a pair allows library designers to offer a declarative interface for their clients to build custom codecs with a small number of primitives.</description>
     </item>
     
     <item>
@@ -82,10 +98,7 @@ Goals     This series explores one kind of motivation and the building blocks of
       <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/unfiltered-musings-on-enterprise-versus-startup-the-wrong-question/</guid>
-      <description>Since the mid-1990s I have worked in software development at a number of organizations that ranged from the very big and changing slowly to the very small and growing fast.
- I was asked recently to give advise on the kind of organization a former colleague should target with their next career move.
- My answer was unenthusiastically received until I elaborated.
- The following is an excerpt from our conversation with some details edited to protect the innocent.</description>
+      <description>Since the mid-1990s I have worked in software development at a number of organizations that ranged from the very big and changing slowly to the very small and growing fast.  I was asked recently to give advise on the kind of organization a former colleague should target with their next career move.  My answer was unenthusiastically received until I elaborated.  The following is an excerpt from our conversation with some details edited to protect the innocent.</description>
     </item>
     
     <item>
@@ -94,8 +107,7 @@ Goals     This series explores one kind of motivation and the building blocks of
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/building-a-serverless-application-for-subscription-webhooks-part-1/</guid>
-      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.
- If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
+      <description>Note: After starting to write this blog post series, AWS announced that API Gateway HTTP APIs could now route requests directly to five new services including Amazon Kinesis Data Streams. As a result I adapted the content of this series to account for that, however, it is possible some remnants of prior versions exist in the text.  If you notice any such sentences or fragments, please let me know on Twitter (my DMs are open or tweet me publicly).</description>
     </item>
     
     <item>
@@ -104,8 +116,7 @@ Goals     This series explores one kind of motivation and the building blocks of
       <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/musings-on-serverless/</guid>
-      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before what we know as cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.
- Since the mid-1990s availability has become the coveted prize as internet and business systems cater to users and business needs 24/7 across the globe.</description>
+      <description>Over the last twenty years I have worked close to or on the frontlines of system infrastructure delivery from hall server closets to multi-datacenter setups (before what we know as cloud computing was a thing) all the way to a variety of programmable cloud configurations across multiple regions and even providers and deploying multi-region serverless applications in minutes.  Since the mid-1990s availability has become the coveted prize as internet and business systems cater to users and business needs 24/7 across the globe.</description>
     </item>
     
     <item>
@@ -114,9 +125,7 @@ Goals     This series explores one kind of motivation and the building blocks of
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-in-typescript/</guid>
-      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code
-Background  Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following:
-type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
+      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code Background   Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
     </item>
     
     <item>
@@ -125,9 +134,7 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-for-the-maths-inclined/</guid>
-      <description>This was initially published as a section of one of my substack posts.
-  You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.
- The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
+      <description>This was initially published as a section of one of my substack posts.   You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.  The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
     </item>
     
     <item>
@@ -136,11 +143,7 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
       
       <guid>/software/adding-and-removing-friction-to-developer-process-and-interaction-by-design/</guid>
-      <description>In 2015 I was binge-reading books on how to break bad habits and create good habits. Since then I have been applying the psychology research I learned from those books to my personal habits and also work habits.
- When trying to form habits there are four levers that psychology researchers found made forming habits easier:
-  easy
-  obvious
-  This post will describe just two examples from work the last few years that I designed into my teams delivery processes to encourage developers to deliver work assigned to them as soon as possible without them fearing management was constantly monitoring individual metrics and thresholds as they .</description>
+      <description>In 2015 I was binge-reading books on how to break bad habits and create good habits. Since then I have been applying the psychology research I learned from those books to my personal habits and also work habits.  When trying to form habits there are four levers that psychology researchers found made forming habits easier:    easy    obvious    This post will describe just two examples from work the last few years that I designed into my teams delivery processes to encourage developers to deliver work assigned to them as soon as possible without them fearing management was constantly monitoring individual metrics and thresholds as they .</description>
     </item>
     
     <item>
@@ -150,12 +153,7 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
- Notes:
-  all references to $ (dollars) is in reference to US Dollars (USD)
-  latencies are quoted in milliseconds (ms) unless otherwise noted
-  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
-    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
+      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.  Notes:    all references to $ (dollars) is in reference to US Dollars (USD)    latencies are quoted in milliseconds (ms) unless otherwise noted    this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
     <item>
@@ -164,9 +162,7 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/random-notes-on-unikernels/</guid>
-      <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017.
-Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.
- MirageOS is the research project that has received the most industry love of which I am aware.</description>
+      <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017. Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.  MirageOS is the research project that has received the most industry love of which I am aware.</description>
     </item>
     
     <item>
@@ -175,9 +171,7 @@ Random notes on unikernels  Introducing unikernels   You might have heard terms 
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/dynamodb-the-basics/</guid>
-      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.
- This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
-  Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
+      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
     </item>
     
     <item>
@@ -186,8 +180,7 @@ Random notes on unikernels  Introducing unikernels   You might have heard terms 
       <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/software/practical-recursion-schemes/</guid>
-      <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine:
-data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop    Functor   Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
+      <description>Recursive data types   Recursive data structures pop up all over in software from general-purpose structures like lists and binary trees to more application-specific structures like this AST from a simple business rules engine: data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule input output) (BusinessRule input output) | Return (input -&amp;gt; output) | Stop  Functor  Foldable   The Foldable class gives you the ability to process the elements of a structure one-at-a-time, discarding the shape.</description>
     </item>
     
     <item>
@@ -196,10 +189,7 @@ data BusinessRule input output = IfThenElse (input -&amp;gt; Bool) (BusinessRule
       <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
       
       <guid>/software/economic-concepts-applied-in-software-development-reliability-engineering-and-technical-leadership/</guid>
-      <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.
- This is a post to share some of these.
-A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:
-  Opportunity cost   Looking at what you lose by choosing a specific activity over others.</description>
+      <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.  This is a post to share some of these. A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:   Opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
     </item>
     
     <item>
@@ -208,10 +198,7 @@ A few ideas from economics: an overview   Below is an overview of ideas from eco
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/software/to-type-or-not-to-static-type/</guid>
-      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20
- Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist.
-Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.
- Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
+      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20  Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist. Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.  Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
     </item>
     
     <item>
@@ -220,9 +207,7 @@ Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/software/parametricity-a-practitioners-guide/</guid>
-      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
- Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?
- The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
+      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)  Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?  The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
     </item>
     
     <item>
@@ -231,12 +216,7 @@ Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to
       <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types/</guid>
-      <description>An algebraic data type can take many forms:
-  Sum type
-  Product type
-  Hybrid Sum/Product type
-  Recursive type (not covered in this post)
-Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
+      <description>An algebraic data type can take many forms:    Sum type    Product type    Hybrid Sum/Product type    Recursive type (not covered in this post) Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
     </item>
     
     <item>
@@ -245,8 +225,7 @@ Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exha
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
       
       <guid>/software/scm-the-next-generation/</guid>
-      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?
- I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
+      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
     </item>
     
   </channel>
