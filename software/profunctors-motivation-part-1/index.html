@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -108,68 +108,58 @@
 
     
 <p>
-<img src="/images/yin-yang-small.jpg" alt="/images/yin-yang-small.jpg" title="/images/yin-yang-small.jpg" />
-</p>
+<img src="/images/yin-yang-small.jpg" alt="/images/yin-yang-small.jpg" title="/images/yin-yang-small.jpg" /></p>
 <span>Photo by <a href="https://unsplash.com/@worthyofelegance?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Alex</a> on <a href="https://unsplash.com/s/photos/yin-yang?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 <p>
-Notes:
-</p>
+Notes:</p>
 <ul>
 <li>
-<p>
-This post was originally adapted from a gist in 2018: <a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3</a>
-</p>
+<p>This post was originally adapted from a gist in 2018: <a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3</a></p>
 </li>
 <li>
-<p>
-The Gist was moved to a <a href="/snippets/2018/profunctors">snippet.</a>
-</p>
+<p>The Gist was moved to a <a href="/snippets/2018/profunctors">snippet.</a></p>
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Goals
 </h3>
+</div>
 </li>
 </ul>
-<p>
-This series explores one kind of motivation and the building blocks of
+<p>This series explores one kind of motivation and the building blocks of
 Profunctors with an aim to introduce the concepts informally while
 introducing terminology along the way. After assembling the parts of a
 Profunctor the reader should start to see how packaging these
 operators as a pair allows library designers to offer a declarative
 interface for their clients to build custom codecs with a small number
-of primitives.
-</p>
+of primitives.</p>
 <p>
 This gives us the ability to build larger programs from smaller pieces
 without needing to keep a large amount of state in our heads as we
-build he glue of our application.
-</p>
+build he glue of our application.</p>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Motivation
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
 <p>
 <em>Profunctors</em> are a remarkably practical abstraction for many
 activities that software developers are concerned with when building
 products. This first part of the Profunctor series will introduce
 example motivations many software developers face when doing typical
-application development.
-</p>
+application development.</p>
 <p>
 Today a significant amount of software development in-the-small for
-web/native apps or backend services concerns the following activity pairs:
-</p>
+web/native apps or backend services concerns the following activity pairs:</p>
 <dl>
 <dt>
 <strong>Encoding &amp; decoding</strong>
 </dt>
 <dd>
-<p>
-We need to ensure that encoding is
+<p>We need to ensure that encoding is
 consistent, e.g. base64 encoding allows us to convert binary data
-into text without loss.
-</p>
+into text without loss.</p>
 <p>
-On the command-line we might do:
-</p>
+On the command-line we might do:</p>
 <div class="src src-sh">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ base64 <span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#e6db74">&#34;some data that needs to be encoded to Base64&#34;</span>
 c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQK
@@ -178,32 +168,28 @@ $ base64 --decode <span style="color:#f92672">&lt;&lt;&lt;</span><span style="co
 some data that needs to be encoded to Base64</code></pre></div>
 </div>
 <p>
-In Haskell we might write (using the <code class="verbatim">base64</code> package):
-</p>
+In Haskell we might write (using the <code class="verbatim">base64</code> package):</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">:</span>set <span style="color:#f92672">-</span><span style="color:#66d9ef">XOverloadedStrings</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">import</span> Data.ByteString.Base64
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> encodeBase64&#39; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">some data that needs to be encoded to Base64</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQ=</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> encodeBase64&#39; <span style="color:#e6db74">&#34;some data that needs to be encoded to Base64&#34;</span>
+<span style="color:#e6db74">&#34;c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQ=&#34;</span>
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> decodeBase64 <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQ=</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#66d9ef">Right</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">some data that needs to be encoded to Base64</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+<span style="color:#f92672">&gt;&gt;&gt;</span> decodeBase64 <span style="color:#e6db74">&#34;c29tZSBkYXRhIHRoYXQgbmVlZHMgdG8gYmUgZW5jb2RlZCB0byBCYXNlNjQ=&#34;</span>
+<span style="color:#66d9ef">Right</span> <span style="color:#e6db74">&#34;some data that needs to be encoded to Base64&#34;</span></code></pre></div>
 </div>
 </dd>
 <dt>
 <strong>Serializing &amp; deserializing</strong>
 </dt>
 <dd>
-<p>
-We need to transfer structured data
+<p>We need to transfer structured data
 over the wire from client ot server and back again. Thus we must
 have an agreement on serialization and deserialization formats on
-both sides.
-</p>
+both sides.</p>
 <p>
-In Haskell we might write (using the <code class="verbatim">aeson</code> package):
-</p>
+In Haskell we might write (using the <code class="verbatim">aeson</code> package):</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">:</span>set <span style="color:#f92672">-</span><span style="color:#66d9ef">XOverloadedStrings</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">:</span>set <span style="color:#f92672">-</span><span style="color:#66d9ef">XDeriveGeneric</span>
@@ -216,27 +202,24 @@ In Haskell we might write (using the <code class="verbatim">aeson</code> package
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">ToJSON</span> <span style="color:#66d9ef">User</span> <span style="color:#66d9ef">where</span> toEncoding <span style="color:#f92672">=</span> genericToEncoding defaultOptions
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">FromJSON</span> <span style="color:#66d9ef">User</span>
 
-<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">let</span> user <span style="color:#f92672">=</span> <span style="color:#66d9ef">User</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">mbbx6spp</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Principal developer who &lt;3s Haskell, Nix.</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">let</span> user <span style="color:#f92672">=</span> <span style="color:#66d9ef">User</span> <span style="color:#e6db74">&#34;mbbx6spp&#34;</span> <span style="color:#e6db74">&#34;Principal developer who &lt;3s Haskell, Nix.&#34;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">let</span> json <span style="color:#f92672">=</span> encode user
 <span style="color:#f92672">&gt;&gt;&gt;</span> json
-<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">username</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">mbbx6spp</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">,</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">bio</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">Principal developer who &lt;3s Haskell, Nix.</span><span style="color:#ae81ff">\</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#e6db74">&#34;{</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">username</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">mbbx6spp</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">,</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">bio</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">:</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">Principal developer who &lt;3s Haskell, Nix.</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">}&#34;</span>
 <span style="color:#f92672">&gt;&gt;&gt;</span> decode json <span style="color:#f92672">::</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">User</span> <span style="color:#75715e">-- you must annotate the type when it can&#39;t be inferred</span>
-<span style="color:#66d9ef">Just</span> (<span style="color:#66d9ef">User</span> {username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">mbbx6spp</span><span style="color:#e6db74">&#34;</span>, bio <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Principal developer who &lt;3s Haskell, Nix.</span><span style="color:#e6db74">&#34;</span>})</code></pre></div>
+<span style="color:#66d9ef">Just</span> (<span style="color:#66d9ef">User</span> {username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mbbx6spp&#34;</span>, bio <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Principal developer who &lt;3s Haskell, Nix.&#34;</span>})</code></pre></div>
 </div>
 </dd>
 <dt>
 <strong>Encrypting &amp; decrypting</strong>
 </dt>
 <dd>
-<p>
-We sometimes need to encrypt a piece of
+<p>We sometimes need to encrypt a piece of
 data so we can send it to another party such that if it is
 intercepted by a third party it would be [computationally] difficult
-to determine the original message without more security layer context.
-</p>
+to determine the original message without more security layer context.</p>
 <p>
-On the command-line we might do the following:
-</p>
+On the command-line we might do the following:</p>
 <div class="src src-sh">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># generate random IV</span>
 $ openssl rand -hex <span style="color:#ae81ff">16</span> &gt; iv.txt
@@ -265,16 +248,13 @@ hello world</code></pre></div>
 <strong>Signing &amp; validating</strong>
 </dt>
 <dd>
-<p>
-We need to produce content that we can
+<p>We need to produce content that we can
 identify as having written such that another party can validate to
 some degree of confidence that it was us who authored the content
-and the content has not be tampered with.
-</p>
+and the content has not be tampered with.</p>
 <p>
 Using GnuPG (<code class="verbatim">gpg</code>) command-line tools we can sign and validate a
-document as follows:
-</p>
+document as follows:</p>
 <div class="src src-sh">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Create some amazing content I need to sign</span>
 $ echo <span style="color:#e6db74">&#34;jake the dog and fin the human&#34;</span> &gt; sig.txt
@@ -294,17 +274,16 @@ Primary key fingerprint: <span style="color:#ae81ff">9999</span> AAAA BBBB CCCC 
 </div>
 </dd>
 </dl>
-<p>
-So far we have looked at different types of &#34;round tripping&#34;
+<p>So far we have looked at different types of &#34;round tripping&#34;
 operation pairs we frequently find ourselves exercising when we build web
 or native applications and backend services. It seems like maybe these
 operations could be packages together to provide a more coherent API
-that transcends the specific use case.
-</p>
+that transcends the specific use case.</p>
 <p>
 In the next part of this Profunctor series, we will explore the
-<em>&#34;round-tripping&#34;</em> pattern further through examples.
-</p>
+<em>&#34;round-tripping&#34;</em> pattern further through examples.</p>
+</div>
+</div>
 
   </article>
 

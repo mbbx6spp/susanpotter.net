@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  TypeScript&#39;s =keyof= operator and possible uses - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/typescripts-keyof-operator-and-possible-uses/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/typescripts-keyof-operator-and-possible-uses/">
+    <meta name="twitter:image" content="/">
+
+    <title>
+  TypeScript&#39;s =keyof= operator and possible uses - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/typescripts-keyof-operator-and-possible-uses/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>TypeScript&#39;s =keyof= operator and possible uses</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> October 18, 2020</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> October 18, 2020</span>
+        
+      
+        <div class="draft">DRAFT</div>
+      
+
+      </div>
+
+    </header>
+
+    <p>
+In the last two weeks I learned about the <code class="verbatim">keyof</code> operator in
+TypeScript as I searched for a better solution to a problem we had in
+on of our internal client-side libraries at work.</p>
+<p>
+Much of our TypeScript codebases at work use lodash although I am
+trying to encourage those developers to incorporate more ideas from
+<a href="https://github.com/gcanti/fp-ts"><code class="verbatim">fp-ts</code></a> which provides ways of using common functional abstractions
+commonly found in Haskell and PureScript in TypeScript itself despite
+its lack of typeclass support.</p>
+<p>
+Yet many of the frontend developers are more comfortable with lodash
+so we common have code that looks like this:</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// definitions
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Portfolio</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">integer</span>,
+  <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>,
+  <span style="color:#a6e22e">investments</span>: <span style="color:#66d9ef">Array</span>&lt;<span style="color:#f92672">Investment</span>&gt;,
+};
+
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Investment</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">identifier</span>: <span style="color:#66d9ef">string</span>,
+  <span style="color:#a6e22e">investmentType</span>: <span style="color:#66d9ef">InvestmentType</span>,
+};
+
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">InvestmentType</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CommonStock&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;CorporateBond&#39;</span>;
+
+<span style="color:#75715e">// Mock data for usage examples:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">investement</span>: <span style="color:#66d9ef">Investment</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">identifer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ABC&#34;</span>, <span style="color:#a6e22e">investmentType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;CommonStock&#39;</span>, <span style="color:#a6e22e">vendorSymbols</span><span style="color:#f92672">:</span> [] };
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getPortfolioById</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Portfolio</span> <span style="color:#f92672">=&gt;</span> ({ <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">id</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Demo&#39;</span>, <span style="color:#a6e22e">investments</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">investment</span>] });
+
+<span style="color:#75715e">// usage code example
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">portfolio</span>: <span style="color:#66d9ef">Portfolio</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getPortfolioById</span>(<span style="color:#ae81ff">1234</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstInvestmentId</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">portfolio</span>, <span style="color:#e6db74">&#39;investments[0].identifier&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstInvestmentType</span>: <span style="color:#66d9ef">InvestmentType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_get</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">portfolio</span>, <span style="color:#e6db74">&#39;investment[0].investementType&#39;</span>);
+</code></pre></div>
+</div>
+<p>
+Wouldn&#39;t it …</p>
+
+  </article>
+
+  
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2ftypescripts-keyof-operator-and-possible-uses%2f&ref_src=twsrc%5Etfw&text=TypeScript%27s%20%3dkeyof%3d%20operator%20and%20possible%20uses Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2ftypescripts-keyof-operator-and-possible-uses%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2ftypescripts-keyof-operator-and-possible-uses%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2ftypescripts-keyof-operator-and-possible-uses%2f&ref_src=twsrc%5Etfw&text=TypeScript%27s%20%3dkeyof%3d%20operator%20and%20possible%20uses Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2ftypescripts-keyof-operator-and-possible-uses%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2ftypescripts-keyof-operator-and-possible-uses%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

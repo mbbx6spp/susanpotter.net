@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>types</title>
+      <link>/tags/types/</link>
+      <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/types/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typescript</title>
+      <link>/tags/typescript/</link>
+      <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/typescript/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>decisions</title>
@@ -66,7 +84,7 @@
     </item>
     
     <item>
-      <title>AWS</title>
+      <title>aws</title>
       <link>/tags/aws/</link>
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
       
@@ -125,15 +143,6 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/functional-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>typescript</title>
-      <link>/tags/typescript/</link>
-      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/typescript/</guid>
       <description></description>
     </item>
     
@@ -260,15 +269,6 @@
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/tags/idris/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>types</title>
-      <link>/tags/types/</link>
-      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/types/</guid>
       <description></description>
     </item>
     

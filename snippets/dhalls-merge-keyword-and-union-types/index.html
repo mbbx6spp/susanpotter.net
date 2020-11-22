@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -110,33 +110,31 @@
 <p>
 At work my team uses Dhall to generate configuration for services or
 environments and one thing we often need to do is define union types
-(also known as sum types).
-</p>
+(also known as sum types).</p>
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Pattern matching in Haskell/PureScript background
 </h3>
+<div id="outline-text-headline-1" class="outline-text-3">
 <p>
 In Haskell and PureScript, we can use a feature of the language called
 pattern matching to be able to match a particular construction of a
-sum type value.
-</p>
+sum type value.</p>
 <p>
 For instance, let us start off with a simple special case of a sum
-type, an enumeration type:
-</p>
+type, an enumeration type:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Shell</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Bash</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Zsh</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Fish</span></code></pre></div>
 </div>
 <p>
 Suppose we are trying to decipher between the available options of
 shells a developer might be using and producing the shebang for the
-shell:
-</p>
+shell:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">shebang</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Shell</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
-<span style="color:#a6e22e">shebang</span> <span style="color:#66d9ef">Bash</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#!/bin/bash</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#a6e22e">shebang</span> <span style="color:#66d9ef">Zsh</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#!/bin/zsh</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#a6e22e">shebang</span> <span style="color:#66d9ef">Fish</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#!/bin/fish</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+<span style="color:#a6e22e">shebang</span> <span style="color:#66d9ef">Bash</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#!/bin/bash&#34;</span>
+<span style="color:#a6e22e">shebang</span> <span style="color:#66d9ef">Zsh</span>  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#!/bin/zsh&#34;</span>
+<span style="color:#a6e22e">shebang</span> <span style="color:#66d9ef">Fish</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#!/bin/fish&#34;</span></code></pre></div>
 </div>
 <p>
 Because we can only ever construct a value of type <code class="verbatim">Shell</code> with one of
@@ -144,50 +142,51 @@ the three data constructors (<code class="verbatim">Bash</code>, <code class="ve
 arguments, then by looking at the <code class="verbatim">shebang</code> definition above we can
 see we have handled all possible inputs and always produce a value
 giving us totality in this simple case. The Haskell compiler I use
-(GHC) also agrees and can check this for us.
-</p>
+(GHC) also agrees and can check this for us.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Simulating pattern matching in Dhall (simple case)
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
 <p>
-To provide the same functionality in Dhall we can do the following:
-</p>
+To provide the same functionality in Dhall we can do the following:</p>
 <div class="src src-dhall">
-<pre><code class="language-dhall" data-lang="dhall">let Shell : Type = < Bash | Zsh | Fish >
-let shebang = \(shell : Shell) ->
-      merge { Bash = "#!/bin/bash"
-            , Zsh  = "#!/bin/zsh"
-            , Fish = "#!/bin/fish" }
+<pre><code class="language-dhall" data-lang="dhall">let Shell : Type = &lt; Bash | Zsh | Fish &gt;
+let shebang = \(shell : Shell) -&gt;
+      merge { Bash = &#34;#!/bin/bash&#34;
+            , Zsh  = &#34;#!/bin/zsh&#34;
+            , Fish = &#34;#!/bin/fish&#34; }
             shell
 in shebang Shell.Zsh</code></pre>
 </div>
 <p>
 Above we can see we defined our <em>union type</em> (another name for a sum
-type) on the first line like so:
-</p>
+type) on the first line like so:</p>
 <div class="src src-dhall">
-<pre><code class="language-dhall" data-lang="dhall">let Shell : Type = < Bash | Zsh | Fish ></code></pre>
+<pre><code class="language-dhall" data-lang="dhall">let Shell : Type = &lt; Bash | Zsh | Fish &gt;</code></pre>
 </div>
 <p>
 Next we define the function <code class="verbatim">shebang</code> by using the <code class="verbatim">merge</code> keyword. It
-takes a record containing the data constructors as keys and a value.
-</p>
+takes a record containing the data constructors as keys and a value.</p>
 <p>
 In this case, our union type contains no arguments for any of the data
 constructors. So our value is just the value we want returned upon a
-<em>match</em>.
-</p>
+<em>match</em>.</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 Matching more interesting union types in Dhall
 </h3>
+<div id="outline-text-headline-3" class="outline-text-3">
 <p>
 Let us suppose we now want to model different environments and their
-<em>levels</em>, e.g. dev, qa, prod.
-</p>
+<em>levels</em>, e.g. dev, qa, prod.</p>
 <p>
 Going back to Haskell we can model each environment having a <em>level</em>
-and possibly a <em>tag</em> like the following as a sum type:
-</p>
+and possibly a <em>tag</em> like the following as a sum type:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">newtype</span> <span style="color:#66d9ef">Tag</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MkTag</span> <span style="color:#66d9ef">Text</span>
 <span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Environment</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Prod</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">QA</span> <span style="color:#66d9ef">Tag</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Dev</span> <span style="color:#66d9ef">Tag</span></code></pre></div>
@@ -198,11 +197,9 @@ only one production environment, but we dynamically create <code class="verbatim
 environments per story and each developer locally develops in their
 own development environment. We do this because logs, metrics, and
 stack traces are reported from these environments we need to be able
-to filter on the <em>tag</em> for these environments.
-</p>
+to filter on the <em>tag</em> for these environments.</p>
 <p>
-Examples values of <code class="verbatim">Environment</code> might be:
-</p>
+Examples values of <code class="verbatim">Environment</code> might be:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- &gt;&gt;&gt; Prod</span>
 
@@ -211,14 +208,15 @@ Examples values of <code class="verbatim">Environment</code> might be:
 <span style="color:#75715e">-- &gt;&gt;&gt; Dev &#34;mbbx6spp@nixos0&#34;</span></code></pre></div>
 </div>
 <p>
-Now to pattern match on this Haskell allows us to do the following:
-</p>
+Now to pattern match on this Haskell allows us to do the following:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">logServer</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Environment</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Hostname</span>
-<span style="color:#a6e22e">logServer</span> <span style="color:#66d9ef">Prod</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">logs.prod.example.com</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#a6e22e">logServer</span> (<span style="color:#66d9ef">QA</span> <span style="color:#66d9ef">_</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">logs.qa.example.com</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#a6e22e">logServer</span> (<span style="color:#66d9ef">Dev</span> tag) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">logs.</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&gt;</span> username <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">.local</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#a6e22e">logServer</span> <span style="color:#66d9ef">Prod</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logs.prod.example.com&#34;</span>
+<span style="color:#a6e22e">logServer</span> (<span style="color:#66d9ef">QA</span> <span style="color:#66d9ef">_</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logs.qa.example.com&#34;</span>
+<span style="color:#a6e22e">logServer</span> (<span style="color:#66d9ef">Dev</span> tag) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logs.&#34;</span> <span style="color:#f92672">&lt;&gt;</span> username <span style="color:#f92672">&lt;&gt;</span> <span style="color:#e6db74">&#34;.local&#34;</span>
   <span style="color:#66d9ef">where</span> username <span style="color:#f92672">=</span> takeWhile (<span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;@&#39;</span>) tag</code></pre></div>
+</div>
+</div>
 </div>
 
   </article>
