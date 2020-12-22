@@ -147,6 +147,9 @@ or</p>
 <div class="src src-bash">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -- Makefile</code></pre></div>
 </div>
+<p>
+This will show only the log message and metadata about commits that
+contain changes in that file.</p>
 </div>
 </div>
 <div id="outline-container-headline-2" class="outline-3">
@@ -164,13 +167,13 @@ To find this we might do the following in our ruby repository:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L 1,9:vm.c</code></pre></div>
 </div>
 <p>
-This will show all the changes limited to lines 1 through 9 inclusive
-in the file <code class="verbatim">vm.c</code>.</p>
+This will show all commits containing changes in lines 1 through 9
+inclusive in the file <code class="verbatim">vm.c</code> along with patch diff output for that
+part of the file.</p>
 </div>
 </div>
 <div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
-<span class="todo">TODO</span>
 Scoping diffs by named block in a file
 </h3>
 <div id="outline-text-headline-3" class="outline-text-3">
@@ -186,7 +189,7 @@ Let&#39;s consult the man page for <code class="verbatim">git-log</code> like so
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ man git-log</code></pre></div>
 </div>
 <p>
-We come across a part like the following:</p>
+We eventually come across a part like the following:</p>
 <div class="src src-text">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">      -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt;, -L :&lt;funcname&gt;:&lt;file&gt;
           Trace the evolution of the line range given by &#34;&lt;start&gt;,&lt;end&gt;&#34; (or the function name regex &lt;funcname&gt;) within the &lt;file&gt;. You may
@@ -215,6 +218,29 @@ We come across a part like the following:</p>
           line that matches &lt;funcname&gt;, up to the next funcname line.  “:&lt;funcname&gt;” searches from the end of the previous -L range, if any,
           otherwise from the start of file.  “^:&lt;funcname&gt;” searches from the start of file.</code></pre></div>
 </div>
+<p>
+Ok, we have already seen how to list the relevant log entries with
+patches for a line range in a file (in the section above) and now want
+to take advantage of the form <code class="verbatim">-L :&lt;funcname&gt;:&lt;file&gt;</code>.</p>
+<p>
+To look at all changes in the <code class="verbatim">main</code> function of the
+<code class="verbatim">ext/nkf/nkf-utf8/nkf.c</code> file in the ruby repository we would issue
+the following command:</p>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :main:ext/nkf/nkf-utf8/nkf.c</code></pre></div>
+</div>
+<p>
+Cool, then armed with this new power we should be able to look at
+commits and relevant patches within a Ruby function too, right? Let&#39;s
+give that a try:</p>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :request_uri:lib/uri/http.rb</code></pre></div>
+</div>
+<p>
+This works but you will notice some of the patches show changed lines
+outside of the method block.</p>
+<p>
+How does this work?</p>
 </div>
 </div>
 <div id="outline-container-headline-4" class="outline-3">
