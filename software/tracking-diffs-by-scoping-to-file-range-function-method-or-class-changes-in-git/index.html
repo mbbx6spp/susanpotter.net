@@ -239,18 +239,37 @@ give that a try:</p>
 <p>
 This works but you will notice some of the patches show changed lines
 outside of the method block.</p>
+<div id="outline-container-headline-4" class="outline-4">
+<h4 id="headline-4">
+How does this work?
+</h4>
+<div id="outline-text-headline-4" class="outline-text-4">
 <p>
-How does this work?</p>
+One this to notice is that in the root of the <code class="verbatim">ruby</code> repository is a
+file named <code class="verbatim">.gitattributes</code>. This can do many things but for the
+purposes of block-based git logs and patch review, the important line
+that made the above command mostly work is the following:</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">*.rb diff=ruby</code></pre></div>
+</div>
+<p>
+This is telling Git to assume the file type for all files ending in
+and <code class="verbatim">rb</code> extension are <code class="verbatim">ruby</code> files. For diffing purposes this uses a
+regex to determine the block boundaries for <code class="verbatim">ruby</code> files:</p>
+<p>
+https://git.kernel.org/pub/scm/git/git.git/tree/userdiff.c#n183</p>
 </div>
 </div>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
-<span class="todo">TODO</span>
-Defining new named blocks for <code class="verbatim">git log</code>
-</h3>
+</div>
 </div>
 <div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
+<span class="todo">TODO</span>
+Defining new named blocks for new formats and file types
+</h3>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
 <span class="todo">TODO</span>
 Limitations &amp; prerequisites
 </h3>
