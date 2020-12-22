@@ -120,8 +120,8 @@ We will start out by revisiting how to scope change diffs per file.</p>
 <p>
 We will use the Ruby language repository to demonstrate the commands
 in this blog post, so please clone the repository like so:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/ruby/ruby.git
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone https://github.com/ruby/ruby.git
 Cloning into <span style="color:#e6db74">&#39;ruby&#39;</span>...
 remote: Enumerating objects: 91, <span style="color:#66d9ef">done</span>.
 remote: Counting objects: 100% <span style="color:#f92672">(</span>91/91<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
@@ -171,11 +171,60 @@ in the file <code class="verbatim">vm.c</code>.</p>
 <div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 <span class="todo">TODO</span>
-Scoping diffs by named scope in a file (e.g. function, method, class)
+Scoping diffs by named block in a file
 </h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>
+In large files or when blocks (such as functions, methods, or
+classes) of code have been moved around the file, we might want to
+limit change log noise especially when that file is updated
+regularly. A typical example in a Ruby on Rails application might be
+an action method in a controller.</p>
+<p>
+Let&#39;s consult the man page for <code class="verbatim">git-log</code> like so:</p>
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ man git-log</code></pre></div>
+</div>
+<p>
+We come across a part like the following:</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">      -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt;, -L :&lt;funcname&gt;:&lt;file&gt;
+          Trace the evolution of the line range given by &#34;&lt;start&gt;,&lt;end&gt;&#34; (or the function name regex &lt;funcname&gt;) within the &lt;file&gt;. You may
+          not give any pathspec limiters. This is currently limited to a walk starting from a single revision, i.e., you may only give zero or
+          one positive revision arguments, and &lt;start&gt; and &lt;end&gt; (or &lt;funcname&gt;) must exist in the starting revision. You can specify this
+          option more than once. Implies --patch. Patch output can be suppressed using --no-patch, but other diff formats (namely --raw,
+          --numstat, --shortstat, --dirstat, --summary, --name-only, --name-status, --check) are not currently implemented.
+
+          &lt;start&gt; and &lt;end&gt; can take one of these forms:
+
+          •   number
+
+              If &lt;start&gt; or &lt;end&gt; is a number, it specifies an absolute line number (lines count from 1).
+
+          •   /regex/
+
+              This form will use the first line matching the given POSIX regex. If &lt;start&gt; is a regex, it will search from the end of the
+              previous -L range, if any, otherwise from the start of file. If &lt;start&gt; is “^/regex/”, it will search from the start of file. If
+              &lt;end&gt; is a regex, it will search starting at the line given by &lt;start&gt;.
+
+          •   +offset or -offset
+
+              This is only valid for &lt;end&gt; and will specify a number of lines before or after the line given by &lt;start&gt;.
+
+          If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and &lt;end&gt;, it is a regular expression that denotes the range from the first funcname
+          line that matches &lt;funcname&gt;, up to the next funcname line.  “:&lt;funcname&gt;” searches from the end of the previous -L range, if any,
+          otherwise from the start of file.  “^:&lt;funcname&gt;” searches from the start of file.</code></pre></div>
+</div>
+</div>
 </div>
 <div id="outline-container-headline-4" class="outline-3">
 <h3 id="headline-4">
+<span class="todo">TODO</span>
+Defining new named blocks for <code class="verbatim">git log</code>
+</h3>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
 <span class="todo">TODO</span>
 Limitations &amp; prerequisites
 </h3>
