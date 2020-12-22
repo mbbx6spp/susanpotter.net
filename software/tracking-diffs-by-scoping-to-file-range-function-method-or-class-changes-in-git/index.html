@@ -140,12 +140,37 @@ Sometimes a developer only wants to look at changes in one specific
 files in the repository. To do this we would use the <code class="verbatim">git-log</code>
 command:</p>
 <div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -- README.md</code></pre></div>
-</div>
-<p>
-or</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -- Makefile</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -- README.md
+commit 459670d47f8528db8f5d4f28aeac191b1af66d81
+Author: David Rodríguez &lt;deivid.rodriguez@riseup.net&gt;
+Date:   Sun Mar <span style="color:#ae81ff">8</span> 10:21:18 <span style="color:#ae81ff">2020</span> +0100
+
+    Fix bundled gems installation on a fresh clone
+
+commit adc303131187654d8ce83f3db17eefa3d5bae26c
+Author: Kazuhiro NISHIYAMA &lt;zn@mbf.nifty.com&gt;
+Date:   Sat Feb <span style="color:#ae81ff">1</span> 00:36:58 <span style="color:#ae81ff">2020</span> +0900
+
+    README*.md: <span style="color:#e6db74">`</span>defines.h<span style="color:#e6db74">`</span> moved <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+
+    at 2b592580bf65040373b55ff2ccc3b59a0a231a18
+
+commit 2d61684e7c334ae4c5eb845c782d5fabeffdea67
+Author: Nobuyoshi Nakada &lt;nobu@ruby-lang.org&gt;
+Date:   Sun Jan <span style="color:#ae81ff">19</span> 21:15:23 <span style="color:#ae81ff">2020</span> +0900
+
+    README.md: removed the badge <span style="color:#66d9ef">for</span> Cygwin <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+
+    The workflow <span style="color:#66d9ef">for</span> Cygwin has been removed at
+    3344f811074e1e6119eec23684013457dab4f8b0.
+
+commit 1a1862236da60e21e51c66543e89bf577b6ed14a
+Author: Kazuhiro NISHIYAMA &lt;zn@mbf.nifty.com&gt;
+Date:   Wed Jan <span style="color:#ae81ff">1</span> 00:02:01 <span style="color:#ae81ff">2020</span> +0900
+
+    Update GitHub Actions Badges
+
+<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
 </div>
 <p>
 This will show only the log message and metadata about commits that
@@ -164,7 +189,66 @@ inconsistency in the documentation header of a particular file.</p>
 <p>
 To find this we might do the following in our ruby repository:</p>
 <div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L 1,9:vm.c</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L 1,9:vm.c
+commit 79df14c04b452411b9d17e26a398e491bca1a811
+Author: Koichi Sasada &lt;ko1@atdot.net&gt;
+Date:   Tue Mar <span style="color:#ae81ff">10</span> 02:22:11 <span style="color:#ae81ff">2020</span> +0900
+
+    Introduce Ractor mechanism <span style="color:#66d9ef">for</span> parallel execution
+
+    This commit introduces Ractor mechanism to run Ruby program in
+    parallel. See doc/ractor.md <span style="color:#66d9ef">for</span> more details about Ractor.
+    See ticket <span style="color:#f92672">[</span>Feature <span style="color:#75715e">#17100] to see the implementation details</span>
+    and discussions.
+
+    <span style="color:#f92672">[</span>Feature <span style="color:#75715e">#17100]</span>
+
+    This commit does not complete the implementation. You can find
+    many bugs on using Ractor. Also the specification will be changed
+    so that this feature is experimental. You will see a warning when
+    you make the first Ractor with <span style="color:#e6db74">`</span>Ractor.new<span style="color:#e6db74">`</span>.
+
+    I hope this feature can help programmers from thread-safety issues.
+
+diff --git a/vm.c b/vm.c
+--- a/vm.c
++++ b/vm.c
+@@ -1,9 +1,9 @@
+ /**********************************************************************
+
+-  vm.c -
++  Vm.c -
+
+   $Author$
+
+   Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2004-2007 Koichi Sasada
+
+ **********************************************************************/
+
+commit 6cdef2dc7e8a4098727de5befff8b2496fa71430
+Author: akr &lt;akr@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
+Date:   Sun Jan <span style="color:#ae81ff">6</span> 15:49:38 <span style="color:#ae81ff">2008</span> +0000
+
+    * $Date$ keyword removed to avoid inclusion of locale dependent
+      string.
+
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@14912 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+diff --git a/vm.c b/vm.c
+--- a/vm.c
++++ b/vm.c
+@@ -1,10 +1,9 @@
+ /**********************************************************************
+
+   vm.c -
+
+   $Author$
+-  $Date$
+
+   Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2004-2007 Koichi Sasada
+
+<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
 </div>
 <p>
 This will show all commits containing changes in lines 1 through 9
@@ -192,31 +276,41 @@ Let&#39;s consult the man page for <code class="verbatim">git-log</code> like so
 We eventually come across a part like the following:</p>
 <div class="src src-text">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">      -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt;, -L :&lt;funcname&gt;:&lt;file&gt;
-          Trace the evolution of the line range given by &#34;&lt;start&gt;,&lt;end&gt;&#34; (or the function name regex &lt;funcname&gt;) within the &lt;file&gt;. You may
-          not give any pathspec limiters. This is currently limited to a walk starting from a single revision, i.e., you may only give zero or
-          one positive revision arguments, and &lt;start&gt; and &lt;end&gt; (or &lt;funcname&gt;) must exist in the starting revision. You can specify this
-          option more than once. Implies --patch. Patch output can be suppressed using --no-patch, but other diff formats (namely --raw,
-          --numstat, --shortstat, --dirstat, --summary, --name-only, --name-status, --check) are not currently implemented.
+          Trace the evolution of the line range given by &#34;&lt;start&gt;,&lt;end&gt;&#34; (or the
+          function name regex &lt;funcname&gt;) within the &lt;file&gt;. You may not give any
+          pathspec limiters. This is currently limited to a walk starting from a
+          single revision, i.e., you may only give zero or one positive revision
+          arguments, and &lt;start&gt; and &lt;end&gt; (or &lt;funcname&gt;) must exist in the starting
+          revision. You can specify this option more than once. Implies --patch. Patch
+          output can be suppressed using --no-patch, but other diff formats (namely
+          --raw, --numstat, --shortstat, --dirstat, --summary, --name-only,
+          --name-status, --check) are not currently implemented.
 
           &lt;start&gt; and &lt;end&gt; can take one of these forms:
 
           •   number
 
-              If &lt;start&gt; or &lt;end&gt; is a number, it specifies an absolute line number (lines count from 1).
+              If &lt;start&gt; or &lt;end&gt; is a number, it specifies an absolute line number
+              (lines count from 1).
 
           •   /regex/
 
-              This form will use the first line matching the given POSIX regex. If &lt;start&gt; is a regex, it will search from the end of the
-              previous -L range, if any, otherwise from the start of file. If &lt;start&gt; is “^/regex/”, it will search from the start of file. If
+              This form will use the first line matching the given POSIX regex. If
+              &lt;start&gt; is a regex, it will search from the end of the
+              previous -L range, if any, otherwise from the start of file. If &lt;start&gt;
+              is “^/regex/”, it will search from the start of file. If
               &lt;end&gt; is a regex, it will search starting at the line given by &lt;start&gt;.
 
           •   +offset or -offset
 
-              This is only valid for &lt;end&gt; and will specify a number of lines before or after the line given by &lt;start&gt;.
+              This is only valid for &lt;end&gt; and will specify a number of lines before
+              or after the line given by &lt;start&gt;.
 
-          If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and &lt;end&gt;, it is a regular expression that denotes the range from the first funcname
-          line that matches &lt;funcname&gt;, up to the next funcname line.  “:&lt;funcname&gt;” searches from the end of the previous -L range, if any,
-          otherwise from the start of file.  “^:&lt;funcname&gt;” searches from the start of file.</code></pre></div>
+          If “:&lt;funcname&gt;” is given in place of &lt;start&gt; and &lt;end&gt;, it is a regular
+          expression that denotes the range from the first funcname line that matches
+          &lt;funcname&gt;, up to the next funcname line.  “:&lt;funcname&gt;” searches from the
+          end of the previous -L range, if any, otherwise from the start of file.
+          “^:&lt;funcname&gt;” searches from the start of file.</code></pre></div>
 </div>
 <p>
 Ok, we have already seen how to list the relevant log entries with
@@ -234,7 +328,65 @@ Cool, then armed with this new power we should be able to look at
 commits and relevant patches within a Ruby function too, right? Let&#39;s
 give that a try:</p>
 <div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :request_uri:lib/uri/http.rb</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :request_uri:lib/uri/http.rb
+commit 107ba65fba13bdf791e5dae0305c5768e6f7d122
+Author: hsbt &lt;hsbt@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
+Date:   Fri Sep <span style="color:#ae81ff">30</span> 10:06:24 <span style="color:#ae81ff">2016</span> +0000
+
+    * lib/uri/http.rb: Documentation and code style imrovements.
+    * test/uri/test_http.rb: Added test <span style="color:#66d9ef">for</span> coverage.
+      <span style="color:#f92672">[</span>fix GH-1427<span style="color:#f92672">][</span>ruby-core:77255<span style="color:#f92672">][</span>Misc <span style="color:#75715e">#12756]</span>
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@56298 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+diff --git a/lib/uri/http.rb b/lib/uri/http.rb
+--- a/lib/uri/http.rb
++++ b/lib/uri/http.rb
+@@ -98,12 +102,11 @@
+     def request_uri
+-      <span style="color:#66d9ef">return</span> nil unless @path
+-      <span style="color:#66d9ef">if</span> @path.start_with?<span style="color:#f92672">(</span>?/.freeze<span style="color:#f92672">)</span>
+-        @query ? <span style="color:#e6db74">&#34;#@path?#@query&#34;</span> : @path.dup
+-      <span style="color:#66d9ef">else</span>
+-        @query ? <span style="color:#e6db74">&#34;/#@path?#@query&#34;</span> : <span style="color:#e6db74">&#34;/#@path&#34;</span>
+-      end
++      <span style="color:#66d9ef">return</span> unless @path
++
++      url <span style="color:#f92672">=</span> @query ? <span style="color:#e6db74">&#34;#@path?#@query&#34;</span> : @path.dup
++      url.start_with?<span style="color:#f92672">(</span>?/.freeze<span style="color:#f92672">)</span> ? url : ?/ + url
+     end
+   end
+
+   @@schemes<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HTTP&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> HTTP
++
+ end
+
+commit a5c923f6c1ab0ddd68c4debb7c68623ff0cf4e6a
+Author: naruse &lt;naruse@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
+Date:   Tue Aug <span style="color:#ae81ff">5</span> 19:09:01 <span style="color:#ae81ff">2014</span> +0000
+
+    * lib/uri/http.rb <span style="color:#f92672">(</span>URI::HTTP#request_uri<span style="color:#f92672">)</span>: optimized.
+      decrease object allocation, and ensure always create at least one new
+      object <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">return</span> value.
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@47072 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+diff --git a/lib/uri/http.rb b/lib/uri/http.rb
+--- a/lib/uri/http.rb
++++ b/lib/uri/http.rb
+@@ -95,12 +95,12 @@
+     def request_uri
+-      r <span style="color:#f92672">=</span> path_query
+-      <span style="color:#66d9ef">if</span> r <span style="color:#f92672">&amp;&amp;</span> r<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> !<span style="color:#f92672">=</span> ?/
+-        r <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span> + r
++      <span style="color:#66d9ef">return</span> nil unless @path
++      <span style="color:#66d9ef">if</span> @path.start_with?<span style="color:#f92672">(</span>?/.freeze<span style="color:#f92672">)</span>
++        @query ? <span style="color:#e6db74">&#34;#@path?#@query&#34;</span> : @path.dup
++      <span style="color:#66d9ef">else</span>
++        @query ? <span style="color:#e6db74">&#34;/#@path?#@query&#34;</span> : <span style="color:#e6db74">&#34;/#@path&#34;</span>
+       end
+-
+<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
 </div>
 <p>
 This works but you will notice some of the patches show changed lines
@@ -312,7 +464,68 @@ files are of type <code class="verbatim">markdown</code> which we can do by addi
 <p>
 Retrying the <code class="verbatim">git log</code> command above will show us only commits and
 their patches that contain changes to that section of the markdown
-file <code class="verbatim">README.md</code> as expected now.</p>
+file <code class="verbatim">README.md</code> as expected now:</p>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :Features<span style="color:#ae81ff">\ </span>of<span style="color:#ae81ff">\ </span>Ruby:README.md
+commit dbe834ab5ac4f90df5db9fc314b45890726cca3b
+Author: Takashi Kokubun &lt;takashikkbn@gmail.com&gt;
+Date:   Mon Jul <span style="color:#ae81ff">1</span> 01:04:40 <span style="color:#ae81ff">2019</span> +0900
+
+    Prefer master rather than trunk in README <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -13,15 +13,15 @@
+ <span style="color:#75715e">## Features of Ruby</span>
+
+ *   Simple Syntax
+ *   **Normal** Object-oriented Features <span style="color:#f92672">(</span>e.g. class, method calls<span style="color:#f92672">)</span>
+ *   **Advanced** Object-oriented Features <span style="color:#f92672">(</span>e.g. mix-in, singleton-method<span style="color:#f92672">)</span>
+ *   Operator Overloading
+ *   Exception Handling
+ *   Iterators and Closures
+ *   Garbage Collection
+ *   Dynamic Loading of Object Files <span style="color:#f92672">(</span>on some architectures<span style="color:#f92672">)</span>
+ *   Highly Portable <span style="color:#f92672">(</span>works on many Unix-like/POSIX compatible platforms as
+     well as Windows, macOS, Haiku, etc.<span style="color:#f92672">)</span> cf.
+-    https://github.com/ruby/ruby/blob/trunk/doc/contributing.rdoc#platform-maintainers
++    https://github.com/ruby/ruby/blob/master/doc/contributing.rdoc#platform-maintainers
+
+
+
+commit 4fb5888a4dbc10b6f6d3f847f680baae60b9f757
+Author: kazu &lt;kazu@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
+Date:   Fri Jun <span style="color:#ae81ff">15</span> 00:19:05 <span style="color:#ae81ff">2018</span> +0000
+
+    Update obsoleted URLs of supported platforms <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@63666 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -11,15 +11,15 @@
+ <span style="color:#75715e">## Features of Ruby</span>
+
+ *   Simple Syntax
+ *   **Normal** Object-oriented Features <span style="color:#f92672">(</span>e.g. class, method calls<span style="color:#f92672">)</span>
+ *   **Advanced** Object-oriented Features <span style="color:#f92672">(</span>e.g. mix-in, singleton-method<span style="color:#f92672">)</span>
+ *   Operator Overloading
+ *   Exception Handling
+ *   Iterators and Closures
+ *   Garbage Collection
+ *   Dynamic Loading of Object Files <span style="color:#f92672">(</span>on some architectures<span style="color:#f92672">)</span>
+ *   Highly Portable <span style="color:#f92672">(</span>works on many Unix-like/POSIX compatible platforms as
+     well as Windows, macOS, Haiku, etc.<span style="color:#f92672">)</span> cf.
+-    https://bugs.ruby-lang.org/projects/ruby-trunk/wiki/SupportedPlatforms
++    https://github.com/ruby/ruby/blob/trunk/doc/contributing.rdoc#platform-maintainers
+
+
+
+commit f4ae225b04ae0cde3aa2781c82875074da49086b
+<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
+</div>
 </div>
 </div>
 <div id="outline-container-headline-6" class="outline-3">
