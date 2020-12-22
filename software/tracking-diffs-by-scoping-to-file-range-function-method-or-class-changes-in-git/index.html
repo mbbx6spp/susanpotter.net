@@ -245,7 +245,7 @@ How does this work?
 </h4>
 <div id="outline-text-headline-4" class="outline-text-4">
 <p>
-One this to notice is that in the root of the <code class="verbatim">ruby</code> repository is a
+One key observation is that in the root of the <code class="verbatim">ruby</code> repository is a
 file named <code class="verbatim">.gitattributes</code>. This can do many things but for the
 purposes of block-based git logs and patch review, the important line
 that made the above command mostly work is the following:</p>
@@ -254,25 +254,105 @@ that made the above command mostly work is the following:</p>
 </div>
 <p>
 This is telling Git to assume the file type for all files ending in
-and <code class="verbatim">rb</code> extension are <code class="verbatim">ruby</code> files. For diffing purposes this uses a
+and <code class="verbatim">rb</code> extension is <code class="verbatim">ruby</code>. For diffing purposes this uses a
 regex to determine the block boundaries for <code class="verbatim">ruby</code> files:</p>
 <p>
 https://git.kernel.org/pub/scm/git/git.git/tree/userdiff.c#n183</p>
+<p>
+This identifies named class, module, function, or method definitions
+as being named blocks. The start of the regular expression provides
+looks for spaces or tabs preceding either a <code class="verbatim">class</code>, <code class="verbatim">module</code>, or
+<code class="verbatim">def</code> keyword followed by a space or tag again.</p>
+<p>
+The way the <code class="verbatim">-L :funcname:file</code> argument to <code class="verbatim">git log</code> subcommand works
+is it will find the named marker matching that regex until the next
+named marker and this is why we don&#39;t just see changes within the
+<code class="verbatim">request_uri</code> method definition in the example in the parent section.</p>
+<p>
+For most purposes this is good enough for quick and dirty filtering of
+noise from git logs. There are much more interesting ways to search a
+codebase in more semantic ways and even languages built upon the
+premise of this like Unison.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
-<span class="todo">TODO</span>
-Defining new named blocks for new formats and file types
+Tracking changes in markdown document sections
 </h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p>
+Now let us say we want to see a log of all commits that changed the
+section &#39;Features of Ruby&#39; in the <code class="verbatim">README.md</code> file at the root of the
+<code class="verbatim">ruby</code> repository.</p>
+<p>
+Let us give that a try:</p>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :Features<span style="color:#ae81ff">\ </span>of<span style="color:#ae81ff">\ </span>Ruby:README.md</code></pre></div>
+</div>
+<p>
+This gives me a rather nasty error like so:</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">fatal: -L parameter &#39;Features of Ruby&#39; starting at line 1: no match</code></pre></div>
+</div>
+<p>
+Not the best error message but based on the last subsection (&#39;How does
+this work?&#39;) I have a hunch. Let&#39;s find where in the <code class="verbatim">.gitattributes</code>
+that it specifies that README.md is a markdown file:</p>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep markdown .gitattributes</code></pre></div>
+</div>
+<p>
+It shows me nothing. We need to tell Git to assume that all <code class="verbatim">*.md</code>
+files are of type <code class="verbatim">markdown</code> which we can do by adding the following line:</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">*.md diff=markdown</code></pre></div>
+</div>
+<p>
+Retrying the <code class="verbatim">git log</code> command above will show us only commits and
+their patches that contain changes to that section of the markdown
+file <code class="verbatim">README.md</code> as expected now.</p>
+</div>
 </div>
 <div id="outline-container-headline-6" class="outline-3">
 <h3 id="headline-6">
-<span class="todo">TODO</span>
-Limitations &amp; prerequisites
+Defining new named blocks for new formats and file types
 </h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<p>
+Now what happens if I wanted to write my documentation in <code class="verbatim">orgmode</code>
+format instead of markdown like all good emacsers?</p>
+<p>
+Let us try the following:</p>
+<ol>
+<li>
+<p>We will add an entry to <code class="verbatim">.gitattributes</code> file to tell Git to treat
+files matching the pattern <code class="verbatim">*.org</code> as <code class="verbatim">org</code> files.</p>
+</li>
+<li>
+<p>Write orgmode files over multiple commits changing parts of
+different sections.</p>
+</li>
+<li>
+<p>Try the <code class="verbatim">git log -L :&lt;funcname&gt;:&lt;filename&gt;</code> command like above.</p>
+</li>
+</ol>
+<p>Unfortunately this alone will not work. What we must also do is open
+up our user <code class="verbatim">~/.gitconfig</code> and add the following to the =[diff
+&#34;org&#34;] section.</p>
+<div class="src src-ini">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[diff &#34;org&#34;]</span>
+  <span style="color:#a6e22e">xfuncname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;^ *\*{1,6}[ \t].*&#34;</span></code></pre></div>
+</div>
+<p>
+Now if we try it we will see what we are looking for.</p>
+<p>
+As an exercise you could try building a regular expression for a file
+format that git doesn&#39;t automatically recognize how to find named
+blocks for and adding the <code class="verbatim">xfuncname</code> attribute under the relevant
+diff configuration section of your Git config file.</p>
+</div>
 </div>
 
   </article>
