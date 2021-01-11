@@ -38,7 +38,7 @@
       <description>Photo by Alex on Unsplash  Notes:
   This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3
   The Gist was moved to a snippet.
-Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. After assembling the parts of a Profunctor the reader should start to see how packaging these operators as a pair allows library designers to offer a declarative interface for their clients to build custom codecs with a small number of primitives.</description>
+Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way to software development practitioners that may not be familiar with the Category theory building blocks that Profunctors are based on.</description>
     </item>
     
     <item>

@@ -127,11 +127,13 @@ Goals
 </ul>
 <p>This series explores one kind of motivation and the building blocks of
 Profunctors with an aim to introduce the concepts informally while
-introducing terminology along the way. After assembling the parts of a
-Profunctor the reader should start to see how packaging these
-operators as a pair allows library designers to offer a declarative
-interface for their clients to build custom codecs with a small number
-of primitives.</p>
+introducing terminology along the way to software development
+practitioners that may not be familiar with the Category theory
+building blocks that Profunctors are based on. After assembling the
+parts of a Profunctor the reader should start to see how packaging
+these operators as a pair allows library designers to offer a
+declarative interface for their clients to build custom codecs with a
+small number of primitives.</p>
 <p>
 This gives us the ability to build larger programs from smaller pieces
 without needing to keep a large amount of state in our heads as we
@@ -282,6 +284,19 @@ that transcends the specific use case.</p>
 <p>
 In the next part of this Profunctor series, we will explore the
 <em>&#34;round-tripping&#34;</em> pattern further through examples.</p>
+<dl>
+<dt>
+<strong>Requesting &amp; responding</strong>
+</dt>
+<dd>
+<p>web developers are very familiar with
+the sending requests and making sense of responses with HTTP among
+other protocols.</p>
+</dd>
+</dl>
+<div class="src src-sh">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ curl -sSi https://susanpotter.net/humans.txt</code></pre></div>
+</div>
 </div>
 </div>
 
