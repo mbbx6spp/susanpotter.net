@@ -329,12 +329,19 @@ LinkedIn: https://www.linkedin.com/in/susanpotter/
 Location: IL <span style="color:#f92672">(</span>USA<span style="color:#f92672">)</span></code></pre></div>
 </div>
 <p>
-These paired transforms can often be modeled with the interface
-<em>Profunctor</em> provides but what does that mean?</p>
+To request the resource at <code class="verbatim">/humans.txt</code> on <code class="verbatim">https://susanpotter.net</code>
+<code class="verbatim">curl</code> opened a TLS connection to port 443 (default HTTPS port) and send
+the HTTP request <code class="verbatim">GET /humans</code> plus added some HTTP request headers
+under the covers. It then received the response, and printed the HTTP
+response headers plus response body to stdout.</p>
+<p>
+All of the paired transforms above can be modeled with the interface
+that <em>Profunctor</em> provides but what does that mean and why is that useful?</p>
 </div>
 </div>
 <div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
+<span class="todo">TODO</span>
 Initial intuitions
 </h3>
 </div>
