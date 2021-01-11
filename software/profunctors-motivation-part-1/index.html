@@ -291,7 +291,12 @@ In the next part of this Profunctor series, we will explore the
 <dd>
 <p>web developers are very familiar with
 the sending requests and making sense of responses with HTTP among
-other protocols.</p>
+other protocols.
+To request the resource at <code class="verbatim">/humans.txt</code> on <code class="verbatim">https://susanpotter.net</code>
+<code class="verbatim">curl</code> opened a TLS connection to port 443 (default HTTPS port) and sent
+the HTTP request <code class="verbatim">GET /humans</code> plus added some HTTP request headers
+under the covers. It then received the response, and printed the
+response code, HTTP response headers, and response body to stdout.</p>
 </dd>
 </dl>
 <div class="src src-sh">
@@ -328,12 +333,6 @@ Keybase: https://keybase.io/mbbx6spp
 LinkedIn: https://www.linkedin.com/in/susanpotter/
 Location: IL <span style="color:#f92672">(</span>USA<span style="color:#f92672">)</span></code></pre></div>
 </div>
-<p>
-To request the resource at <code class="verbatim">/humans.txt</code> on <code class="verbatim">https://susanpotter.net</code>
-<code class="verbatim">curl</code> opened a TLS connection to port 443 (default HTTPS port) and send
-the HTTP request <code class="verbatim">GET /humans</code> plus added some HTTP request headers
-under the covers. It then received the response, and printed the HTTP
-response headers plus response body to stdout.</p>
 <p>
 All of the paired transforms above can be modeled with the interface
 that <em>Profunctor</em> provides but what does that mean and why is that useful?</p>
