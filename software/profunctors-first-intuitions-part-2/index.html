@@ -7,26 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="author" content="Susan Potter">
-    <meta name="description" content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear silly hats, write strongly typed pure functional programs, and listen to bad pop music.">
+    <meta name="description" content="/">
     <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
 
     <meta property="og:site_name" content="Susan Potter">
     <meta property="og:title" content="
-  funtional programming - Susan Potter
+  Profunctors: First intuitions, Part 2 - Susan Potter
 ">
-    <meta property="og:description" content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear silly hats, write strongly typed pure functional programs, and listen to bad pop music.">
+    <meta property="og:description" content="Introducing the idea of Profunctors">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/tags/funtional-programming/">
-    <meta property="og:image" content="/images/hat-collage.jpg">
+    <meta property="og:url" content="/software/profunctors-first-intuitions-part-2/">
+    <meta property="og:image" content="/">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="/tags/funtional-programming/">
-    <meta name="twitter:image" content="/images/hat-collage.jpg">
+    <meta name="twitter:site" content="/software/profunctors-first-intuitions-part-2/">
+    <meta name="twitter:image" content="/">
 
     <title>
-  funtional programming - Susan Potter
+  Profunctors: First intuitions, Part 2 - Susan Potter
 </title>
 
-    <link rel="canonical" href="/tags/funtional-programming/">
+    <link rel="canonical" href="/software/profunctors-first-intuitions-part-2/">
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     
@@ -87,49 +87,50 @@
 
       <div class="content">
         
-  <section class="container list">
-  <h1 class="title">funtional programming</h1>
-  <ul>
-    
-    <li>
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Profunctors: First intuitions, Part 2</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> September 29, 2020</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> September 29, 2020</span>
+        
       
-      <span>October 4, 2020</span>
+        <div class="draft">DRAFT</div>
       
-      <a href="/software/profunctors-an-api-part-3/">Profunctors: An API, Part 3</a>
-    </li>
-    
-    <li>
-      
-      <span>September 29, 2020</span>
-      
-      <a href="/software/profunctors-first-intuitions-part-2/">Profunctors: First intuitions, Part 2</a>
-    </li>
-    
-    <li>
-      
-      <span>September 22, 2020</span>
-      
-      <a href="/software/profunctors-for-the-web-developer-motivating-examples-part-1/">Profunctors for the web developer: Motivating examples, Part 1</a>
-    </li>
-    
-    <li>
-      
-      <span>September 25, 2014</span>
-      
-      <a href="/software/parametricity-a-practitioners-guide/">Parametricity: A Practitioners Guide</a>
-    </li>
-    
-  </ul>
+
+      </div>
+
+    </header>
+
+    <p>
+<img src="/images/leaf-half-dead-small.jpg" alt="/images/leaf-half-dead-small.jpg" title="/images/leaf-half-dead-small.jpg" /></p>
+<span>Photo by <a href="https://unsplash.com/@mariodobelmann?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Mario Dobelmann</a> on <a href="https://unsplash.com/s/photos/yin-yang?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+<p>
+All of the paired transforms from Part 1 can be modeled with the interface
+that <em>Profunctor</em> provides but what does that mean and why is that useful?</p>
+<p>
+In Part 2 we will explore our first intuitions about these pairings:</p>
+<ul>
+<li>
+<p>how they are similar</p>
+</li>
+<li>
+<p>how they are different</p>
+</li>
+<li>
+<p>how having a common interface for them improves the web developer&#39;s
+day at work</p>
+</li>
+</ul>
+
+  </article>
+
   
-
-
-
-
-
-
 </section>
-
-
 
 
       </div>
@@ -139,10 +140,10 @@
     
       <div class="sns-shares sp-sns-shares">
         
-          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2ftags%2ffuntional-programming%2f&ref_src=twsrc%5Etfw&text=funtional%20programming Susan%20Potter&tw_p=tweetbutton&url=%2ftags%2ffuntional-programming%2f"><i class="fab fa-twitter"></i></a>
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fprofunctors-first-intuitions-part-2%2f&ref_src=twsrc%5Etfw&text=Profunctors%3a%20First%20intuitions%2c%20Part%202 Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fprofunctors-first-intuitions-part-2%2f"><i class="fab fa-twitter"></i></a>
         
         
-          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2ftags%2ffuntional-programming%2f"><i class="fab fa-linkedin"></i></a>
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fprofunctors-first-intuitions-part-2%2f"><i class="fab fa-linkedin"></i></a>
         
       </div>
     
@@ -200,10 +201,10 @@
         <div class="sns-shares pc-sns-shares">
           <span>Share:</span>
           
-            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2ftags%2ffuntional-programming%2f&ref_src=twsrc%5Etfw&text=funtional%20programming Susan%20Potter&tw_p=tweetbutton&url=%2ftags%2ffuntional-programming%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fprofunctors-first-intuitions-part-2%2f&ref_src=twsrc%5Etfw&text=Profunctors%3a%20First%20intuitions%2c%20Part%202 Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fprofunctors-first-intuitions-part-2%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
           
           
-            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2ftags%2ffuntional-programming%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fprofunctors-first-intuitions-part-2%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
           
         </div>
       
