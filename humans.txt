@@ -5,6 +5,6 @@ Site: https://susanpotter.net
 Twitter: @SusanPotter
 Github:  https://github.com/mbbx6spp
 Keybase: https://keybase.io/mbbx6spp
-/* endorse me for skills like: Typesafe Jira Comments, Highly Manicured Exit Blogging, or Functional Programming */
+/* Endorse me for skills like: Typesafe Jira Comments, Highly Manicured Exit Blogging, or Functional Programming */
 LinkedIn: https://www.linkedin.com/in/susanpotter/
 Location: IL (USA)
