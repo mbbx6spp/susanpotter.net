@@ -23,13 +23,12 @@
     </item>
     
     <item>
-      <title>TypeScript&#39;s =keyof= operator and possible uses</title>
+      <title>TypeScript&#39;s keyof operator and possible uses</title>
       <link>/software/typescripts-keyof-operator-and-possible-uses/</link>
       <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/typescripts-keyof-operator-and-possible-uses/</guid>
-      <description>In the last two weeks I learned about the keyof operator in TypeScript as I searched for a better solution to a problem we had in on of our internal client-side libraries at work.
- Much of our TypeScript codebases at work use lodash although I am trying to encourage those developers to incorporate more ideas from fp-ts which provides ways of using common functional abstractions commonly found in Haskell and PureScript in TypeScript itself despite its lack of typeclass support.</description>
+      <description>An exploration of the keyof operator in TypeScript.</description>
     </item>
     
     <item>
@@ -115,14 +114,11 @@ git config --global merge.conflictStyle diff3   When rebasing you will get the f
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/profunctors-for-the-web-developer-motivating-examples-part-1/</guid>
-      <description>Photo by Alex on Unsplash  Notes:
-  This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3
-  The Gist was moved to a snippet.
-Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way to software development practitioners that may not be familiar with the Category theory building blocks that Profunctors are based on.</description>
+      <description>Offering examples of profunctors that web developers might find motivating.</description>
     </item>
     
     <item>
-      <title>Dhall&#39;s =merge= keyword and union types</title>
+      <title>Dhall&#39;s merge keyword and union types</title>
       <link>/snippets/dhalls-merge-keyword-and-union-types/</link>
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -315,7 +311,7 @@ Random notes on unikernels  Introducing unikernels   You might have heard terms 
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/</guid>
-      <description>{-# LANGUAGE ExplicitForAll #-} {-# LANGUAGE KindSignatures #-} {-# LANGUAGE NoImplicitPrelude #-} {-# LANGUAGE RankNTypes #-} {-# LANGUAGE TypeOperators #-} {-# LANGUAGE TypeSynonymInstances #-} {-# LANGUAGE MultiParamTypeClasses #-} module Profunctors where import Data.Either import Data.Maybe import Data.Functor import Data.Function ((.), ($)) class Iso a b where to :: a -&amp;gt; b from :: b -&amp;gt; a -- law: a = from . to a type Lens s t a b = forall p.</description>
+      <description>A snippet showing the space around profunctors in Haskell (e.g. Strong, Choice, Cartesian).</description>
     </item>
     
     <item>

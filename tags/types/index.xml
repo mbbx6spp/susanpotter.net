@@ -12,13 +12,12 @@
     
     
     <item>
-      <title>TypeScript&#39;s =keyof= operator and possible uses</title>
+      <title>TypeScript&#39;s keyof operator and possible uses</title>
       <link>/software/typescripts-keyof-operator-and-possible-uses/</link>
       <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/typescripts-keyof-operator-and-possible-uses/</guid>
-      <description>In the last two weeks I learned about the keyof operator in TypeScript as I searched for a better solution to a problem we had in on of our internal client-side libraries at work.
- Much of our TypeScript codebases at work use lodash although I am trying to encourage those developers to incorporate more ideas from fp-ts which provides ways of using common functional abstractions commonly found in Haskell and PureScript in TypeScript itself despite its lack of typeclass support.</description>
+      <description>An exploration of the keyof operator in TypeScript.</description>
     </item>
     
     <item>

@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Dhall&#39;s =merge= keyword and union types</title>
+      <title>Dhall&#39;s merge keyword and union types</title>
       <link>/snippets/dhalls-merge-keyword-and-union-types/</link>
       <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
       
@@ -61,7 +61,7 @@ Pattern matching in Haskell/PureScript background   In Haskell and PureScript, w
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/</guid>
-      <description>{-# LANGUAGE ExplicitForAll #-} {-# LANGUAGE KindSignatures #-} {-# LANGUAGE NoImplicitPrelude #-} {-# LANGUAGE RankNTypes #-} {-# LANGUAGE TypeOperators #-} {-# LANGUAGE TypeSynonymInstances #-} {-# LANGUAGE MultiParamTypeClasses #-} module Profunctors where import Data.Either import Data.Maybe import Data.Functor import Data.Function ((.), ($)) class Iso a b where to :: a -&amp;gt; b from :: b -&amp;gt; a -- law: a = from . to a type Lens s t a b = forall p.</description>
+      <description>A snippet showing the space around profunctors in Haskell (e.g. Strong, Choice, Cartesian).</description>
     </item>
     
     <item>

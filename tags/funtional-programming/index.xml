@@ -39,10 +39,7 @@
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/profunctors-for-the-web-developer-motivating-examples-part-1/</guid>
-      <description>Photo by Alex on Unsplash  Notes:
-  This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3
-  The Gist was moved to a snippet.
-Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way to software development practitioners that may not be familiar with the Category theory building blocks that Profunctors are based on.</description>
+      <description>Offering examples of profunctors that web developers might find motivating.</description>
     </item>
     
     <item>

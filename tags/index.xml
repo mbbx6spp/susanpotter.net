@@ -48,6 +48,24 @@
     </item>
     
     <item>
+      <title>folds</title>
+      <link>/tags/folds/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/folds/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functional programming</title>
+      <link>/tags/functional-programming/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>funtional programming</title>
       <link>/tags/funtional-programming/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
@@ -71,6 +89,24 @@
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/profunctors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dhall</title>
+      <link>/tags/dhall/</link>
+      <pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dhall/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>purescript</title>
+      <link>/tags/purescript/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/purescript/</guid>
       <description></description>
     </item>
     
@@ -102,15 +138,6 @@
     </item>
     
     <item>
-      <title>purescript</title>
-      <link>/tags/purescript/</link>
-      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/purescript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>serverless</title>
       <link>/tags/serverless/</link>
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
@@ -125,15 +152,6 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/algebraic-data-types/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>functional programming</title>
-      <link>/tags/functional-programming/</link>
-      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/functional-programming/</guid>
       <description></description>
     </item>
     
@@ -278,6 +296,15 @@
       <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/infrastructure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>profunctor</title>
+      <link>/tags/profunctor/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/profunctor/</guid>
       <description></description>
     </item>
     
