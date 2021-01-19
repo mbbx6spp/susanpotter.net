@@ -101,14 +101,7 @@
   </url>
   
   <url>
-    <loc>/tags/software/</loc>
-    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/software/profunctors-first-intuitions-part-2/</loc>
+    <loc>/software/profunctors-for-the-web-developer-first-intuitions-part-2/</loc>
     <lastmod>2020-09-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -395,6 +388,13 @@
   </url>
   
   <url>
+    <loc>/tags/training/</loc>
+    <lastmod>2019-06-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/film/</loc>
     <lastmod>2019-05-11T22:41:25-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -416,7 +416,28 @@
   </url>
   
   <url>
+    <loc>/tags/auto-scaling/</loc>
+    <lastmod>2019-04-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</loc>
+    <lastmod>2019-04-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ec2/</loc>
+    <lastmod>2019-04-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/infrastructure/</loc>
     <lastmod>2019-04-26T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -445,6 +466,27 @@
   
   <url>
     <loc>/talks/functional-operations-functional-programming-at-comcast-labs-connect/</loc>
+    <lastmod>2018-03-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/nix/</loc>
+    <lastmod>2018-03-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/nixos/</loc>
+    <lastmod>2018-03-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/operations/</loc>
     <lastmod>2018-03-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -493,6 +535,27 @@
   </url>
   
   <url>
+    <loc>/tags/reactive-infrastructure/</loc>
+    <lastmod>2016-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/curry-howard/</loc>
+    <lastmod>2016-09-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/idris/</loc>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/talks/put-a-type-on-it-idris-types-as-propositions/</loc>
     <lastmod>2016-09-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -507,15 +570,15 @@
   </url>
   
   <url>
-    <loc>/tags/idris/</loc>
+    <loc>/software/to-type-or-not-to-static-type/</loc>
     <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/software/to-type-or-not-to-static-type/</loc>
-    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
+    <loc>/tags/erlang/</loc>
+    <lastmod>2016-03-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -577,6 +640,13 @@
   </url>
   
   <url>
+    <loc>/tags/monoids/</loc>
+    <lastmod>2012-11-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/talks/why-haskell/</loc>
     <lastmod>2012-03-16T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -591,6 +661,13 @@
   </url>
   
   <url>
+    <loc>/tags/dynamo/</loc>
+    <lastmod>2011-09-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/talks/dynamo-not-just-for-datastores/</loc>
     <lastmod>2011-09-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -599,6 +676,20 @@
   
   <url>
     <loc>/talks/distributed-developer-workflows-using-git/</loc>
+    <lastmod>2011-08-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dvcs/</loc>
+    <lastmod>2011-08-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
     <lastmod>2011-08-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -626,7 +717,35 @@
   </url>
   
   <url>
+    <loc>/tags/actors/</loc>
+    <lastmod>2010-08-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/concurrency/</loc>
+    <lastmod>2010-08-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/talks/designing-for-concurrency/</loc>
+    <lastmod>2010-08-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/multithreading/</loc>
+    <lastmod>2010-08-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software-transactional-memory/</loc>
     <lastmod>2010-08-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -669,20 +788,6 @@
   
   <url>
     <loc>/tags/darcs/</loc>
-    <lastmod>2007-01-25T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/dvcs/</loc>
-    <lastmod>2007-01-25T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/git/</loc>
     <lastmod>2007-01-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
