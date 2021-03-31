@@ -1226,6 +1226,10 @@ main .src .highlight pre {
   margin-top: -1px;
 }
 
+.max-w-prose {
+  max-width: 65ch;
+}
+
 .object-cover {
   -o-object-fit: cover;
   object-fit: cover;
