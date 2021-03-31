@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>The superpowers that higher-kinded types provides</title>
-      <link>/software/the-superpowers-that-higher-kinded-types-provides/</link>
+      <title>The superpowers higher-kinded types provide</title>
+      <link>/software/the-superpowers-higher-kinded-types-provide/</link>
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/software/the-superpowers-that-higher-kinded-types-provides/</guid>
+      <guid>/software/the-superpowers-higher-kinded-types-provide/</guid>
       <description>Lately I have been working with TypeScript developers introducing stronger forms of functional programming and during our explorations about how to exploit the abstractions found in libraries like fp-ts and io-ts, I find myself missing higher-kinded types when one developer asked me to explain why higher-kinded types are so useful.
  Here is my attempt.
 Functional Programming as Programming with Values   We first get introduced to functional programming with the big idea that we can pass functions around as arguments or return functions as values from other functions.</description>
