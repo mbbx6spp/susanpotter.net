@@ -68,7 +68,8 @@ Functional Programming as Programming with Values   We first get introduced to f
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/profunctors-an-api-part-3/</guid>
-      <description> Photo by Jonatan Pie on Unsplash </description>
+      <description> /images/reflection-small.webp
+Photo by Jonatan Pie on Unsplash </description>
     </item>
     
     <item>
@@ -77,7 +78,8 @@ Functional Programming as Programming with Values   We first get introduced to f
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/profunctors-for-the-web-developer-first-intuitions-part-2/</guid>
-      <description>Photo by Mario Dobelmann on Unsplash  All of the paired transforms from Part 1 can be modeled with the interface that Profunctor provides but what does that mean and why is that useful?
+      <description>/images/leaf-half-dead-small.webp
+Photo by Mario Dobelmann on Unsplash  All of the paired transforms from Part 1 can be modeled with the interface that Profunctor provides but what does that mean and why is that useful?
  In Part 2 we will explore our first intuitions about these pairings:
   how they are similar to each other
   how they are different from each other
@@ -255,7 +257,8 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
+      <description>/images/car-dashboard-small.webp
+Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
  Notes:
   all references to $ (dollars) is in reference to US Dollars (USD)
   latencies are quoted in milliseconds (ms) unless otherwise noted
