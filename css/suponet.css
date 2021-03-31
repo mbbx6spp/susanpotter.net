@@ -1492,6 +1492,10 @@ main .src .highlight pre {
   width: 16rem;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .w-full {
   width: 100%;
 }
